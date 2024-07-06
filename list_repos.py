@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 GITHUB_USERNAME = 'fabriziosalmi'
 
-def fetch_repositories_with_stars(min_stars=5):
+def fetch_repositories_with_stars(min_stars=1):
     url = f'https://api.github.com/users/{GITHUB_USERNAME}/repos'
     params = {
         'per_page': 100,  # maximum items per page
