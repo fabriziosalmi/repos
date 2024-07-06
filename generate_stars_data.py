@@ -6,7 +6,7 @@ import os
 
 # Constants
 GITHUB_API_URL = "https://api.github.com"
-USER = "your-username"  # Replace with your GitHub username
+USER = "fabriziosalmi"  # Replace with your GitHub username
 TOKEN = os.getenv("GITHUB_TOKEN")  # GitHub token from environment variable
 
 def fetch_repos(user, token):
