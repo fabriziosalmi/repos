@@ -191,7 +191,7 @@ def generate_html_page(repositories):
 
 **Total Stars: {total_stars}**
 
-| Repository | Latest Commit | ⭐️ Stars |
+| Repository | Freshness | ⭐️ |
 |------------|----------------|----------|
 '''
 
@@ -213,7 +213,7 @@ def generate_html_page(repositories):
                     <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> {humanized_commit_date}
                 </td>
                 <td>
-                    <img src="https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> {stars_count}
+                    <img src="https://img.shields.io/github/⭐️/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> {stars_count}
                 </td>
             </tr>
 '''
