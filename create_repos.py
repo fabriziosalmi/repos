@@ -87,27 +87,29 @@ def generate_html_page(repositories):
                 background-color: #f0f0f0;
                 margin: 0;
                 padding: 20px;
+                display: flex;
+                justify-content: center;
             }}
             .container {{
                 max-width: 800px;
-                margin: 0 auto;
+                width: 100%;
                 background-color: #fff;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 border-radius: 8px;
                 overflow: hidden;
+                padding: 20px;
             }}
             h1 {{
                 text-align: center;
-                padding: 20px;
-                background-color: #007bff;
-                color: #fff;
+                padding: 20px 0;
                 margin: 0;
-                border-radius: 8px 8px 0 0;
+                font-size: 24px;
             }}
             .stars-counter {{
                 text-align: center;
-                font-size: 24px;
+                font-size: 20px;
                 margin-bottom: 20px;
+                color: #ffbf00;
             }}
             .stars-counter .emoji {{
                 font-size: 28px;
@@ -116,21 +118,19 @@ def generate_html_page(repositories):
             table {{
                 width: 100%;
                 border-collapse: collapse;
+                margin-top: 20px;
             }}
             th, td {{
-                border: 1px solid #ddd;
                 padding: 12px;
                 text-align: left;
+                border-bottom: 1px solid #ddd;
             }}
             th {{
-                background-color: #007bff;
-                color: #fff;
-            }}
-            tr:nth-child(even) {{
-                background-color: #f2f2f2;
+                background-color: #f8f8f8;
+                font-weight: bold;
             }}
             tr:hover {{
-                background-color: #e0e0e0;
+                background-color: #f1f1f1;
             }}
             a {{
                 color: #007bff;
@@ -146,11 +146,23 @@ def generate_html_page(repositories):
                 margin-right: 5px;
             }}
             .badge-blue {{
-                background-color: #2196F3;
+                background-color: #007bff;
                 color: white;
             }}
             .badge-gray {{
                 background-color: #757575;
+                color: white;
+            }}
+            .badge-yellow {{
+                background-color: #ffbf00;
+                color: white;
+            }}
+            .badge-green {{
+                background-color: #28a745;
+                color: white;
+            }}
+            .badge-red {{
+                background-color: #dc3545;
                 color: white;
             }}
             @media only screen and (max-width: 600px) {{
@@ -164,7 +176,7 @@ def generate_html_page(repositories):
         <div class="container">
             <h1>My GitHub Repositories</h1>
             <div class="stars-counter">
-                <span class="emoji">⭐️</span>Total Stars: {total_stars}
+                <span class="emoji">⭐️</span> Total Stars: {total_stars}
             </div>
             <table>
                 <tr>
@@ -189,7 +201,7 @@ def generate_html_page(repositories):
                 <tr>
                     <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> {humanized_commit_date}</span>
+                        <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> {humanized_commit_date}
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> {stars_count}
