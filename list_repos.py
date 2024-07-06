@@ -71,11 +71,11 @@ def humanize_commit_date(commit_date):
 
 def get_freshness_badge(humanized_commit_date, for_markdown=False):
     color = 'lightgrey'
-    if 'today' in humanized_commit_date or 'yesterday' in humanized_commit_date or 'days' in humanized_commit_date:
+    if 'today' in humanized_commit_date or 'yesterday' in humanized_commit_date or 'days' in humanized_commit_date or '1 week' in humanized_commit_date:
         color = 'brightgreen'
-    elif 'weeks ago' in humanized_commit_date or 'week' in humanized_commit_date or 'month' in humanized_commit_date or 'months' in humanized_commit_date and '1 month' not in humanized_commit_date:
+    if 'weeks' in humanized_commit_date or '1 month' in humanized_commit_date:
         color = 'yellow'
-    elif 'years ago' in humanized_commit_date or 'year' in humanized_commit_date or 'months' in humanized_commit_date:
+    elif 'years ago' in humanized_commit_date or 'years' in humanized_commit_date or '1 year' in humanized_commit_date:
         color = 'red'
 
     if for_markdown:
