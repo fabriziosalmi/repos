@@ -1,0 +1,430 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GitHub Repositories</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                padding: 20px;
+            }
+            .repo {
+                margin-bottom: 40px;
+                border: 1px solid #ddd;
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h2 {
+                color: #333;
+            }
+            .description {
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>My GitHub Repositories (with at least 5 stars)</h1>
+    
+        <div class="repo">
+            <h2>blacklists</h2>
+            <p class="description">Hourly updated domains blacklist 🚫 </p>
+            <p># Domains Blacklist
+
+**Hourly updated domains blacklist** 🚫
+
+> _"Building a service on top of a regularly updated blacklist can provide immense value, not only for individual internet users but also for businesses and cybersecurity professionals. Whatever service you choose to build, ensure it's user-friendly, reliable, and secure."_
+
+## ✅ Downloads
+- Squid: **[blacklist.txt](https://github.com/fabriziosalmi/blacklists/releases/download/latest/blacklist.txt)** 
+- Unbound: **[unbound_blacklist.txt](https://github.com/fabriziosalmi/blacklists/releases/download/latest/unbound_blacklist.txt)** 
+- Bind, PowerDNS (RPZ): **[rpz_blacklist.txt](https://github.com/fabriziosalmi/blacklists/releases/download/latest/rpz_blacklist.txt)** 
+- Pi-Hole, AdGuard, uBlock Origin: 
+```
+https://github.com/fabriziosalmi/blacklists/releases/download/latest/blacklist.txt
+```
+
+## 📖 DNS filtering for dummies
+- Please read the [full story](https://github.com/fabriziosalmi/blacklists/blob/main/docs/Introduction.md)
+## 📈 At a glance
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795276181-ea44caeb6a6db48fdc262ac6?label=website) ![Static Badge](https://img.shields.io/badge/blacklists-53-000000) ![Static Badge](https://img.shields.io/badge/blacklisted-3019620-cc0000) ![Static Badge](https://img.shields.io/badge/whitelisted-2242-00CC00) ![Static Badge](https://img.shields.io/badge/streaming_blacklist-28098-000000) ![GitHub issues](https://img.shields.io/github/issues/fabriziosalmi/blacklists)
+### Compatibility
+- **Windows**, **Mac**, **Linux** via the [uBlock Origin](https://github.com/gorhill/uBlock#ublock-origin) browser extension ([Firefox](https://addons.mozilla.org/it/firefox/addon/ublock-origin/) or [others browsers](https://ublockorigin.com))
+- **iPhone** (Safari + DNS) via [AdGuard Pro for IOS](https://download.adguard.com/d/18672/ios-pro?exid=3ail29lmsdyc84s84c0gkosgo)
+- **Android** via [AdGuard Pro for Android](https://adguard.com/it/adguard-android/overview.html)
+- [PiHole](https://pi-hole.net/), [AdGuard Home](https://adguard.com/it/adguard-home/overview.html) and [Unbound](https://github.com/fabriziosalmi/blacklists/releases/tag/latest) **DNS filtering applications**
+- **Proxies** like [Squid](http://www.squid-cache.org/), **firewalls** like [nftables](https://github.com/fabriziosalmi/blacklists/blob/main/scripts/nft_blacklist_fqdn.sh) and **WAF** like [OPNsense](https://docs.opnsense.org/manual/how-tos/proxywebfilter.html)
+- **DNS servers** like [BIND9](https://github.com/fabriziosalmi/blacklists/tree/main/docs#how-to-implement-the-rpz-blacklist-with-bind9) or [PowerDNS](https://github.com/PowerDNS/pdns)
+  
+### Features
+- **Hourly Updates**: Stay protected against emerging threats
+- **Comprehensive Coverage**: Aggregated from the most frequently updated blacklists ([more info](https://github.com/fabriziosalmi/blacklists/blob/main/docs/blacklists_reviews.md))
+- **Broad Compatibility**: Works across browsers, firewalls, proxies, and more
+- **Robust Security**: Protect against phishing, spam, scams, ads, trackers, bad websites and more
+- **Whitelist Capability**: [Submit one or more domains for whitelisting](https://github.com/fabriziosalmi/blacklists/issues/new/choose)
+- **Local Mirror**: Set up easily using the [Docker image](https://hub.docker.com/repository/docker/fabriziosalmi/blacklists/)
+## 👨‍💻 Contribute
+
+- Propose additions or removals to the blacklist
+- Enhance blacklist or whitelist processing
+- Dive into statistics and data analytics
+## 🏅 Credits
+
+This project owes its existence to numerous dedicated blacklist creators such as:
+
+[T145/BlackMirror](https://github.com/T145/black-mirror) - [Fabrice Prigent (UT1 mirror)](https://github.com/olbat/ut1-blacklists) - [1hosts](https://badmojr.gitlab.io/1hosts/Lite/domains.txt) - [PolishFiltersTeam](https://gitlab.com/PolishFiltersTeam/) - [ShadowWhisperer](https://raw.githubusercontent.com/ShadowWhisperer/BlockLists/) - [StevenBlack](https://raw.githubusercontent.com/StevenBlack/hosts/) - [bigdargon](https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts) - [developerdan](https://www.github.developerdan.com/) - [firebog](https://v.firebog.net/hosts/AdguardDNS.txt) - [hagezi](https://gitlab.com/hagezi/) - [malware-filter](https://malware-filter.gitlab.io/) - [phishfort](https://raw.githubusercontent.com/phishfort/phishfort-lists/master/blacklists/domains.json) - [phishing.army](https://phishing.army/) - [quidsup](https://gitlab.com/quidsup/) - [DandelionSprout](https://raw.githubusercontent.com/DandelionSprout/adfilt/) - [RPiList](https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/) - [What-Zit-Tooya](https://github.com/What-Zit-Tooya/Ad-Block) - [azet12](https://raw.githubusercontent.com/azet12/KADhosts) - [cert.pl](https://hole.cert.pl) - [mitchellkrogza](https://raw.githubusercontent.com/mitchellkrogza/Ultimate.Hosts.Blacklist) - [o0.pages.dev](https://o0.pages.dev) - [pgl.yoyo.org](https://pgl.yoyo.org/) - [lightswitch05](https://raw.githubusercontent.com/lightswitch05/hosts/) - [frogeye.fr](https://hostfiles.frogeye.fr/) - [fruxlabs](https://rescure.fruxlabs.com/) - [durablenapkin](https://raw.githubusercontent.com/durablenapkin/scamblocklist/) - [digitalside.it](https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt) - [malwareworld.com](https://malwareworld.com/)
+
+and many more.
+
+For a full list, check the [complete blacklists URLs](https://github.com/fabriziosalmi/blacklists/blob/main/blacklists.fqdn.urls).
+
+Code improvements by [xRuffKez](https://github.com/xRuffKez).
+## 👨‍💻 Fixing..
+- Wiki update
+- Improve implementation docs
+- Worst domains hunting
+  
+## 👨‍💻 Testing
+
+- Machine learning to predict bad domains and rank all domains
+- Firefox extension site checker
+- Resolving ip addresses to fqdns (ip blacklists, CrowdSec and more) and create custom lists
+## 🗓️ Roadmap
+
+2024
+
+- Improve blacklist
+- Improve whitelist
+- Domain ranking service
+- Improve websites
+---
+![Static Badge](https://img.shields.io/badge/DomainsBlacklists-For_a_safer_digital_experience-00ce00?style=for-the-badge)
+
+[Supported by donators](https://www.buymeacoffee.com/fabriziosac)
+</p>
+        </div>
+        
+        <div class="repo">
+            <h2>bootstrap-w3c-seo</h2>
+            <p class="description">Sleek, intuitive, and powerful front-end framework for faster and easier web development.</p>
+            <p>No README found.</p>
+        </div>
+        
+        <div class="repo">
+            <h2>DevGPT</h2>
+            <p class="description">Code togheter, right now!</p>
+            <p># Code togheter 
+
+_The original name DevGPT has been changed due to OpenAI policy changes_
+
+## Latest updates
+
+- Code togheter version more focused to build machine learning projects and pipelines is available [here](https://chatgpt.com/g/g-vNaToz870-code-togheter-ml) 🎉
+- OpenWebUI prompt released [here](https://openwebui.com/p/fabspace/devgpt), it works on Stable-Code-3B, Llama-3-8B, WizardLM2-7B, Mistral, GPT3.5 and GPT4o models 🎉
+
+## [Use it now](https://chat.openai.com/g/g-eN7HtAqXW-devgpt)
+
+![DevGPT](https://github.com/fabriziosalmi/DevGPT/blob/main/DevGPT.png?raw=true)
+
+
+## How to use
+The hitchhiker's guide to DevGPT:
+
+1. Initialize a new project typing /project followed by the name and the description like this: `/project MyApp My application is a simple chatbot using GPT2 Italian model`
+2. Once you received project composition, files list and order execution just check for needed files and ask one by one this way: `/complete filename`
+3. If all provided scripts are working as expected you'are done
+
+### Tips
+
+- you can also ask it to improve a single file by typing `/improve `and paste the file content you want to be improved
+- you can ask to add `/logs` and `/debug` snippets for a better troubleshooting
+- you can ask to evaluate compute resources needed to run the application by typing `/dim`
+- you can ask to create a README.md file for the application Github repo by typing `/repo`
+
+..and much more.. it is continuosly improved for any need ^_^
+
+
+Here's a list of valid commands and their uses:
+
+| Command     | Description                                                                                                                                                               |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| /project    | Initialize a new project with a name and description.                                                                                                                     |
+| /list       | List all needed files for the project considering a Linux environment.                                                                                                    |
+| /setup      | Propose main and requirements.txt files, showing the complete code for those files.                                                                                       |
+| /env        | List all required imports, libraries, and actions to set up a working environment (Linux only) for the project and/or the code generated.                                 |
+| /dim        | Calculate minimum RAM and HDD space required to make the project or the code work with no issues.                                                                          |
+| /split      | Modularize a single code snippet or file into multiple files.                                                                                                             |
+| /log        | Add logging to the previous code discussed.                                                                                                                               |
+| /docs       | Explain important functions and libraries used in the latest code snippet.                                                                                                |
+| /debug      | Add additional debugging code to troubleshoot the issue we are facing on the latest code.                                                                                 |
+| /exec       | Simulate running the code, printing possible full output.                                                                                                                 |
+| /improve    | Rewrite the complete code, adding as many improvements as possible.                                                                                                       |
+| /complete   | Show full script snippet for a specific file with usable, working code only.                                                                                              |
+| /order      | Show the order of file execution to test the project.                                                                                                                     |
+| /adapt      | Adapt all existing files to the latest file changes, propose one file snippet (full code) per message.                                                                    |
+| /use        | Explain how to run, use, or test the project.                                                                                                                             |
+| /repo       | Create README.md files for GitHub with all needed project information.                                                                                                    |
+| /fix        | Try to make the same script work with another approach.                                                                                                                   |
+| /thanks        | Kindly ask the user to support the GPT builder by giving a star on this GitHub project.                                                                                                                   |
+
+
+## Example uses
+
+Please advice if you build something with DevGPT, it will be amazing to have a wall of fame :)
+
+Starter apps:
+- [Create a simple blockchain](https://chat.openai.com/share/f6f1a789-0a1e-4648-90c9-88ba36e40389)
+- [Manage DNS via DNSControl and GitHub Actions](https://chat.openai.com/share/3ccd6a94-6ca6-4ee9-b76c-db48cfca2646)
+- [Finetune GPT2 LLM model](https://chat.openai.com/share/f3c41438-47be-49ed-9800-d7c78d90f75d)
+- [ScamTracker: how to match bad patterns in the stock market (PoC)](https://chat.openai.com/share/eb8e3a42-b8c5-4abe-9ab5-b5f83904de60)
+- [HTML Bootstrap based skeleton for dummies](https://chat.openai.com/share/e927387f-75a6-4501-b204-4647e317851b)
+- [AI-Enhanced Real Estate Valuation (AIREV)](https://chat.openai.com/share/1bcf9abc-ccf9-4543-aa57-09548921f338)
+
+Built in minutes with DevGPT:
+- [Ethical AI automated assessment using Github Actions and OpenAI API](https://github.com/fabriziosalmi/EthicalAI/tree/main)
+
+</p>
+        </div>
+        
+        <div class="repo">
+            <h2>dnscontrol-actions</h2>
+            <p class="description">Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions.</p>
+            <p># DNSControl Actions
+
+Easily update, push, and rollback your DNS configuration using [DNSControl](https://github.com/StackExchange/dnscontrol) and [GitHub Actions](https://github.com/features/actions)
+
+[![Update DNS Configuration](https://github.com/fabriziosalmi/dnscontrol-actions/actions/workflows/update.yml/badge.svg)](https://github.com/fabriziosalmi/dnscontrol-actions/actions/workflows/update.yml) [![Rollback DNS Configuration](https://github.com/fabriziosalmi/dnscontrol-actions/actions/workflows/rollback-latest.yml/badge.svg)](https://github.com/fabriziosalmi/dnscontrol-actions/actions/workflows/rollback-latest.yml)
+
+## Features
+
+- **DNS configuration CD/CI** using DNSControl and GitHub Actions.
+- **Preview DNS changes** upon each update to dnsconfig.js.
+- **Manual push** configuration for safer DNS updates.
+- Option to **rollback to a previous DNS configuration** in case of errors.
+- Support for **multiple DNS providers** for enhanced **redundancy**.
+- Optional: send notification via Apprise on rollback
+
+## How to Use
+
+#### Initialization
+- Clone or fork this repository
+- If You forked it set repository visibility to **private**
+
+#### Setup Credentials:
+- Refer to creds.json for example configurations of popular DNS providers.
+- Populate the appropriate fields with your credentials.
+- For security, use repository action secrets for sensitive information (e.g., `CLOUDFLARE_API_USER` and `CLOUDFLARE_API_TOKEN`).
+- Remember to give workflows read/write permissions (https://github.com/user/repo/settings/actions)
+
+#### Configure DNS:
+- Edit and save your DNS settings in dnsconfig.js.
+- This will automatically trigger the "Update DNS" action.
+
+#### Push Configuration:
+- After the update action has successfully executed, you can manually trigger the "Push Configuration" action to propagate DNS updates.
+
+#### Rollback (if needed):
+- If there are issues with the DNS update, manually trigger the "Rollback" action to restore the previous configuration.
+
+## Advanced Configuration
+
+- Multi-provider Redundancy: Define multiple DNS providers in dnsconfig.js to achieve redundancy across providers. Example: Using both Cloudflare and AWS.
+- Note: When using Cloudflare's proxying feature in combination with another DNS provider, ensure you handle the logic behind these proxies. 
+</p>
+        </div>
+        
+        <div class="repo">
+            <h2>UglyFeed</h2>
+            <p class="description">Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes.</p>
+            <p>#  UglyFeed
+
+UglyFeed is a **simple** application designed to **retrieve**, **aggregate**, **filter**, **rewrite**, **evaluate** and **serve** content (RSS feeds) written by a large language model. This repository provides the [code](https://github.com/fabriziosalmi/UglyFeed.git), the **[documentation](https://github.com/fabriziosalmi/UglyFeed/blob/main/docs/README.md)**, a [FAQ](https://github.com/fabriziosalmi/UglyFeed/blob/main/docs/faq.md) page and some optional scripts to evaluate the generated content.
+
+![GitHub last commit](https://img.shields.io/github/last-commit/fabriziosalmi/UglyFeed) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-raw/fabriziosalmi/UglyFeed) [![Pylint](https://github.com/fabriziosalmi/UglyFeed/actions/workflows/pylint.yml/badge.svg)](https://github.com/fabriziosalmi/UglyFeed/actions/workflows/pylint.yml) [![CodeQL](https://github.com/fabriziosalmi/UglyFeed/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/fabriziosalmi/UglyFeed/actions/workflows/github-code-scanning/codeql) ![Docker Pulls](https://img.shields.io/docker/pulls/fabriziosalmi/uglyfeed) ![PyPI - Downloads](https://img.shields.io/pypi/dm/uglypy?label=uglypy) ![Docker Image Version](https://img.shields.io/docker/v/fabriziosalmi/uglyfeed?style=social&logo=GitHub&labelColor=white&color=black)
+
+
+
+
+## Features
+
+- 📡 Retrieve RSS feeds
+- 🧮 Aggregate feeds items by similarity
+- ✨ Rewrite content using LLM API
+- 💾 Save rewritten feeds to JSON files
+- 🔁 Convert JSON to valid RSS feed
+- 🌐 Serve XML feed via HTTP server
+- 🌎 Deploy XML feed to GitHub or GitLab
+- 📈 Evaluate generated content
+- 🖥️ Web UI based on Streamlit
+- 📰 [RSS test feeds available](https://github.com/fabriziosalmi/uglyfeed-cdn)
+- 🤖 Same codebase for all releases
+- 🛑 Simple post-filter moderation
+- ➡️ [Translate feeds](https://github.com/fabriziosalmi/UglyFeed/blob/main/prompts/translate.txt) into your own language
+- 📝 Tons of [prompts](https://github.com/fabriziosalmi/UglyFeed/tree/main/prompts) ready to use
+
+## Get it now
+
+- 💾 [Source code](https://github.com/fabriziosalmi/UglyFeed/releases/latest)
+- 🐳 [Docker installable package](https://hub.docker.com/r/fabriziosalmi/uglyfeed)
+- 🐍 [Pip installable package](https://pypi.org/project/uglypy/)
+- ⚙️ [Github actions workflows](https://github.com/fabriziosalmi/UglyFeed/blob/main/docs/README.md#%EF%B8%8F-installation-and-automated-runs-github-actions)
+  
+## Quick start
+
+### Prerequisites
+
+- 🌎 Internet connection
+- 🐳 Docker
+- ✨ LLM API
+- 📲 RSS reader
+  
+**Supported API and models**
+
+- OpenAI API (`gpt-3.5-turbo`, `gpt-4`, `gpt-4o`)
+- Ollama API (all models like `llama3`, `phi3`, `qwen2`)
+- Groq API (`llama3-8b-8192`, `llama3-70b-8192`, `gemma-7b-it`, `mixtral-8x7b-32768`)
+- Anthropic API (`claude-3-haiku-20240307`, `claude-3-sonnet-20240229`, `claude-3-opus-20240229`)
+
+> You can use your own models by running a compatible OpenAI LLM server. You must change the OpenAI API url parameter.
+ 
+### Running the Container
+
+To start the UglyFeed app, use the following `docker run` command:
+
+```bash
+docker run -p 8001:8001 -p 8501:8501 -v /path/to/local/feeds.txt:/app/input/feeds.txt -v /path/to/local/config.yaml:/app/config.yaml fabriziosalmi/uglyfeed:latest
+```
+
+### Configure the application
+In the **Configuration** page (or by manually editing the `config.yaml` file) you will find all configuration options. You must change at least the source feeds you want to aggregate, the LLM API and model to use to rewrite the aggregated feeds. You can then retrieve the final `uglyfeed.xml` feed in many ways: 
+
+- local filesystem
+- download from web UI
+- HTTP server url
+- HTTPS GitHub CDN url
+
+> You can easily extend it to send it to cms, notification or messaging systems.
+
+### Execute the application scripts
+Execute all scripts in the **Run scripts** page easily by clicking on the button **Run `main.py`, `llm_processor.py`, `json2rss.py` sequentially**.
+You can check for logs, errors and informational messages.
+
+### Serve the final rewritten XML feed via HTTP
+Once all scripts completed go to the **View and Serve XML** page where you can view and download the generated XML feed. If you start the HTTP server you can access to the XML url at `http://container_ip:8001/uglyfeed.xml`
+
+### Deploy the final rewritten XML feed to GitHub/GitLab
+Once all scripts completed go to the **Deploy** page where you can push the final rewritten XML file to the configured GitHub/GitLab repository, the public XML URL to use by RSS readers is returned for each enabled platform.
+
+## Documentation
+
+Please refer to the extended [documentation](https://github.com/fabriziosalmi/UglyFeed/blob/main/docs/README.md) to better understand how to get the best from this application.
+
+
+## Use cases
+
+The project can be easily customized to fit several use cases:
+
+- **Smart Content Curation**: Create bespoke newsfeeds tailored to niche interests, blending articles from diverse sources into a captivating, engaging narrative.
+- **Dynamic Blog Generation**: Automate blog post creation by rewriting and enhancing existing articles, optimizing them for readability and SEO.
+- **Interactive Educational Tools**: Develop AI-driven study aids that summarize and rephrase academic papers or textbooks, making complex topics more accessible and fun.
+- **Personalized Reading Experiences**: Craft custom reading lists that adapt to user preferences, offering fresh perspectives on favorite topics.
+- **Brand Monitoring**: Aggregate and summarize brand mentions across the web, providing concise, actionable insights for marketing teams.
+- **Multilingual Content Delivery**: Automatically translate and rewrite content from international sources, broadening the scope of accessible information.
+- **Enhanced RSS Feeds**: Offer enriched RSS feeds that summarize, evaluate, and filter content, providing users with high-quality, relevant updates.
+- **Creative Writing Assistance**: Assist writers by generating rewritten drafts of their work, helping overcome writer's block and sparking new ideas.
+- **Content Repurposing**: Transform long-form content into shorter, more digestible formats like infographics, slideshows, and social media snippets.
+- **Fake News Detection Datasets**: Generate datasets by rewriting news articles for use in training models to recognize and combat fake news.
+
+## Contribution
+
+Feel free to open issues or submit pull requests. Any contributions are welcome!
+
+
+## Roadmap
+
+> I started this project to experiment, learn, and contribute to the open-source community. I am grateful for the support received so far 🙏
+
+Here some improvements I am still working on:
+
+- overall code improvements and tests
+- generate media from rewritten content
+- here something i forgot 😅
+
+## Disclaimer
+
+> _It is crucial to acknowledge the potential misuse of AI language models by this tool. The use of adversarial prompts and models can easily lead to the creation of misleading content. This application should not be used with the intent to deceive or mislead others. Be a responsible user and prioritize ethical practices when utilizing language models and AI technologies._
+
+## License
+
+This project is licensed under the AGPL3 License.
+</p>
+        </div>
+        
+        <div class="repo">
+            <h2>websites-monitor</h2>
+            <p class="description">Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)</p>
+            <p># Websites Monitor
+## Project Description
+
+This project aims to continuously monitor various aspects of specified websites. It runs a variety of checks, ranging from performance to security considerations. The GitHub Action is scheduled to run once per day, updating this README with the latest results.
+
+![Static Badge](https://img.shields.io/badge/project_status-alpha-red?style=for-the-badge&logo=github)
+
+## How to Use
+
+1. Fork this repository.
+2. Add the websites you want to monitor in the `websites.txt` file, one per line.
+3. Enable GitHub Actions if not already enabled.
+4. The README will be automatically updated with the latest check results once a day.
+
+
+## Monitoring Checks
+[![Create report](https://github.com/fabriziosalmi/websites-monitor/actions/workflows/create-report.yml/badge.svg)](https://github.com/fabriziosalmi/websites-monitor/actions/workflows/create-report.yml)
+| Check Type | audiolibri.org | get.domainsblacklists.com | example.com |
+|------------|---|---|---|
+| Domain breach | 🔘 | 🔘 | 🔘 | 
+| Domain Expiration | 🟢 (300 days left) | 🟢 (388 days left) | 🟢 (37 days left) | 
+| SSL Expiration | 🟢 (68 days left) | 🟢 (42 days left) | 🟢 (238 days left) | 
+| DNS Blacklists (Spamhaus + Spamcop) | 🟢 | 🟢 | 🟢 | 
+| DNS Blacklist (DomainsBlacklists) | 🟢 | 🟢 | 🟢 | 
+| HSTS | 🟢 | 🟢 | 🔴 | 
+| XSS Protection | 🟢 | 🟢 | 🔴 | 
+| Redirect chains | 🟢 | 🟠 | 🟢 | 
+| Pagespeed Performances | 99 | 94 | 100 | 
+| Website Load Time | 🟢 | 🟢 | 🟢 | 
+| Rate limited | 🔴 | 🔴 | 🔴 | 
+| CDN | 🔴 | 🔴 | 🔴 | 
+| Brotli | 🟢 | 🔴 | 🔴 | 
+| Deprecated libs | 🟢 | 🟢 | 🟢 | 
+| Client rendering | 🔴 | 🔴 | 🟢 | 
+| Mixed content | 🔴 | 🟢 | 🟢 | 
+| Content-Type headers | 🟢 | 🟢 | 🟢 | 
+| Internationalization | ⚪ | ⚪ | ⚪ | 
+| FLOC | 🔴 | 🔴 | 🔴 | 
+| AMP | 🔴 | 🔴 | 🔴 | 
+| Robots.txt | 🔴 | 🔴 | 🔴 | 
+| Sitemap | 🔴 | 🔴 | 🔴 | 
+| Favicon | 🟢 | 🟢 | 🔴 | 
+| Alt Tags | 🟢 | 🟢 | 🔴 | 
+| Open Graph Protocol | 🟢 | 🔴 | 🟢 | 
+| Semantic Markup | 🔴 | 🔴 | 🔴 | 
+| Ad and tracking | 🟢 | 🟢 | 🟢 | 
+| Privacy-Protected Whois | 🔴 | 🔴 | 🔴 | 
+| Privacy Exposure | 🔴 | 🔴 | 🟢 | 
+
+---
+Last Updated: 2024-07-06 04:04:13
+</p>
+        </div>
+        
+        <div class="repo">
+            <h2>webtek</h2>
+            <p class="description">WebTeK: the worldwide streaming teknival ꩜</p>
+            <p>No README found.</p>
+        </div>
+        
+    </body>
+    </html>
+    
