@@ -69,6 +69,14 @@ def humanize_commit_date(commit_date):
         years = diff.days // 365
         return f'{years} {"year" if years == 1 else "years"} ago'
 
+def get_freshness_badge(humanized_commit_date):
+    if humanized_commit_date == 'today':
+        return '<img src="https://img.shields.io/badge/Freshness-today-green?style=flat-square" alt="Freshness today">'
+    elif humanized_commit_date == 'yesterday':
+        return '<img src="https://img.shields.io/badge/Freshness-yesterday-yellow?style=flat-square" alt="Freshness yesterday">'
+    else:
+        return f'<img src="https://img.shields.io/badge/Freshness-{humanized_commit_date.replace(" ", "%20")}-lightgrey?style=flat-square" alt="Freshness {humanized_commit_date}">'
+
 def generate_html_page(repositories):
     total_stars = sum(repo['stargazers_count'] for repo in repositories)
 
@@ -212,18 +220,18 @@ def generate_html_page(repositories):
         else:
             humanized_commit_date = 'N/A'
 
+        freshness_badge = get_freshness_badge(humanized_commit_date)
+
         html_content += f'''
             <tr>
                 <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
                 <td class="description">{repo_description}</td>
-                <td>
-                    <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> 
-                </td>
+                <td>{freshness_badge}</td>
                 <td>{stars_count}</td>
             </tr>
 '''
 
-        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) | {stars_count} |\n'
+        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | {freshness_badge} | {stars_count} |\n'
 
     html_content += '''
         </table>
