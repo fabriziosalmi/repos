@@ -145,16 +145,8 @@ def generate_html_page(repositories):
                 border-radius: 4px;
                 margin-right: 5px;
             }}
-            .badge-green {{
-                background-color: #4CAF50;
-                color: white;
-            }}
             .badge-blue {{
                 background-color: #2196F3;
-                color: white;
-            }}
-            .badge-yellow {{
-                background-color: #FFC107;
                 color: white;
             }}
             .badge-gray {{
@@ -196,9 +188,11 @@ def generate_html_page(repositories):
         html_content += f'''
                 <tr>
                     <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
-                    <td>{humanized_commit_date}</td>
                     <td>
-                        <span class="badge badge-green"><img src="https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> {stars_count}</span>
+                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> {humanized_commit_date}</span>
+                    </td>
+                    <td>
+                        <span class="emoji">⭐️</span> {stars_count}
                     </td>
                 </tr>
         '''
