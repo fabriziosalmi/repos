@@ -210,7 +210,7 @@ def generate_html_page(repositories):
             <tr>
                 <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
                 <td>
-                    <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> {humanized_commit_date}
+                    <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> 
                 </td>
                 <td>
                     <img src="https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> {stars_count}
