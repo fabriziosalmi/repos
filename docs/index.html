@@ -9,78 +9,111 @@
             body {
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
+                background-color: #f0f0f0;
+                margin: 0;
                 padding: 20px;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            h1 {
+                text-align: center;
+                padding: 20px;
+                background-color: #007bff;
+                color: #fff;
+                margin: 0;
+                border-radius: 8px 8px 0 0;
             }
             table {
                 width: 100%;
                 border-collapse: collapse;
-                margin-top: 20px;
             }
             th, td {
                 border: 1px solid #ddd;
-                padding: 8px;
+                padding: 12px;
                 text-align: left;
             }
             th {
-                background-color: #f2f2f2;
+                background-color: #007bff;
+                color: #fff;
             }
             tr:nth-child(even) {
-                background-color: #f9f9f9;
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #e0e0e0;
+            }
+            a {
+                color: #007bff;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            @media only screen and (max-width: 600px) {
+                .container {
+                    border-radius: 0;
+                }
             }
         </style>
     </head>
     <body>
-        <h1>My GitHub Repositories</h1>
-        <table>
-            <tr>
-                <th>Repository</th>
-                <th>Latest Commit</th>
-                <th>Stars</th>
-            </tr>
+        <div class="container">
+            <h1>My GitHub Repositories</h1>
+            <table>
+                <tr>
+                    <th>Repository</th>
+                    <th>Latest Commit</th>
+                    <th>Stars</th>
+                </tr>
     
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/blacklists" target="_blank">blacklists</a></td>
-                <td>2024-07-06 14:20:22</td>
-                <td>112</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/blacklists" target="_blank">blacklists</a></td>
+                    <td>2024-07-06 14:20:22</td>
+                    <td>112</td>
+                </tr>
         
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/UglyFeed" target="_blank">UglyFeed</a></td>
-                <td>2024-07-06 10:45:09</td>
-                <td>102</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/UglyFeed" target="_blank">UglyFeed</a></td>
+                    <td>2024-07-06 10:45:09</td>
+                    <td>102</td>
+                </tr>
         
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/DevGPT" target="_blank">DevGPT</a></td>
-                <td>2024-05-15 06:11:03</td>
-                <td>21</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/DevGPT" target="_blank">DevGPT</a></td>
+                    <td>2024-05-15 06:11:03</td>
+                    <td>21</td>
+                </tr>
         
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/dnscontrol-actions" target="_blank">dnscontrol-actions</a></td>
-                <td>2023-09-17 14:21:50</td>
-                <td>8</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/dnscontrol-actions" target="_blank">dnscontrol-actions</a></td>
+                    <td>2023-09-17 14:21:50</td>
+                    <td>8</td>
+                </tr>
         
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/webtek" target="_blank">webtek</a></td>
-                <td>2024-06-23 10:29:24</td>
-                <td>7</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/webtek" target="_blank">webtek</a></td>
+                    <td>2024-06-23 10:29:24</td>
+                    <td>7</td>
+                </tr>
         
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/bootstrap-w3c-seo" target="_blank">bootstrap-w3c-seo</a></td>
-                <td>2016-10-12 17:56:25</td>
-                <td>5</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/bootstrap-w3c-seo" target="_blank">bootstrap-w3c-seo</a></td>
+                    <td>2016-10-12 17:56:25</td>
+                    <td>5</td>
+                </tr>
         
-            <tr>
-                <td><a href="https://github.com/fabriziosalmi/websites-monitor" target="_blank">websites-monitor</a></td>
-                <td>2024-07-06 04:04:13</td>
-                <td>5</td>
-            </tr>
+                <tr>
+                    <td><a href="https://github.com/fabriziosalmi/websites-monitor" target="_blank">websites-monitor</a></td>
+                    <td>2024-07-06 04:04:13</td>
+                    <td>5</td>
+                </tr>
         
-        </table>
+            </table>
+        </div>
     </body>
     </html>
     
