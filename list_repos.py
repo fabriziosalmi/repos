@@ -79,7 +79,7 @@ def generate_html_page(repositories):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1>Check my best repositories</h1>
+    <title>My GitHub repositories</title>
     <style>
         body {{
             font-family: Arial, sans-serif;
@@ -174,10 +174,8 @@ def generate_html_page(repositories):
 </head>
 <body>
     <div class="container">
-        <title>My GitHub Repositories</title>
-        <div class="stars-counter">
-            {total_stars} <span class="emoji">⭐️</span>
-        </div>
+        <title>My GitHub repositories</title>
+
         <table>
             <tr>
                 <th>Repository</th>
@@ -188,8 +186,6 @@ def generate_html_page(repositories):
 
     markdown_content = f'''
 # My GitHub Repositories
-
-**Total Stars: {total_stars}**
 
 | Repository | Freshness | ⭐️ |
 |------------|----------------|----------|
@@ -223,11 +219,17 @@ def generate_html_page(repositories):
     html_content += '''
         </table>
     </div>
+    <div class="stars-counter">
+            {total_stars} <span class="emoji">⭐️</span>
+    </div>
 </body>
 </html>
 '''
 
     markdown_content += '''
+
+**Total Stars: {total_stars}**
+
 '''
 
     with open('docs/index.html', 'w', encoding='utf-8') as file:
