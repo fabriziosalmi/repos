@@ -1,6 +1,7 @@
 import os
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 GITHUB_USERNAME = 'fabriziosalmi'
 
@@ -28,20 +29,26 @@ def fetch_repositories_with_stars(min_stars=5):
             print(f'Failed to fetch repositories. Status code: {response.status_code}')
             break
 
+    # Sort repositories by stars (descending)
+    repositories.sort(key=lambda x: x['stargazers_count'], reverse=True)
+
     return repositories
 
-def fetch_readme(repo_name):
-    url = f'https://raw.githubusercontent.com/{GITHUB_USERNAME}/{repo_name}/main/README.md'
+def fetch_latest_commit_date(repo_name):
+    url = f'https://api.github.com/repos/{GITHUB_USERNAME}/{repo_name}/commits'
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            return response.text
+            commits = response.json()
+            if commits:
+                latest_commit_date = commits[0]['commit']['committer']['date']
+                return datetime.strptime(latest_commit_date, '%Y-%m-%dT%H:%M:%SZ')
         else:
-            print(f'Failed to fetch README for {repo_name}. Status code: {response.status_code}')
-            return None
+            print(f'Failed to fetch commits for {repo_name}. Status code: {response.status_code}')
     except requests.exceptions.RequestException as e:
-        print(f'Error fetching README for {repo_name}: {e}')
-        return None
+        print(f'Error fetching commits for {repo_name}: {e}')
+    
+    return None
 
 def generate_html_page(repositories):
     html_content = '''
@@ -50,64 +57,70 @@ def generate_html_page(repositories):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GitHub Repositories</title>
+        <title>My GitHub Repositories</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
                 padding: 20px;
             }
-            .repo {
-                margin-bottom: 40px;
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th, td {
                 border: 1px solid #ddd;
-                padding: 20px;
-                border-radius: 8px;
+                padding: 8px;
+                text-align: left;
             }
-            h2 {
-                color: #333;
+            th {
+                background-color: #f2f2f2;
             }
-            .description {
-                color: #666;
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
             }
         </style>
     </head>
     <body>
-        <h1>My GitHub Repositories (with at least 5 stars)</h1>
+        <h1>My GitHub Repositories</h1>
+        <table>
+            <tr>
+                <th>Repository</th>
+                <th>Latest Commit</th>
+                <th>Stars</th>
+            </tr>
     '''
 
     for repo in repositories:
         repo_name = repo['name']
-        repo_description = repo['description']
+        repo_url = repo['html_url']
+        latest_commit_date = fetch_latest_commit_date(repo_name)
+        stars_count = repo['stargazers_count']
 
-        readme_content = fetch_readme(repo_name)
-        if readme_content:
-            soup = BeautifulSoup(readme_content, 'html.parser')
-            readme_text = soup.get_text()
+        if latest_commit_date:
+            latest_commit_date_str = latest_commit_date.strftime('%Y-%m-%d %H:%M:%S')
         else:
-            readme_text = 'No README found.'
+            latest_commit_date_str = 'N/A'
 
         html_content += f'''
-        <div class="repo">
-            <h2>{repo_name}</h2>
-            <p class="description">{repo_description}</p>
-            <p>{readme_text}</p>
-        </div>
+            <tr>
+                <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
+                <td>{latest_commit_date_str}</td>
+                <td>{stars_count}</td>
+            </tr>
         '''
 
     html_content += '''
+        </table>
     </body>
     </html>
     '''
 
-    # Ensure 'docs' folder exists
-    if not os.path.exists('docs'):
-        os.makedirs('docs')
-
-    # Write HTML content to 'docs/github_repositories.html'
-    with open('docs/github_repositories.html', 'w', encoding='utf-8') as file:
+    with open('docs/index.html', 'w', encoding='utf-8') as file:
         file.write(html_content)
 
-    print('GitHub repositories HTML page generated: docs/github_repositories.html')
+    print('GitHub repositories HTML page generated: docs/index.html')
 
 def main():
     repositories = fetch_repositories_with_stars(min_stars=5)
