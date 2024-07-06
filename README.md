@@ -1,7 +1,7 @@
 
 # My GitHub Repositories
 
-**Total Stars: 261**
+** ⭐️ 261 stargazers ❤️**
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
