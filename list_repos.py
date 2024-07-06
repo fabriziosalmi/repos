@@ -79,7 +79,7 @@ def generate_html_page(repositories):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Repositories</title>
+    <h1>Check my best repositories</h1>
     <style>
         body {{
             font-family: Arial, sans-serif;
@@ -176,7 +176,7 @@ def generate_html_page(repositories):
     <div class="container">
         <h1>My GitHub Repositories</h1>
         <div class="stars-counter">
-            <span class="emoji">⭐️</span> Total Stars: {total_stars}
+            <span class="emoji">⭐️</span> x{total_stars}
         </div>
         <table>
             <tr>
