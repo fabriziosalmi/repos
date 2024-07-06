@@ -26,7 +26,7 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Generate HTML page and README
-        run: python list_repos.py
+        run: python main.py
 
       - name: Deploy to GitHub Pages and update README
         run: |
