@@ -1,7 +1,7 @@
 import os
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta
 
 GITHUB_USERNAME = 'fabriziosalmi'
 
@@ -49,6 +49,26 @@ def fetch_latest_commit_date(repo_name):
         print(f'Error fetching commits for {repo_name}: {e}')
     
     return None
+
+def humanize_commit_date(commit_date):
+    now = datetime.utcnow()
+    diff = now - commit_date
+
+    if diff.days == 0:
+        return 'today'
+    elif diff.days == 1:
+        return 'yesterday'
+    elif diff.days < 7:
+        return f'{diff.days} days ago'
+    elif diff.days < 30:
+        weeks = diff.days // 7
+        return f'{weeks} {"week" if weeks == 1 else "weeks"} ago'
+    elif diff.days < 365:
+        months = diff.days // 30
+        return f'{months} {"month" if months == 1 else "months"} ago'
+    else:
+        years = diff.days // 365
+        return f'{years} {"year" if years == 1 else "years"} ago'
 
 def generate_html_page(repositories):
     total_stars = sum(repo['stargazers_count'] for repo in repositories)
@@ -169,14 +189,14 @@ def generate_html_page(repositories):
         stars_count = repo['stargazers_count']
 
         if latest_commit_date:
-            latest_commit_date_str = latest_commit_date.strftime('%Y-%m-%d %H:%M:%S')
+            humanized_commit_date = humanize_commit_date(latest_commit_date)
         else:
-            latest_commit_date_str = 'N/A'
+            humanized_commit_date = 'N/A'
 
         html_content += f'''
                 <tr>
                     <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
-                    <td>{latest_commit_date_str}</td>
+                    <td>{humanized_commit_date}</td>
                     <td>
                         <span class="badge badge-green"><img src="https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> {stars_count}</span>
                     </td>
