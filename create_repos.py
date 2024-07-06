@@ -186,6 +186,15 @@ def generate_html_page(repositories):
                 </tr>
     '''
 
+    markdown_content = f'''
+    # My GitHub Repositories
+
+    **Total Stars: {total_stars}**
+
+    | Repository | Latest Commit | Stars |
+    |------------|----------------|-------|
+    '''
+
     for repo in repositories:
         repo_name = repo['name']
         repo_url = repo['html_url']
@@ -209,6 +218,8 @@ def generate_html_page(repositories):
                 </tr>
         '''
 
+        markdown_content += f'| [{repo_name}]({repo_url}) | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) {humanized_commit_date} | ⭐️ {stars_count} |\n'
+
     html_content += '''
             </table>
         </div>
@@ -216,10 +227,16 @@ def generate_html_page(repositories):
     </html>
     '''
 
+    markdown_content += '''
+    '''
+
     with open('docs/index.html', 'w', encoding='utf-8') as file:
         file.write(html_content)
 
-    print('GitHub repositories HTML page generated: docs/index.html')
+    with open('README.md', 'w', encoding='utf-8') as file:
+        file.write(markdown_content)
+
+    print('GitHub repositories HTML page and README.md generated')
 
 def main():
     repositories = fetch_repositories_with_stars(min_stars=5)
