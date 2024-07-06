@@ -62,34 +62,66 @@ def generate_html_page(repositories):
             body {
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
+                background-color: #f0f0f0;
+                margin: 0;
                 padding: 20px;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            h1 {
+                text-align: center;
+                padding: 20px;
+                background-color: #007bff;
+                color: #fff;
+                margin: 0;
+                border-radius: 8px 8px 0 0;
             }
             table {
                 width: 100%;
                 border-collapse: collapse;
-                margin-top: 20px;
             }
             th, td {
                 border: 1px solid #ddd;
-                padding: 8px;
+                padding: 12px;
                 text-align: left;
             }
             th {
-                background-color: #f2f2f2;
+                background-color: #007bff;
+                color: #fff;
             }
             tr:nth-child(even) {
-                background-color: #f9f9f9;
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #e0e0e0;
+            }
+            a {
+                color: #007bff;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            @media only screen and (max-width: 600px) {
+                .container {
+                    border-radius: 0;
+                }
             }
         </style>
     </head>
     <body>
-        <h1>My GitHub Repositories</h1>
-        <table>
-            <tr>
-                <th>Repository</th>
-                <th>Latest Commit</th>
-                <th>Stars</th>
-            </tr>
+        <div class="container">
+            <h1>My GitHub Repositories</h1>
+            <table>
+                <tr>
+                    <th>Repository</th>
+                    <th>Latest Commit</th>
+                    <th>Stars</th>
+                </tr>
     '''
 
     for repo in repositories:
@@ -104,15 +136,16 @@ def generate_html_page(repositories):
             latest_commit_date_str = 'N/A'
 
         html_content += f'''
-            <tr>
-                <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
-                <td>{latest_commit_date_str}</td>
-                <td>{stars_count}</td>
-            </tr>
+                <tr>
+                    <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
+                    <td>{latest_commit_date_str}</td>
+                    <td>{stars_count}</td>
+                </tr>
         '''
 
     html_content += '''
-        </table>
+            </table>
+        </div>
     </body>
     </html>
     '''
