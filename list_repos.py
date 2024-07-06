@@ -218,7 +218,7 @@ def generate_html_page(repositories):
             </tr>
 '''
 
-        markdown_content += f'| [{repo_name}]({repo_url}) | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) {humanized_commit_date} | ![Stars](https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square) {stars_count} |\n'
+        markdown_content += f'| [{repo_name}]({repo_url}) | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) | ![Stars](https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square) |\n'
 
     html_content += '''
         </table>
