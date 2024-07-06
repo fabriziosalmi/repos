@@ -1,9 +1,34 @@
 import os
-import yaml
 import requests
 from bs4 import BeautifulSoup
 
-GITHUB_USERNAME = 'your_github_username'
+GITHUB_USERNAME = 'fabriziosalmi'
+
+def fetch_repositories_with_stars(min_stars=5):
+    url = f'https://api.github.com/users/{GITHUB_USERNAME}/repos'
+    params = {
+        'per_page': 100,  # maximum items per page
+        'page': 1,        # start with first page
+    }
+    repositories = []
+
+    while True:
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            repos = response.json()
+            for repo in repos:
+                if repo['stargazers_count'] >= min_stars:
+                    repositories.append(repo)
+            if 'next' in response.links.keys():
+                url = response.links['next']['url']
+                params['page'] += 1
+            else:
+                break
+        else:
+            print(f'Failed to fetch repositories. Status code: {response.status_code}')
+            break
+
+    return repositories
 
 def fetch_readme(repo_name):
     url = f'https://raw.githubusercontent.com/{GITHUB_USERNAME}/{repo_name}/main/README.md'
@@ -47,20 +72,20 @@ def generate_html_page(repositories):
         </style>
     </head>
     <body>
-        <h1>My GitHub Repositories</h1>
+        <h1>My GitHub Repositories (with at least 5 stars)</h1>
     '''
-    
+
     for repo in repositories:
-        repo_name = repo.get('name')
-        repo_description = repo.get('description')
-        
+        repo_name = repo['name']
+        repo_description = repo['description']
+
         readme_content = fetch_readme(repo_name)
         if readme_content:
             soup = BeautifulSoup(readme_content, 'html.parser')
             readme_text = soup.get_text()
         else:
             readme_text = 'No README found.'
-        
+
         html_content += f'''
         <div class="repo">
             <h2>{repo_name}</h2>
@@ -68,23 +93,25 @@ def generate_html_page(repositories):
             <p>{readme_text}</p>
         </div>
         '''
-    
+
     html_content += '''
     </body>
     </html>
     '''
-    
-    with open('github_repositories.html', 'w', encoding='utf-8') as file:
+
+    # Ensure 'docs' folder exists
+    if not os.path.exists('docs'):
+        os.makedirs('docs')
+
+    # Write HTML content to 'docs/github_repositories.html'
+    with open('docs/github_repositories.html', 'w', encoding='utf-8') as file:
         file.write(html_content)
-    
-    print('GitHub repositories HTML page generated: github_repositories.html')
+
+    print('GitHub repositories HTML page generated: docs/github_repositories.html')
 
 def main():
-    with open('config.yaml', 'r') as file:
-        config = yaml.safe_load(file)
-        repositories = config.get('repositories', [])
-
-        generate_html_page(repositories)
+    repositories = fetch_repositories_with_stars(min_stars=5)
+    generate_html_page(repositories)
 
 if __name__ == '__main__':
     main()
