@@ -12,5 +12,3 @@
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/websites-monitor?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/websites-monitor?style=flat-square) |
 
 
-**Total Stars: {total_stars}**
-
