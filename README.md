@@ -1,8 +1,6 @@
 
 # My GitHub Repositories
 
-**Total Stars: 260**
-
 | Repository | Freshness | ⭐️ |
 |------------|----------------|----------|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/blacklists?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/blacklists?style=flat-square) |
@@ -12,4 +10,7 @@
 | [webtek](https://github.com/fabriziosalmi/webtek) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/webtek?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/webtek?style=flat-square) |
 | [bootstrap-w3c-seo](https://github.com/fabriziosalmi/bootstrap-w3c-seo) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/bootstrap-w3c-seo?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/bootstrap-w3c-seo?style=flat-square) |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/websites-monitor?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/websites-monitor?style=flat-square) |
+
+
+**Total Stars: {total_stars}**
 
