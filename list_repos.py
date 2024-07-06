@@ -136,6 +136,11 @@ def generate_html_page(repositories):
             color: #007bff;
             text-decoration: none;
             font-weight: bold;
+            font-size: 18px;
+        }}
+        .description {{
+            font-size: 12px;
+            color: #666;
         }}
         .badge {{
             display: inline-block;
@@ -174,11 +179,14 @@ def generate_html_page(repositories):
 </head>
 <body>
     <div class="container">
-        <title>My GitHub repositories</title>
-
+        <h1>My GitHub Repositories</h1>
+        <div class="stars-counter">
+            <span class="emoji">⭐️</span> Total Stars: {total_stars}
+        </div>
         <table>
             <tr>
                 <th>Repository</th>
+                <th>Description</th>
                 <th>Freshness</th>
                 <th>⭐️</th>
             </tr>
@@ -187,13 +195,16 @@ def generate_html_page(repositories):
     markdown_content = f'''
 # My GitHub Repositories
 
-| Repository | Freshness | ⭐️ |
-|------------|----------------|----------|
+**Total Stars: {total_stars}**
+
+| Repository | Description | Freshness | ⭐️ |
+|------------|-------------|-----------|----|
 '''
 
     for repo in repositories:
         repo_name = repo['name']
         repo_url = repo['html_url']
+        repo_description = repo['description'] or "No description"
         latest_commit_date = fetch_latest_commit_date(repo_name)
         stars_count = repo['stargazers_count']
 
@@ -205,6 +216,7 @@ def generate_html_page(repositories):
         html_content += f'''
             <tr>
                 <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
+                <td class="description">{repo_description}</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -214,7 +226,7 @@ def generate_html_page(repositories):
             </tr>
 '''
 
-        markdown_content += f'| [{repo_name}]({repo_url}) | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) | ![Stars](https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square) |\n'
+        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) | ![Stars](https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square) |\n'
 
     html_content += '''
         </table>
@@ -224,7 +236,6 @@ def generate_html_page(repositories):
 '''
 
     markdown_content += '''
-
 '''
 
     with open('docs/index.html', 'w', encoding='utf-8') as file:
