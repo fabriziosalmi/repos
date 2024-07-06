@@ -61,6 +61,11 @@
             color: #007bff;
             text-decoration: none;
             font-weight: bold;
+            font-size: 18px;
+        }
+        .description {
+            font-size: 12px;
+            color: #666;
         }
         .badge {
             display: inline-block;
@@ -99,17 +104,21 @@
 </head>
 <body>
     <div class="container">
-        <title>My GitHub repositories</title>
-
+        <h1>My GitHub Repositories</h1>
+        <div class="stars-counter">
+            <span class="emoji">⭐️</span> Total Stars: 260
+        </div>
         <table>
             <tr>
                 <th>Repository</th>
+                <th>Description</th>
                 <th>Freshness</th>
                 <th>⭐️</th>
             </tr>
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/blacklists" target="_blank">blacklists</a></td>
+                <td class="description">Hourly updated domains blacklist 🚫 </td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/blacklists?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -120,6 +129,7 @@
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/UglyFeed" target="_blank">UglyFeed</a></td>
+                <td class="description">Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes.</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/UglyFeed?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -130,6 +140,7 @@
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/DevGPT" target="_blank">DevGPT</a></td>
+                <td class="description">Code togheter, right now!</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/DevGPT?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -140,6 +151,7 @@
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/dnscontrol-actions" target="_blank">dnscontrol-actions</a></td>
+                <td class="description">Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions.</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/dnscontrol-actions?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -150,6 +162,7 @@
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/webtek" target="_blank">webtek</a></td>
+                <td class="description">WebTeK: the worldwide streaming teknival ꩜</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/webtek?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -160,6 +173,7 @@
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/bootstrap-w3c-seo" target="_blank">bootstrap-w3c-seo</a></td>
+                <td class="description">Sleek, intuitive, and powerful front-end framework for faster and easier web development.</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/bootstrap-w3c-seo?style=flat-square" alt="Last Commit"> 
                 </td>
@@ -170,6 +184,7 @@
 
             <tr>
                 <td><a href="https://github.com/fabriziosalmi/websites-monitor" target="_blank">websites-monitor</a></td>
+                <td class="description">Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)</td>
                 <td>
                     <img src="https://img.shields.io/github/last-commit/fabriziosalmi/websites-monitor?style=flat-square" alt="Last Commit"> 
                 </td>
