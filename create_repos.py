@@ -51,7 +51,9 @@ def fetch_latest_commit_date(repo_name):
     return None
 
 def generate_html_page(repositories):
-    html_content = '''
+    total_stars = sum(repo['stargazers_count'] for repo in repositories)
+
+    html_content = f'''
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -59,87 +61,99 @@ def generate_html_page(repositories):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My GitHub Repositories</title>
         <style>
-            body {
+            body {{
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
                 background-color: #f0f0f0;
                 margin: 0;
                 padding: 20px;
-            }
-            .container {
+            }}
+            .container {{
                 max-width: 800px;
                 margin: 0 auto;
                 background-color: #fff;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 border-radius: 8px;
                 overflow: hidden;
-            }
-            h1 {
+            }}
+            h1 {{
                 text-align: center;
                 padding: 20px;
                 background-color: #007bff;
                 color: #fff;
                 margin: 0;
                 border-radius: 8px 8px 0 0;
-            }
-            table {
+            }}
+            .stars-counter {{
+                text-align: center;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }}
+            .stars-counter .emoji {{
+                font-size: 28px;
+                margin-right: 10px;
+            }}
+            table {{
                 width: 100%;
                 border-collapse: collapse;
-            }
-            th, td {
+            }}
+            th, td {{
                 border: 1px solid #ddd;
                 padding: 12px;
                 text-align: left;
-            }
-            th {
+            }}
+            th {{
                 background-color: #007bff;
                 color: #fff;
-            }
-            tr:nth-child(even) {
+            }}
+            tr:nth-child(even) {{
                 background-color: #f2f2f2;
-            }
-            tr:hover {
+            }}
+            tr:hover {{
                 background-color: #e0e0e0;
-            }
-            a {
+            }}
+            a {{
                 color: #007bff;
                 text-decoration: none;
                 font-weight: bold;
-            }
-            .badge {
+            }}
+            .badge {{
                 display: inline-block;
                 padding: 5px 10px;
                 font-size: 14px;
                 font-weight: bold;
                 border-radius: 4px;
                 margin-right: 5px;
-            }
-            .badge-green {
+            }}
+            .badge-green {{
                 background-color: #4CAF50;
                 color: white;
-            }
-            .badge-blue {
+            }}
+            .badge-blue {{
                 background-color: #2196F3;
                 color: white;
-            }
-            .badge-yellow {
+            }}
+            .badge-yellow {{
                 background-color: #FFC107;
                 color: white;
-            }
-            .badge-gray {
+            }}
+            .badge-gray {{
                 background-color: #757575;
                 color: white;
-            }
-            @media only screen and (max-width: 600px) {
-                .container {
+            }}
+            @media only screen and (max-width: 600px) {{
+                .container {{
                     border-radius: 0;
-                }
-            }
+                }}
+            }}
         </style>
     </head>
     <body>
         <div class="container">
             <h1>My GitHub Repositories</h1>
+            <div class="stars-counter">
+                <span class="emoji">⭐️</span>Total Stars: {total_stars}
+            </div>
             <table>
                 <tr>
                     <th>Repository</th>
