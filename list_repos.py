@@ -75,7 +75,9 @@ def get_freshness_badge(humanized_commit_date, for_markdown=False):
         color = 'brightgreen'
     if 'weeks' in humanized_commit_date or '1 month' in humanized_commit_date:
         color = 'yellow'
-    elif 'years ago' in humanized_commit_date or 'years' in humanized_commit_date or '1 year' in humanized_commit_date:
+    if 'months' in humanized_commit_date or '1 year' in humanized_commit_date:
+        color = 'orange'
+    elif 'years' in humanized_commit_date:
         color = 'red'
 
     if for_markdown:
