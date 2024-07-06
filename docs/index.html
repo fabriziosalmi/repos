@@ -12,27 +12,29 @@
                 background-color: #f0f0f0;
                 margin: 0;
                 padding: 20px;
+                display: flex;
+                justify-content: center;
             }
             .container {
                 max-width: 800px;
-                margin: 0 auto;
+                width: 100%;
                 background-color: #fff;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 border-radius: 8px;
                 overflow: hidden;
+                padding: 20px;
             }
             h1 {
                 text-align: center;
-                padding: 20px;
-                background-color: #007bff;
-                color: #fff;
+                padding: 20px 0;
                 margin: 0;
-                border-radius: 8px 8px 0 0;
+                font-size: 24px;
             }
             .stars-counter {
                 text-align: center;
-                font-size: 24px;
+                font-size: 20px;
                 margin-bottom: 20px;
+                color: #ffbf00;
             }
             .stars-counter .emoji {
                 font-size: 28px;
@@ -41,21 +43,19 @@
             table {
                 width: 100%;
                 border-collapse: collapse;
+                margin-top: 20px;
             }
             th, td {
-                border: 1px solid #ddd;
                 padding: 12px;
                 text-align: left;
+                border-bottom: 1px solid #ddd;
             }
             th {
-                background-color: #007bff;
-                color: #fff;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
+                background-color: #f8f8f8;
+                font-weight: bold;
             }
             tr:hover {
-                background-color: #e0e0e0;
+                background-color: #f1f1f1;
             }
             a {
                 color: #007bff;
@@ -71,11 +71,23 @@
                 margin-right: 5px;
             }
             .badge-blue {
-                background-color: #2196F3;
+                background-color: #007bff;
                 color: white;
             }
             .badge-gray {
                 background-color: #757575;
+                color: white;
+            }
+            .badge-yellow {
+                background-color: #ffbf00;
+                color: white;
+            }
+            .badge-green {
+                background-color: #28a745;
+                color: white;
+            }
+            .badge-red {
+                background-color: #dc3545;
                 color: white;
             }
             @media only screen and (max-width: 600px) {
@@ -89,7 +101,7 @@
         <div class="container">
             <h1>My GitHub Repositories</h1>
             <div class="stars-counter">
-                <span class="emoji">⭐️</span>Total Stars: 260
+                <span class="emoji">⭐️</span> Total Stars: 260
             </div>
             <table>
                 <tr>
@@ -101,7 +113,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/blacklists" target="_blank">blacklists</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/blacklists?style=flat-square" alt="Last Commit"> today</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/blacklists?style=flat-square" alt="Last Commit"> today
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 112
@@ -111,7 +123,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/UglyFeed" target="_blank">UglyFeed</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/UglyFeed?style=flat-square" alt="Last Commit"> today</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/UglyFeed?style=flat-square" alt="Last Commit"> today
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 102
@@ -121,7 +133,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/DevGPT" target="_blank">DevGPT</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/DevGPT?style=flat-square" alt="Last Commit"> 1 month ago</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/DevGPT?style=flat-square" alt="Last Commit"> 1 month ago
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 21
@@ -131,7 +143,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/dnscontrol-actions" target="_blank">dnscontrol-actions</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/dnscontrol-actions?style=flat-square" alt="Last Commit"> 9 months ago</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/dnscontrol-actions?style=flat-square" alt="Last Commit"> 9 months ago
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 8
@@ -141,7 +153,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/webtek" target="_blank">webtek</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/webtek?style=flat-square" alt="Last Commit"> 1 week ago</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/webtek?style=flat-square" alt="Last Commit"> 1 week ago
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 7
@@ -151,7 +163,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/bootstrap-w3c-seo" target="_blank">bootstrap-w3c-seo</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/bootstrap-w3c-seo?style=flat-square" alt="Last Commit"> 7 years ago</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/bootstrap-w3c-seo?style=flat-square" alt="Last Commit"> 7 years ago
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 5
@@ -161,7 +173,7 @@
                 <tr>
                     <td><a href="https://github.com/fabriziosalmi/websites-monitor" target="_blank">websites-monitor</a></td>
                     <td>
-                        <span class="badge badge-blue"><img src="https://img.shields.io/github/last-commit/fabriziosalmi/websites-monitor?style=flat-square" alt="Last Commit"> today</span>
+                        <img src="https://img.shields.io/github/last-commit/fabriziosalmi/websites-monitor?style=flat-square" alt="Last Commit"> today
                     </td>
                     <td>
                         <span class="emoji">⭐️</span> 5
