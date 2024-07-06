@@ -219,9 +219,6 @@ def generate_html_page(repositories):
     html_content += '''
         </table>
     </div>
-    <div class="stars-counter">
-            {total_stars} <span class="emoji">⭐️</span>
-    </div>
 </body>
 </html>
 '''
