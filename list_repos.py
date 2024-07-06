@@ -49,8 +49,6 @@ def fetch_latest_commit_date(repo_name):
     
     return None
 
-from datetime import datetime
-
 def humanize_commit_date(commit_date):
     now = datetime.utcnow()
     diff = now - commit_date
@@ -75,11 +73,9 @@ def get_freshness_badge(humanized_commit_date, for_markdown=False):
     color = 'lightgrey'
     if 'today' in humanized_commit_date or 'yesterday' in humanized_commit_date or 'days ago' in humanized_commit_date:
         color = 'brightgreen'
-    elif 'week ago' in humanized_commit_date or 'weeks ago' in humanized_commit_date:
+    elif 'weeks ago' in humanized_commit_date or 'week ago' in humanized_commit_date or 'month ago' in humanized_commit_date or 'months ago' in humanized_commit_date and '1 month' not in humanized_commit_date:
         color = 'yellow'
-    elif 'month ago' in humanized_commit_date or 'months ago' in humanized_commit_date:
-        color = 'orange'
-    elif 'year ago' in humanized_commit_date or 'years ago' in humanized_commit_date:
+    elif 'years ago' in humanized_commit_date or 'year ago' in humanized_commit_date or '1 month' in humanized_commit_date:
         color = 'red'
 
     if for_markdown:
