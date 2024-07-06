@@ -1,6 +1,8 @@
 name: Publish GitHub Repositories HTML
 
 on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
   push:
     branches:
       - main  # Trigger on push to main branch
