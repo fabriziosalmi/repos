@@ -19,37 +19,35 @@ def fetch_repos(user, token):
         raise Exception(f"Failed to fetch repositories: {response.status_code}")
     return response.json()
 
-def fetch_starred_dates(user, repo_name, token):
+def fetch_starred_dates(user, token):
     headers = {
         "Authorization": f"token {token}"
     }
-    url = f"{GITHUB_API_URL}/repos/{user}/{repo_name}/stargazers"
+    url = f"{GITHUB_API_URL}/users/{user}/starred"
     starred_dates = []
     page = 1
     while True:
         response = requests.get(url, headers=headers, params={'per_page': 100, 'page': page})
         if response.status_code != 200:
-            raise Exception(f"Failed to fetch stargazers: {response.status_code}")
-        stargazers = response.json()
-        if not stargazers:
+            raise Exception(f"Failed to fetch starred repositories: {response.status_code}")
+        starred_repos = response.json()
+        if not starred_repos:
             break
-        for stargazer in stargazers:
-            starred_date = stargazer['starred_at']
+        for repo in starred_repos:
+            starred_date = repo['starred_at']
             starred_dates.append(starred_date)
         page += 1
     return starred_dates
 
-def count_daily_stars(repos, token):
+def count_daily_stars(starred_dates):
     end_date = datetime.now()
     start_date = end_date - timedelta(days=180)
     daily_stars = {start_date + timedelta(days=i): 0 for i in range(181)}
 
-    for repo in repos:
-        stargazers = fetch_starred_dates(USER, repo['name'], token)
-        for starred_at in stargazers:
-            starred_at_date = datetime.strptime(starred_at, '%Y-%m-%dT%H:%M:%SZ').date()
-            if start_date.date() <= starred_at_date <= end_date.date():
-                daily_stars[starred_at_date] += 1
+    for starred_at in starred_dates:
+        starred_at_date = datetime.strptime(starred_at, '%Y-%m-%dT%H:%M:%SZ').date()
+        if start_date.date() <= starred_at_date <= end_date.date():
+            daily_stars[starred_at_date] += 1
 
     total_stars = 0
     daily_total_stars = {}
@@ -85,8 +83,8 @@ def generate_graph():
     plt.savefig('data/stars_graph.png')
 
 def main():
-    repos = fetch_repos(USER, TOKEN)
-    daily_total_stars = count_daily_stars(repos, TOKEN)
+    starred_dates = fetch_starred_dates(USER, TOKEN)
+    daily_total_stars = count_daily_stars(starred_dates)
     generate_json(daily_total_stars)
     generate_graph()
 
