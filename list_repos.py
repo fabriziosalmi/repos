@@ -228,8 +228,6 @@ def generate_html_page(repositories):
 
     markdown_content += '''
 
-**Total Stars: {total_stars}**
-
 '''
 
     with open('docs/index.html', 'w', encoding='utf-8') as file:
