@@ -195,7 +195,7 @@ def generate_html_page(repositories):
     <div class="container">
         <h1>My GitHub Repositories</h1>
         <div class="stars-counter">
-            <span class="emoji">⭐️</span> Total Stars: {total_stars}
+            <span class="emoji">⭐️</span> {total_stars} stargazers ❤️
         </div>
         <table>
             <tr>
@@ -209,7 +209,7 @@ def generate_html_page(repositories):
     markdown_content = f'''
 # My GitHub Repositories
 
-**Total Stars: {total_stars}**
+** ⭐️ {total_stars} stargazers ❤️**
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
