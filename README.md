@@ -3,7 +3,7 @@
 
 **Total Stars: 260**
 
-| Repository | Latest Commit | ⭐️ Stars |
+| Repository | Freshness | ⭐️ |
 |------------|----------------|----------|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/blacklists?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/blacklists?style=flat-square) |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | ![Last Commit](https://img.shields.io/github/last-commit/fabriziosalmi/UglyFeed?style=flat-square) | ![Stars](https://img.shields.io/github/stars/fabriziosalmi/UglyFeed?style=flat-square) |
