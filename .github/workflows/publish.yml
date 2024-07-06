@@ -26,10 +26,23 @@ jobs:
       - name: Generate HTML page and README
         run: python list_repos.py
 
-      - name: Deploy to GitHub Pages and update README
+      - name: Verify changes
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add docs/ README.md
-          git commit -m "Publish GitHub Repositories HTML and update README"
-          git push
+          echo "Checking for changes..."
+          if ! git diff --exit-code; then
+            echo "Changes detected, committing..."
+            git config --global user.email "actions@github.com"
+            git config --global user.name "GitHub Actions"
+            git add docs/ README.md
+            git commit -m "Publish GitHub Repositories HTML and update README"
+            git push
+          else
+            echo "No changes detected, skipping commit."
+          fi
+
+      - name: Debug - Show generated files
+        run: |
+          echo "Generated index.html:"
+          cat docs/index.html
+          echo "Generated README.md:"
+          cat README.md
