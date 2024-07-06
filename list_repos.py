@@ -174,15 +174,15 @@ def generate_html_page(repositories):
 </head>
 <body>
     <div class="container">
-        <h1>My GitHub Repositories</h1>
+        <title>My GitHub Repositories</title>
         <div class="stars-counter">
-            <span class="emoji">⭐️</span> x{total_stars}
+            {total_stars} <span class="emoji">⭐️</span>
         </div>
         <table>
             <tr>
                 <th>Repository</th>
-                <th>Latest Commit</th>
-                <th>⭐️ Stars</th>
+                <th>Freshness</th>
+                <th>⭐️</th>
             </tr>
 '''
 
