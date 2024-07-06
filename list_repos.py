@@ -1,6 +1,6 @@
 import os
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime
 
 GITHUB_USERNAME = 'fabriziosalmi'
 
@@ -17,7 +17,7 @@ def fetch_repositories_with_stars(min_stars=1):
         if response.status_code == 200:
             repos = response.json()
             for repo in repos:
-                if repo['stargazers_count'] >= min_stars:
+                if repo['stargazers_count'] >= min_stars and not repo['archived']:
                     repositories.append(repo)
             if 'next' in response.links.keys():
                 url = response.links['next']['url']
@@ -73,9 +73,9 @@ def get_freshness_badge(humanized_commit_date, for_markdown=False):
     color = 'lightgrey'
     if 'today' in humanized_commit_date or 'yesterday' in humanized_commit_date or 'days' in humanized_commit_date or '1 week' in humanized_commit_date:
         color = 'brightgreen'
-    if 'weeks' in humanized_commit_date or '1 month' in humanized_commit_date:
+    elif 'weeks' in humanized_commit_date or '1 month' in humanized_commit_date:
         color = 'yellow'
-    if 'months' in humanized_commit_date or '1 year' in humanized_commit_date:
+    elif 'months' in humanized_commit_date or '1 year' in humanized_commit_date:
         color = 'orange'
     elif 'years' in humanized_commit_date:
         color = 'red'
@@ -195,7 +195,7 @@ def generate_html_page(repositories):
     <div class="container">
         <h1>My GitHub Repositories</h1>
         <div class="stars-counter">
-            <span class="emoji">⭐️</span> {total_stars} stargazers ❤️
+            <span class="emoji">⭐️</span> Total Stars: {total_stars}
         </div>
         <table>
             <tr>
@@ -209,7 +209,7 @@ def generate_html_page(repositories):
     markdown_content = f'''
 # My GitHub Repositories
 
-**{total_stars} stargazers ❤️**
+**Total Stars: {total_stars}**
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
