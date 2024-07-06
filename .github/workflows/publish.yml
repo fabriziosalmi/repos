@@ -29,10 +29,18 @@ jobs:
       - name: Generate HTML page and README
         run: python main.py
 
-      - name: Deploy to GitHub Pages and update README
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add *
-          git commit -m "Publish GitHub Repositories HTML and update README"
+          git add .
+          git commit -m "Publish GitHub Repositories HTML and update README" || echo "No changes to commit"
           git push
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./path_to_html_directory # Replace with the actual path to the directory containing the generated HTML files
