@@ -106,6 +106,30 @@ def generate_html_page(repositories):
                 text-decoration: none;
                 font-weight: bold;
             }
+            .badge {
+                display: inline-block;
+                padding: 5px 10px;
+                font-size: 14px;
+                font-weight: bold;
+                border-radius: 4px;
+                margin-right: 5px;
+            }
+            .badge-green {
+                background-color: #4CAF50;
+                color: white;
+            }
+            .badge-blue {
+                background-color: #2196F3;
+                color: white;
+            }
+            .badge-yellow {
+                background-color: #FFC107;
+                color: white;
+            }
+            .badge-gray {
+                background-color: #757575;
+                color: white;
+            }
             @media only screen and (max-width: 600px) {
                 .container {
                     border-radius: 0;
@@ -139,7 +163,9 @@ def generate_html_page(repositories):
                 <tr>
                     <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
                     <td>{latest_commit_date_str}</td>
-                    <td>{stars_count}</td>
+                    <td>
+                        <span class="badge badge-green"><img src="https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> {stars_count}</span>
+                    </td>
                 </tr>
         '''
 
