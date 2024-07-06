@@ -24,7 +24,7 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Generate HTML page
-        run: python create_repos.py
+        run: python generate.py
 
       - name: Deploy to GitHub Pages
         run: |
