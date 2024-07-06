@@ -1,6 +1,5 @@
 import os
 import requests
-from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 
 GITHUB_USERNAME = 'fabriziosalmi'
@@ -220,13 +219,11 @@ def generate_html_page(repositories):
                 <td>
                     <img src="https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Last Commit"> 
                 </td>
-                <td>
-                    <img src="https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square" alt="Stars"> 
-                </td>
+                <td>{stars_count}</td>
             </tr>
 '''
 
-        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) | ![Stars](https://img.shields.io/github/stars/{GITHUB_USERNAME}/{repo_name}?style=flat-square) |\n'
+        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | ![Last Commit](https://img.shields.io/github/last-commit/{GITHUB_USERNAME}/{repo_name}?style=flat-square) | {stars_count} |\n'
 
     html_content += '''
         </table>
@@ -247,7 +244,7 @@ def generate_html_page(repositories):
     print('GitHub repositories HTML page and README.md generated')
 
 def main():
-    repositories = fetch_repositories_with_stars(min_stars=5)
+    repositories = fetch_repositories_with_stars(min_stars=1)
     generate_html_page(repositories)
 
 if __name__ == '__main__':
