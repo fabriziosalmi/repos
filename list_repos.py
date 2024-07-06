@@ -69,12 +69,18 @@ def humanize_commit_date(commit_date):
         years = diff.days // 365
         return f'{years} {"year" if years == 1 else "years"} ago'
 
-def get_freshness_badge(humanized_commit_date):
+def get_freshness_badge(humanized_commit_date, for_markdown=False):
     if humanized_commit_date == 'today':
+        if for_markdown:
+            return '![today](https://img.shields.io/badge/today-brightgreen?style=flat-square)'
         return '<img src="https://img.shields.io/badge/today-brightgreen?style=flat-square" alt="today">'
     elif humanized_commit_date == 'yesterday':
+        if for_markdown:
+            return '![yesterday](https://img.shields.io/badge/yesterday-yellow?style=flat-square)'
         return '<img src="https://img.shields.io/badge/yesterday-yellow?style=flat-square" alt="yesterday">'
     else:
+        if for_markdown:
+            return f'![{humanized_commit_date}](https://img.shields.io/badge/{humanized_commit_date.replace(" ", "%20")}-lightgrey?style=flat-square)'
         return f'<img src="https://img.shields.io/badge/{humanized_commit_date.replace(" ", "%20")}-lightgrey?style=flat-square" alt="{humanized_commit_date}">'
 
 def generate_html_page(repositories):
@@ -220,18 +226,19 @@ def generate_html_page(repositories):
         else:
             humanized_commit_date = 'N/A'
 
-        freshness_badge = get_freshness_badge(humanized_commit_date)
+        freshness_badge_html = get_freshness_badge(humanized_commit_date)
+        freshness_badge_md = get_freshness_badge(humanized_commit_date, for_markdown=True)
 
         html_content += f'''
             <tr>
                 <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
                 <td class="description">{repo_description}</td>
-                <td>{freshness_badge}</td>
+                <td>{freshness_badge_html}</td>
                 <td>{stars_count}</td>
             </tr>
 '''
 
-        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | ![Freshness]({freshness_badge}) | {stars_count} |\n'
+        markdown_content += f'| [{repo_name}]({repo_url}) | {repo_description} | {freshness_badge_md} | {stars_count} |\n'
 
     html_content += '''
         </table>
