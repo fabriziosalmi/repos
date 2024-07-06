@@ -49,6 +49,8 @@ def fetch_latest_commit_date(repo_name):
     
     return None
 
+from datetime import datetime
+
 def humanize_commit_date(commit_date):
     now = datetime.utcnow()
     diff = now - commit_date
@@ -70,18 +72,19 @@ def humanize_commit_date(commit_date):
         return f'{years} {"year" if years == 1 else "years"} ago'
 
 def get_freshness_badge(humanized_commit_date, for_markdown=False):
-    if humanized_commit_date == 'today':
-        if for_markdown:
-            return '![today](https://img.shields.io/badge/today-brightgreen?style=flat-square)'
-        return '<img src="https://img.shields.io/badge/today-brightgreen?style=flat-square" alt="today">'
-    elif humanized_commit_date == 'yesterday':
-        if for_markdown:
-            return '![yesterday](https://img.shields.io/badge/yesterday-yellow?style=flat-square)'
-        return '<img src="https://img.shields.io/badge/yesterday-yellow?style=flat-square" alt="yesterday">'
-    else:
-        if for_markdown:
-            return f'![{humanized_commit_date}](https://img.shields.io/badge/{humanized_commit_date.replace(" ", "%20")}-lightgrey?style=flat-square)'
-        return f'<img src="https://img.shields.io/badge/{humanized_commit_date.replace(" ", "%20")}-lightgrey?style=flat-square" alt="{humanized_commit_date}">'
+    color = 'lightgrey'
+    if 'today' in humanized_commit_date or 'yesterday' in humanized_commit_date or 'days ago' in humanized_commit_date:
+        color = 'brightgreen'
+    elif 'week ago' in humanized_commit_date or 'weeks ago' in humanized_commit_date:
+        color = 'yellow'
+    elif 'month ago' in humanized_commit_date or 'months ago' in humanized_commit_date:
+        color = 'orange'
+    elif 'year ago' in humanized_commit_date or 'years ago' in humanized_commit_date:
+        color = 'red'
+
+    if for_markdown:
+        return f'![{humanized_commit_date}](https://img.shields.io/badge/{humanized_commit_date.replace(" ", "%20")}-{color}?style=flat-square)'
+    return f'<img src="https://img.shields.io/badge/{humanized_commit_date.replace(" ", "%20")}-{color}?style=flat-square" alt="{humanized_commit_date}">'
 
 def generate_html_page(repositories):
     total_stars = sum(repo['stargazers_count'] for repo in repositories)
