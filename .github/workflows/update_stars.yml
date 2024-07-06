@@ -27,6 +27,8 @@ jobs:
           pip install requests matplotlib
 
       - name: Generate stars data and graph
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python generate_stars_data.py
 
