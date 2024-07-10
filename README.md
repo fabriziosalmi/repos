@@ -1,12 +1,12 @@
 
 # My GitHub Repositories
 
-263 stargazers ❤️
+264 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 113 |
-| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes. | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 103 |
+| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes. | ![3 days](https://img.shields.io/badge/3%20days-brightgreen?style=flat-square) | 104 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 21 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions. | ![9 months](https://img.shields.io/badge/9%20months-orange?style=flat-square) | 8 |
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 7 |
