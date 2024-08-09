@@ -1,11 +1,11 @@
 
 # My GitHub Repositories
 
-284 stargazers ❤️
+285 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
-| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 115 |
+| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 116 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes. | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 107 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 33 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions. | ![10 months](https://img.shields.io/badge/10%20months-orange?style=flat-square) | 9 |
