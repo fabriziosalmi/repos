@@ -1,14 +1,14 @@
 
 # My GitHub Repositories
 
-318 stargazers ❤️
+319 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 116 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes. | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 110 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 35 |
-| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale cores and ram of LXC containers on Proxmox hosts | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 26 |
+| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale the LXC containers resources on Proxmox hosts, with or without AI. | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 27 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions. | ![11 months](https://img.shields.io/badge/11%20months-yellow?style=flat-square) | 11 |
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 7 |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 5 |
