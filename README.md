@@ -1,15 +1,16 @@
 
 # My GitHub Repositories
 
-406 stargazers ❤️
+436 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 127 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes. | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 118 |
-| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale the LXC containers resources on Proxmox hosts | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 56 |
+| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale the LXC containers resources on Proxmox hosts | ![yesterday](https://img.shields.io/badge/yesterday-brightgreen?style=flat-square) | 62 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes. | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 37 |
-| [flared](https://github.com/fabriziosalmi/flared) | Cloudflare Zones Settings Automation using GitHub Actions | ![yesterday](https://img.shields.io/badge/yesterday-brightgreen?style=flat-square) | 20 |
+| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts. | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 23 |
+| [flared](https://github.com/fabriziosalmi/flared) | Cloudflare Zones Settings Automation using GitHub Actions | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 21 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions. | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 12 |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 9 |
 | [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 7 |
