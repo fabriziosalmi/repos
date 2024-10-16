@@ -1,14 +1,14 @@
 
 # My GitHub Repositories
 
-562 stargazers ❤️
+565 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 133 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 120 |
-| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 104 |
-| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 86 |
+| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 105 |
+| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 88 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 37 |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 23 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 13 |
