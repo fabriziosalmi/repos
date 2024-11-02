@@ -6,9 +6,9 @@
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 139 |
-| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![5 days](https://img.shields.io/badge/5%20days-brightgreen?style=flat-square) | 127 |
+| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![6 days](https://img.shields.io/badge/6%20days-brightgreen?style=flat-square) | 127 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 122 |
-| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 92 |
+| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 92 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 37 |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | ![4 weeks](https://img.shields.io/badge/4%20weeks-yellow?style=flat-square) | 24 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 14 |
