@@ -17,11 +17,11 @@
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resources on Proxmox hosts with AI | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 7 |
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ https://webtek.live | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 7 |
 | [EthicalAI](https://github.com/fabriziosalmi/EthicalAI) | Automate ethical AI assessments via GitHub Actions | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 5 |
-| [You-Know-What-AI-Mean](https://github.com/fabriziosalmi/You-Know-What-AI-Mean) | A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility | ![11 months](https://img.shields.io/badge/11%20months-yellow?style=flat-square) | 3 |
-| [linux](https://github.com/fabriziosalmi/linux) | Linux Scripts & Snippets Collection | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 2 |
+| [You-Know-What-AI-Mean](https://github.com/fabriziosalmi/You-Know-What-AI-Mean) | A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility | ![12 months](https://img.shields.io/badge/12%20months-orange?style=flat-square) | 3 |
+| [linux](https://github.com/fabriziosalmi/linux) | Linux Scripts & Snippets Collection | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 2 |
 | [proxmox-cluster-balancer](https://github.com/fabriziosalmi/proxmox-cluster-balancer) | Balance, scale, migrate your LXC fleet across your Proxmox nodes | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 2 |
 | [audiolibri.org_static](https://github.com/fabriziosalmi/audiolibri.org_static) | audiolibri.org static wordpress website | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
 | [blockchain-poc](https://github.com/fabriziosalmi/blockchain-poc) | Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
-| [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 1 |
+| [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 1 |
 | [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 1 |
 
