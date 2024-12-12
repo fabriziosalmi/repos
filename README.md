@@ -1,19 +1,19 @@
 
 # My GitHub Repositories
 
-674 stargazers ❤️
+679 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
-| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 162 |
-| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 147 |
-| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![4 days](https://img.shields.io/badge/4%20days-brightgreen?style=flat-square) | 129 |
-| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![4 days](https://img.shields.io/badge/4%20days-brightgreen?style=flat-square) | 106 |
+| [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 164 |
+| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 149 |
+| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![5 days](https://img.shields.io/badge/5%20days-brightgreen?style=flat-square) | 130 |
+| [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 106 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 39 |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 25 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 14 |
-| [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 11 |
-| [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | ![4 days](https://img.shields.io/badge/4%20days-brightgreen?style=flat-square) | 9 |
+| [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | ![yesterday](https://img.shields.io/badge/yesterday-brightgreen?style=flat-square) | 11 |
+| [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | ![5 days](https://img.shields.io/badge/5%20days-brightgreen?style=flat-square) | 9 |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resources on Proxmox hosts with AI | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 7 |
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ https://webtek.live | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 7 |
 | [EthicalAI](https://github.com/fabriziosalmi/EthicalAI) | Automate ethical AI assessments via GitHub Actions | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 5 |
