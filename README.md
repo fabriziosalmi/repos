@@ -1,11 +1,11 @@
 
 # My GitHub Repositories
 
-885 stargazers ❤️
+886 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
-| [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Caddy, Nginx, Apache, Traefik and HaProxy | ![5 days](https://img.shields.io/badge/5%20days-brightgreen?style=flat-square) | 175 |
+| [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Caddy, Nginx, Apache, Traefik and HaProxy | ![5 days](https://img.shields.io/badge/5%20days-brightgreen?style=flat-square) | 176 |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 167 |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 156 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 134 |
@@ -23,7 +23,7 @@
 | [You-Know-What-AI-Mean](https://github.com/fabriziosalmi/You-Know-What-AI-Mean) | A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 3 |
 | [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | ![6 days](https://img.shields.io/badge/6%20days-brightgreen?style=flat-square) | 2 |
 | [audiolibri.org_static](https://github.com/fabriziosalmi/audiolibri.org_static) | audiolibri.org static wordpress website | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
-| [awesomeness](https://github.com/fabriziosalmi/awesomeness) | List of awesome open source projects | ![6 days](https://img.shields.io/badge/6%20days-brightgreen?style=flat-square) | 1 |
+| [awesomeness](https://github.com/fabriziosalmi/awesomeness) | List of awesome open source projects | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 1 |
 | [blockchain-poc](https://github.com/fabriziosalmi/blockchain-poc) | Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
 | [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 1 |
 | [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 1 |
