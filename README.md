@@ -1,14 +1,14 @@
 
 # My GitHub Repositories
 
-1068 stargazers ❤️
+1076 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 197 |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 168 |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 165 |
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (OWASP rule-based filtering, IP and DNS filtering, rate limiting, GeoIP) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 144 |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (OWASP rule-based filtering, IP and DNS filtering, rate limiting, GeoIP) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 152 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![4 weeks](https://img.shields.io/badge/4%20weeks-yellow?style=flat-square) | 136 |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 118 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 40 |
@@ -23,9 +23,9 @@
 | [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 3 |
 | [linux](https://github.com/fabriziosalmi/linux) | Linux Scripts & Snippets Collection | ![4 months](https://img.shields.io/badge/4%20months-orange?style=flat-square) | 3 |
 | [You-Know-What-AI-Mean](https://github.com/fabriziosalmi/You-Know-What-AI-Mean) | A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 3 |
-| [awesomeness](https://github.com/fabriziosalmi/awesomeness) | List of awesome open source projects | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 2 |
+| [awesomeness](https://github.com/fabriziosalmi/awesomeness) | List of awesome open source projects | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 2 |
 | [audiolibri.org_static](https://github.com/fabriziosalmi/audiolibri.org_static) | audiolibri.org static wordpress website | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
 | [blockchain-poc](https://github.com/fabriziosalmi/blockchain-poc) | Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
-| [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | ![4 months](https://img.shields.io/badge/4%20months-orange?style=flat-square) | 1 |
+| [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 1 |
 | [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 1 |
 
