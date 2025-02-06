@@ -1,11 +1,11 @@
 
 # My GitHub Repositories
 
-1388 stargazers ❤️
+1389 stargazers ❤️
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 374 |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | ![3 days](https://img.shields.io/badge/3%20days-brightgreen?style=flat-square) | 375 |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 213 |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 181 |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 171 |
@@ -20,16 +20,16 @@
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resources on Proxmox hosts with AI | ![4 months](https://img.shields.io/badge/4%20months-orange?style=flat-square) | 9 |
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ https://webtek.live | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 7 |
 | [EthicalAI](https://github.com/fabriziosalmi/EthicalAI) | Automate ethical AI assessments via GitHub Actions | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 6 |
-| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 4 |
+| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | ![yesterday](https://img.shields.io/badge/yesterday-brightgreen?style=flat-square) | 4 |
 | [proxmox-cluster-balancer](https://github.com/fabriziosalmi/proxmox-cluster-balancer) | Balance, scale, migrate your LXC fleet across your Proxmox nodes | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 4 |
 | [awesomeness](https://github.com/fabriziosalmi/awesomeness) | List of awesome open source projects | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 3 |
-| [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 3 |
+| [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 3 |
 | [linux](https://github.com/fabriziosalmi/linux) | Linux Scripts & Snippets Collection | ![5 months](https://img.shields.io/badge/5%20months-orange?style=flat-square) | 3 |
 | [You-Know-What-AI-Mean](https://github.com/fabriziosalmi/You-Know-What-AI-Mean) | A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 3 |
 | [audiolibri.org_static](https://github.com/fabriziosalmi/audiolibri.org_static) | audiolibri.org static wordpress website | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
 | [blockchain-poc](https://github.com/fabriziosalmi/blockchain-poc) | Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface | ![1 year](https://img.shields.io/badge/1%20year-orange?style=flat-square) | 1 |
 | [caddy-adf](https://github.com/fabriziosalmi/caddy-adf) | Yet another caddy WAF exploration | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 1 |
-| [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf | ![yesterday](https://img.shields.io/badge/yesterday-brightgreen?style=flat-square) | 1 |
+| [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 1 |
 | [cloudflare-aws](https://github.com/fabriziosalmi/cloudflare-aws) | No description | ![7 months](https://img.shields.io/badge/7%20months-orange?style=flat-square) | 1 |
 | [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 1 |
 | [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 1 |
