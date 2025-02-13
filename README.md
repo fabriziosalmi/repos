@@ -5,7 +5,7 @@
 
 ## Star History
 
-![Star History Chart](https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/blacklists,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/UglyFeed,fabriziosalmi/DevGPT&type=Date)
+![Star History Chart](https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/blacklists,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/UglyFeed,fabriziosalmi/DevGPT&type=Date&theme=dark)
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
