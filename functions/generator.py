@@ -128,6 +128,10 @@ def generate_html_page(repositories):
 
 {total_stars} stargazers ❤️
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/blacklists,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/UglyFeed&type=Date)](https://star-history.com/#fabriziosalmi/caddy-waf&fabriziosalmi/patterns&fabriziosalmi/blacklists&fabriziosalmi/proxmox-vm-autoscale&fabriziosalmi/proxmox-lxc-autoscale&fabriziosalmi/UglyFeed&Date)
+
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 '''
