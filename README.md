@@ -1,7 +1,7 @@
 
 # My GitHub Repositories
 
-1775 stargazers ❤️
+1776 stargazers ❤️
 
 ## Star History
 
@@ -11,13 +11,13 @@
 |------------|-------------|-----------|----|
 | [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 415 |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 250 |
-| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 229 |
+| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 230 |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 218 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 212 |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 167 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | ![5 months](https://img.shields.io/badge/5%20months-orange?style=flat-square) | 63 |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 39 |
-| [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 26 |
+| [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | ![4 weeks](https://img.shields.io/badge/4%20weeks-yellow?style=flat-square) | 26 |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 25 |
 | [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 22 |
 | [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 18 |
