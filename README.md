@@ -1,7 +1,7 @@
 
 # My GitHub Repositories
 
-1805 stargazers ❤️
+1806 stargazers ❤️
 
 ## Star History
 
@@ -10,7 +10,7 @@
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
 | [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 426 |
-| [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 252 |
+| [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 253 |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 232 |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![4 weeks](https://img.shields.io/badge/4%20weeks-yellow?style=flat-square) | 220 |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![2 months](https://img.shields.io/badge/2%20months-orange?style=flat-square) | 212 |
