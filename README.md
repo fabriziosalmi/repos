@@ -9,7 +9,7 @@
 
 | Repository | Description | Freshness | ⭐️ |
 |------------|-------------|-----------|----|
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 433 |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | ![yesterday](https://img.shields.io/badge/yesterday-brightgreen?style=flat-square) | 433 |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 256 |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 238 |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 223 |
@@ -24,7 +24,7 @@
 | [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | ![1 month](https://img.shields.io/badge/1%20month-yellow?style=flat-square) | 15 |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions | ![5 months](https://img.shields.io/badge/5%20months-orange?style=flat-square) | 14 |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resources on Proxmox hosts with AI | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 13 |
-| [csv-anonymizer](https://github.com/fabriziosalmi/csv-anonymizer) | CSV fuzzer/anonymizer | ![3 weeks](https://img.shields.io/badge/3%20weeks-yellow?style=flat-square) | 9 |
+| [csv-anonymizer](https://github.com/fabriziosalmi/csv-anonymizer) | CSV fuzzer/anonymizer | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 9 |
 | [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | ![2 days](https://img.shields.io/badge/2%20days-brightgreen?style=flat-square) | 8 |
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ https://webtek.live | ![2 weeks](https://img.shields.io/badge/2%20weeks-yellow?style=flat-square) | 7 |
 | [EthicalAI](https://github.com/fabriziosalmi/EthicalAI) | Automate LLM ethical self-assessments via GitHub Actions | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 6 |
