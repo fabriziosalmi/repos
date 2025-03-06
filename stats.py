@@ -11,6 +11,9 @@ from rich.theme import Theme
 from rich.markdown import Markdown
 from rich.text import Text
 
+# Get the PAT from the environment variable
+pat = os.environ.get('MY_PAT')
+
 def get_human_readable_time(timestamp):
     """Converts a timestamp to a human-readable time difference."""
     now = datetime.datetime.now(datetime.timezone.utc)
