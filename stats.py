@@ -188,7 +188,7 @@ def get_starred_repositories(username, token=None, console=None):
                             'name': repo.get('name', 'N/A'),
                             'description': repo.get('description', "No description"),
                             'stars': current_stars,
-                            'forks': repo.get('forks_count', 0),  # Get forks count
+                            'forks': repo.get('forks_count', 0),
                             'commit_count': commit_count,
                             'contributors_count': contributors_count,
                             'last_update': updated_at.isoformat(),
@@ -214,11 +214,13 @@ def get_starred_repositories(username, token=None, console=None):
     starred_repos.sort(key=lambda repo: (
         repo['stars'],  # Most stars to least (PRIMARY)
         repo['forks'],  # Most forks to least (SECONDARY)
-        repo['last_update'],  # Most recent update to oldest
-        repo['contributors_count'],
-        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),  # Shortest resolution time
+        datetime.datetime.fromisoformat(repo['last_update']),  # Most recent update to oldest
+        repo['contributors_count'], # Contributors
+        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),
         repo['name'].lower()  # Alphabetical
-    ), reverse=True)
+        ), reverse=True)
+
+    # Separate sort for resolution time (ascending, handles None/inf)
     starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
 
     # Get top 10 repos by stars for the chart
@@ -257,17 +259,18 @@ def format_resolution_time(seconds):
         time_str += f"{int(seconds)}s"
     return time_str.strip()
 
-def create_markdown_table(repositories, total_stars, repo_names, filename="stats.md"):
+def create_markdown_table(repositories, total_stars, repo_names, username, filename="stats.md"):
     """Creates a Markdown table, includes a star chart (top 10), and uses badges."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
-            f.write(f"# Starred Repositories\n\n")
-            f.write(f"**Total Stars:** {total_stars}\n\n")
+            f.write(f"# My GitHub Repositories\n\n")  # Updated title
+            f.write(f"{total_stars} stargazers ❤️\n\n") # Updated total stars
 
             # Star History Chart (Top 10)
             repo_list = ",".join([f"{username}/{name}" for name in repo_names])  # Include username
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
+
 
             f.write("| Repository | Description | Stars | Forks | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
             f.write("|---|---|---|---|---|---|---|---|\n")
@@ -300,7 +303,7 @@ if __name__ == '__main__':
         "repo_name": "bold cyan",
         "description": "italic green",
         "stars": "yellow",
-        "forks": "blue", # added
+        "forks": "blue",
         "commits": "magenta",
         "contributors": "bright_red",
         "last_update": "bright_white",
@@ -318,7 +321,7 @@ if __name__ == '__main__':
         table.add_column("Repository", style="repo_name", min_width=20)
         table.add_column("Description", style="description", max_width=50)
         table.add_column("Stars", style="stars", justify="right")
-        table.add_column("Forks", style="forks", justify="right")  # Add Forks column
+        table.add_column("Forks", style="forks", justify="right")
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
         table.add_column("Last Update", style="last_update", justify="right")
@@ -331,7 +334,7 @@ if __name__ == '__main__':
                 repo_link,
                 repo['description'],
                 str(repo['stars']),
-                str(repo['forks']),  # Add forks to the table
+                str(repo['forks']),
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
                 repo['last_update_str'],
@@ -349,7 +352,7 @@ if __name__ == '__main__':
         save_to_json(json_data)
 
         # --- Create Markdown Table ---
-        create_markdown_table(starred_repositories, total_stars, top_10_repo_names)
+        create_markdown_table(starred_repositories, total_stars, top_10_repo_names, username)
 
     else:
         console.print(f"[yellow]No starred repositories found for {username} or an error occurred.[/yellow]")
