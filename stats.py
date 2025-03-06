@@ -8,7 +8,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.progress import track
 from rich.theme import Theme
-from rich.markdown import Markdown
+from rich.markdown import Markdown  # Used for rendering Markdown in the console
 from rich.text import Text
 
 def get_human_readable_time(timestamp):
@@ -191,7 +191,7 @@ def get_starred_repositories(username, token=None, console=None):
                             'commit_count': commit_count,
                             'contributors_count': contributors_count,
                             'last_update': updated_at.isoformat(),
-                            'last_update_str': last_update,  # Keep for human-readable
+                            'last_update_str': last_update,
                             'avg_issue_resolution_time': avg_resolution_time,
                             'issues_count': issues_count,
                         }
@@ -219,7 +219,11 @@ def get_starred_repositories(username, token=None, console=None):
     ), reverse=True)
     starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
 
-    return starred_repos, total_stars, all_repo_names
+    # Get top 10 repos by stars for the chart
+    top_10_repos = sorted(starred_repos, key=lambda x: x['stars'], reverse=True)[:10]
+    top_10_repo_names = [repo['name'] for repo in top_10_repos]
+
+    return starred_repos, total_stars, top_10_repo_names
 
 def save_to_json(data, filename="stats.json"):
     """Saves the given data to a JSON file."""
@@ -252,52 +256,35 @@ def format_resolution_time(seconds):
     return time_str.strip()
 
 def create_markdown_table(repositories, total_stars, repo_names, filename="stats.md"):
-    """Creates a Markdown table with badges and star chart."""
+    """Creates a Markdown table, includes a star chart (top 10), and uses badges."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(f"# Starred Repositories\n\n")
             f.write(f"**Total Stars:** {total_stars}\n\n")
 
-            repo_list = ",".join(repo_names)
+            # Star History Chart (Top 10)
+            repo_list = ",".join([f"{username}/{name}" for name in repo_names])  # Include username
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
+
 
             f.write("| Repository | Description | Stars | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
             f.write("|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
-                stars_emoji = "⭐" if repo['stars'] > 0 else ""
-                if repo['stars'] >= 100:
-                    stars_emoji = "🌟"
-                if repo['stars'] >= 500:
-                    stars_emoji = "✨"
 
-                commit_emoji = "📝"
-                if repo['commit_count'] >= 100:
-                    commit_emoji = "🔥🔥"
-                if repo['commit_count'] >= 1000:
-                    commit_emoji = "💥💥💥"
-
-                contributors_emoji = "🧑‍💻"
-                if repo['contributors_count'] > 5:
-                    contributors_emoji = "🧑‍💻🧑‍💻"
-                if repo['contributors_count'] > 50:
-                    contributors_emoji = "🧑‍💻🧑‍💻🧑‍💻"
-
-                # Create Shields.io badges
-                last_update_badge = f"![Last Update](https://img.shields.io/badge/Last%20Update-{repo['last_update_str'].replace(' ', '%20')}-brightgreen)"
-
-                # Use a default color/message, and handle None case.
-                resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
+                # Create Shields.io badges (without labels)
+                last_update_badge = f"![Last Update](https://img.shields.io/badge/{repo['last_update_str'].replace(' ', '%20')}-brightgreen)"
                 if repo['avg_issue_resolution_time'] is None:
-                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/Avg.%20Issue%20Resolution-N%2FA-lightgrey)"
+                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/N%2FA-lightgrey)"
                 elif repo['avg_issue_resolution_time'] == 0:
-                     resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/Avg.%20Issue%20Resolution-No%20Issues-blue)"
+                    resolution_badge =  "![Avg. Issue Resolution](https://img.shields.io/badge/No%20Issues-blue)"
                 else:
-                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/badge/Avg.%20Issue%20Resolution-{resolution_time_str.replace(' ', '%20')}-blue)" # blue color
+                    resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time']).replace(' ', '%20')
+                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/badge/{resolution_time_str}-blue)"
 
-                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
+                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['commit_count']} | {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
 
         print(f"Markdown table saved to {filename}")
 
@@ -314,14 +301,14 @@ if __name__ == '__main__':
         "stars": "yellow",
         "commits": "magenta",
         "contributors": "bright_red",
-        "last_update": "bright_white",  # No longer used for text
+        "last_update": "bright_white",
         "header": "bold white on blue",
         "total_stars": "bold yellow",
-        "avg_resolution": "bold green",  # No longer used for text
+        "avg_resolution": "bold green",
     })
     console = Console(theme=custom_theme)
 
-    starred_repositories, total_stars, all_repo_names = get_starred_repositories(username, github_token, console)
+    starred_repositories, total_stars, top_10_repo_names = get_starred_repositories(username, github_token, console)
 
     if starred_repositories:
         # --- Display Table (Rich) ---
@@ -331,8 +318,8 @@ if __name__ == '__main__':
         table.add_column("Stars", style="stars", justify="right")
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
-        table.add_column("Last Update", style="last_update", justify="right")  # Keep for Rich table
-        table.add_column("Avg. Issue Resolution", style="avg_resolution", justify="right") # Keep for the rich table
+        table.add_column("Last Update", style="last_update", justify="right")
+        table.add_column("Avg. Issue Resolution", style="avg_resolution", justify="right")
 
         for repo in starred_repositories:
             resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
@@ -343,8 +330,8 @@ if __name__ == '__main__':
                 str(repo['stars']),
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
-                repo['last_update_str'], #Still using string for rich table
-                resolution_time_str, #Still string
+                repo['last_update_str'],
+                resolution_time_str,
             )
         console.print(table)
 
@@ -358,7 +345,7 @@ if __name__ == '__main__':
         save_to_json(json_data)
 
         # --- Create Markdown Table ---
-        create_markdown_table(starred_repositories, total_stars, all_repo_names)
+        create_markdown_table(starred_repositories, total_stars, top_10_repo_names)
 
     else:
         console.print(f"[yellow]No starred repositories found for {username} or an error occurred.[/yellow]")
