@@ -78,7 +78,7 @@ def get_average_issue_resolution_time(repo_url, headers, console):
 
 
 def get_starred_repositories(username, token=None, console=None):
-    """Fetches starred repos, calculates stats (including 1-month star increment)."""
+    """Fetches starred repos, calculates stats."""
     if console is None:
         console = Console()
 
@@ -162,46 +162,7 @@ def get_starred_repositories(username, token=None, console=None):
                             last_update = "Unknown"
                             console.print(f"[yellow]Warning: Missing update/creation date for {repo.get('name', 'Unknown')}[/yellow]")
 
-                        # --- 1-Month Star Increment ---
-                        one_month_ago = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(weeks=4)
-                        stars_one_month_ago = 0
-
-                        if created_at <= one_month_ago:
-                          stargazers_url = repo['stargazers_url'] + "?per_page=100"
-                          stargazers_page = 1
-                          while True:
-                              try:
-                                  stargazers_response = requests.get(stargazers_url + f"&page={stargazers_page}", headers=headers, timeout=5)
-                                  stargazers_response.raise_for_status()
-                                  stargazers = stargazers_response.json()
-
-                                  if not stargazers:
-                                      break
-
-                                  last_stargazer = stargazers[-1]
-                                  last_starred_at_str = last_stargazer.get("starred_at")
-
-                                  if last_starred_at_str:
-                                    last_starred_at = datetime.datetime.fromisoformat(last_starred_at_str.replace('Z', '+00:00'))
-                                    if last_starred_at <= one_month_ago:
-                                        stars_one_month_ago += len(stargazers)
-                                        break
-
-                                  stars_one_month_ago += len(stargazers)
-
-                                  if 'next' not in stargazers_response.links:
-                                    break
-
-                                  stargazers_page += 1
-                                  time.sleep(0.1)
-
-                              except requests.exceptions.RequestException as e:
-                                  console.print(f"[yellow]Warning: Could not retrieve stargazers for {repo['name']}: {e}[/yellow]")
-                                  stars_one_month_ago = 0
-                                  break
-
                         current_stars = repo.get('stargazers_count', 0)
-                        star_increment_month = current_stars - stars_one_month_ago
                         total_stars += current_stars
 
                         # --- Average Issue Resolution Time ---
@@ -233,7 +194,6 @@ def get_starred_repositories(username, token=None, console=None):
                             'last_update_str': last_update,
                             'avg_issue_resolution_time': avg_resolution_time,
                             'issues_count': issues_count,
-                            'star_increment_month': star_increment_month,
                         }
                         starred_repos.append(repo_info)
                         all_repo_names.append(repo.get('full_name')) # add to list
@@ -303,8 +263,8 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")  # Embed the chart
 
-            f.write("| Repository | URL | Description | Stars | +1 Month | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
-            f.write("|---|---|---|---|---|---|---|---|---|\n")
+            f.write("| Repository | URL | Description | Stars | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
+            f.write("|---|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
@@ -327,9 +287,8 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
                     contributors_emoji = "🧑‍💻🧑‍💻🧑‍💻"
 
                 resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
-                star_increment_str = f"+{repo['star_increment_month']}" if repo['star_increment_month'] > 0 else str(repo['star_increment_month'])
 
-                f.write(f"| **{repo['name']}** | [{repo['url']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {star_increment_str} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {repo['last_update_str']} | {resolution_time_str} |\n")
+                f.write(f"| **{repo['name']}** | [{repo['url']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {repo['last_update_str']} | {resolution_time_str} |\n")
 
         print(f"Markdown table saved to {filename}")
 
@@ -351,7 +310,7 @@ if __name__ == '__main__':
         "header": "bold white on blue",
         "total_stars": "bold yellow",
         "avg_resolution": "bold green",
-        "star_increment": "bold blue",
+        "star_increment": "bold blue", # No more used
     })
     console = Console(theme=custom_theme)
 
@@ -364,7 +323,6 @@ if __name__ == '__main__':
         table.add_column("URL", style="url", max_width=50)
         table.add_column("Description", style="description", max_width=40)
         table.add_column("Stars", style="stars", justify="right")
-        table.add_column("1 Month Incr.", style="star_increment", justify="right")
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
         table.add_column("Last Update", style="last_update", justify="right")
@@ -372,13 +330,11 @@ if __name__ == '__main__':
 
         for repo in starred_repositories:
             resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
-            star_increment_str = f"+{repo['star_increment_month']}" if repo['star_increment_month'] > 0 else str(repo['star_increment_month'])
             table.add_row(
                 repo['name'],
                 repo['url'],
                 repo['description'],
                 str(repo['stars']),
-                star_increment_str,
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
                 repo['last_update_str'],  # Use human-readable string here
