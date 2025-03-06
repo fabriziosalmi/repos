@@ -1,0 +1,2 @@
+requests>=2.25.0  # For making HTTP requests
+rich>=10.0.0     # For rich text formatting, tables, progress bars, etc.

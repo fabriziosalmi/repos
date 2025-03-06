@@ -3,9 +3,6 @@ name: Publish GitHub Repositories HTML
 on:
   schedule:
     - cron: '0 0 * * *'  # Run daily at midnight UTC
-  push:
-    branches:
-      - main  # Trigger on push to main branch
   workflow_dispatch:
 
 jobs:
@@ -26,8 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Generate HTML page and README
-        run: python main.py
+      - name: Generate stats
+        run: python stats.py
 
       - name: Commit and push changes
         env:
@@ -36,7 +33,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git add .
-          git commit -m "Publish GitHub Repositories HTML and update README" || echo "No changes to commit"
+          git commit -m "Update stats" || echo "No changes to commit"
           git push
 
       - name: Deploy to GitHub Pages
