@@ -11,9 +11,6 @@ from rich.theme import Theme
 from rich.markdown import Markdown
 from rich.text import Text
 
-# Get the PAT from the environment variable
-pat = os.environ.get('MY_PAT')
-
 def get_human_readable_time(timestamp):
     """Converts a timestamp to a human-readable time difference."""
     now = datetime.datetime.now(datetime.timezone.utc)
@@ -215,14 +212,14 @@ def get_starred_repositories(username, token=None, console=None):
 
     # Sort the repositories.  Stars are the primary sort key (descending).
     starred_repos.sort(key=lambda repo: (
-        repo['stars'],  # Most stars to least (PRIMARY)
-        repo['forks'],  # Most forks to least (SECONDARY)
-        datetime.datetime.fromisoformat(repo['last_update']),  # Most recent update to oldest
-        repo['contributors_count'], # Contributors
-        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),  # Shortest resolution time
-        repo['name'].lower()  # Alphabetical
+        repo['stars'],
+        repo['forks'],
+        datetime.datetime.fromisoformat(repo['last_update']),
+        repo['contributors_count'],
+        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),
+        repo['name'].lower()
         ), reverse=True)
-    #removed the second sort
+    starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
 
     # Get top 10 repos by stars for the chart
     top_10_repos = sorted(starred_repos, key=lambda x: x['stars'], reverse=True)[:10]
@@ -260,8 +257,8 @@ def format_resolution_time(seconds):
         time_str += f"{int(seconds)}s"
     return time_str.strip()
 
-def create_markdown_table(repositories, total_stars, repo_names, username, filename="README.md"):
-    """Creates a Markdown table, includes a star chart (top 10), and uses badges."""
+def create_markdown_table(repositories, total_stars, repo_names, username, filename="stats.md"):
+    """Creates a Markdown table with larger, consistent badges and star chart."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(f"# My GitHub Repositories\n\n")
@@ -272,25 +269,24 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
 
-
-            f.write("| 🔗 | ℹ️ | 🌟 | 🌀 | 📝 | 👥 | 📅 | 🐛 |\n")
+            f.write("| Repository | Description | Stars | Forks | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
             f.write("|---|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
 
-                # Create Shields.io badges (without labels)
-                last_update_badge = f"![Last Update](https://img.shields.io/badge/{repo['last_update_str'].replace(' ', '%20')}-brightgreen)"
+                # Create Shields.io badges (consistent style)
+                last_update_badge = f"![Last Update](https://img.shields.io/static/v1?label=&message={repo['last_update_str'].replace(' ', '%20')}&color=brightgreen&style=flat-square)"
+
                 if repo['avg_issue_resolution_time'] is None:
-                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/N%2FA-lightgrey)"
+                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=&message=N%2FA&color=lightgrey&style=flat-square)"
                 elif repo['avg_issue_resolution_time'] == 0:
-                     resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/No%20Issues-blue)"
+                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=&message=No%20Issues&color=blue&style=flat-square)"
                 else:
                     resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time']).replace(' ', '%20')
-                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/badge/{resolution_time_str}-blue)"
+                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/static/v1?label=&message={resolution_time_str}&color=blue&style=flat-square)"
 
                 f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['forks']} | {repo['commit_count']} | {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
-
         print(f"Markdown table saved to {filename}")
 
     except Exception as e:
