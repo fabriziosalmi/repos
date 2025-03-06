@@ -191,7 +191,7 @@ def get_starred_repositories(username, token=None, console=None):
                             'commit_count': commit_count,
                             'contributors_count': contributors_count,
                             'last_update': updated_at.isoformat(),
-                            'last_update_str': last_update,
+                            'last_update_str': last_update,  # Keep for human-readable
                             'avg_issue_resolution_time': avg_resolution_time,
                             'issues_count': issues_count,
                         }
@@ -252,7 +252,7 @@ def format_resolution_time(seconds):
     return time_str.strip()
 
 def create_markdown_table(repositories, total_stars, repo_names, filename="stats.md"):
-    """Creates a Markdown table, includes star chart, and combines repo name/URL."""
+    """Creates a Markdown table with badges and star chart."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(f"# Starred Repositories\n\n")
@@ -262,7 +262,6 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
 
-            # Combined "Repository" column
             f.write("| Repository | Description | Stars | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
             f.write("|---|---|---|---|---|---|---|\n")
 
@@ -286,10 +285,19 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
                 if repo['contributors_count'] > 50:
                     contributors_emoji = "🧑‍💻🧑‍💻🧑‍💻"
 
-                resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
+                # Create Shields.io badges
+                last_update_badge = f"![Last Update](https://img.shields.io/badge/Last%20Update-{repo['last_update_str'].replace(' ', '%20')}-brightgreen)"
 
-                # Combine repo name and URL into a single Markdown link
-                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {repo['last_update_str']} | {resolution_time_str} |\n")
+                # Use a default color/message, and handle None case.
+                resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
+                if repo['avg_issue_resolution_time'] is None:
+                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/Avg.%20Issue%20Resolution-N%2FA-lightgrey)"
+                elif repo['avg_issue_resolution_time'] == 0:
+                     resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/Avg.%20Issue%20Resolution-No%20Issues-blue)"
+                else:
+                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/badge/Avg.%20Issue%20Resolution-{resolution_time_str.replace(' ', '%20')}-blue)" # blue color
+
+                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
 
         print(f"Markdown table saved to {filename}")
 
@@ -302,15 +310,14 @@ if __name__ == '__main__':
 
     custom_theme = Theme({
         "repo_name": "bold cyan",
-        "url": "blue", # No more used
         "description": "italic green",
         "stars": "yellow",
         "commits": "magenta",
         "contributors": "bright_red",
-        "last_update": "bright_white",
+        "last_update": "bright_white",  # No longer used for text
         "header": "bold white on blue",
         "total_stars": "bold yellow",
-        "avg_resolution": "bold green",
+        "avg_resolution": "bold green",  # No longer used for text
     })
     console = Console(theme=custom_theme)
 
@@ -319,27 +326,25 @@ if __name__ == '__main__':
     if starred_repositories:
         # --- Display Table (Rich) ---
         table = Table(title=f"Starred Repositories for {username}", show_header=True, header_style="header")
-        # Combined "Repository" column
         table.add_column("Repository", style="repo_name", min_width=20)
         table.add_column("Description", style="description", max_width=50)
         table.add_column("Stars", style="stars", justify="right")
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
-        table.add_column("Last Update", style="last_update", justify="right")
-        table.add_column("Avg. Issue Resolution", style="avg_resolution", justify="right")
+        table.add_column("Last Update", style="last_update", justify="right")  # Keep for Rich table
+        table.add_column("Avg. Issue Resolution", style="avg_resolution", justify="right") # Keep for the rich table
 
         for repo in starred_repositories:
             resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
-            # Use a Text object to combine name and URL with link styling
             repo_link = Text.from_markup(f"[{repo['name']}]({repo['url']})")
             table.add_row(
-                repo_link,  # Combined name and URL
+                repo_link,
                 repo['description'],
                 str(repo['stars']),
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
-                repo['last_update_str'],
-                resolution_time_str,
+                repo['last_update_str'], #Still using string for rich table
+                resolution_time_str, #Still string
             )
         console.print(table)
 
