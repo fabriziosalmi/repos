@@ -257,7 +257,7 @@ def format_resolution_time(seconds):
         time_str += f"{int(seconds)}s"
     return time_str.strip()
 
-def create_markdown_table(repositories, total_stars, repo_names, username, filename="stats.md"):
+def create_markdown_table(repositories, total_stars, repo_names, username, filename="README.md"):
     """Creates a Markdown table, includes a star chart (top 10), and uses badges."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
