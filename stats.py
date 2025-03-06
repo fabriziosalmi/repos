@@ -216,12 +216,10 @@ def get_starred_repositories(username, token=None, console=None):
         repo['forks'],  # Most forks to least (SECONDARY)
         datetime.datetime.fromisoformat(repo['last_update']),  # Most recent update to oldest
         repo['contributors_count'], # Contributors
-        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),
+        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),  # Shortest resolution time
         repo['name'].lower()  # Alphabetical
         ), reverse=True)
-
-    # Separate sort for resolution time (ascending, handles None/inf)
-    starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
+    #removed the second sort
 
     # Get top 10 repos by stars for the chart
     top_10_repos = sorted(starred_repos, key=lambda x: x['stars'], reverse=True)[:10]
@@ -263,11 +261,11 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
     """Creates a Markdown table, includes a star chart (top 10), and uses badges."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
-            f.write(f"# My GitHub Repositories\n\n")  # Updated title
-            f.write(f"{total_stars} stargazers ❤️\n\n") # Updated total stars
+            f.write(f"# My GitHub Repositories\n\n")
+            f.write(f"{total_stars} stargazers ❤️\n\n")
 
             # Star History Chart (Top 10)
-            repo_list = ",".join([f"{username}/{name}" for name in repo_names])  # Include username
+            repo_list = ",".join([f"{username}/{name}" for name in repo_names])
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
 
