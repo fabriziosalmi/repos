@@ -1,7 +1,7 @@
 
 # My GitHub Repositories
 
-1907 stargazers ❤️
+1908 stargazers ❤️
 
 ## Star History
 
@@ -16,7 +16,7 @@
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 220 |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 176 |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 63 |
-| [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 49 |
+| [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | ![3 months](https://img.shields.io/badge/3%20months-orange?style=flat-square) | 50 |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | ![today](https://img.shields.io/badge/today-brightgreen?style=flat-square) | 42 |
 | [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | ![6 days](https://img.shields.io/badge/6%20days-brightgreen?style=flat-square) | 25 |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | ![1 week](https://img.shields.io/badge/1%20week-brightgreen?style=flat-square) | 25 |
