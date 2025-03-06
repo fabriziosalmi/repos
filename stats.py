@@ -273,7 +273,7 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
             f.write(f"![Star History Chart]({chart_url})\n\n")
 
 
-            f.write("| Repository | Description | Stars | Forks | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
+            f.write("| 🔗 | ℹ️ | 🌟 | 🌀 | 📝 | 👥 | 📅 | 🐛 |\n")
             f.write("|---|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
