@@ -65,7 +65,7 @@ def get_average_issue_resolution_time(repo_url, headers, console):
                     closed_issue_count += 1
 
             page += 1
-            time.sleep(0.2) # Rate limiting
+            time.sleep(0.2)
 
         except requests.exceptions.RequestException as e:
             console.print(f"  [yellow]Warning: Could not retrieve issues for {repo_url}: {e}[/yellow]")
@@ -90,7 +90,7 @@ def get_starred_repositories(username, token=None, console=None):
     total_stars = 0
     page = 1
     per_page = 100
-    all_repo_names = [] # for star chart
+    all_repo_names = []
 
     try:
         while True:
@@ -117,7 +117,7 @@ def get_starred_repositories(username, token=None, console=None):
 
             if retry_count == max_retries:
                 console.print(f"[red]Failed to fetch repository list (page {page}) after retries.[/red]")
-                return None, None, []  # Return empty list for repo names
+                return None, None, []
 
             repos = response.json()
             if not repos:
@@ -190,13 +190,13 @@ def get_starred_repositories(username, token=None, console=None):
                             'stars': current_stars,
                             'commit_count': commit_count,
                             'contributors_count': contributors_count,
-                            'last_update': updated_at.isoformat(),  # Convert to ISO format string
+                            'last_update': updated_at.isoformat(),
                             'last_update_str': last_update,
                             'avg_issue_resolution_time': avg_resolution_time,
                             'issues_count': issues_count,
                         }
                         starred_repos.append(repo_info)
-                        all_repo_names.append(repo.get('full_name')) # add to list
+                        all_repo_names.append(repo.get('full_name'))
 
                     except requests.exceptions.RequestException as e:
                         console.print(f"  [yellow]Warning: Skipping repository {repo.get('name', 'Unknown')} due to error:[/yellow] {e}")
@@ -207,19 +207,19 @@ def get_starred_repositories(username, token=None, console=None):
 
     except Exception as e:
         console.print(f"[red]An unexpected error occurred:[/red] {e}")
-        return None, None, []  # Return empty list for repo names
+        return None, None, []
 
     # Sort the repositories
     starred_repos.sort(key=lambda repo: (
         repo['stars'],
-        datetime.datetime.fromisoformat(repo['last_update']), # convert back to datetime for sort
+        datetime.datetime.fromisoformat(repo['last_update']),
         repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),
         repo['issues_count'],
         repo['name'].lower()
     ), reverse=True)
     starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
 
-    return starred_repos, total_stars, all_repo_names # return also names
+    return starred_repos, total_stars, all_repo_names
 
 def save_to_json(data, filename="stats.json"):
     """Saves the given data to a JSON file."""
@@ -252,19 +252,19 @@ def format_resolution_time(seconds):
     return time_str.strip()
 
 def create_markdown_table(repositories, total_stars, repo_names, filename="stats.md"):
-    """Creates a Markdown table and includes the star history chart."""
+    """Creates a Markdown table, includes star chart, and combines repo name/URL."""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(f"# Starred Repositories\n\n")
             f.write(f"**Total Stars:** {total_stars}\n\n")
 
-            # Create the star history chart URL
             repo_list = ",".join(repo_names)
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
-            f.write(f"![Star History Chart]({chart_url})\n\n")  # Embed the chart
+            f.write(f"![Star History Chart]({chart_url})\n\n")
 
-            f.write("| Repository | URL | Description | Stars | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
-            f.write("|---|---|---|---|---|---|---|---|\n")
+            # Combined "Repository" column
+            f.write("| Repository | Description | Stars | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
+            f.write("|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
@@ -288,7 +288,8 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
 
                 resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
 
-                f.write(f"| **{repo['name']}** | [{repo['url']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {repo['last_update_str']} | {resolution_time_str} |\n")
+                # Combine repo name and URL into a single Markdown link
+                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {stars_emoji} {repo['stars']} | {commit_emoji} {repo['commit_count']} | {contributors_emoji} {repo['contributors_count']} | {repo['last_update_str']} | {resolution_time_str} |\n")
 
         print(f"Markdown table saved to {filename}")
 
@@ -301,7 +302,7 @@ if __name__ == '__main__':
 
     custom_theme = Theme({
         "repo_name": "bold cyan",
-        "url": "blue",
+        "url": "blue", # No more used
         "description": "italic green",
         "stars": "yellow",
         "commits": "magenta",
@@ -310,7 +311,6 @@ if __name__ == '__main__':
         "header": "bold white on blue",
         "total_stars": "bold yellow",
         "avg_resolution": "bold green",
-        "star_increment": "bold blue", # No more used
     })
     console = Console(theme=custom_theme)
 
@@ -319,9 +319,9 @@ if __name__ == '__main__':
     if starred_repositories:
         # --- Display Table (Rich) ---
         table = Table(title=f"Starred Repositories for {username}", show_header=True, header_style="header")
+        # Combined "Repository" column
         table.add_column("Repository", style="repo_name", min_width=20)
-        table.add_column("URL", style="url", max_width=50)
-        table.add_column("Description", style="description", max_width=40)
+        table.add_column("Description", style="description", max_width=50)
         table.add_column("Stars", style="stars", justify="right")
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
@@ -330,14 +330,15 @@ if __name__ == '__main__':
 
         for repo in starred_repositories:
             resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
+            # Use a Text object to combine name and URL with link styling
+            repo_link = Text.from_markup(f"[{repo['name']}]({repo['url']})")
             table.add_row(
-                repo['name'],
-                repo['url'],
+                repo_link,  # Combined name and URL
                 repo['description'],
                 str(repo['stars']),
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
-                repo['last_update_str'],  # Use human-readable string here
+                repo['last_update_str'],
                 resolution_time_str,
             )
         console.print(table)
@@ -352,7 +353,7 @@ if __name__ == '__main__':
         save_to_json(json_data)
 
         # --- Create Markdown Table ---
-        create_markdown_table(starred_repositories, total_stars, all_repo_names) # Pass repo names
+        create_markdown_table(starred_repositories, total_stars, all_repo_names)
 
     else:
         console.print(f"[yellow]No starred repositories found for {username} or an error occurred.[/yellow]")
