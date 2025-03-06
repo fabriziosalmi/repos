@@ -8,7 +8,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.progress import track
 from rich.theme import Theme
-from rich.markdown import Markdown  # Used for rendering Markdown in the console
+from rich.markdown import Markdown
 from rich.text import Text
 
 def get_human_readable_time(timestamp):
@@ -78,7 +78,7 @@ def get_average_issue_resolution_time(repo_url, headers, console):
 
 
 def get_starred_repositories(username, token=None, console=None):
-    """Fetches starred repos, calculates stats."""
+    """Fetches starred repos, calculates stats, and handles sorting."""
     if console is None:
         console = Console()
 
@@ -188,6 +188,7 @@ def get_starred_repositories(username, token=None, console=None):
                             'name': repo.get('name', 'N/A'),
                             'description': repo.get('description', "No description"),
                             'stars': current_stars,
+                            'forks': repo.get('forks_count', 0),  # Get forks count
                             'commit_count': commit_count,
                             'contributors_count': contributors_count,
                             'last_update': updated_at.isoformat(),
@@ -209,13 +210,14 @@ def get_starred_repositories(username, token=None, console=None):
         console.print(f"[red]An unexpected error occurred:[/red] {e}")
         return None, None, []
 
-    # Sort the repositories
+    # Sort the repositories.  Stars are the primary sort key (descending).
     starred_repos.sort(key=lambda repo: (
-        repo['stars'],
-        datetime.datetime.fromisoformat(repo['last_update']),
-        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),
-        repo['issues_count'],
-        repo['name'].lower()
+        repo['stars'],  # Most stars to least (PRIMARY)
+        repo['forks'],  # Most forks to least (SECONDARY)
+        repo['last_update'],  # Most recent update to oldest
+        repo['contributors_count'],
+        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),  # Shortest resolution time
+        repo['name'].lower()  # Alphabetical
     ), reverse=True)
     starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
 
@@ -267,9 +269,8 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
 
-
-            f.write("| Repository | Description | Stars | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
-            f.write("|---|---|---|---|---|---|---|\n")
+            f.write("| Repository | Description | Stars | Forks | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
+            f.write("|---|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
@@ -279,12 +280,12 @@ def create_markdown_table(repositories, total_stars, repo_names, filename="stats
                 if repo['avg_issue_resolution_time'] is None:
                     resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/N%2FA-lightgrey)"
                 elif repo['avg_issue_resolution_time'] == 0:
-                    resolution_badge =  "![Avg. Issue Resolution](https://img.shields.io/badge/No%20Issues-blue)"
+                     resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/badge/No%20Issues-blue)"
                 else:
                     resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time']).replace(' ', '%20')
                     resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/badge/{resolution_time_str}-blue)"
 
-                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['commit_count']} | {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
+                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['forks']} | {repo['commit_count']} | {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
 
         print(f"Markdown table saved to {filename}")
 
@@ -299,6 +300,7 @@ if __name__ == '__main__':
         "repo_name": "bold cyan",
         "description": "italic green",
         "stars": "yellow",
+        "forks": "blue", # added
         "commits": "magenta",
         "contributors": "bright_red",
         "last_update": "bright_white",
@@ -316,6 +318,7 @@ if __name__ == '__main__':
         table.add_column("Repository", style="repo_name", min_width=20)
         table.add_column("Description", style="description", max_width=50)
         table.add_column("Stars", style="stars", justify="right")
+        table.add_column("Forks", style="forks", justify="right")  # Add Forks column
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
         table.add_column("Last Update", style="last_update", justify="right")
@@ -328,6 +331,7 @@ if __name__ == '__main__':
                 repo_link,
                 repo['description'],
                 str(repo['stars']),
+                str(repo['forks']),  # Add forks to the table
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
                 repo['last_update_str'],
