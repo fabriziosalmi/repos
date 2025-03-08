@@ -126,7 +126,7 @@
             "commit_count": 570,
             "contributors_count": 4,
             "last_update": "2025-03-07T12:03:19+00:00",
-            "last_update_str": "53 minutes ago",
+            "last_update_str": "12 hours ago",
             "avg_issue_resolution_time": 149402.5294117647,
             "issues_count": 1
         },
@@ -136,10 +136,10 @@
             "description": "Hourly updated domains blacklist \ud83d\udeab ",
             "stars": 243,
             "forks": 14,
-            "commit_count": 27819,
+            "commit_count": 27841,
             "contributors_count": 4,
-            "last_update": "2025-03-07T12:51:30+00:00",
-            "last_update_str": "5 minutes ago",
+            "last_update": "2025-03-07T23:21:59+00:00",
+            "last_update_str": "1 hours ago",
             "avg_issue_resolution_time": 2556340.9160305345,
             "issues_count": 1
         },
@@ -166,7 +166,7 @@
             "contributors_count": 1,
             "last_update": "2025-02-26T20:05:49+00:00",
             "last_update_str": "1 weeks ago",
-            "avg_issue_resolution_time": null,
+            "avg_issue_resolution_time": 46501571.0,
             "issues_count": 0
         }
     ],
