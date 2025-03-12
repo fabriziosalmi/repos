@@ -100,23 +100,23 @@ def get_starred_repositories(username, token=None, console=None):
             while retry_count < max_retries:
                 try:
                     response = requests.get(url, headers=headers, timeout=10)
-                    response.raise_for_status()
-                    break
+                    response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
+
+                    # Handle rate limiting explicitly using Retry-After header.
+                    if response.status_code == 403 and "Retry-After" in response.headers:
+                        retry_after = int(response.headers["Retry-After"])
+                        console.print(f"[yellow]Secondary Rate Limit. Waiting {retry_after}s before retrying page {page}.[/yellow]")
+                        time.sleep(retry_after)  # Wait the recommended time
+                        continue # Retry the same request
+
+                    break  # If successful, break out of retry loop
+
                 except requests.exceptions.RequestException as e:
-                    if isinstance(e, requests.exceptions.HTTPError) and response.status_code == 403:
-                        if "Retry-After" in response.headers:
-                            retry_after = int(response.headers["Retry-After"])
-                            console.print(f"[yellow]Secondary Rate Limit. Waiting {retry_after}s.[/yellow]")
-                            time.sleep(retry_after)
-                            continue
+                    console.print(f"[yellow]Request failed (page {page}, attempt {retry_count}/{max_retries}): {e}. Retrying in {2 ** retry_count}s.[/yellow]")
+                    time.sleep(2 ** retry_count)  # Exponential backoff
 
-                    retry_count += 1
-                    wait_time = 2 ** retry_count
-                    console.print(f"[yellow]Request failed (page {page}, attempt {retry_count}/{max_retries}): {e}. Retrying in {wait_time}s.[/yellow]")
-                    time.sleep(wait_time)
-
-            if retry_count == max_retries:
-                console.print(f"[red]Failed to fetch repository list (page {page}) after retries.[/red]")
+            else:
+                console.print(f"[red]Failed to fetch repository list (page {page}) after multiple retries.[/red]")
                 return None, None, []
 
             repos = response.json()
@@ -200,7 +200,7 @@ def get_starred_repositories(username, token=None, console=None):
                         all_repo_names.append(repo.get('full_name'))
 
                     except requests.exceptions.RequestException as e:
-                        console.print(f"  [yellow]Warning: Skipping repository {repo.get('name', 'Unknown')} due to error:[/yellow]")
+                        console.print(f"  [yellow]Warning: Skipping repository {repo.get('name', 'Unknown')} due to error:[/yellow] {e}")
                         continue
 
             page += 1
