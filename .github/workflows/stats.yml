@@ -25,7 +25,7 @@ jobs:
 
       - name: Generate stats
         env:
-          MY_PAT: ${{ secrets.GITHUB_TOKEN }}  # Pass the PAT as an environment variable
+          MY_PAT: ${{ secrets.PAT }}  # Pass the PAT as an environment variable
         run: python stats.py
 
       - name: Copy stats to README.md
