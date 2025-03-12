@@ -8,13 +8,13 @@
 |---|---|---|---|---|---|---|---|---|
 | [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | 455 | 16 | 570 | 4 | 1 | 1 hours ago | 1d 17h 30m 2s |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | 258 | 3 | 261 | 5 | 1 | 5 days ago | 6d 15h 39m 16s |
-| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | 250 | 14 | 28066 | 4 | 1 | just now | 29d 14h 5m 40s |
+| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | 250 | 14 | 28066 | 4 | 1 | 5 minutes ago | 29d 14h 5m 40s |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | 228 | 14 | 109 | 5 | 1 | 15 hours ago | 16d 6h 8m 36s |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | 224 | 8 | 842 | 3 | 1 | 2 hours ago | 44d 20h 47m 38s |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | 177 | 6 | 630 | 2 | 1 | 15 hours ago | 18d 13h 57m 12s |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | 65 | 6 | 37 | 1 | 1 | 6 hours ago | No Issues |
 | [lws](https://github.com/fabriziosalmi/lws) | linux (containers) web services | 57 | 5 | 96 | 2 | 1 | 3 days ago | No Issues |
-| [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | 43 | 17 | 779 | 3 | 1 | 17 hours ago | 298d 4h 23m 11s |
+| [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | 43 | 17 | 779 | 3 | 1 | 18 hours ago | 298d 4h 23m 11s |
 | [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | 26 | 3 | 71 | 2 | 1 | 20 hours ago | No Issues |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | 25 | 2 | 90 | 2 | 0 | 2 weeks ago | No Issues |
 | [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | 24 | 1 | 109 | 1 | 0 | 4 days ago | No Issues |
@@ -40,7 +40,7 @@
 | [blockchain-poc](https://github.com/fabriziosalmi/blockchain-poc) | Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface | 1 | 0 | 16 | 1 | 1 | 2 weeks ago | 506d 1h 59m 41s |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github Actions | 1 | 1 | 12 | 1 | 1 | 2 weeks ago | 538d 5h 6m 11s |
 | [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | 1 | 0 | 5 | 1 | 0 | 2 weeks ago | No Issues |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories (starred by others) | 1 | 0 | 415 | 2 | 0 | 3 minutes ago | No Issues |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories (starred by others) | 1 | 0 | 419 | 2 | 0 | 2 minutes ago | No Issues |
 | [rivoluzioneinformatica-website](https://github.com/fabriziosalmi/rivoluzioneinformatica-website) | https://www.rivoluzioneinformatica.org | 1 | 0 | 41 | 1 | 0 | 5 months ago | No Issues |
 | [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | 1 | 0 | 630 | 2 | 0 | 17 hours ago | No Issues |
 | [wafcontrol](https://github.com/fabriziosalmi/wafcontrol) | Cloudflare WAF Settings Automation using GitHub Actions | 1 | 1 | 59 | 1 | 0 | 1 months ago | No Issues |

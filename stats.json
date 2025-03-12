@@ -35,7 +35,7 @@
             "commit_count": 28066,
             "contributors_count": 4,
             "last_update": "2025-03-12T22:22:09+00:00",
-            "last_update_str": "just now",
+            "last_update_str": "5 minutes ago",
             "avg_issue_resolution_time": 2556340.9160305345,
             "issues_count": 1
         },
@@ -113,7 +113,7 @@
             "commit_count": 779,
             "contributors_count": 3,
             "last_update": "2025-03-12T04:23:42+00:00",
-            "last_update_str": "17 hours ago",
+            "last_update_str": "18 hours ago",
             "avg_issue_resolution_time": 25762991.0,
             "issues_count": 1
         },
@@ -448,10 +448,10 @@
             "description": "My repositories (starred by others)",
             "stars": 1,
             "forks": 0,
-            "commit_count": 415,
+            "commit_count": 419,
             "contributors_count": 2,
-            "last_update": "2025-03-12T22:19:55+00:00",
-            "last_update_str": "3 minutes ago",
+            "last_update": "2025-03-12T22:25:38+00:00",
+            "last_update_str": "2 minutes ago",
             "avg_issue_resolution_time": 0,
             "issues_count": 0
         },

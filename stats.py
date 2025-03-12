@@ -91,6 +91,7 @@ def get_starred_repositories(username, token=None, console=None):
     page = 1
     per_page = 100
     all_repo_names = []
+    repo_data = {}
 
     try:
         while True:
@@ -105,11 +106,10 @@ def get_starred_repositories(username, token=None, console=None):
                     # Handle rate limiting explicitly using Retry-After header.
                     if response.status_code == 403 and "Retry-After" in response.headers:
                         retry_after = int(response.headers["Retry-After"])
-                        console.print(f"[yellow]Secondary Rate Limit. Waiting {retry_after}s before retrying page {page}.[/yellow]")
+                        console.print(f"[yellow]Secondary Rate Limit on repo list. Waiting {retry_after}s before retrying page {page}.[/yellow]")
                         time.sleep(retry_after)  # Wait the recommended time
                         continue # Retry the same request
-
-                    break  # If successful, break out of retry loop
+                    break
 
                 except requests.exceptions.RequestException as e:
                     console.print(f"[yellow]Request failed (page {page}, attempt {retry_count}/{max_retries}): {e}. Retrying in {2 ** retry_count}s.[/yellow]")
@@ -125,92 +125,138 @@ def get_starred_repositories(username, token=None, console=None):
 
             for repo in track(repos, description=f"Processing repositories (page {page})...", console=console, transient=True):
                 if repo.get('stargazers_count', 0) > 0:
-                    try:
-                        # --- Commit, Contributors ---
-                        commits_url = repo['commits_url'].replace('{/sha}', '')
-                        commits_response = requests.get(commits_url, headers=headers, params={'per_page': 1}, timeout=5)
-                        commits_response.raise_for_status()
-                        if 'Link' in commits_response.headers:
-                            last_page_link = commits_response.headers['Link'].split(',')[-1]
-                            commit_count = int(last_page_link.split('>; rel="last"')[0].split('page=')[-1])
-                        elif commits_response.status_code == 200:
-                            commit_count = len(commits_response.json())
-                        else:
-                            commit_count = 0
-                            console.print(f"[yellow]Warning: Could not retrieve commit count for {repo['name']}: {commits_response.status_code}[/yellow]")
+                    full_name = repo.get('full_name')
+                    repo_data[full_name] = {
+                        'url': repo.get('html_url', 'N/A'),
+                        'name': repo.get('name', 'N/A'),
+                        'description': repo.get('description', "No description"),
+                        'stars': repo.get('stargazers_count', 0),
+                        'forks': repo.get('forks_count', 0),
+                        'commit_count': 0,
+                        'contributors_count': 0,
+                        'last_update': None,
+                        'last_update_str': "Unknown",
+                        'avg_issue_resolution_time': None,
+                        'issues_count': 0,
+                        'processed': False # Flag to indicate if detailed info is fetched
+                    }
 
-                        contributors_url = repo['contributors_url']
-                        contributors_response = requests.get(contributors_url, headers=headers, params={'per_page': 1, 'anon': 'true'}, timeout=5)
-                        contributors_response.raise_for_status()
-                        if 'Link' in contributors_response.headers:
-                            last_page_link = contributors_response.headers['Link'].split(',')[-1]
-                            contributors_count = int(last_page_link.split('>; rel="last"')[0].split('page=')[-1])
-                        elif contributors_response.status_code == 200:
-                            contributors_count = len(contributors_response.json())
-                        else:
-                            contributors_count = 0
-                            console.print(f"[yellow]Warning: Could not retrieve contributors count for {repo['name']}: {contributors_response.status_code}[/yellow]")
-
-                        # --- Last Update ---
-                        updated_at_str = repo.get('updated_at')
-                        created_at_str = repo.get('created_at')
-                        if updated_at_str and created_at_str:
-                            updated_at = datetime.datetime.fromisoformat(updated_at_str.replace('Z', '+00:00'))
-                            created_at = datetime.datetime.fromisoformat(created_at_str.replace('Z', '+00:00'))
-                            last_update = get_human_readable_time(updated_at)
-                        else:
-                            last_update = "Unknown"
-                            console.print(f"[yellow]Warning: Missing update/creation date for {repo.get('name', 'Unknown')}[/yellow]")
-
-                        current_stars = repo.get('stargazers_count', 0)
-                        total_stars += current_stars
-
-                        # --- Average Issue Resolution Time ---
-                        avg_resolution_time = get_average_issue_resolution_time(repo['html_url'], headers, console)
-
-                        # --- Get the number of closed issues ---
-                        issues_count = 0
-                        if avg_resolution_time is not None:
-                            issues_url = repo['html_url'].replace("https://github.com/", "https://api.github.com/repos/") + "/issues?state=closed"
-                            try:
-                                issues_response = requests.get(issues_url + "&page=1&per_page=1", headers=headers, timeout=5)
-                                issues_response.raise_for_status()
-                                if 'Link' in issues_response.headers:
-                                    last_page_link = issues_response.headers['Link'].split(',')[-1]
-                                    issues_count = int(last_page_link.split('>; rel="last"')[0].split('page=')[-1])
-                                elif issues_response.status_code == 200:
-                                    issues_count = len(issues_response.json())
-                            except requests.exceptions.RequestException:
-                                pass
-
-                        repo_info = {
-                            'url': repo.get('html_url', 'N/A'),
-                            'name': repo.get('name', 'N/A'),
-                            'description': repo.get('description', "No description"),
-                            'stars': current_stars,
-                            'forks': repo.get('forks_count', 0),
-                            'commit_count': commit_count,
-                            'contributors_count': contributors_count,
-                            'last_update': updated_at.isoformat(),
-                            'last_update_str': last_update,
-                            'avg_issue_resolution_time': avg_resolution_time,
-                            'issues_count': issues_count,
-                        }
-                        starred_repos.append(repo_info)
-                        all_repo_names.append(repo.get('full_name'))
-
-                    except requests.exceptions.RequestException as e:
-                        console.print(f"  [yellow]Warning: Skipping repository {repo.get('name', 'Unknown')} due to error:[/yellow] {e}")
-                        continue
+                    all_repo_names.append(full_name)
+                    total_stars += repo_data[full_name]['stars']
 
             page += 1
             time.sleep(0.5)
+
+        # ---  Process each repository to get detailed info. Ensure every repo is checked
+        for full_name in track(all_repo_names, description="Fetching detailed info", console=console):
+            if not repo_data[full_name]['processed']:
+                try:
+                    repo_info = repo_data[full_name] #access information
+
+                    # --- Commit, Contributors ---
+                    commits_url = f"https://api.github.com/repos/{full_name}/commits"
+                    commits_response = None  # Initialize outside the try block
+                    max_repo_retries = 5
+                    for repo_retry in range(max_repo_retries):
+                        try:
+                            commits_response = requests.get(commits_url, headers=headers, params={'per_page': 1}, timeout=5)
+                            commits_response.raise_for_status()
+                            break  # Success, exit the retry loop
+                        except requests.exceptions.RequestException as e:
+                            console.print(f"  [yellow]Retrying commit count for {full_name} ({repo_retry+1}/{max_repo_retries}): {e}[/yellow]")
+                            time.sleep(2 ** repo_retry)
+                    else: # If all retries fail
+                        console.print(f"[yellow]Failed to retrieve commit count for {full_name} after multiple retries.[/yellow]")
+                        continue  # Skip to next repo after too many failures
+
+                    if 'Link' in commits_response.headers:
+                        last_page_link = commits_response.headers['Link'].split(',')[-1]
+                        commit_count = int(last_page_link.split('>; rel="last"')[0].split('page=')[-1])
+                    elif commits_response.status_code == 200:
+                        commit_count = len(commits_response.json())
+                    else:
+                        commit_count = 0
+                        console.print(f"[yellow]Warning: Could not retrieve commit count for {full_name}: {commits_response.status_code}[/yellow]")
+
+                    repo_info['commit_count'] = commit_count
+
+                    contributors_url = f"https://api.github.com/repos/{full_name}/contributors"
+                    contributors_response = None  # Initialize outside the try block
+                    for repo_retry in range(max_repo_retries):
+                        try:
+                            contributors_response = requests.get(contributors_url, headers=headers, params={'per_page': 1, 'anon': 'true'}, timeout=5)
+                            contributors_response.raise_for_status()
+                            break
+                        except requests.exceptions.RequestException as e:
+                            console.print(f"  [yellow]Retrying contributor count for {full_name} ({repo_retry+1}/{max_repo_retries}): {e}[/yellow]")
+                            time.sleep(2 ** repo_retry)
+
+                    else:
+                        console.print(f"[yellow]Failed to retrieve contributor count for {full_name} after multiple retries.[/yellow]")
+                        continue
+
+                    if 'Link' in contributors_response.headers:
+                        last_page_link = contributors_response.headers['Link'].split(',')[-1]
+                        contributors_count = int(last_page_link.split('>; rel="last"')[0].split('page=')[-1])
+                    elif contributors_response.status_code == 200:
+                        contributors_count = len(contributors_response.json())
+                    else:
+                        contributors_count = 0
+                        console.print(f"[yellow]Warning: Could not retrieve contributors count for {full_name}: {contributors_response.status_code}[/yellow]")
+
+                    repo_info['contributors_count'] = contributors_count
+
+                    # --- Last Update ---
+                    repo_url = f"https://api.github.com/repos/{full_name}" # get more repo data
+                    repo_response = requests.get(repo_url, headers=headers, timeout=10)
+                    repo_response.raise_for_status()
+                    repo_data_details = repo_response.json() # get details
+                    updated_at_str = repo_data_details.get('updated_at')
+                    created_at_str = repo_data_details.get('created_at')
+
+                    if updated_at_str and created_at_str:
+                        updated_at = datetime.datetime.fromisoformat(updated_at_str.replace('Z', '+00:00'))
+                        created_at = datetime.datetime.fromisoformat(created_at_str.replace('Z', '+00:00'))
+                        last_update = get_human_readable_time(updated_at)
+                        repo_info['last_update'] = updated_at.isoformat()
+                        repo_info['last_update_str'] = last_update
+                    else:
+                        repo_info['last_update_str'] = "Unknown"
+                        console.print(f"[yellow]Warning: Missing update/creation date for {full_name}[/yellow]")
+
+                    # --- Average Issue Resolution Time ---
+                    avg_resolution_time = get_average_issue_resolution_time(repo_info['url'], headers, console) #use data
+
+                    repo_info['avg_issue_resolution_time'] = avg_resolution_time
+
+                    # --- Get the number of closed issues ---
+                    issues_count = 0
+                    if avg_resolution_time is not None:
+                        issues_url = repo_info['url'].replace("https://github.com/", "https://api.github.com/repos/") + "/issues?state=closed"
+                        try:
+                            issues_response = requests.get(issues_url + "&page=1&per_page=1", headers=headers, timeout=5)
+                            issues_response.raise_for_status()
+                            if 'Link' in issues_response.headers:
+                                last_page_link = issues_response.headers['Link'].split(',')[-1]
+                                issues_count = int(last_page_link.split('>; rel="last"')[0].split('page=')[-1])
+                            elif issues_response.status_code == 200:
+                                issues_count = len(issues_response.json())
+                        except requests.exceptions.RequestException:
+                            pass
+
+                    repo_info['issues_count'] = issues_count
+                    repo_info['processed'] = True
+
+                except requests.exceptions.RequestException as e:
+                    console.print(f"  [yellow]Warning: General error processing {full_name}: {e}[/yellow]")
+                    continue  # Process the next repo
 
     except Exception as e:
         console.print(f"[red]An unexpected error occurred:[/red] {e}")
         return None, None, []
 
-    # Sort the repositories.  Stars are the primary sort key (descending).
+    # --- Sort the repositories after all info is gathered
+    starred_repos = list(repo_data.values())
     starred_repos.sort(key=lambda repo: repo['stars'], reverse=True)
 
     # Get top 10 repos by stars for the chart
