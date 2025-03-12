@@ -200,7 +200,7 @@ def get_starred_repositories(username, token=None, console=None):
                         all_repo_names.append(repo.get('full_name'))
 
                     except requests.exceptions.RequestException as e:
-                        console.print(f"  [yellow]Warning: Skipping repository {repo.get('name', 'Unknown')} due to error:[/yellow] {e}")
+                        console.print(f"  [yellow]Warning: Skipping repository {repo.get('name', 'Unknown')} due to error:[/yellow]")
                         continue
 
             page += 1
@@ -267,18 +267,12 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
 
-                # Create Shields.io badges (consistent style)
-                last_update_badge = f"![Last Update](https://img.shields.io/date/{repo['last_update']}?color=brightgreen&style=flat-square&label=Last%20Update)"
+                # Markdown table with normal text
+                last_update_text = repo['last_update_str']
 
-                if repo['avg_issue_resolution_time'] is None:
-                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=Resolution&message=N%2FA&color=lightgrey&style=flat-square)"
-                elif repo['avg_issue_resolution_time'] == 0:
-                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=Resolution&message=No%20Issues&color=blue&style=flat-square)"
-                else:
-                    resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time']).replace(' ', '%20')
-                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/static/v1?label=Resolution&message={resolution_time_str}&color=blue&style=flat-square)"
+                resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time'])
 
-                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['forks']} | {repo['commit_count']} | {repo['contributors_count']} | {repo['issues_count']} | {last_update_badge} | {resolution_badge} |\n")
+                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['forks']} | {repo['commit_count']} | {repo['contributors_count']} | {repo['issues_count']} | {last_update_text} | {resolution_time_str} |\n")
         print(f"Markdown table saved to {filename}")
 
     except Exception as e:
