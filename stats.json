@@ -48,7 +48,20 @@
             "commit_count": 28,
             "contributors_count": 1,
             "last_update": "2025-02-09T22:14:21+00:00",
-            "last_update_str": "3 weeks ago",
+            "last_update_str": "1 months ago",
+            "avg_issue_resolution_time": 0,
+            "issues_count": 0
+        },
+        {
+            "url": "https://github.com/fabriziosalmi/caddy-adf",
+            "name": "caddy-adf",
+            "description": "Yet another caddy WAF exploration",
+            "stars": 3,
+            "forks": 0,
+            "commit_count": 100,
+            "contributors_count": 1,
+            "last_update": "2025-03-09T18:16:42+00:00",
+            "last_update_str": "2 days ago",
             "avg_issue_resolution_time": 0,
             "issues_count": 0
         },
@@ -61,22 +74,9 @@
             "commit_count": 61,
             "contributors_count": 2,
             "last_update": "2025-02-09T20:35:51+00:00",
-            "last_update_str": "3 weeks ago",
+            "last_update_str": "1 months ago",
             "avg_issue_resolution_time": 0,
             "issues_count": 1
-        },
-        {
-            "url": "https://github.com/fabriziosalmi/caddy-adf",
-            "name": "caddy-adf",
-            "description": "Yet another caddy WAF exploration",
-            "stars": 2,
-            "forks": 0,
-            "commit_count": 100,
-            "contributors_count": 1,
-            "last_update": "2025-02-09T15:37:16+00:00",
-            "last_update_str": "3 weeks ago",
-            "avg_issue_resolution_time": 0,
-            "issues_count": 0
         },
         {
             "url": "https://github.com/fabriziosalmi/audiogen",
@@ -121,12 +121,12 @@
             "url": "https://github.com/fabriziosalmi/caddy-waf",
             "name": "caddy-waf",
             "description": "Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)",
-            "stars": 446,
+            "stars": 451,
             "forks": 16,
             "commit_count": 570,
             "contributors_count": 4,
-            "last_update": "2025-03-07T12:03:19+00:00",
-            "last_update_str": "12 hours ago",
+            "last_update": "2025-03-11T19:21:06+00:00",
+            "last_update_str": "5 hours ago",
             "avg_issue_resolution_time": 149402.5294117647,
             "issues_count": 1
         },
@@ -134,12 +134,12 @@
             "url": "https://github.com/fabriziosalmi/blacklists",
             "name": "blacklists",
             "description": "Hourly updated domains blacklist \ud83d\udeab ",
-            "stars": 243,
+            "stars": 247,
             "forks": 14,
-            "commit_count": 27841,
+            "commit_count": 28022,
             "contributors_count": 4,
-            "last_update": "2025-03-07T23:21:59+00:00",
-            "last_update_str": "1 hours ago",
+            "last_update": "2025-03-12T00:34:23+00:00",
+            "last_update_str": "34 minutes ago",
             "avg_issue_resolution_time": 2556340.9160305345,
             "issues_count": 1
         },
@@ -170,5 +170,5 @@
             "issues_count": 0
         }
     ],
-    "total_stars": 752
+    "total_stars": 762
 }
