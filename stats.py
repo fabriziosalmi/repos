@@ -326,7 +326,7 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
 
 if __name__ == '__main__':
     username = 'fabriziosalmi'
-    github_token = os.environ.get('GITHUB_TOKEN') # Get the token from environment variable
+    github_token = os.environ.get('MY_PAT')  # Get the PAT from environment variable
 
     custom_theme = Theme({
         "repo_name": "bold cyan",
