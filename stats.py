@@ -211,18 +211,10 @@ def get_starred_repositories(username, token=None, console=None):
         return None, None, []
 
     # Sort the repositories.  Stars are the primary sort key (descending).
-    starred_repos.sort(key=lambda repo: (
-        repo['stars'],
-        repo['forks'],
-        datetime.datetime.fromisoformat(repo['last_update']),
-        repo['contributors_count'],
-        repo['avg_issue_resolution_time'] if repo['avg_issue_resolution_time'] is not None else float('inf'),
-        repo['name'].lower()
-        ), reverse=True)
-    starred_repos.sort(key=lambda x: x['avg_issue_resolution_time'] if x['avg_issue_resolution_time'] is not None else float('inf'))
+    starred_repos.sort(key=lambda repo: repo['stars'], reverse=True)
 
     # Get top 10 repos by stars for the chart
-    top_10_repos = sorted(starred_repos, key=lambda x: x['stars'], reverse=True)[:10]
+    top_10_repos = starred_repos[:10]
     top_10_repo_names = [repo['name'] for repo in top_10_repos]
 
     return starred_repos, total_stars, top_10_repo_names
