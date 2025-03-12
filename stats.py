@@ -261,24 +261,24 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
             f.write(f"![Star History Chart]({chart_url})\n\n")
 
-            f.write("| Repository | Description | Stars | Forks | Commits | Contributors | Last Update | Avg. Issue Resolution |\n")
-            f.write("|---|---|---|---|---|---|---|---|\n")
+            f.write("| Repository | Description | Stars | Forks | Commits | Contributors | Issues | Last Update | Avg. Issue Resolution |\n")
+            f.write("|---|---|---|---|---|---|---|---|---|\n")
 
             for repo in repositories:
                 description = repo['description'].replace("|", "\\|").replace("\n", "<br>")
 
                 # Create Shields.io badges (consistent style)
-                last_update_badge = f"![Last Update](https://img.shields.io/static/v1?label=&message={repo['last_update_str'].replace(' ', '%20')}&color=brightgreen&style=flat-square)"
+                last_update_badge = f"![Last Update](https://img.shields.io/date/{repo['last_update']}?color=brightgreen&style=flat-square&label=Last%20Update)"
 
                 if repo['avg_issue_resolution_time'] is None:
-                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=&message=N%2FA&color=lightgrey&style=flat-square)"
+                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=Resolution&message=N%2FA&color=lightgrey&style=flat-square)"
                 elif repo['avg_issue_resolution_time'] == 0:
-                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=&message=No%20Issues&color=blue&style=flat-square)"
+                    resolution_badge = "![Avg. Issue Resolution](https://img.shields.io/static/v1?label=Resolution&message=No%20Issues&color=blue&style=flat-square)"
                 else:
                     resolution_time_str = format_resolution_time(repo['avg_issue_resolution_time']).replace(' ', '%20')
-                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/static/v1?label=&message={resolution_time_str}&color=blue&style=flat-square)"
+                    resolution_badge = f"![Avg. Issue Resolution](https://img.shields.io/static/v1?label=Resolution&message={resolution_time_str}&color=blue&style=flat-square)"
 
-                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['forks']} | {repo['commit_count']} | {repo['contributors_count']} | {last_update_badge} | {resolution_badge} |\n")
+                f.write(f"| [{repo['name']}]({repo['url']}) | {description} | {repo['stars']} | {repo['forks']} | {repo['commit_count']} | {repo['contributors_count']} | {repo['issues_count']} | {last_update_badge} | {resolution_badge} |\n")
         print(f"Markdown table saved to {filename}")
 
     except Exception as e:
@@ -299,6 +299,7 @@ if __name__ == '__main__':
         "header": "bold white on blue",
         "total_stars": "bold yellow",
         "avg_resolution": "bold green",
+        "issues": "purple"
     })
     console = Console(theme=custom_theme)
 
@@ -313,6 +314,7 @@ if __name__ == '__main__':
         table.add_column("Forks", style="forks", justify="right")
         table.add_column("Commits", style="commits", justify="right")
         table.add_column("Contributors", style="contributors", justify="right")
+        table.add_column("Issues", style="issues", justify="right")
         table.add_column("Last Update", style="last_update", justify="right")
         table.add_column("Avg. Issue Resolution", style="avg_resolution", justify="right")
 
@@ -326,6 +328,7 @@ if __name__ == '__main__':
                 str(repo['forks']),
                 str(repo['commit_count']),
                 str(repo['contributors_count']),
+                str(repo['issues_count']),
                 repo['last_update_str'],
                 resolution_time_str,
             )
