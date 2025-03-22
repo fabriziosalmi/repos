@@ -2,13 +2,12 @@
 
 2001 stargazers ❤️
 
-![Star History Chart](https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/blacklists,fabriziosalmi/UglyFeed,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/DevGPT,fabriziosalmi/lws,fabriziosalmi/websites-monitor,fabriziosalmi/caddy-mib&type=Date&theme=dark)
+![Star History Chart](https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/UglyFeed,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/DevGPT,fabriziosalmi/lws,fabriziosalmi/websites-monitor,fabriziosalmi/caddy-mib&type=Date&theme=dark)
 
 | Repository | Description | Stars | Forks | Commits | Contributors | Issues | Last Update | Avg. Issue Resolution |
 |---|---|---|---|---|---|---|---|---|
 | [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | 461 | 17 | 572 | 4 | 1 | 16 hours ago | 1d 17h 30m 2s |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | 261 | 4 | 261 | 5 | 1 | 16 hours ago | 6d 15h 39m 16s |
-| [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫  | 254 | 17 | 28495 | 4 | 1 | 52 minutes ago | 28d 22h 30m 40s |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | 230 | 10 | 842 | 3 | 1 | 14 hours ago | 44d 20h 47m 38s |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | 229 | 14 | 114 | 6 | 1 | 2 days ago | 18d 14h 19m 22s |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | 179 | 6 | 632 | 2 | 1 | 3 days ago | 18d 13h 57m 12s |
