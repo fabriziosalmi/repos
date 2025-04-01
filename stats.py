@@ -302,6 +302,8 @@ def create_markdown_table(repositories, total_stars, repo_names, username, filen
             f.write(f"# My GitHub Repositories\n\n")
             f.write(f"{total_stars} stargazers ❤️\n\n")
 
+            f.write(f"![fab's GitHub stats](https://github-readme-stats.vercel.app/api?username=fabriziosalmi)\n\n")
+
             # Star History Chart (Top 10)
             repo_list = ",".join([f"{username}/{name}" for name in repo_names])
             chart_url = f"https://api.star-history.com/svg?repos={repo_list}&type=Date&theme=dark"
