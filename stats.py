@@ -1,17 +1,17 @@
+# -*- coding: utf-8 -*-
 import os
 import requests
 import datetime
 import time
 import json
-# from collections import defaultdict # Not used, can be removed
 from rich.console import Console
 from rich.table import Table
 from rich.progress import track
 from rich.theme import Theme
-# from rich.markdown import Markdown # Not used, can be removed
 from rich.text import Text
-import logging # Added for better logging
-from urllib.parse import quote as url_quote # For safely quoting repo names in URLs
+import logging
+from urllib.parse import urlparse, parse_qs # IMPORT parse_qs HERE
+from urllib.parse import quote as url_quote
 
 # --- Configuration ---
 # Configure logging for better debugging and information
@@ -173,11 +173,13 @@ def get_count_from_link_header(response):
     # Determine per_page from the request URL itself if possible
     if response.request and response.request.url:
         try:
-            query_params = requests.utils.urlparse(response.request.url).query
-            parsed_params = requests.compat.parse_qs(query_params)
+            query_params = urlparse(response.request.url).query
+            # FIX: Use parse_qs from urllib.parse
+            parsed_params = parse_qs(query_params)
             if 'per_page' in parsed_params:
                  request_per_page = int(parsed_params['per_page'][0])
-        except (ValueError, KeyError, IndexError):
+        except (ValueError, KeyError, IndexError, TypeError): # Added TypeError
+            logging.warning(f"Could not parse per_page from request URL: {response.request.url}", exc_info=True)
             pass # Ignore if cannot parse
 
     for link in links:
@@ -188,15 +190,16 @@ def get_count_from_link_header(response):
 
             if rel_part == 'rel="last"':
                 try:
-                    query_params = requests.utils.urlparse(url_part).query
-                    parsed_params = requests.compat.parse_qs(query_params)
+                    query_params = urlparse(url_part).query
+                    # FIX: Use parse_qs from urllib.parse
+                    parsed_params = parse_qs(query_params)
                     if 'page' in parsed_params:
                         last_page_num = int(parsed_params['page'][0])
                     elif 'page=' in url_part: # Fallback parsing
                          last_page_num = int(url_part.split('page=')[-1].split('&')[0])
                     break # Found last link, no need to check others
-                except (ValueError, IndexError, KeyError) as e:
-                    logging.warning(f"Could not parse page number from 'last' link: {link}. Error: {e}")
+                except (ValueError, IndexError, KeyError, TypeError) as e: # Added TypeError
+                    logging.warning(f"Could not parse page number from 'last' link: {link}. Error: {e}", exc_info=True)
                     return None # Cannot determine count reliably
 
     if last_page_num is not None:
@@ -866,10 +869,14 @@ if __name__ == '__main__':
     console.print(f"[info]Script finished in {end_time - start_time:.2f} seconds.[/info]")
 
     # Optional: Save console output to HTML/SVG (requires record=True for Console)
-    # if repo_count is not None and repo_count > 0:
+    # if user_repositories is not None: # Check repo_count instead? Check user_repositories is not None
     #     try:
     #         html_filename = f"{output_prefix}_console_output.html"
-    #         console.save_html(html_filename, theme=custom_theme)
-    #         print(f"Console output saved to {html_filename}")
+    #         # Ensure console was created with record=True for saving
+    #         if console.record:
+    #             console.save_html(html_filename, theme=custom_theme)
+    #             print(f"Console output saved to {html_filename}")
+    #         else:
+    #              print("[warning]Cannot save console output, Console was not created with record=True.[/warning]")
     #     except Exception as e:
     #         print(f"Could not save console output to HTML: {e}")
