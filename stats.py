@@ -870,7 +870,19 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username)
             </div>
         </div>
         
-        <div class="card mb-4" id="star-history">            <div class="card-header bg-primary text-white">                <i class="bi bi-graph-up me-2"></i>Star History (Top Repositories)            </div>            <div class="card-body">                <div class="chart-container">    """        # Add the star history chart if we have repos    if top_repo_full_names:        num_chart_repos = min(len(top_repo_full_names), 10)        chart_repo_names = top_repo_full_names[:num_chart_repos]        repo_list_param = ",".join(url_quote(name) for name in chart_repo_names)
+        <div class="card mb-4" id="star-history">
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-graph-up me-2"></i>Star History (Top Repositories)
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+    """
+    
+    # Add the star history chart if we have repos
+    if top_repo_full_names:
+        num_chart_repos = min(len(top_repo_full_names), 10)
+        chart_repo_names = top_repo_full_names[:num_chart_repos]
+        repo_list_param = ",".join(url_quote(name) for name in chart_repo_names)
         chart_url = f"https://api.star-history.com/svg?repos={repo_list_param}&type=Date&theme=light"
         html_content += f"""
                     <img src="{chart_url}" class="img-fluid" alt="Star History Chart">
