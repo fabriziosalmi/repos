@@ -629,10 +629,15 @@ def format_resolution_time(seconds):
 def create_html_report(repositories, total_stars, top_repo_full_names, username):
     """Creates an HTML report with responsive design and interactive elements."""
     # Create docs directory if it doesn't exist
-    docs_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    docs_dir = os.path.join(script_dir, "docs")
     os.makedirs(docs_dir, exist_ok=True)
     
     html_path = os.path.join(docs_dir, "index.html")
+    
+    # Log the absolute path for clarity
+    abs_html_path = os.path.abspath(html_path)
+    logging.info(f"Will save HTML report to absolute path: {abs_html_path}")
     
     # HTML template with CSS and JavaScript
     html_content = f"""<!DOCTYPE html>
@@ -1058,12 +1063,12 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username)
     try:
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
-        logging.info(f"HTML report saved to {html_path}")
-        print(f"HTML report saved to {html_path}")
+        logging.info(f"HTML report successfully saved to: {abs_html_path}")
+        print(f"HTML report saved to: {abs_html_path}")
         return True
     except IOError as e:
-        logging.error(f"Error writing HTML file: {e}")
-        print(f"Error creating HTML report: {e}")
+        logging.error(f"Error writing HTML file to {abs_html_path}: {e}")
+        print(f"Error creating HTML report at {abs_html_path}: {e}")
         return False
 
 def create_markdown_table(repositories, total_stars, top_repo_full_names, username, filename="github_stats.md"):
