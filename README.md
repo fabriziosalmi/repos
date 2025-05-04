@@ -6,6 +6,8 @@ Total stars across owned repositories scanned: **1,866** ⭐
 
 ![fabriziosalmi's GitHub stats](https://github-readme-stats.vercel.app/api?username=fabriziosalmi&show_icons=true&theme=github_dark&hide_border=true&cache_seconds=3600)
 
+![fabriziosalmi's GitHub streak]([![GitHub Streak](https://streak-stats.demolab.com/?user=fabriziosalmi)](https://git.io/streak-stats))
+
 ## Star History (Top 10 Repositories by Stars)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/UglyFeed,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/DevGPT,fabriziosalmi/lws,fabriziosalmi/websites-monitor,fabriziosalmi/caddy-mib,fabriziosalmi/iamnotacoder&type=Date&theme=dark)](https://star-history.com/#fabriziosalmi/caddy-waf&fabriziosalmi/patterns&fabriziosalmi/UglyFeed&fabriziosalmi/proxmox-vm-autoscale&fabriziosalmi/proxmox-lxc-autoscale&fabriziosalmi/DevGPT&fabriziosalmi/lws&fabriziosalmi/websites-monitor&fabriziosalmi/caddy-mib&fabriziosalmi/iamnotacoder&Date)
@@ -45,7 +47,7 @@ Total stars across owned repositories scanned: **1,866** ⭐
 | [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf | 2 | 0 | 61 | 2 | 1 | 2 months ago | No Closed Issues |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github Actions | 2 | 2 | 12 | 1 | 1 | 2 months ago | 538d 5h 6m 11s |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | 2 | 1 | 45 | 1 | 0 | 10 months ago | No Closed Issues |
-| [repos](https://github.com/fabriziosalmi/repos) | My open source repositories | 2 | 0 | 472 | 2 | 0 | 21 hours ago | No Closed Issues |
+| [repos](https://github.com/fabriziosalmi/repos) | My open source repositories | 2 | 0 | 474 | 2 | 0 | 1 minutes ago | No Closed Issues |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | 2 | 0 | 46 | 2 | 1 | 1 months ago | No Closed Issues |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | 1 | 1 | 147 | 2 | 0 | 5 years ago | No Closed Issues |
 | [audiogen](https://github.com/fabriziosalmi/audiogen) | AI-Powered Sound Generation & Classification. | 1 | 1 | 13 | 1 | 0 | 2 months ago | No Closed Issues |
