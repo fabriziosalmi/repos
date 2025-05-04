@@ -628,14 +628,28 @@ def format_resolution_time(seconds):
 
 def create_html_report(repositories, total_stars, top_repo_full_names, username):
     """Creates an HTML report with responsive design and interactive elements."""
-    # Create docs directory if it doesn't exist
+    # Get the script directory path
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    logging.info(f"Script directory: {script_dir}")
+    
+    # Try to create docs directory with explicit handling
     docs_dir = os.path.join(script_dir, "docs")
-    os.makedirs(docs_dir, exist_ok=True)
+    try:
+        if not os.path.exists(docs_dir):
+            logging.info(f"Creating docs directory at: {docs_dir}")
+            os.makedirs(docs_dir, exist_ok=True)
+            if not os.path.exists(docs_dir):
+                logging.error(f"Failed to create docs directory at: {docs_dir}")
+        else:
+            logging.info(f"Docs directory already exists at: {docs_dir}")
+    except Exception as e:
+        logging.error(f"Error creating docs directory: {e}")
+        # Fall back to using the script directory if docs directory creation fails
+        logging.info("Falling back to using script directory for HTML file")
+        docs_dir = script_dir
     
+    # Set HTML file path - use docs/index.html or fallback to ./index.html in script directory
     html_path = os.path.join(docs_dir, "index.html")
-    
-    # Log the absolute path for clarity
     abs_html_path = os.path.abspath(html_path)
     logging.info(f"Will save HTML report to absolute path: {abs_html_path}")
     
@@ -1061,103 +1075,56 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username)
     """
     
     try:
+        # Create parent directory if it doesn't exist (double-check)
+        parent_dir = os.path.dirname(html_path)
+        if not os.path.exists(parent_dir):
+            os.makedirs(parent_dir, exist_ok=True)
+            logging.info(f"Created parent directory: {parent_dir}")
+        
         with open(html_path, 'w', encoding='utf-8') as f:
-            f.write(html_content)
-        logging.info(f"HTML report successfully saved to: {abs_html_path}")
-        print(f"HTML report saved to: {abs_html_path}")
-        return True
+            bytes_written = f.write(html_content)
+            logging.info(f"HTML report successfully saved to: {abs_html_path} ({bytes_written} bytes written)")
+        
+        # Verify file was created
+        if os.path.exists(html_path):
+            file_size = os.path.getsize(html_path)
+            logging.info(f"Verified file exists: {html_path} (Size: {file_size} bytes)")
+            print(f"HTML report saved to: {abs_html_path}")
+            
+            # For GitHub Actions: Try to list directory contents for debugging
+            try:
+                logging.info(f"Contents of directory {os.path.dirname(html_path)}:")
+                for f in os.listdir(os.path.dirname(html_path)):
+                    logging.info(f"  - {f}")
+            except Exception as e:
+                logging.warning(f"Could not list directory contents: {e}")
+            
+            return True
+        else:
+            logging.error(f"File was not created at: {html_path}")
+            print(f"Error: File was not created at: {html_path}")
+            return False
     except IOError as e:
         logging.error(f"Error writing HTML file to {abs_html_path}: {e}")
         print(f"Error creating HTML report at {abs_html_path}: {e}")
-        return False
-
-def create_markdown_table(repositories, total_stars, top_repo_full_names, username, filename="github_stats.md"):
-    """Creates a Markdown file with summary, chart, and detailed table."""
-    logging.info(f"Generating Markdown report '{filename}'...")
-    try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(f"# GitHub Repository Stats for {username}\n\n")
-            f.write(f"Total stars across owned repositories scanned: **{total_stars:,}** ⭐\n\n") # Use markdown bold and formatting
-
-            # GitHub Readme Stats Card (Dynamic Username)
-            f.write(f"## Overall Stats\n\n")
-            # Added cache_seconds=3600 (1 hour) to reduce load on vercel app
-            # Use a theme consistent with potential dark mode READMEs
-            stats_card_url = f"https://github-readme-stats.vercel.app/api?username={username}&show_icons=true&theme=github_dark&hide_border=true&cache_seconds=3600"
-            streak = f"https://streak-stats.demolab.com/?user={username}"
-            f.write(f"![{username}'s GitHub stats]({stats_card_url})\n\n")
-            f.write(f"![{username}'s GitHub streak]({streak})\n\n")
-
-            # Star History Chart (Top N Repos)
-            if top_repo_full_names:
-                # Limit number of repos in chart URL to avoid excessive length (e.g., max 10)
-                num_chart_repos = min(len(top_repo_full_names), 10)
-                chart_repo_names = top_repo_full_names[:num_chart_repos]
-                f.write(f"## Star History (Top {num_chart_repos} Repositories by Stars)\n\n")
-                # URL encode repository names
-                repo_list_param = ",".join(url_quote(name) for name in chart_repo_names)
-                # Use HTTPS for the chart URL
-                chart_url = f"https://api.star-history.com/svg?repos={repo_list_param}&type=Date&theme=dark"
-                f.write(f"[![Star History Chart]({chart_url})](https://star-history.com/#{"&".join(repo_list_param.split(','))}&Date)\n\n") # Link chart to interactive version
-            else:
-                 f.write("*(Could not generate star history chart - no repositories found or an error occurred)*\n\n")
-
-            # Detailed Repository Table
-            f.write(f"## Repository Details\n\n")
-            # Added more icons/clarity to headers
-            f.write("| Repository | Description | Stars ⭐ | Forks 🍴 | Commits 💾 | Contributors 👥 | Closed Issues ✅ | Last Update 🕒 | Avg. Issue Res. ⏱️ |\n")
-            f.write("|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n") # Added alignment hints
-
-            for repo in repositories:
-                # Sanitize description for Markdown table cells
-                description = repo.get('description', '')
-                # Limit description length in table?
-                # max_desc_len = 100
-                # if len(description) > max_desc_len:
-                #    description = description[:max_desc_len-3] + "..."
-                description = description.replace("|", "\\|") # Escape pipe characters
-                description = description.replace("\n", "<br>") # Keep newlines visually
-
-                # Format numbers and resolution time, handle N/A
-                stars_str = f"{repo.get('stars', 0):,}"
-                forks_str = f"{repo.get('forks', 0):,}"
-
-                commits_val = repo.get('commit_count')
-                commits_str = f"{commits_val:,}" if commits_val is not None else "N/A"
-
-                contrib_val = repo.get('contributors_count')
-                contrib_str = f"{contrib_val:,}" if contrib_val is not None else "N/A"
-
-                issues_val = repo.get('closed_issues_count')
-                issues_str = f"{issues_val:,}" if issues_val is not None else "N/A"
-
-                last_update_str = repo.get('last_update_str', "Unknown")
-                resolution_time_str = format_resolution_time(repo.get('avg_issue_resolution_time')) # Handles None/0/float
-
-                # Sanitize repo name for link text: escape markdown special chars like []
-                repo_name_sanitized = repo.get('name', 'N/A').replace('[', '\\[').replace(']', '\\]')
-                repo_url = repo.get('url', '#')
-
-                f.write(f"| [{repo_name_sanitized}]({repo_url}) " # Link repo name
-                        f"| {description} "
-                        f"| {stars_str} "
-                        f"| {forks_str} "
-                        f"| {commits_str} "
-                        f"| {contrib_str} "
-                        f"| {issues_str} "
-                        f"| {last_update_str} "
-                        f"| {resolution_time_str} |\n")
-
-        logging.info(f"Markdown report saved to {filename}")
-        print(f"Markdown report saved to {filename}") # User feedback
-
-    except IOError as e:
-        logging.error(f"Error writing Markdown file '{filename}': {e}")
-        print(f"Error creating Markdown file: {e}") # User feedback
+        
+        # Try alternate location as last resort
+        try:
+            alternate_path = os.path.join(script_dir, f"{username}_github_stats.html")
+            logging.info(f"Trying alternate location: {alternate_path}")
+            with open(alternate_path, 'w', encoding='utf-8') as f:
+                f.write(html_content)
+            logging.info(f"HTML report saved to alternate location: {alternate_path}")
+            print(f"HTML report saved to alternate location: {alternate_path}")
+            return True
+        except Exception as alt_e:
+            logging.error(f"Error saving to alternate location: {alt_e}")
+            return False
+            
     except Exception as e:
-        # Catch potential errors during string formatting or file writing
-        logging.error(f"An unexpected error occurred during Markdown generation: {e}", exc_info=True)
-        print(f"An unexpected error occurred creating Markdown file: {e}")
+        logging.error(f"Unexpected error writing HTML file: {e}")
+        print(f"Unexpected error creating HTML report: {e}")
+        return False
 
 # --- Main Execution Block ---
 
