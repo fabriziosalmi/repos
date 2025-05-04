@@ -27,7 +27,7 @@ Total stars across owned repositories scanned: **1,866** ⭐
 | [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | 31 | 3 | 75 | 2 | 1 | 2 weeks ago | 59d 7h 52m 6s |
 | [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | 26 | 1 | 109 | 1 | 0 | 2 months ago | No Closed Issues |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | 26 | 3 | 90 | 2 | 1 | 2 months ago | No Closed Issues |
-| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | 24 | 4 | 123 | 3 | 1 | 18 hours ago | 1m 1.0s |
+| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | 24 | 4 | 123 | 3 | 1 | 19 hours ago | 1m 1.0s |
 | [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | 18 | 3 | 41 | 1 | 0 | 3 months ago | No Closed Issues |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions | 17 | 4 | 30 | 1 | 1 | 1 months ago | 97d 8h 45m 6s |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resources on Proxmox hosts with AI | 16 | 2 | 93 | 3 | 1 | 2 months ago | No Closed Issues |
@@ -47,7 +47,7 @@ Total stars across owned repositories scanned: **1,866** ⭐
 | [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf | 2 | 0 | 61 | 2 | 1 | 2 months ago | No Closed Issues |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github Actions | 2 | 2 | 12 | 1 | 1 | 2 months ago | 538d 5h 6m 11s |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | 2 | 1 | 45 | 1 | 0 | 10 months ago | No Closed Issues |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories | 2 | 0 | 486 | 2 | 0 | just now | No Closed Issues |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories | 2 | 0 | 489 | 2 | 0 | 1 minutes ago | No Closed Issues |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | 2 | 0 | 46 | 2 | 1 | 1 months ago | No Closed Issues |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | 1 | 1 | 147 | 2 | 0 | 5 years ago | No Closed Issues |
 | [audiogen](https://github.com/fabriziosalmi/audiogen) | AI-Powered Sound Generation & Classification. | 1 | 1 | 13 | 1 | 0 | 2 months ago | No Closed Issues |
