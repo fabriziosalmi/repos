@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Stats for fabriziosalmi</title>
+    <meta name="description" content="Detailed GitHub statistics and analysis for fabriziosalmi">
+    <link rel="icon" href="https://github.com/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary-color: #0d6efd;
@@ -17,130 +20,340 @@
             --danger-color: #dc3545;
             --light-color: #f8f9fa;
             --dark-color: #212529;
+            
+            /* Dark mode variables */
+            --dark-bg: #121212;
+            --dark-card-bg: #1e1e1e;
+            --dark-text: #e0e0e0;
+            --dark-secondary-text: #aaaaaa;
+            --dark-border: #2d2d2d;
+            --dark-hover: #2a2a2a;
         }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 20px;
-            background-color: #f8f9fa;
+            background-color: var(--light-color);
+            transition: background-color 0.3s ease;
         }
+        
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .container {
+            max-width: 1200px;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .card {
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             margin-bottom: 20px;
+            overflow: hidden;
+            border: none;
         }
+        
+        .dark-mode .card {
+            background-color: var(--dark-card-bg);
+            border-color: var(--dark-border);
+        }
+        
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
+        
         .card-header {
-            border-radius: 10px 10px 0 0 !important;
+            border-radius: 12px 12px 0 0 !important;
             font-weight: bold;
+            border-bottom: none;
+            padding: 0.8rem 1.25rem;
         }
+        
+        .dark-mode .card-header {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            color: var(--dark-text);
+        }
+        
+        .dark-mode .card-header.bg-primary {
+            background-color: #0d6efd !important;
+        }
+        
         .stats-card {
             text-align: center;
             padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
+        
+        .stats-card:hover {
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+        }
+        
+        .dark-mode .stats-card:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
         .stat-value {
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
         }
+        
+        .stats-card:hover .stat-value {
+            transform: scale(1.1);
+        }
+        
         .stat-label {
             font-size: 1rem;
             color: var(--secondary-color);
+            transition: color 0.3s ease;
         }
+        
+        .dark-mode .stat-label {
+            color: var(--dark-secondary-text);
+        }
+        
         .progress {
             height: 8px;
             margin-bottom: 1rem;
             border-radius: 4px;
         }
+        
         .chart-container {
             height: 400px;
             margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
+        
+        .chart-container .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255,255,255,0.7);
+        }
+        
+        .dark-mode .chart-container .loading {
+            background-color: rgba(0,0,0,0.5);
+        }
+        
         .badge {
             margin-right: 5px;
+            padding: 0.5em 0.8em;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
-        .container {
-            max-width: 1200px;
+        
+        .badge:hover {
+            transform: scale(1.1);
         }
+        
         .navbar {
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,.08);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
         }
+        
+        .dark-mode .navbar {
+            background-color: var(--dark-card-bg);
+        }
+        
         .navbar-brand {
             font-weight: bold;
+            letter-spacing: 0.5px;
         }
+        
+        .dark-mode .navbar-brand, .dark-mode .nav-link {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-mode .navbar-toggler {
+            border-color: var(--dark-border);
+        }
+        
         .header-section {
             padding: 3rem 0;
             background: linear-gradient(135deg, #0d6efd 0%, #0098ff 100%);
             color: white;
             margin-bottom: 2rem;
             border-radius: 15px;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23FFFFFF" fill-opacity="0.1" d="M37.5,186c-12.1-10.5-11.8-32.3-7.2-46.7c4.8-15,13.1-17.8,30.1-36.7C91,68.8,83.5,56.7,103.5,45.5c22.7-12.7,45.7,1,54.5,11.9c8.9,11,13.8,21,13.8,36.8c0,22.5-3.7,40.8-28.3,54.6c-22.6,12.7-33.5,10.1-44.7,25.7c-13.3,18.6-23.1,21.2-37.5,11.5z" /></svg>') no-repeat center center;
+            background-size: 600px;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         .avatar {
             width: 120px;
             height: 120px;
             border-radius: 60px;
             border: 4px solid white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
+        
+        .avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
         .footer {
             margin-top: 3rem;
             padding: 1.5rem 0;
             background-color: #ffffff;
             border-top: 1px solid rgba(0,0,0,.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
+        
+        .dark-mode .footer {
+            background-color: var(--dark-card-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+        
         .table-responsive {
             border-radius: 10px;
             overflow: hidden;
         }
+        
         #repo-table {
             width: 100%;
         }
+        
+        .dark-mode #repo-table {
+            color: var(--dark-text);
+        }
+        
         #repo-table th {
             font-weight: bold;
             background-color: #f8f9fa;
+            border-bottom: none;
         }
+        
+        .dark-mode #repo-table th {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--dark-text);
+        }
+        
+        .dark-mode .table-striped>tbody>tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .dark-mode .table {
+            border-color: var(--dark-border);
+        }
+        
         .description-cell {
             max-width: 300px;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.3;
         }
+        
         .stars-cell, .forks-cell, .commits-cell, .contributors-cell, .issues-cell {
             text-align: right;
+            font-variant-numeric: tabular-nums;
         }
-        .sparkline {
-            width: 100px;
-            height: 30px;
-        }
+        
         .star-icon {
             color: #ffc107;
         }
+        
         .fork-icon {
             color: #0d6efd;
         }
+        
         .commit-icon {
             color: #6f42c1;
         }
+        
         .contributor-icon {
             color: #198754;
         }
+        
         .issue-icon {
             color: #dc3545;
         }
+        
         .project-card {
             height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #0d6efd, #0098ff);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover::after {
+            transform: scaleX(1);
+        }
+        
         .project-card .card-body {
             display: flex;
             flex-direction: column;
         }
+        
         .project-card .card-footer {
             margin-top: auto;
+            border-top: none;
+            background-color: transparent;
         }
+        
+        .dark-mode .project-card .card-footer {
+            background-color: transparent;
+        }
+        
         .tag {
             display: inline-block;
             padding: 0.25rem 0.5rem;
@@ -148,7 +361,180 @@
             font-size: 0.75rem;
             margin-right: 5px;
             margin-bottom: 5px;
+            transition: all 0.2s ease;
         }
+        
+        .tag:hover {
+            transform: scale(1.05);
+        }
+        
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+            height: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .dark-mode .skeleton {
+            background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .repo-link {
+            position: relative;
+            display: inline-block;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .repo-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .repo-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        .dark-mode .repo-link {
+            color: #4da3ff;
+        }
+        
+        .dark-mode .repo-link::after {
+            background-color: #4da3ff;
+        }
+        
+        .tooltip-inner {
+            max-width: 300px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dark-mode .dataTables_wrapper .dataTables_length, 
+        .dark-mode .dataTables_wrapper .dataTables_filter, 
+        .dark-mode .dataTables_wrapper .dataTables_info, 
+        .dark-mode .dataTables_wrapper .dataTables_processing, 
+        .dark-mode .dataTables_wrapper .dataTables_paginate {
+            color: var(--dark-text);
+        }
+        
+        .dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            color: white !important;
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .dark-mode .form-control, .dark-mode .form-select {
+            background-color: var(--dark-card-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+        
         @media (max-width: 768px) {
             .header-section {
                 padding: 2rem 0;
@@ -160,6 +546,36 @@
                 width: 80px;
                 height: 80px;
             }
+            .chart-container {
+                height: 300px;
+            }
+        }
+        
+        @media print {
+            .navbar, .theme-toggle, .back-to-top {
+                display: none !important;
+            }
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+            .card {
+                break-inside: avoid;
+                border: 1px solid #ddd;
+                box-shadow: none !important;
+            }
+            a {
+                text-decoration: underline;
+                color: #000 !important;
+            }
+            .card-header.bg-primary {
+                background-color: #f8f9fa !important;
+                color: #000 !important;
+            }
+            .header-section {
+                background: #f8f9fa !important;
+                color: #000 !important;
+            }
         }
     </style>
 </head>
@@ -170,6 +586,14 @@
                 <a class="navbar-brand" href="#">
                     <i class="bi bi-github me-2"></i>GitHub Stats
                 </a>
+                <div class="theme-toggle ms-auto me-3 d-flex align-items-center">
+                    <i class="bi bi-sun me-2"></i>
+                    <label class="theme-switch mb-0">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <i class="bi bi-moon ms-2"></i>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -185,6 +609,9 @@
                             <a class="nav-link" href="#star-history">Star History</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#top-repos">Top Repos</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="https://github.com/fabriziosalmi" target="_blank">
                                 <i class="bi bi-box-arrow-up-right me-1"></i>GitHub Profile
                             </a>
@@ -194,22 +621,25 @@
             </div>
         </nav>
         
-        <div class="header-section text-center" id="overview">
+        <div class="header-section text-center animate__animated animate__fadeIn" id="overview">
             <img src="https://github.com/fabriziosalmi.png" alt="fabriziosalmi" class="avatar mb-3">
-            <h1>fabriziosalmi</h1>
+            <h1 class="display-4 mb-0">fabriziosalmi</h1>
             <p class="lead">GitHub Repository Statistics</p>
             <div class="mt-4">
-                <a href="https://github.com/fabriziosalmi" class="btn btn-light me-2" target="_blank">
+                <a href="https://github.com/fabriziosalmi" class="btn btn-light me-2" target="_blank" aria-label="View GitHub Profile">
                     <i class="bi bi-github"></i> View Profile
                 </a>
+                <button class="btn btn-outline-light" id="share-button" aria-label="Share this report">
+                    <i class="bi bi-share"></i> Share
+                </button>
             </div>
         </div>
         
-        <div class="row mb-4">
+        <div class="row mb-4 animate__animated animate__fadeInUp">
             <div class="col-md-4">
                 <div class="card stats-card">
                     <div class="stat-value text-primary">
-                        <i class="bi bi-star-fill star-icon me-2"></i>1,866
+                        <i class="bi bi-star-fill star-icon me-2"></i><span class="counter">1,866</span>
                     </div>
                     <div class="stat-label">Total Stars</div>
                 </div>
@@ -217,7 +647,7 @@
             <div class="col-md-4">
                 <div class="card stats-card">
                     <div class="stat-value text-success">
-                        <i class="bi bi-hdd-stack me-2"></i>60
+                        <i class="bi bi-hdd-stack me-2"></i><span class="counter">60</span>
                     </div>
                     <div class="stat-label">Repositories</div>
                 </div>
@@ -226,22 +656,27 @@
                 <div class="card stats-card">
                     <div class="stat-value text-info">
                         <i class="bi bi-people-fill me-2"></i>
-                        359
+                        <span class="counter">359</span>
                     </div>
                     <div class="stat-label">Total Contributors</div>
                 </div>
             </div>
         </div>
         
-        <div class="card mb-4" id="star-history">
+        <div class="card mb-4 animate__animated animate__fadeInUp animate__delay-1s" id="star-history">
             <div class="card-header bg-primary text-white">
                 <i class="bi bi-graph-up me-2"></i>Star History (Top Repositories)
             </div>
             <div class="card-body">
                 <div class="chart-container">
+                    <div class="loading" id="chart-loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
     
-                    <img src="https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/UglyFeed,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/DevGPT,fabriziosalmi/lws,fabriziosalmi/websites-monitor,fabriziosalmi/caddy-mib,fabriziosalmi/iamnotacoder&type=Date&theme=light" class="img-fluid" alt="Star History Chart">
-                    <div class="text-center mt-2">
+                    <img src="https://api.star-history.com/svg?repos=fabriziosalmi/caddy-waf,fabriziosalmi/patterns,fabriziosalmi/UglyFeed,fabriziosalmi/proxmox-vm-autoscale,fabriziosalmi/proxmox-lxc-autoscale,fabriziosalmi/DevGPT,fabriziosalmi/lws,fabriziosalmi/websites-monitor,fabriziosalmi/caddy-mib,fabriziosalmi/iamnotacoder&type=Date&theme=light" class="img-fluid" alt="Star History Chart" onload="document.getElementById('chart-loading').style.display='none';">
+                    <div class="text-center mt-3">
                         <small class="text-muted">Chart shows star growth over time for top 10 repositories</small>
                     </div>
         
@@ -249,9 +684,24 @@
             </div>
         </div>
         
-        <div class="card mb-4" id="repositories">
-            <div class="card-header bg-primary text-white">
-                <i class="bi bi-hdd-stack me-2"></i>Repositories
+        <div class="card mb-4 animate__animated animate__fadeInUp animate__delay-2s" id="repositories">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="bi bi-hdd-stack me-2"></i>Repositories
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-funnel me-1"></i> Quick Filters
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#" data-filter="stars">Most Stars</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="forks">Most Forks</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="recent">Recently Updated</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="contributors">Most Contributors</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" data-filter="all">Show All</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -272,723 +722,723 @@
                         <tbody>
     
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/caddy-waf" target="_blank">caddy-waf</a></td>
-                                <td class="description-cell" title="Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)">Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)</td>
+                                <td><a href="https://github.com/fabriziosalmi/caddy-waf" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">caddy-waf</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)">Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)</td>
                                 <td class="stars-cell text-warning fw-bold">498</td>
                                 <td class="forks-cell ">16</td>
                                 <td class="commits-cell">584</td>
                                 <td class="contributors-cell">4</td>
                                 <td class="issues-cell">1</td>
-                                <td>3 days ago</td>
-                                <td>13d 5h 21m 58s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 days ago">3 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">13d 5h 21m 58s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/patterns" target="_blank">patterns</a></td>
-                                <td class="description-cell" title="Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy">Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy</td>
+                                <td><a href="https://github.com/fabriziosalmi/patterns" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">patterns</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy">Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy</td>
                                 <td class="stars-cell text-warning fw-bold">275</td>
                                 <td class="forks-cell ">5</td>
                                 <td class="commits-cell">261</td>
                                 <td class="contributors-cell">5</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>6d 15h 39m 16s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">6d 15h 39m 16s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/UglyFeed" target="_blank">UglyFeed</a></td>
-                                <td class="description-cell" title="Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes">Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes</td>
+                                <td><a href="https://github.com/fabriziosalmi/UglyFeed" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">UglyFeed</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes">Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes</td>
                                 <td class="stars-cell text-warning fw-bold">242</td>
                                 <td class="forks-cell ">10</td>
                                 <td class="commits-cell">842</td>
                                 <td class="contributors-cell">3</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>44d 20h 47m 38s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">44d 20h 47m 38s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/proxmox-vm-autoscale" target="_blank">proxmox-vm-autoscale</a></td>
-                                <td class="description-cell" title="Automatically scale virtual machines resources on Proxmox hosts">Automatically scale virtual machines resources on Proxmox hosts</td>
+                                <td><a href="https://github.com/fabriziosalmi/proxmox-vm-autoscale" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">proxmox-vm-autoscale</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automatically scale virtual machines resources on Proxmox hosts">Automatically scale virtual machines resources on Proxmox hosts</td>
                                 <td class="stars-cell text-warning fw-bold">237</td>
                                 <td class="forks-cell ">15</td>
                                 <td class="commits-cell">114</td>
                                 <td class="contributors-cell">6</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>18d 14h 19m 22s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">18d 14h 19m 22s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/proxmox-lxc-autoscale" target="_blank">proxmox-lxc-autoscale</a></td>
-                                <td class="description-cell" title="Automatically scale LXC containers resources on Proxmox hosts">Automatically scale LXC containers resources on Proxmox hosts</td>
+                                <td><a href="https://github.com/fabriziosalmi/proxmox-lxc-autoscale" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">proxmox-lxc-autoscale</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automatically scale LXC containers resources on Proxmox hosts">Automatically scale LXC containers resources on Proxmox hosts</td>
                                 <td class="stars-cell text-warning fw-bold">192</td>
                                 <td class="forks-cell ">8</td>
                                 <td class="commits-cell">632</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>18d 13h 57m 12s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">18d 13h 57m 12s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/DevGPT" target="_blank">DevGPT</a></td>
-                                <td class="description-cell" title="Code togheter, right now! GPT powered code assistant to build project in minutes">Code togheter, right now! GPT powered code assistant to build project in minutes</td>
+                                <td><a href="https://github.com/fabriziosalmi/DevGPT" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">DevGPT</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Code togheter, right now! GPT powered code assistant to build project in minutes">Code togheter, right now! GPT powered code assistant to build project in minutes</td>
                                 <td class="stars-cell ">66</td>
                                 <td class="forks-cell ">6</td>
                                 <td class="commits-cell">37</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/lws" target="_blank">lws</a></td>
-                                <td class="description-cell" title="proxmox/lxc/docker unified CLI">proxmox/lxc/docker unified CLI</td>
+                                <td><a href="https://github.com/fabriziosalmi/lws" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">lws</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="proxmox/lxc/docker unified CLI">proxmox/lxc/docker unified CLI</td>
                                 <td class="stars-cell ">63</td>
                                 <td class="forks-cell ">5</td>
                                 <td class="commits-cell">97</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>200d 1h 5m 12s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">200d 1h 5m 12s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/websites-monitor" target="_blank">websites-monitor</a></td>
-                                <td class="description-cell" title="Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)">Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)</td>
+                                <td><a href="https://github.com/fabriziosalmi/websites-monitor" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">websites-monitor</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)">Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)</td>
                                 <td class="stars-cell ">46</td>
                                 <td class="forks-cell ">18</td>
                                 <td class="commits-cell">833</td>
                                 <td class="contributors-cell">3</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 hours ago</td>
-                                <td>298d 4h 23m 11s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 hours ago">2 hours ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">298d 4h 23m 11s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/caddy-mib" target="_blank">caddy-mib</a></td>
-                                <td class="description-cell" title="Track and ban client IPs generating repetitive errors on Caddy">Track and ban client IPs generating repetitive errors on Caddy</td>
+                                <td><a href="https://github.com/fabriziosalmi/caddy-mib" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">caddy-mib</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Track and ban client IPs generating repetitive errors on Caddy">Track and ban client IPs generating repetitive errors on Caddy</td>
                                 <td class="stars-cell ">31</td>
                                 <td class="forks-cell ">3</td>
                                 <td class="commits-cell">75</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 weeks ago</td>
-                                <td>59d 7h 52m 6s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 weeks ago">2 weeks ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">59d 7h 52m 6s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/iamnotacoder" target="_blank">iamnotacoder</a></td>
-                                <td class="description-cell" title="AI code generation and improvement">AI code generation and improvement</td>
+                                <td><a href="https://github.com/fabriziosalmi/iamnotacoder" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">iamnotacoder</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="AI code generation and improvement">AI code generation and improvement</td>
                                 <td class="stars-cell ">26</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">109</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/zonecontrol" target="_blank">zonecontrol</a></td>
-                                <td class="description-cell" title="Cloudflare Zones Settings Automation using GitHub Actions">Cloudflare Zones Settings Automation using GitHub Actions</td>
+                                <td><a href="https://github.com/fabriziosalmi/zonecontrol" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">zonecontrol</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Cloudflare Zones Settings Automation using GitHub Actions">Cloudflare Zones Settings Automation using GitHub Actions</td>
                                 <td class="stars-cell ">26</td>
                                 <td class="forks-cell ">3</td>
                                 <td class="commits-cell">90</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/cf-box" target="_blank">cf-box</a></td>
-                                <td class="description-cell" title="cf-box is a set of Python tools to play with API and multiple Cloudflare accounts.">cf-box is a set of Python tools to play with API and multiple Cloudflare accounts.</td>
+                                <td><a href="https://github.com/fabriziosalmi/cf-box" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">cf-box</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="cf-box is a set of Python tools to play with API and multiple Cloudflare accounts.">cf-box is a set of Python tools to play with API and multiple Cloudflare accounts.</td>
                                 <td class="stars-cell ">24</td>
                                 <td class="forks-cell ">4</td>
                                 <td class="commits-cell">124</td>
                                 <td class="contributors-cell">3</td>
                                 <td class="issues-cell">1</td>
-                                <td>3 hours ago</td>
-                                <td>1m 1.0s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 hours ago">3 hours ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">1m 1.0s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/limits" target="_blank">limits</a></td>
-                                <td class="description-cell" title="Automated rate limits implementation for web servers">Automated rate limits implementation for web servers</td>
+                                <td><a href="https://github.com/fabriziosalmi/limits" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">limits</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automated rate limits implementation for web servers">Automated rate limits implementation for web servers</td>
                                 <td class="stars-cell ">18</td>
                                 <td class="forks-cell ">3</td>
                                 <td class="commits-cell">41</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>3 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 months ago">3 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/dnscontrol-actions" target="_blank">dnscontrol-actions</a></td>
-                                <td class="description-cell" title="Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions">Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions</td>
+                                <td><a href="https://github.com/fabriziosalmi/dnscontrol-actions" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">dnscontrol-actions</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions">Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions</td>
                                 <td class="stars-cell ">17</td>
                                 <td class="forks-cell ">4</td>
                                 <td class="commits-cell">30</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>97d 8h 45m 6s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">97d 8h 45m 6s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml" target="_blank">proxmox-lxc-autoscale-ml</a></td>
-                                <td class="description-cell" title="Automatically scale the LXC containers resources on Proxmox hosts with AI">Automatically scale the LXC containers resources on Proxmox hosts with AI</td>
+                                <td><a href="https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">proxmox-lxc-autoscale-ml</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automatically scale the LXC containers resources on Proxmox hosts with AI">Automatically scale the LXC containers resources on Proxmox hosts with AI</td>
                                 <td class="stars-cell ">16</td>
                                 <td class="forks-cell ">2</td>
                                 <td class="commits-cell">93</td>
                                 <td class="contributors-cell">3</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/csv-anonymizer" target="_blank">csv-anonymizer</a></td>
-                                <td class="description-cell" title="CSV fuzzer/anonymizer">CSV fuzzer/anonymizer</td>
+                                <td><a href="https://github.com/fabriziosalmi/csv-anonymizer" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">csv-anonymizer</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="CSV fuzzer/anonymizer">CSV fuzzer/anonymizer</td>
                                 <td class="stars-cell ">10</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">30</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>yesterday</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on yesterday">yesterday</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/blacklists" target="_blank">blacklists</a></td>
-                                <td class="description-cell" title="Hourly updated domains blacklist 🚫">Hourly updated domains blacklist 🚫</td>
+                                <td><a href="https://github.com/fabriziosalmi/blacklists" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">blacklists</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Hourly updated domains blacklist 🚫">Hourly updated domains blacklist 🚫</td>
                                 <td class="stars-cell ">8</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">44</td>
                                 <td class="contributors-cell">3</td>
                                 <td class="issues-cell">1</td>
-                                <td>4 days ago</td>
-                                <td>12h 20m 13s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 days ago">4 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">12h 20m 13s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/webtek" target="_blank">webtek</a></td>
-                                <td class="description-cell" title="WebTeK: the worldwide streaming teknival ꩜ https://webtek.live">WebTeK: the worldwide streaming teknival ꩜ https://webtek.live</td>
+                                <td><a href="https://github.com/fabriziosalmi/webtek" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">webtek</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="WebTeK: the worldwide streaming teknival ꩜ https://webtek.live">WebTeK: the worldwide streaming teknival ꩜ https://webtek.live</td>
                                 <td class="stars-cell ">8</td>
                                 <td class="forks-cell ">4</td>
                                 <td class="commits-cell">502</td>
                                 <td class="contributors-cell">6</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>266d 1h 23m 3s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">266d 1h 23m 3s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/ethical-ai" target="_blank">ethical-ai</a></td>
-                                <td class="description-cell" title="Automate LLM ethical self-assessments">Automate LLM ethical self-assessments</td>
+                                <td><a href="https://github.com/fabriziosalmi/ethical-ai" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">ethical-ai</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Automate LLM ethical self-assessments">Automate LLM ethical self-assessments</td>
                                 <td class="stars-cell ">6</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">108</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>yesterday</td>
-                                <td>399d 13h 22s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on yesterday">yesterday</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">399d 13h 22s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/proxmox-cluster-balancer" target="_blank">proxmox-cluster-balancer</a></td>
-                                <td class="description-cell" title="Balance, scale, migrate your LXC fleet across your Proxmox nodes">Balance, scale, migrate your LXC fleet across your Proxmox nodes</td>
+                                <td><a href="https://github.com/fabriziosalmi/proxmox-cluster-balancer" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">proxmox-cluster-balancer</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Balance, scale, migrate your LXC fleet across your Proxmox nodes">Balance, scale, migrate your LXC fleet across your Proxmox nodes</td>
                                 <td class="stars-cell ">6</td>
                                 <td class="forks-cell ">3</td>
                                 <td class="commits-cell">21</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>4 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 months ago">4 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/bootstrap-w3c-seo" target="_blank">bootstrap-w3c-seo</a></td>
-                                <td class="description-cell" title="Sleek, intuitive, and powerful front-end framework for faster and easier web development.">Sleek, intuitive, and powerful front-end framework for faster and easier web development.</td>
+                                <td><a href="https://github.com/fabriziosalmi/bootstrap-w3c-seo" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">bootstrap-w3c-seo</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Sleek, intuitive, and powerful front-end framework for faster and easier web development.">Sleek, intuitive, and powerful front-end framework for faster and easier web development.</td>
                                 <td class="stars-cell ">5</td>
                                 <td class="forks-cell ">2</td>
                                 <td class="commits-cell">3,592</td>
                                 <td class="contributors-cell">257</td>
                                 <td class="issues-cell">0</td>
-                                <td>8 years ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 8 years ago">8 years ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/fqdn-model" target="_blank">fqdn-model</a></td>
-                                <td class="description-cell" title="Tiny and fast FQDN classifier to detect malicious domains">Tiny and fast FQDN classifier to detect malicious domains</td>
+                                <td><a href="https://github.com/fabriziosalmi/fqdn-model" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">fqdn-model</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Tiny and fast FQDN classifier to detect malicious domains">Tiny and fast FQDN classifier to detect malicious domains</td>
                                 <td class="stars-cell ">5</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">57</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 weeks ago</td>
-                                <td>6d 15h 31m 51s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 weeks ago">1 weeks ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">6d 15h 31m 51s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/wafcontrol" target="_blank">wafcontrol</a></td>
-                                <td class="description-cell" title="Cloudflare WAF Settings Automation using GitHub Actions">Cloudflare WAF Settings Automation using GitHub Actions</td>
+                                <td><a href="https://github.com/fabriziosalmi/wafcontrol" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">wafcontrol</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Cloudflare WAF Settings Automation using GitHub Actions">Cloudflare WAF Settings Automation using GitHub Actions</td>
                                 <td class="stars-cell ">5</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">59</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>4 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 months ago">4 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/awesomeness" target="_blank">awesomeness</a></td>
-                                <td class="description-cell" title="List of awesome open source projects">List of awesome open source projects</td>
+                                <td><a href="https://github.com/fabriziosalmi/awesomeness" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">awesomeness</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="List of awesome open source projects">List of awesome open source projects</td>
                                 <td class="stars-cell ">4</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">28</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>4 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 months ago">4 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/caddy-adf" target="_blank">caddy-adf</a></td>
-                                <td class="description-cell" title="Yet another caddy WAF exploration">Yet another caddy WAF exploration</td>
+                                <td><a href="https://github.com/fabriziosalmi/caddy-adf" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">caddy-adf</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Yet another caddy WAF exploration">Yet another caddy WAF exploration</td>
                                 <td class="stars-cell ">3</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">100</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>3 months ago</td>
-                                <td>64d 22h 11m 29s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 months ago">3 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">64d 22h 11m 29s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/linux" target="_blank">linux</a></td>
-                                <td class="description-cell" title="Linux Scripts & Snippets Collection">Linux Scripts & Snippets Collection</td>
+                                <td><a href="https://github.com/fabriziosalmi/linux" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">linux</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Linux Scripts & Snippets Collection">Linux Scripts & Snippets Collection</td>
                                 <td class="stars-cell ">3</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">86</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/WP-Search-Blacklist" target="_blank">WP-Search-Blacklist</a></td>
-                                <td class="description-cell" title="A useful function to filter out (404) some spamming and explicit keywords in the WordPress search feature.">A useful function to filter out (404) some spamming and explicit keywords in the WordPress search feature.</td>
+                                <td><a href="https://github.com/fabriziosalmi/WP-Search-Blacklist" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">WP-Search-Blacklist</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="A useful function to filter out (404) some spamming and explicit keywords in the WordPress search feature.">A useful function to filter out (404) some spamming and explicit keywords in the WordPress search feature.</td>
                                 <td class="stars-cell ">3</td>
                                 <td class="forks-cell ">3</td>
                                 <td class="commits-cell">8</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>3 years ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 years ago">3 years ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/You-Know-What-AI-Mean" target="_blank">You-Know-What-AI-Mean</a></td>
-                                <td class="description-cell" title="A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility">A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility</td>
+                                <td><a href="https://github.com/fabriziosalmi/You-Know-What-AI-Mean" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">You-Know-What-AI-Mean</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility">A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility</td>
                                 <td class="stars-cell ">3</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">135</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 years ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 years ago">1 years ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/caddy-feeds" target="_blank">caddy-feeds</a></td>
-                                <td class="description-cell" title="IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf">IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf</td>
+                                <td><a href="https://github.com/fabriziosalmi/caddy-feeds" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">caddy-feeds</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf">IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf</td>
                                 <td class="stars-cell ">2</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">61</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/cloudflare-backup-actions" target="_blank">cloudflare-backup-actions</a></td>
-                                <td class="description-cell" title="Cloudflare zones and records backup via Github Actions">Cloudflare zones and records backup via Github Actions</td>
+                                <td><a href="https://github.com/fabriziosalmi/cloudflare-backup-actions" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">cloudflare-backup-actions</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Cloudflare zones and records backup via Github Actions">Cloudflare zones and records backup via Github Actions</td>
                                 <td class="stars-cell ">2</td>
                                 <td class="forks-cell ">2</td>
                                 <td class="commits-cell">12</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>2 months ago</td>
-                                <td>538d 5h 6m 11s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">538d 5h 6m 11s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/mtls-cloudflare-aws" target="_blank">mtls-cloudflare-aws</a></td>
-                                <td class="description-cell" title="mTLS implementation between Cloudflare and AWS">mTLS implementation between Cloudflare and AWS</td>
+                                <td><a href="https://github.com/fabriziosalmi/mtls-cloudflare-aws" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">mtls-cloudflare-aws</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="mTLS implementation between Cloudflare and AWS">mTLS implementation between Cloudflare and AWS</td>
                                 <td class="stars-cell ">2</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">45</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>10 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 10 months ago">10 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/repos" target="_blank">repos</a></td>
-                                <td class="description-cell" title="My repositories">My repositories</td>
+                                <td><a href="https://github.com/fabriziosalmi/repos" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">repos</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="My repositories">My repositories</td>
                                 <td class="stars-cell ">2</td>
                                 <td class="forks-cell ">0</td>
-                                <td class="commits-cell">494</td>
+                                <td class="commits-cell">496</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">0</td>
-                                <td>2 minutes ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 8 minutes ago">8 minutes ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/sci-fi" target="_blank">sci-fi</a></td>
-                                <td class="description-cell" title="Simple Code Improver - Framework & Interface">Simple Code Improver - Framework & Interface</td>
+                                <td><a href="https://github.com/fabriziosalmi/sci-fi" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">sci-fi</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Simple Code Improver - Framework & Interface">Simple Code Improver - Framework & Interface</td>
                                 <td class="stars-cell ">2</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">46</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/any-to-mp4" target="_blank">any-to-mp4</a></td>
-                                <td class="description-cell" title="Convert any kind of file to video.">Convert any kind of file to video.</td>
+                                <td><a href="https://github.com/fabriziosalmi/any-to-mp4" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">any-to-mp4</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Convert any kind of file to video.">Convert any kind of file to video.</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">147</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">0</td>
-                                <td>5 years ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 5 years ago">5 years ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/audiogen" target="_blank">audiogen</a></td>
-                                <td class="description-cell" title="AI-Powered Sound Generation & Classification.">AI-Powered Sound Generation & Classification.</td>
+                                <td><a href="https://github.com/fabriziosalmi/audiogen" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">audiogen</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="AI-Powered Sound Generation & Classification.">AI-Powered Sound Generation & Classification.</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">13</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/blockchain-poc" target="_blank">blockchain-poc</a></td>
-                                <td class="description-cell" title="Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface">Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface</td>
+                                <td><a href="https://github.com/fabriziosalmi/blockchain-poc" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">blockchain-poc</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface">Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">18</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 months ago</td>
-                                <td>506d 1h 59m 41s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">506d 1h 59m 41s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/brandkit" target="_blank">brandkit</a></td>
-                                <td class="description-cell" title="Yet another brand assets generator">Yet another brand assets generator</td>
+                                <td><a href="https://github.com/fabriziosalmi/brandkit" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">brandkit</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Yet another brand assets generator">Yet another brand assets generator</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">38</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 weeks ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 weeks ago">1 weeks ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/gradios" target="_blank">gradios</a></td>
-                                <td class="description-cell" title="Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum)">Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum)</td>
+                                <td><a href="https://github.com/fabriziosalmi/gradios" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">gradios</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum)">Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum)</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">5</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/llm-benchmarks" target="_blank">llm-benchmarks</a></td>
-                                <td class="description-cell" title="benchmarking large language models (LLMs) with a focus on their mathematical capabilities">benchmarking large language models (LLMs) with a focus on their mathematical capabilities</td>
+                                <td><a href="https://github.com/fabriziosalmi/llm-benchmarks" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">llm-benchmarks</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="benchmarking large language models (LLMs) with a focus on their mathematical capabilities">benchmarking large language models (LLMs) with a focus on their mathematical capabilities</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">23</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>12 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 12 months ago">12 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/newsgator" target="_blank">newsgator</a></td>
-                                <td class="description-cell" title="No description">No description</td>
+                                <td><a href="https://github.com/fabriziosalmi/newsgator" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">newsgator</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="No description">No description</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">4</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>4 days ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 days ago">4 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/proxima-ui" target="_blank">proxima-ui</a></td>
-                                <td class="description-cell" title="No description">No description</td>
+                                <td><a href="https://github.com/fabriziosalmi/proxima-ui" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">proxima-ui</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="No description">No description</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">77</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>4 days ago</td>
-                                <td>35m 59.0s</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 days ago">4 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">35m 59.0s</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/rivoluzioneinformatica-website" target="_blank">rivoluzioneinformatica-website</a></td>
-                                <td class="description-cell" title="https://www.rivoluzioneinformatica.org">https://www.rivoluzioneinformatica.org</td>
+                                <td><a href="https://github.com/fabriziosalmi/rivoluzioneinformatica-website" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">rivoluzioneinformatica-website</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="https://www.rivoluzioneinformatica.org">https://www.rivoluzioneinformatica.org</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">41</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>7 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 7 months ago">7 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/uglyfeed-cdn" target="_blank">uglyfeed-cdn</a></td>
-                                <td class="description-cell" title="🌍 UglyFeed RSS feeds">🌍 UglyFeed RSS feeds</td>
+                                <td><a href="https://github.com/fabriziosalmi/uglyfeed-cdn" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">uglyfeed-cdn</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="🌍 UglyFeed RSS feeds">🌍 UglyFeed RSS feeds</td>
                                 <td class="stars-cell ">1</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">732</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 hours ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 hours ago">1 hours ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/ai-chatbot-encryption" target="_blank">ai-chatbot-encryption</a></td>
-                                <td class="description-cell" title="Encrypt your AI powered chatbot sessions">Encrypt your AI powered chatbot sessions</td>
+                                <td><a href="https://github.com/fabriziosalmi/ai-chatbot-encryption" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">ai-chatbot-encryption</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Encrypt your AI powered chatbot sessions">Encrypt your AI powered chatbot sessions</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">7</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>3 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 months ago">3 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/audiolibri" target="_blank">audiolibri</a></td>
-                                <td class="description-cell" title="Raccolta di audiolibri gratis in Italiano">Raccolta di audiolibri gratis in Italiano</td>
+                                <td><a href="https://github.com/fabriziosalmi/audiolibri" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">audiolibri</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Raccolta di audiolibri gratis in Italiano">Raccolta di audiolibri gratis in Italiano</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">59</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>3 weeks ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 weeks ago">3 weeks ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/crossword-generator" target="_blank">crossword-generator</a></td>
-                                <td class="description-cell" title="No description">No description</td>
+                                <td><a href="https://github.com/fabriziosalmi/crossword-generator" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">crossword-generator</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="No description">No description</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">5</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/crosswords" target="_blank">crosswords</a></td>
-                                <td class="description-cell" title="Interactive Crossword Puzzle Generator">Interactive Crossword Puzzle Generator</td>
+                                <td><a href="https://github.com/fabriziosalmi/crosswords" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">crosswords</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Interactive Crossword Puzzle Generator">Interactive Crossword Puzzle Generator</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">37</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 weeks ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 weeks ago">1 weeks ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/dns-blocklists" target="_blank">dns-blocklists</a></td>
-                                <td class="description-cell" title="Lists and configuration for our DNS blocking service">Lists and configuration for our DNS blocking service</td>
+                                <td><a href="https://github.com/fabriziosalmi/dns-blocklists" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">dns-blocklists</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Lists and configuration for our DNS blocking service">Lists and configuration for our DNS blocking service</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">188</td>
                                 <td class="contributors-cell">5</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/domainsblacklists" target="_blank">domainsblacklists</a></td>
-                                <td class="description-cell" title="domainsblacklists.com website">domainsblacklists.com website</td>
+                                <td><a href="https://github.com/fabriziosalmi/domainsblacklists" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">domainsblacklists</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="domainsblacklists.com website">domainsblacklists.com website</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">9</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>3 days ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 3 days ago">3 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/freeundergroundtekno" target="_blank">freeundergroundtekno</a></td>
-                                <td class="description-cell" title="No description">No description</td>
+                                <td><a href="https://github.com/fabriziosalmi/freeundergroundtekno" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">freeundergroundtekno</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="No description">No description</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">13</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>4 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 months ago">4 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/github-games" target="_blank">github-games</a></td>
-                                <td class="description-cell" title="Web based games hosted on GitHub Pages">Web based games hosted on GitHub Pages</td>
+                                <td><a href="https://github.com/fabriziosalmi/github-games" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">github-games</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Web based games hosted on GitHub Pages">Web based games hosted on GitHub Pages</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">44</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/iGPT" target="_blank">iGPT</a></td>
-                                <td class="description-cell" title="iGPT: the fastest fLLM out there 🚀🚀🚀">iGPT: the fastest fLLM out there 🚀🚀🚀</td>
+                                <td><a href="https://github.com/fabriziosalmi/iGPT" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">iGPT</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="iGPT: the fastest fLLM out there 🚀🚀🚀">iGPT: the fastest fLLM out there 🚀🚀🚀</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">57</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 years ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 years ago">1 years ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/k8s" target="_blank">k8s</a></td>
-                                <td class="description-cell" title="Kubernetes Homelab Scripts 🛠️ (k8s)">Kubernetes Homelab Scripts 🛠️ (k8s)</td>
+                                <td><a href="https://github.com/fabriziosalmi/k8s" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">k8s</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Kubernetes Homelab Scripts 🛠️ (k8s)">Kubernetes Homelab Scripts 🛠️ (k8s)</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">13</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/pdf-ocr" target="_blank">pdf-ocr</a></td>
-                                <td class="description-cell" title="Converts scanned PDF documents to multiple formats using Optical Character Recognition">Converts scanned PDF documents to multiple formats using Optical Character Recognition</td>
+                                <td><a href="https://github.com/fabriziosalmi/pdf-ocr" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">pdf-ocr</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Converts scanned PDF documents to multiple formats using Optical Character Recognition">Converts scanned PDF documents to multiple formats using Optical Character Recognition</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">44</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">1</td>
-                                <td>1 weeks ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 weeks ago">1 weeks ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/reverse-proxy-manager" target="_blank">reverse-proxy-manager</a></td>
-                                <td class="description-cell" title="Centralized proxy management system for distributed proxy nodes">Centralized proxy management system for distributed proxy nodes</td>
+                                <td><a href="https://github.com/fabriziosalmi/reverse-proxy-manager" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">reverse-proxy-manager</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Centralized proxy management system for distributed proxy nodes">Centralized proxy management system for distributed proxy nodes</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">175</td>
                                 <td class="contributors-cell">2</td>
                                 <td class="issues-cell">1</td>
-                                <td>4 days ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 days ago">4 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/secure-proxy-manager" target="_blank">secure-proxy-manager</a></td>
-                                <td class="description-cell" title="Secure proxy solution with filtering, real-time monitoring and a modern web UI.">Secure proxy solution with filtering, real-time monitoring and a modern web UI.</td>
+                                <td><a href="https://github.com/fabriziosalmi/secure-proxy-manager" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">secure-proxy-manager</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Secure proxy solution with filtering, real-time monitoring and a modern web UI.">Secure proxy solution with filtering, real-time monitoring and a modern web UI.</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">228</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>4 days ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 4 days ago">4 days ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/tensorflow-poc" target="_blank">tensorflow-poc</a></td>
-                                <td class="description-cell" title="MNIST PoC using TensorFlow">MNIST PoC using TensorFlow</td>
+                                <td><a href="https://github.com/fabriziosalmi/tensorflow-poc" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">tensorflow-poc</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="MNIST PoC using TensorFlow">MNIST PoC using TensorFlow</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">13</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 years ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 years ago">1 years ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/test-aws-terraform" target="_blank">test-aws-terraform</a></td>
-                                <td class="description-cell" title="Terraform WordPress Deployment on AWS">Terraform WordPress Deployment on AWS</td>
+                                <td><a href="https://github.com/fabriziosalmi/test-aws-terraform" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">test-aws-terraform</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="Terraform WordPress Deployment on AWS">Terraform WordPress Deployment on AWS</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">8</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>2 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 2 months ago">2 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/text-boundaries" target="_blank">text-boundaries</a></td>
-                                <td class="description-cell" title="A Python-based tool for preprocessing, cleaning, and analyzing text datasets, designed to filter, deduplicate, sort data, and generate statistical insights. ">A Python-based tool for preprocessing, cleaning, and analyzing text datasets, designed to filter, deduplicate, sort data, and generate statistical insights. </td>
+                                <td><a href="https://github.com/fabriziosalmi/text-boundaries" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">text-boundaries</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="A Python-based tool for preprocessing, cleaning, and analyzing text datasets, designed to filter, deduplicate, sort data, and generate statistical insights. ">A Python-based tool for preprocessing, cleaning, and analyzing text datasets, designed to filter, deduplicate, sort data, and generate statistical insights. </td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">1</td>
                                 <td class="commits-cell">17</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>7 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 7 months ago">7 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                             <tr>
-                                <td><a href="https://github.com/fabriziosalmi/web-kick" target="_blank">web-kick</a></td>
-                                <td class="description-cell" title="No description">No description</td>
+                                <td><a href="https://github.com/fabriziosalmi/web-kick" class="repo-link" target="_blank" data-bs-toggle="tooltip" title="Open repository in GitHub">web-kick</a></td>
+                                <td class="description-cell" data-bs-toggle="tooltip" data-bs-html="true" title="No description">No description</td>
                                 <td class="stars-cell ">0</td>
                                 <td class="forks-cell ">0</td>
                                 <td class="commits-cell">29</td>
                                 <td class="contributors-cell">1</td>
                                 <td class="issues-cell">0</td>
-                                <td>1 months ago</td>
-                                <td>No Closed Issues</td>
+                                <td data-bs-toggle="tooltip" title="Last updated on 1 months ago">1 months ago</td>
+                                <td data-bs-toggle="tooltip" title="Average time to resolve issues">No Closed Issues</td>
                             </tr>
         
                         </tbody>
@@ -997,13 +1447,14 @@
             </div>
         </div>
         
+        <h2 class="text-center mb-4 mt-5" id="top-repos">Featured Repositories</h2>
         <div class="row">
     
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.0s">
                 <div class="card project-card h-100">
                     <div class="card-header bg-light">
                         <h5 class="card-title mb-0">
-                            <a href="https://github.com/fabriziosalmi/caddy-waf" target="_blank">caddy-waf</a>
+                            <a href="https://github.com/fabriziosalmi/caddy-waf" class="repo-link" target="_blank">caddy-waf</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -1013,10 +1464,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> 498
+                                    <i class="bi bi-star-fill me-1"></i> 498
                                 </span>
                                 <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> 16
+                                    <i class="bi bi-diagram-2 me-1"></i> 16
                                 </span>
                             </div>
                             <small class="text-muted">Updated 3 days ago</small>
@@ -1025,11 +1476,11 @@
                 </div>
             </div>
         
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
                 <div class="card project-card h-100">
                     <div class="card-header bg-light">
                         <h5 class="card-title mb-0">
-                            <a href="https://github.com/fabriziosalmi/patterns" target="_blank">patterns</a>
+                            <a href="https://github.com/fabriziosalmi/patterns" class="repo-link" target="_blank">patterns</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -1039,10 +1490,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> 275
+                                    <i class="bi bi-star-fill me-1"></i> 275
                                 </span>
                                 <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> 5
+                                    <i class="bi bi-diagram-2 me-1"></i> 5
                                 </span>
                             </div>
                             <small class="text-muted">Updated 2 months ago</small>
@@ -1051,11 +1502,11 @@
                 </div>
             </div>
         
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
                 <div class="card project-card h-100">
                     <div class="card-header bg-light">
                         <h5 class="card-title mb-0">
-                            <a href="https://github.com/fabriziosalmi/UglyFeed" target="_blank">UglyFeed</a>
+                            <a href="https://github.com/fabriziosalmi/UglyFeed" class="repo-link" target="_blank">UglyFeed</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -1065,10 +1516,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> 242
+                                    <i class="bi bi-star-fill me-1"></i> 242
                                 </span>
                                 <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> 10
+                                    <i class="bi bi-diagram-2 me-1"></i> 10
                                 </span>
                             </div>
                             <small class="text-muted">Updated 2 months ago</small>
@@ -1077,11 +1528,11 @@
                 </div>
             </div>
         
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.6000000000000001s">
                 <div class="card project-card h-100">
                     <div class="card-header bg-light">
                         <h5 class="card-title mb-0">
-                            <a href="https://github.com/fabriziosalmi/proxmox-vm-autoscale" target="_blank">proxmox-vm-autoscale</a>
+                            <a href="https://github.com/fabriziosalmi/proxmox-vm-autoscale" class="repo-link" target="_blank">proxmox-vm-autoscale</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -1091,10 +1542,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> 237
+                                    <i class="bi bi-star-fill me-1"></i> 237
                                 </span>
                                 <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> 15
+                                    <i class="bi bi-diagram-2 me-1"></i> 15
                                 </span>
                             </div>
                             <small class="text-muted">Updated 1 months ago</small>
@@ -1103,11 +1554,11 @@
                 </div>
             </div>
         
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
                 <div class="card project-card h-100">
                     <div class="card-header bg-light">
                         <h5 class="card-title mb-0">
-                            <a href="https://github.com/fabriziosalmi/proxmox-lxc-autoscale" target="_blank">proxmox-lxc-autoscale</a>
+                            <a href="https://github.com/fabriziosalmi/proxmox-lxc-autoscale" class="repo-link" target="_blank">proxmox-lxc-autoscale</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -1117,10 +1568,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> 192
+                                    <i class="bi bi-star-fill me-1"></i> 192
                                 </span>
                                 <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> 8
+                                    <i class="bi bi-diagram-2 me-1"></i> 8
                                 </span>
                             </div>
                             <small class="text-muted">Updated 1 months ago</small>
@@ -1129,11 +1580,11 @@
                 </div>
             </div>
         
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 1.0s">
                 <div class="card project-card h-100">
                     <div class="card-header bg-light">
                         <h5 class="card-title mb-0">
-                            <a href="https://github.com/fabriziosalmi/DevGPT" target="_blank">DevGPT</a>
+                            <a href="https://github.com/fabriziosalmi/DevGPT" class="repo-link" target="_blank">DevGPT</a>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -1143,10 +1594,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> 66
+                                    <i class="bi bi-star-fill me-1"></i> 66
                                 </span>
                                 <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> 6
+                                    <i class="bi bi-diagram-2 me-1"></i> 6
                                 </span>
                             </div>
                             <small class="text-muted">Updated 2 months ago</small>
@@ -1157,7 +1608,7 @@
         
         </div>
         
-        <footer class="footer text-center">
+        <footer class="footer text-center mt-5">
             <div class="container">
                 <p class="mb-0">
                     Generated on May 05, 2025 with 
@@ -1167,34 +1618,186 @@
         </footer>
     </div>
     
+    <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
     <script>
-        // Initialize DataTables
-        $(document).ready(function() {
-            $('#repo-table').DataTable({
+        // Theme Toggling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved theme preference or respect OS preference
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const savedTheme = localStorage.getItem('theme');
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').checked = true;
+            }
+            
+            // Theme toggle functionality
+            document.getElementById('theme-toggle').addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                    updateChartTheme('dark');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                    updateChartTheme('light');
+                }
+            });
+            
+            // Function to update chart theme if it exists
+            function updateChartTheme(theme) {
+                const chartImg = document.querySelector('.chart-container img');
+                if (chartImg) {
+                    const currentSrc = chartImg.src;
+                    if (theme === 'dark') {
+                        chartImg.src = currentSrc.replace('theme=light', 'theme=dark');
+                    } else {
+                        chartImg.src = currentSrc.replace('theme=dark', 'theme=light');
+                    }
+                }
+            }
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Initialize DataTables with enhanced features
+            const dataTable = $('#repo-table').DataTable({
                 "order": [[2, "desc"]], // Sort by stars by default
-                "pageLength": 25,
+                "pageLength": 10,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "responsive": true,
                 "language": {
-                    "search": "Filter repositories:",
+                    "search": "Search repositories:",
+                    "searchPlaceholder": "Filter by name, description...",
                     "info": "Showing _START_ to _END_ of _TOTAL_ repositories",
+                    "lengthMenu": "Show _MENU_ repositories per page",
                     "paginate": {
                         "first": "<i class='bi bi-chevron-double-left'></i>",
                         "last": "<i class='bi bi-chevron-double-right'></i>",
                         "next": "<i class='bi bi-chevron-right'></i>",
                         "previous": "<i class='bi bi-chevron-left'></i>"
                     }
+                },
+                "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                       "<'row'<'col-sm-12'tr>>" +
+                       "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                "drawCallback": function() {
+                    // Re-initialize tooltips after table redraw
+                    initTooltips();
+                }
+            });
+            
+            // Quick filter functionality
+            document.querySelectorAll('[data-filter]').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const filterType = this.getAttribute('data-filter');
+                    
+                    // Reset search first
+                    dataTable.search('').columns().search('').draw();
+                    
+                    // Apply specific filtering or sorting
+                    switch(filterType) {
+                        case 'stars':
+                            dataTable.order([2, 'desc']).draw();
+                            break;
+                        case 'forks':
+                            dataTable.order([3, 'desc']).draw();
+                            break;
+                        case 'recent':
+                            dataTable.order([7, 'desc']).draw();
+                            break;
+                        case 'contributors':
+                            dataTable.order([5, 'desc']).draw();
+                            break;
+                        case 'all':
+                            dataTable.order([2, 'desc']).draw();
+                            break;
+                    }
+                });
+            });
+            
+            // Share button functionality
+            document.getElementById('share-button').addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'GitHub Stats for fabriziosalmi',
+                        text: 'Check out fabriziosalmi's GitHub statistics',
+                        url: window.location.href
+                    })
+                    .catch(console.error);
+                } else {
+                    // Fallback for browsers that don't support navigator.share
+                    const dummy = document.createElement('input');
+                    document.body.appendChild(dummy);
+                    dummy.value = window.location.href;
+                    dummy.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummy);
+                    
+                    alert('URL copied to clipboard!');
                 }
             });
             
             // Initialize tooltips
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
+            function initTooltips() {
+                const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                    new bootstrap.Tooltip(tooltipTriggerEl, {
+                        trigger: 'hover'
+                    });
+                });
+            }
+            
+            initTooltips();
+            
+            // Initialize CountUp.js for stat numbers
+            document.querySelectorAll('.counter').forEach(element => {
+                const value = parseInt(element.innerText.replace(/,/g, ''));
+                const countUp = new CountUp(element, value, {
+                    duration: 2.5,
+                    separator: ',',
+                });
+                countUp.start();
             });
+            
+            // Responsive handling for mobile devices
+            function handleResponsive() {
+                const width = window.innerWidth;
+                if (width < 768) {
+                    dataTable.columns([4, 5, 6]).visible(false, false); // Hide commits, contributors, issues on mobile
+                } else {
+                    dataTable.columns([4, 5, 6]).visible(true, false);
+                }
+                dataTable.columns.adjust().draw(false);
+            }
+            
+            // Initial call
+            handleResponsive();
+            
+            // Update on resize
+            window.addEventListener('resize', handleResponsive);
         });
     </script>
 </body>

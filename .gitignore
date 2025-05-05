@@ -1,3 +1,7 @@
 functions/__pycache__
 *.png
 __pycache__/
+*_github_stats.json
+*_github_stats.md
+.DS_Store
+*.pyc

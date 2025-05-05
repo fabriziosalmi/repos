@@ -30,6 +30,16 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
     abs_html_path = os.path.abspath(html_path)
     logging.info(f"Will save HTML report to absolute path: {abs_html_path}")
     
+    # Calculate totals for additional metrics
+    total_forks = sum(r.get('forks', 0) or 0 for r in repositories)
+    total_commits = sum(r.get('commit_count', 0) or 0 for r in repositories)
+    total_closed_issues = sum(r.get('closed_issues_count', 0) or 0 for r in repositories)
+    
+    # Calculate average issue resolution time across all repos
+    valid_times = [r.get('avg_issue_resolution_time') for r in repositories if r.get('avg_issue_resolution_time')]
+    avg_resolution_time = sum(valid_times) / len(valid_times) if valid_times else None
+    avg_resolution_time_str = format_resolution_time(avg_resolution_time) if avg_resolution_time else "N/A"
+    
     # HTML template with CSS and JavaScript
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -37,9 +47,11 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Stats for {username}</title>
+    <meta name="description" content="Detailed GitHub statistics and analysis for {username}">
+    <link rel="icon" href="https://github.com/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {{
             --primary-color: #0d6efd;
@@ -50,130 +62,340 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
             --danger-color: #dc3545;
             --light-color: #f8f9fa;
             --dark-color: #212529;
+            
+            /* Dark mode variables */
+            --dark-bg: #121212;
+            --dark-card-bg: #1e1e1e;
+            --dark-text: #e0e0e0;
+            --dark-secondary-text: #aaaaaa;
+            --dark-border: #2d2d2d;
+            --dark-hover: #2a2a2a;
         }}
+        
         body {{
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 20px;
-            background-color: #f8f9fa;
+            background-color: var(--light-color);
+            transition: background-color 0.3s ease;
         }}
+        
+        body.dark-mode {{
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }}
+        
+        .container {{
+            max-width: 1200px;
+            animation: fadeIn 0.8s ease;
+        }}
+        
+        @keyframes fadeIn {{
+            from {{ opacity: 0; transform: translateY(20px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
+        
         .card {{
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             margin-bottom: 20px;
+            overflow: hidden;
+            border: none;
         }}
+        
+        .dark-mode .card {{
+            background-color: var(--dark-card-bg);
+            border-color: var(--dark-border);
+        }}
+        
         .card:hover {{
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }}
+        
         .card-header {{
-            border-radius: 10px 10px 0 0 !important;
+            border-radius: 12px 12px 0 0 !important;
             font-weight: bold;
+            border-bottom: none;
+            padding: 0.8rem 1.25rem;
         }}
+        
+        .dark-mode .card-header {{
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            color: var(--dark-text);
+        }}
+        
+        .dark-mode .card-header.bg-primary {{
+            background-color: #0d6efd !important;
+        }}
+        
         .stats-card {{
             text-align: center;
             padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }}
+        
+        .stats-card:hover {{
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+        }}
+        
+        .dark-mode .stats-card:hover {{
+            background-color: rgba(255, 255, 255, 0.05);
+        }}
+        
         .stat-value {{
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
         }}
+        
+        .stats-card:hover .stat-value {{
+            transform: scale(1.1);
+        }}
+        
         .stat-label {{
             font-size: 1rem;
             color: var(--secondary-color);
+            transition: color 0.3s ease;
         }}
+        
+        .dark-mode .stat-label {{
+            color: var(--dark-secondary-text);
+        }}
+        
         .progress {{
             height: 8px;
             margin-bottom: 1rem;
             border-radius: 4px;
         }}
+        
         .chart-container {{
             height: 400px;
             margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
         }}
+        
+        .chart-container .loading {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255,255,255,0.7);
+        }}
+        
+        .dark-mode .chart-container .loading {{
+            background-color: rgba(0,0,0,0.5);
+        }}
+        
         .badge {{
             margin-right: 5px;
+            padding: 0.5em 0.8em;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }}
-        .container {{
-            max-width: 1200px;
+        
+        .badge:hover {{
+            transform: scale(1.1);
         }}
+        
         .navbar {{
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,.08);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
         }}
+        
+        .dark-mode .navbar {{
+            background-color: var(--dark-card-bg);
+        }}
+        
         .navbar-brand {{
             font-weight: bold;
+            letter-spacing: 0.5px;
         }}
+        
+        .dark-mode .navbar-brand, .dark-mode .nav-link {{
+            color: var(--dark-text) !important;
+        }}
+        
+        .dark-mode .navbar-toggler {{
+            border-color: var(--dark-border);
+        }}
+        
         .header-section {{
             padding: 3rem 0;
             background: linear-gradient(135deg, #0d6efd 0%, #0098ff 100%);
             color: white;
             margin-bottom: 2rem;
             border-radius: 15px;
+            position: relative;
+            overflow: hidden;
         }}
+        
+        .header-section::before {{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23FFFFFF" fill-opacity="0.1" d="M37.5,186c-12.1-10.5-11.8-32.3-7.2-46.7c4.8-15,13.1-17.8,30.1-36.7C91,68.8,83.5,56.7,103.5,45.5c22.7-12.7,45.7,1,54.5,11.9c8.9,11,13.8,21,13.8,36.8c0,22.5-3.7,40.8-28.3,54.6c-22.6,12.7-33.5,10.1-44.7,25.7c-13.3,18.6-23.1,21.2-37.5,11.5z" /></svg>') no-repeat center center;
+            background-size: 600px;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: rotate 60s linear infinite;
+        }}
+        
+        @keyframes rotate {{
+            0% {{ transform: rotate(0deg); }}
+            100% {{ transform: rotate(360deg); }}
+        }}
+        
         .avatar {{
             width: 120px;
             height: 120px;
             border-radius: 60px;
             border: 4px solid white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }}
+        
+        .avatar:hover {{
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }}
+        
         .footer {{
             margin-top: 3rem;
             padding: 1.5rem 0;
             background-color: #ffffff;
             border-top: 1px solid rgba(0,0,0,.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }}
+        
+        .dark-mode .footer {{
+            background-color: var(--dark-card-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }}
+        
         .table-responsive {{
             border-radius: 10px;
             overflow: hidden;
         }}
+        
         #repo-table {{
             width: 100%;
         }}
+        
+        .dark-mode #repo-table {{
+            color: var(--dark-text);
+        }}
+        
         #repo-table th {{
             font-weight: bold;
             background-color: #f8f9fa;
+            border-bottom: none;
         }}
+        
+        .dark-mode #repo-table th {{
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--dark-text);
+        }}
+        
+        .dark-mode .table-striped>tbody>tr:nth-of-type(odd) {{
+            background-color: rgba(255, 255, 255, 0.02);
+        }}
+        
+        .dark-mode .table {{
+            border-color: var(--dark-border);
+        }}
+        
         .description-cell {{
             max-width: 300px;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.3;
         }}
+        
         .stars-cell, .forks-cell, .commits-cell, .contributors-cell, .issues-cell {{
             text-align: right;
+            font-variant-numeric: tabular-nums;
         }}
-        .sparkline {{
-            width: 100px;
-            height: 30px;
-        }}
+        
         .star-icon {{
             color: #ffc107;
         }}
+        
         .fork-icon {{
             color: #0d6efd;
         }}
+        
         .commit-icon {{
             color: #6f42c1;
         }}
+        
         .contributor-icon {{
             color: #198754;
         }}
+        
         .issue-icon {{
             color: #dc3545;
         }}
+        
         .project-card {{
             height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }}
+        
+        .project-card::after {{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #0d6efd, #0098ff);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }}
+        
+        .project-card:hover::after {{
+            transform: scaleX(1);
+        }}
+        
         .project-card .card-body {{
             display: flex;
             flex-direction: column;
         }}
+        
         .project-card .card-footer {{
             margin-top: auto;
+            border-top: none;
+            background-color: transparent;
         }}
+        
+        .dark-mode .project-card .card-footer {{
+            background-color: transparent;
+        }}
+        
         .tag {{
             display: inline-block;
             padding: 0.25rem 0.5rem;
@@ -181,7 +403,180 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
             font-size: 0.75rem;
             margin-right: 5px;
             margin-bottom: 5px;
+            transition: all 0.2s ease;
         }}
+        
+        .tag:hover {{
+            transform: scale(1.05);
+        }}
+        
+        .theme-switch {{
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }}
+        
+        .theme-switch input {{
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }}
+        
+        .slider {{
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }}
+        
+        .slider:before {{
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }}
+        
+        input:checked + .slider {{
+            background-color: #2196F3;
+        }}
+        
+        input:focus + .slider {{
+            box-shadow: 0 0 1px #2196F3;
+        }}
+        
+        input:checked + .slider:before {{
+            transform: translateX(26px);
+        }}
+        
+        /* Loading Skeleton */
+        .skeleton {{
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+            height: 24px;
+            margin-bottom: 8px;
+        }}
+        
+        .dark-mode .skeleton {{
+            background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+        }}
+        
+        @keyframes loading {{
+            0% {{ background-position: 200% 0; }}
+            100% {{ background-position: -200% 0; }}
+        }}
+        
+        .pulse {{
+            animation: pulse 2s infinite;
+        }}
+        
+        @keyframes pulse {{
+            0% {{ transform: scale(1); }}
+            50% {{ transform: scale(1.05); }}
+            100% {{ transform: scale(1); }}
+        }}
+        
+        .repo-link {{
+            position: relative;
+            display: inline-block;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }}
+        
+        .repo-link::after {{
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }}
+        
+        .repo-link:hover::after {{
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }}
+        
+        .dark-mode .repo-link {{
+            color: #4da3ff;
+        }}
+        
+        .dark-mode .repo-link::after {{
+            background-color: #4da3ff;
+        }}
+        
+        .tooltip-inner {{
+            max-width: 300px;
+        }}
+        
+        .back-to-top {{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }}
+        
+        .back-to-top.visible {{
+            opacity: 1;
+            visibility: visible;
+        }}
+        
+        .dark-mode .dataTables_wrapper .dataTables_length, 
+        .dark-mode .dataTables_wrapper .dataTables_filter, 
+        .dark-mode .dataTables_wrapper .dataTables_info, 
+        .dark-mode .dataTables_wrapper .dataTables_processing, 
+        .dark-mode .dataTables_wrapper .dataTables_paginate {{
+            color: var(--dark-text);
+        }}
+        
+        .dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button {{
+            color: var(--dark-text) !important;
+        }}
+        
+        .dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button.current {{
+            color: white !important;
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }}
+        
+        .dark-mode .form-control, .dark-mode .form-select {{
+            background-color: var(--dark-card-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }}
+        
         @media (max-width: 768px) {{
             .header-section {{
                 padding: 2rem 0;
@@ -193,6 +588,202 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
                 width: 80px;
                 height: 80px;
             }}
+            .chart-container {{
+                height: 300px;
+            }}
+        }}
+        
+        @media print {{
+            .navbar, .theme-toggle, .back-to-top {{
+                display: none !important;
+            }}
+            body {{
+                background-color: white !important;
+                color: black !important;
+            }}
+            .card {{
+                break-inside: avoid;
+                border: 1px solid #ddd;
+                box-shadow: none !important;
+            }}
+            a {{
+                text-decoration: underline;
+                color: #000 !important;
+            }}
+            .card-header.bg-primary {{
+                background-color: #f8f9fa !important;
+                color: #000 !important;
+            }}
+            .header-section {{
+                background: #f8f9fa !important;
+                color: #000 !important;
+            }}
+        }}
+        
+        .repo-card {{
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }}
+        
+        .repo-card::after {{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #0d6efd, #0098ff);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }}
+        
+        .repo-card:hover::after {{
+            transform: scaleX(1);
+        }}
+        
+        .repo-card .card-body {{
+            display: flex;
+            flex-direction: column;
+        }}
+        
+        .repo-metrics {{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }}
+        
+        .metric {{
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }}
+        
+        .metric-icon {{
+            width: 20px;
+            margin-right: 8px;
+            text-align: center;
+        }}
+        
+        .metric-value {{
+            font-variant-numeric: tabular-nums;
+            font-weight: 500;
+        }}
+        
+        .repo-card .card-footer {{
+            margin-top: auto;
+            border-top: none;
+            background-color: transparent;
+        }}
+        
+        .stats-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }}
+        
+        .repo-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }}
+        
+        .stats-card .stats-icon {{
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: linear-gradient(135deg, #0d6efd, #0098ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }}
+        
+        .repo-badge {{
+            display: inline-flex;
+            align-items: center;
+            border-radius: 12px;
+            padding: 3px 10px;
+            margin-right: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.1);
+            background-color: rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }}
+        
+        .repo-badge:hover {{
+            transform: translateY(-2px);
+        }}
+        
+        .repo-badge i {{
+            margin-right: 4px;
+        }}
+        
+        .dark-mode .repo-badge {{
+            background-color: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+        }}
+        
+        .repo-card .description {{
+            flex-grow: 1;
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 1.5;
+        }}
+        
+        .search-container {{
+            margin-bottom: 25px;
+        }}
+        
+        .filter-badge {{
+            margin-right: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }}
+        
+        .filter-badge:hover {{
+            transform: translateY(-2px);
+        }}
+        
+        .filter-badge.active {{
+            background-color: var(--primary-color);
+            color: white;
+        }}
+        
+        .empty-state {{
+            text-align: center;
+            padding: 40px;
+            color: var(--secondary-color);
+        }}
+        
+        .empty-state i {{
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }}
+        
+        .repo-count-badge {{
+            font-size: 0.9rem;
+            vertical-align: middle;
+            margin-left: 8px;
+        }}
+        
+        @media (max-width: 768px) {{
+            .repo-grid {{
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }}
+            
+            .stats-grid {{
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }}
         }}
     </style>
 </head>
@@ -203,6 +794,14 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
                 <a class="navbar-brand" href="#">
                     <i class="bi bi-github me-2"></i>GitHub Stats
                 </a>
+                <div class="theme-toggle ms-auto me-3 d-flex align-items-center">
+                    <i class="bi bi-sun me-2"></i>
+                    <label class="theme-switch mb-0">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <i class="bi bi-moon ms-2"></i>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -215,9 +814,6 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
                             <a class="nav-link" href="#repositories">Repositories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#star-history">Star History</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="https://github.com/{username}" target="_blank">
                                 <i class="bi bi-box-arrow-up-right me-1"></i>GitHub Profile
                             </a>
@@ -227,105 +823,149 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
             </div>
         </nav>
         
-        <div class="header-section text-center" id="overview">
+        <div class="header-section text-center animate__animated animate__fadeIn" id="overview">
             <img src="https://github.com/{username}.png" alt="{username}" class="avatar mb-3">
-            <h1>{username}</h1>
+            <h1 class="display-4 mb-0">{username}</h1>
             <p class="lead">GitHub Repository Statistics</p>
             <div class="mt-4">
-                <a href="https://github.com/{username}" class="btn btn-light me-2" target="_blank">
+                <a href="https://github.com/{username}" class="btn btn-light me-2" target="_blank" aria-label="View GitHub Profile">
                     <i class="bi bi-github"></i> View Profile
                 </a>
+                <button class="btn btn-outline-light" id="share-button" aria-label="Share this report">
+                    <i class="bi bi-share"></i> Share
+                </button>
             </div>
         </div>
         
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card stats-card">
+        <h2 class="mb-4 animate__animated animate__fadeInUp">Summary Statistics</h2>
+        <div class="stats-grid animate__animated animate__fadeInUp">
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-star-fill"></i>
+                    </div>
                     <div class="stat-value text-primary">
-                        <i class="bi bi-star-fill star-icon me-2"></i>{total_stars:,}
+                        <span class="counter">{total_stars:,}</span>
                     </div>
                     <div class="stat-label">Total Stars</div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card stats-card">
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-hdd-stack"></i>
+                    </div>
                     <div class="stat-value text-success">
-                        <i class="bi bi-hdd-stack me-2"></i>{len(repositories):,}
+                        <span class="counter">{len(repositories):,}</span>
                     </div>
                     <div class="stat-label">Repositories</div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card stats-card">
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-diagram-2"></i>
+                    </div>
                     <div class="stat-value text-info">
-                        <i class="bi bi-people-fill me-2"></i>
-                        {sum(r.get('contributors_count', 0) or 0 for r in repositories):,}
+                        <span class="counter">{total_forks:,}</span>
+                    </div>
+                    <div class="stat-label">Total Forks</div>
+                </div>
+            </div>
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-git"></i>
+                    </div>
+                    <div class="stat-value text-danger">
+                        <span class="counter">{total_commits:,}</span>
+                    </div>
+                    <div class="stat-label">Total Commits</div>
+                </div>
+            </div>
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="stat-value text-warning">
+                        <span class="counter">{sum(r.get('contributors_count', 0) or 0 for r in repositories):,}</span>
                     </div>
                     <div class="stat-label">Total Contributors</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="card mb-4" id="star-history">
-            <div class="card-header bg-primary text-white">
-                <i class="bi bi-graph-up me-2"></i>Star History (Top Repositories)
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <div class="stat-value text-secondary">
+                        <span class="counter">{total_closed_issues:,}</span>
+                    </div>
+                    <div class="stat-label">Closed Issues</div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="chart-container">
-    """
-    
-    # Add the star history chart if we have repos
-    if top_repo_full_names:
-        num_chart_repos = min(len(top_repo_full_names), 10)
-        chart_repo_names = top_repo_full_names[:num_chart_repos]
-        repo_list_param = ",".join(url_quote(name) for name in chart_repo_names)
-        chart_url = f"https://api.star-history.com/svg?repos={repo_list_param}&type=Date&theme=light"
-        html_content += f"""
-                    <img src="{chart_url}" class="img-fluid" alt="Star History Chart">
-                    <div class="text-center mt-2">
-                        <small class="text-muted">Chart shows star growth over time for top {num_chart_repos} repositories</small>
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-hourglass-split"></i>
                     </div>
-        """
-    else:
-        html_content += """
-                    <div class="alert alert-info">
-                        No repositories found to generate star history chart.
+                    <div class="stat-value" style="color: #6f42c1;">
+                        {avg_resolution_time_str}
                     </div>
-        """
-    
-    html_content += """
+                    <div class="stat-label">Avg Issue Resolution</div>
+                </div>
+            </div>
+            
+            <div class="card stats-card text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="bi bi-clock-history"></i>
+                    </div>
+                    <div class="stat-value" style="color: #fd7e14;">
+                        {repositories[0].get('last_update_str', 'Unknown') if repositories else 'N/A'}
+                    </div>
+                    <div class="stat-label">Latest Update</div>
                 </div>
             </div>
         </div>
         
-        <div class="card mb-4" id="repositories">
-            <div class="card-header bg-primary text-white">
-                <i class="bi bi-hdd-stack me-2"></i>Repositories
+        <h2 class="mb-4 mt-5 animate__animated animate__fadeInUp" id="repositories">
+            All Repositories
+            <span class="badge bg-primary repo-count-badge">{len(repositories)}</span>
+        </h2>
+        
+        <div class="search-container animate__animated animate__fadeInUp">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" id="repo-search" placeholder="Search repositories by name or description...">
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="repo-table" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Repository</th>
-                                <th>Description</th>
-                                <th><i class="bi bi-star-fill star-icon"></i> Stars</th>
-                                <th><i class="bi bi-diagram-2 fork-icon"></i> Forks</th>
-                                <th><i class="bi bi-git commit-icon"></i> Commits</th>
-                                <th><i class="bi bi-people contributor-icon"></i> Contributors</th>
-                                <th><i class="bi bi-check-circle issue-icon"></i> Closed Issues</th>
-                                <th><i class="bi bi-clock"></i> Last Update</th>
-                                <th><i class="bi bi-hourglass-split"></i> Avg Issue Res.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            
+            <div class="filter-buttons mb-3">
+                <span class="badge bg-secondary filter-badge active" data-filter="all">All</span>
+                <span class="badge bg-secondary filter-badge" data-filter="stars">Most Stars</span>
+                <span class="badge bg-secondary filter-badge" data-filter="forks">Most Forks</span>
+                <span class="badge bg-secondary filter-badge" data-filter="recent">Recently Updated</span>
+                <span class="badge bg-secondary filter-badge" data-filter="commits">Most Commits</span>
+            </div>
+        </div>
+        
+        <div class="repo-grid animate__animated animate__fadeInUp" id="repository-grid">
     """
     
-    # Add repository rows
-    for repo in repositories:
+    # Add all repositories as cards
+    sorted_repos = sorted(repositories, key=lambda r: r.get('stars', 0) or 0, reverse=True)
+    
+    for repo in sorted_repos:
         repo_name = repo.get('name', 'N/A')
         repo_url = repo.get('url', '#')
-        description = repo.get('description', '')
+        description = repo.get('description', 'No description available')
         stars = repo.get('stars', 0)
         forks = repo.get('forks', 0)
         commits = repo.get('commit_count')
@@ -337,77 +977,85 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
         last_update = repo.get('last_update_str', 'Unknown')
         resolution_time = format_resolution_time(repo.get('avg_issue_resolution_time'))
         
-        # Calculate style classes for values
-        stars_class = "text-warning fw-bold" if stars > 100 else ""
-        forks_class = "text-primary fw-bold" if forks > 50 else ""
-        
         html_content += f"""
-                            <tr>
-                                <td><a href="{repo_url}" target="_blank">{repo_name}</a></td>
-                                <td class="description-cell" title="{description}">{description}</td>
-                                <td class="stars-cell {stars_class}">{stars:,}</td>
-                                <td class="forks-cell {forks_class}">{forks:,}</td>
-                                <td class="commits-cell">{commits_str}</td>
-                                <td class="contributors-cell">{contributors_str}</td>
-                                <td class="issues-cell">{closed_issues_str}</td>
-                                <td>{last_update}</td>
-                                <td>{resolution_time}</td>
-                            </tr>
-        """
-    
-    html_content += """
-                        </tbody>
-                    </table>
+            <div class="card repo-card" 
+                data-name="{repo_name.lower()}" 
+                data-description="{description.lower()}" 
+                data-stars="{stars}" 
+                data-forks="{forks}" 
+                data-commits="{commits if commits is not None else 0}" 
+                data-update="{last_update}">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        <a href="{repo_url}" class="repo-link" target="_blank">{repo_name}</a>
+                    </h5>
                 </div>
-            </div>
-        </div>
-        
-        <div class="row">
-    """
-    
-    # Add top repositories as cards
-    top_repos = sorted(repositories, key=lambda r: r.get('stars', 0) or 0, reverse=True)[:6]
-    for repo in top_repos:
-        repo_name = repo.get('name', 'N/A')
-        repo_url = repo.get('url', '#')
-        description = repo.get('description', 'No description')
-        stars = repo.get('stars', 0)
-        forks = repo.get('forks', 0)
-        last_update = repo.get('last_update_str', 'Unknown')
-        
-        html_content += f"""
-            <div class="col-md-4 mb-4">
-                <div class="card project-card h-100">
-                    <div class="card-header bg-light">
-                        <h5 class="card-title mb-0">
-                            <a href="{repo_url}" target="_blank">{repo_name}</a>
-                        </h5>
+                <div class="card-body">
+                    <p class="description">{description}</p>
+                    
+                    <div class="d-flex flex-wrap mb-3">
+                        <span class="repo-badge">
+                            <i class="bi bi-star-fill text-warning"></i> {stars:,}
+                        </span>
+                        <span class="repo-badge">
+                            <i class="bi bi-diagram-2 text-primary"></i> {forks:,}
+                        </span>
+                        <span class="repo-badge">
+                            <i class="bi bi-git text-danger"></i> {commits_str}
+                        </span>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text">{description}</p>
-                    </div>
-                    <div class="card-footer bg-white">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="badge bg-warning text-dark">
-                                    <i class="bi bi-star-fill"></i> {stars:,}
-                                </span>
-                                <span class="badge bg-primary">
-                                    <i class="bi bi-diagram-2"></i> {forks:,}
-                                </span>
+                    
+                    <div class="repo-metrics">
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="bi bi-people-fill text-success"></i>
                             </div>
-                            <small class="text-muted">Updated {last_update}</small>
+                            <div class="metric-value">
+                                {contributors_str} contributors
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="bi bi-check-circle text-info"></i>
+                            </div>
+                            <div class="metric-value">
+                                {closed_issues_str} issues closed
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="bi bi-clock text-secondary"></i>
+                            </div>
+                            <div class="metric-value">
+                                Updated {last_update}
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="bi bi-hourglass-split" style="color: #6f42c1;"></i>
+                            </div>
+                            <div class="metric-value">
+                                {resolution_time} avg resolution
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         """
     
-    current_date = datetime.datetime.now().strftime("%B %d, %Y")
-    html_content += f"""
+    # Add empty state for when no repositories match search
+    html_content += """
+            <div class="empty-state" id="empty-state" style="display:none;">
+                <i class="bi bi-search"></i>
+                <h4>No repositories found</h4>
+                <p>Try adjusting your search or filters</p>
+            </div>
         </div>
         
-        <footer class="footer text-center">
+        <footer class="footer text-center mt-5">
             <div class="container">
                 <p class="mb-0">
                     Generated on {current_date} with 
@@ -417,35 +1065,193 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
         </footer>
     </div>
     
+    <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
     <script>
-        // Initialize DataTables
-        $(document).ready(function() {{
-            $('#repo-table').DataTable({{
-                "order": [[2, "desc"]], // Sort by stars by default
-                "pageLength": 25,
-                "responsive": true,
-                "language": {{
-                    "search": "Filter repositories:",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ repositories",
-                    "paginate": {{
-                        "first": "<i class='bi bi-chevron-double-left'></i>",
-                        "last": "<i class='bi bi-chevron-double-right'></i>",
-                        "next": "<i class='bi bi-chevron-right'></i>",
-                        "previous": "<i class='bi bi-chevron-left'></i>"
-                    }}
-                }}
-            }});
+        document.addEventListener('DOMContentLoaded', function() {
+            // Improved theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const savedTheme = localStorage.getItem('theme');
             
-            // Initialize tooltips
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map(function (tooltipTriggerEl) {{
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            }});
-        }});
+            // Function to apply theme
+            function applyTheme(isDark) {
+                if (isDark) {
+                    document.body.classList.add('dark-mode');
+                    if (themeToggle) themeToggle.checked = true;
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    if (themeToggle) themeToggle.checked = false;
+                }
+            }
+            
+            // Apply initial theme based on preference or system setting
+            if (savedTheme === 'dark') {
+                applyTheme(true);
+            } else if (savedTheme === 'light') {
+                applyTheme(false);
+            } else {
+                // No saved preference, use system preference
+                applyTheme(prefersDarkScheme.matches);
+            }
+            
+            // Listen for changes to system color scheme
+            prefersDarkScheme.addEventListener('change', function(event) {
+                // Only update based on system changes if user hasn't set preference
+                if (!localStorage.getItem('theme')) {
+                    applyTheme(event.matches);
+                }
+            });
+            
+            // Handle toggle switch changes
+            if (themeToggle) {
+                themeToggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        applyTheme(true);
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        applyTheme(false);
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+            
+            // Debug info for theme settings
+            console.log({
+                'System prefers dark': prefersDarkScheme.matches,
+                'Saved theme': savedTheme || 'none',
+                'Applied theme': document.body.classList.contains('dark-mode') ? 'dark' : 'light'
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Repository search functionality
+            const searchInput = document.getElementById('repo-search');
+            const repoCards = document.querySelectorAll('.repo-card');
+            const emptyState = document.getElementById('empty-state');
+            
+            searchInput.addEventListener('input', filterRepositories);
+            
+            function filterRepositories() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const activeFilter = document.querySelector('.filter-badge.active').getAttribute('data-filter');
+                let visibleCount = 0;
+                
+                repoCards.forEach(card => {
+                    const name = card.getAttribute('data-name');
+                    const description = card.getAttribute('data-description');
+                    const isMatch = name.includes(searchTerm) || description.includes(searchTerm);
+                    
+                    if (isMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide empty state
+                emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+            
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-badge');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filterType = this.getAttribute('data-filter');
+                    sortRepositories(filterType);
+                });
+            });
+            
+            function sortRepositories(filterType) {
+                const grid = document.getElementById('repository-grid');
+                const cards = Array.from(document.querySelectorAll('.repo-card'));
+                
+                // Sort cards based on filter type
+                switch(filterType) {
+                    case 'stars':
+                        cards.sort((a, b) => parseInt(b.getAttribute('data-stars')) - parseInt(a.getAttribute('data-stars')));
+                        break;
+                    case 'forks':
+                        cards.sort((a, b) => parseInt(b.getAttribute('data-forks')) - parseInt(a.getAttribute('data-forks')));
+                        break;
+                    case 'commits':
+                        cards.sort((a, b) => parseInt(b.getAttribute('data-commits')) - parseInt(a.getAttribute('data-commits')));
+                        break;
+                    case 'recent':
+                        // This is a simple string comparison which works for dates in "X days/months ago" format
+                        cards.sort((a, b) => a.getAttribute('data-update').localeCompare(b.getAttribute('data-update')));
+                        break;
+                    case 'all':
+                    default:
+                        // Default sort by stars
+                        cards.sort((a, b) => parseInt(b.getAttribute('data-stars')) - parseInt(a.getAttribute('data-stars')));
+                        break;
+                }
+                
+                // Remove all cards and re-add in sorted order
+                cards.forEach(card => grid.appendChild(card));
+                
+                // Reapply search filter
+                filterRepositories();
+            }
+            
+            // Share button functionality
+            document.getElementById('share-button').addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'GitHub Stats for {username}',
+                        text: 'Check out {username}\\'s GitHub statistics',
+                        url: window.location.href
+                    })
+                    .catch(console.error);
+                } else {
+                    // Fallback for browsers that don't support navigator.share
+                    const dummy = document.createElement('input');
+                    document.body.appendChild(dummy);
+                    dummy.value = window.location.href;
+                    dummy.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummy);
+                    
+                    alert('URL copied to clipboard!');
+                }
+            });
+            
+            // Initialize CountUp.js for stat numbers
+            document.querySelectorAll('.counter').forEach(element => {
+                const value = parseInt(element.innerText.replace(/,/g, ''));
+                const countUp = new CountUp(element, value, {
+                    duration: 2.5,
+                    separator: ',',
+                });
+                countUp.start();
+            });
+        });
     </script>
 </body>
 </html>
