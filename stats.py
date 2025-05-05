@@ -1140,8 +1140,10 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
             # Use a theme consistent with potential dark mode READMEs
             stats_card_url = f"https://github-readme-stats.vercel.app/api?username={username}&show_icons=true&theme=github_dark&hide_border=true&cache_seconds=3600"
             streak = f"https://streak-stats.demolab.com/?user={username}"
+            trophy = f"https://github-profile-trophy.vercel.app/?username={username}"
             f.write(f"![{username}'s GitHub stats]({stats_card_url})\n\n")
             f.write(f"![{username}'s GitHub streak]({streak})\n\n")
+            f.write(f"![{username}'s GitHub trophy]({trophy})\n\n")
 
             # Star History Chart (Top N Repos)
             if top_repo_full_names:
