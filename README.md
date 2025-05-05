@@ -1,6 +1,6 @@
 # GitHub Repository Stats for fabriziosalmi
 
-Total stars across owned repositories scanned: **1,866** ⭐
+Total stars across owned repositories scanned: **1,867** ⭐
 
 ## Overall Stats
 
@@ -18,7 +18,7 @@ Total stars across owned repositories scanned: **1,866** ⭐
 
 | Repository | Description | Stars ⭐ | Forks 🍴 | Commits 💾 | Contributors 👥 | Closed Issues ✅ | Last Update 🕒 | Avg. Issue Res. ⏱️ |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | 498 | 16 | 584 | 4 | 1 | 3 days ago | 13d 5h 21m 58s |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | 499 | 16 | 584 | 4 | 1 | 3 days ago | 13d 5h 21m 58s |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | 275 | 5 | 261 | 5 | 1 | 2 months ago | 6d 15h 39m 16s |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | 242 | 10 | 842 | 3 | 1 | 2 months ago | 44d 20h 47m 38s |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | 237 | 15 | 114 | 6 | 1 | 1 months ago | 18d 14h 19m 22s |
@@ -49,7 +49,7 @@ Total stars across owned repositories scanned: **1,866** ⭐
 | [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf | 2 | 0 | 61 | 2 | 1 | 2 months ago | No Closed Issues |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github Actions | 2 | 2 | 12 | 1 | 1 | 2 months ago | 538d 5h 6m 11s |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | 2 | 1 | 45 | 1 | 0 | 10 months ago | No Closed Issues |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories | 2 | 0 | 494 | 2 | 0 | 2 minutes ago | No Closed Issues |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories | 2 | 0 | 497 | 2 | 0 | just now | No Closed Issues |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | 2 | 0 | 46 | 2 | 1 | 1 months ago | No Closed Issues |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | 1 | 1 | 147 | 2 | 0 | 5 years ago | No Closed Issues |
 | [audiogen](https://github.com/fabriziosalmi/audiogen) | AI-Powered Sound Generation & Classification. | 1 | 1 | 13 | 1 | 0 | 2 months ago | No Closed Issues |
