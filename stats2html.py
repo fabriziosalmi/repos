@@ -681,99 +681,21 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
         
         .stats-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns layout */
             gap: 20px;
             margin-bottom: 30px;
         }}
         
-        .repo-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
+        @media (max-width: 992px) {{
+            .stats-grid {{
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            }}
         }}
         
-        .stats-card .stats-icon {{
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: inline-block;
-            background: linear-gradient(135deg, #0d6efd, #0098ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: all 0.3s ease;
-        }}
-        
-        .repo-badge {{
-            display: inline-flex;
-            align-items: center;
-            border-radius: 12px;
-            padding: 3px 10px;
-            margin-right: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.1);
-            background-color: rgba(0,0,0,0.03);
-            transition: all 0.2s ease;
-        }}
-        
-        .repo-badge:hover {{
-            transform: translateY(-2px);
-        }}
-        
-        .repo-badge i {{
-            margin-right: 4px;
-        }}
-        
-        .dark-mode .repo-badge {{
-            background-color: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.1);
-        }}
-        
-        .repo-card .description {{
-            flex-grow: 1;
-            margin-bottom: 15px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            line-height: 1.5;
-        }}
-        
-        .search-container {{
-            margin-bottom: 25px;
-        }}
-        
-        .filter-badge {{
-            margin-right: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }}
-        
-        .filter-badge:hover {{
-            transform: translateY(-2px);
-        }}
-        
-        .filter-badge.active {{
-            background-color: var(--primary-color);
-            color: white;
-        }}
-        
-        .empty-state {{
-            text-align: center;
-            padding: 40px;
-            color: var(--secondary-color);
-        }}
-        
-        .empty-state i {{
-            font-size: 3rem;
-            margin-bottom: 15px;
-            opacity: 0.5;
-        }}
-        
-        .repo-count-badge {{
-            font-size: 0.9rem;
-            vertical-align: middle;
-            margin-left: 8px;
+        @media (max-width: 576px) {{
+            .stats-grid {{
+                grid-template-columns: 1fr; /* 1 column on very small screens */
+            }}
         }}
         
         @media (max-width: 768px) {{
@@ -781,8 +703,169 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }}
             
-            .stats-grid {{
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }}
+        
+        .dark-mode .header-section {{
+            background: linear-gradient(135deg, #1a4b8c 0%, #0a3d79 100%);
+            color: #ffffff; /* Ensure pure white text for better contrast in dark mode */
+        }}
+        
+        .dark-mode .header-section h1 {{
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Add slight text shadow for better readability */
+        }}
+        
+        .dark-mode .header-section p {{
+            color: rgba(255, 255, 255, 0.95);
+        }}
+        
+        .dark-mode .stats-icon {{
+            background: linear-gradient(135deg, #4da3ff, #68b5ff);
+            -webkit-background-clip: text;
+        }}
+        
+        .dark-mode .stat-value {{
+            color: var(--dark-text) !important;
+        }}
+        
+        .dark-mode .stat-value.text-primary,
+        .dark-mode .stat-value.text-success,
+        .dark-mode .stat-value.text-info,
+        .dark-mode .stat-value.text-danger,
+        .dark-mode .stat-value.text-warning,
+        .dark-mode .stat-value.text-secondary {{
+            opacity: 0.9;
+        }}
+        
+        .dark-mode .repo-card .description {{
+            color: var(--dark-text);
+        }}
+        
+        .dark-mode .metric-value {{
+            color: var(--dark-text);
+        }}
+        
+        .dark-mode .repo-card .card-header {{
+            background-color: rgba(0, 0, 0, 0.2) !important;
+        }}
+        
+        .dark-mode .filter-badge:not(.active) {{
+            background-color: #444;
+            color: var(--dark-text);
+        }}
+        
+        /* UI Improvements */
+        .repo-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }}
+        
+        .empty-state {{
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--secondary-color);
+            background-color: rgba(0,0,0,0.02);
+            border-radius: 12px;
+            border: 1px dashed rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }}
+        
+        .dark-mode .empty-state {{
+            background-color: rgba(255,255,255,0.02);
+            border-color: rgba(255,255,255,0.05);
+            color: var(--dark-secondary-text);
+        }}
+        
+        .empty-state i {{
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0.6;
+            color: var(--secondary-color);
+        }}
+        
+        .dark-mode .empty-state i {{
+            color: var(--dark-secondary-text);
+        }}
+        
+        .repo-badge {{
+            margin-bottom: 8px;
+        }}
+        
+        .filter-buttons {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }}
+        
+        .repo-card {{
+            display: flex;
+            flex-direction: column;
+        }}
+        
+        .repo-card .card-body {{
+            flex: 1;
+            padding: 1.5rem;
+        }}
+        
+        .repo-card .card-header {{
+            padding: 1rem 1.5rem;
+        }}
+        
+        .footer {{
+            margin-top: 4rem;
+            padding: 2rem 0;
+        }}
+        
+        .footer a {{
+            font-weight: 500;
+            text-decoration: none;
+        }}
+        
+        .footer a:hover {{
+            text-decoration: underline;
+        }}
+        
+        /* Fix for Chrome rendering bug with grid items */
+        @supports (-webkit-appearance:none) {{
+            .stats-grid .card,
+            .repo-grid .card {{
+                transform: translateZ(0);
+            }}
+        }}
+        
+        /* Smoother loading for repository cards */
+        .repo-grid .repo-card {{
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: calc(0.05s * var(--card-index, 0));
+            opacity: 0;
+        }}
+        
+        @keyframes fadeInUp {{
+            from {{ opacity: 0; transform: translateY(20px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
+        
+        /* Improve loading performance */
+        .loading-optimization {{
+            content-visibility: auto;
+            contain-intrinsic-size: 0 500px;
+        }}
+        
+        /* Fix for Safari flex gap issue */
+        @media not all and (min-resolution:.001dpcm) {{ 
+            .filter-buttons, .repo-metrics {{
+                gap: 0;
+            }}
+            
+            .filter-buttons .filter-badge {{
+                margin-right: 8px;
+            }}
+            
+            .repo-metrics .metric {{
+                margin-right: 8px;
             }}
         }}
     </style>
@@ -1058,8 +1141,8 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
         <footer class="footer text-center mt-5">
             <div class="container">
                 <p class="mb-0">
-                    Generated on {current_date} with 
-                    <a href="https://github.com/{username}/repos/blob/main/stats.py" target="_blank">GitHub Stats Generator</a>
+                    Made with ❤️ by <a href="https://github.com/fabriziosalmi" target="_blank">fab</a> with 
+                    <a href="https://github.com/{username}/repos" target="_blank">GitHub Stats Generator</a>
                 </p>
             </div>
         </footer>
@@ -1084,9 +1167,27 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
                 if (isDark) {
                     document.body.classList.add('dark-mode');
                     if (themeToggle) themeToggle.checked = true;
+                    
+                    // Fix specific color elements that need special handling
+                    document.querySelectorAll('.stat-value').forEach(el => {
+                        // Preserve the color class but make it more visible in dark mode
+                        if (el.classList.contains('text-primary') || 
+                            el.classList.contains('text-success') ||
+                            el.classList.contains('text-info') ||
+                            el.classList.contains('text-warning') ||
+                            el.classList.contains('text-danger') ||
+                            el.classList.contains('text-secondary')) {
+                            el.style.opacity = '0.9';
+                        }
+                    });
                 } else {
                     document.body.classList.remove('dark-mode');
                     if (themeToggle) themeToggle.checked = false;
+                    
+                    // Reset styles when switching back to light mode
+                    document.querySelectorAll('.stat-value').forEach(el => {
+                        el.style.opacity = '';
+                    });
                 }
             }
             
@@ -1251,6 +1352,59 @@ def create_html_report(repositories, total_stars, top_repo_full_names, username,
                 });
                 countUp.start();
             });
+            
+            // Add animation delay to repository cards for staggered entrance
+            document.querySelectorAll('.repo-card').forEach((card, index) => {
+                card.style.setProperty('--card-index', index);
+            });
+            
+            // Fix for empty state responsiveness
+            function updateEmptyStateHeight() {
+                const emptyState = document.getElementById('empty-state');
+                const grid = document.getElementById('repository-grid');
+                if (emptyState && grid) {
+                    if (emptyState.style.display === 'block') {
+                        emptyState.style.minHeight = grid.offsetHeight > 400 ? 
+                                                    (grid.offsetHeight * 0.7) + 'px' : 
+                                                    '400px';
+                    }
+                }
+            }
+            
+            const observer = new ResizeObserver(updateEmptyStateHeight);
+            const grid = document.getElementById('repository-grid');
+            if (grid) observer.observe(grid);
+            
+            // Enhance search behavior for better UX
+            let searchTimeout;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(filterRepositories, 200); // Debounce search
+            });
+            
+            // Add proper error handling for CountUp.js
+            document.querySelectorAll('.counter').forEach(element => {
+                try {
+                    const valueText = element.innerText.replace(/,/g, '');
+                    const value = parseInt(valueText);
+                    
+                    if (!isNaN(value)) {
+                        const countUp = new CountUp(element, value, {
+                            duration: 2.5,
+                            separator: ',',
+                        });
+                        
+                        if (!countUp.error) {
+                            countUp.start();
+                        } else {
+                            console.error("CountUp error: ", countUp.error);
+                        }
+                    }
+                } catch (err) {
+                    console.error("Error initializing counter:", err);
+                }
+            });
+            
         });
     </script>
 </body>
