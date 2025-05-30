@@ -1,6 +1,6 @@
 # GitHub Repository Stats for fabriziosalmi
 
-Total stars across owned repositories scanned: **1,926** ⭐
+Total stars across owned repositories scanned: **1,928** ⭐
 
 ## Overall Stats
 
@@ -18,18 +18,18 @@ Total stars across owned repositories scanned: **1,926** ⭐
 
 | Repository | Description | Stars ⭐ | Forks 🍴 | Commits 💾 | Contributors 👥 | Closed Issues ✅ | Last Update 🕒 | Avg. Issue Res. ⏱️ |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | 513 | 16 | 584 | 4 | 1 | 3 weeks ago | 13d 5h 21m 58s |
-| [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | 278 | 5 | 261 | 5 | 1 | 2 months ago | 6d 15h 39m 16s |
-| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | 249 | 10 | 842 | 3 | 1 | 3 months ago | 44d 20h 47m 38s |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection) | 514 | 16 | 584 | 4 | 1 | 3 weeks ago | 13d 5h 21m 58s |
+| [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy | 278 | 5 | 261 | 5 | 1 | 3 months ago | 6d 15h 39m 16s |
+| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes | 250 | 10 | 842 | 3 | 1 | 3 months ago | 44d 20h 47m 38s |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources on Proxmox hosts | 239 | 15 | 114 | 6 | 1 | 2 months ago | 18d 14h 19m 22s |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on Proxmox hosts | 197 | 8 | 632 | 2 | 1 | 2 months ago | 18d 13h 57m 12s |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assistant to build project in minutes | 67 | 6 | 37 | 1 | 1 | 3 months ago | No Closed Issues |
 | [lws](https://github.com/fabriziosalmi/lws) | proxmox/lxc/docker unified CLI | 62 | 5 | 107 | 2 | 1 | 3 weeks ago | 200d 1h 5m 12s |
-| [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | 46 | 18 | 856 | 3 | 1 | 20 hours ago | 298d 4h 23m 11s |
-| [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | 31 | 3 | 77 | 2 | 1 | 3 days ago | 59d 7h 52m 6s |
+| [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO) | 46 | 18 | 857 | 3 | 1 | 20 hours ago | 298d 4h 23m 11s |
+| [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive errors on Caddy | 31 | 3 | 77 | 2 | 1 | 4 days ago | 59d 7h 52m 6s |
 | [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | 31 | 2 | 110 | 1 | 0 | 3 weeks ago | No Closed Issues |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitHub Actions | 26 | 3 | 90 | 2 | 1 | 3 months ago | No Closed Issues |
-| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | 24 | 4 | 147 | 3 | 1 | 21 hours ago | 1m 1.0s |
+| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with API and multiple Cloudflare accounts. | 24 | 4 | 148 | 3 | 1 | 21 hours ago | 1m 1.0s |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions | 18 | 4 | 33 | 1 | 1 | 3 weeks ago | 97d 8h 45m 6s |
 | [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web servers | 18 | 3 | 42 | 1 | 0 | 2 weeks ago | No Closed Issues |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resources on Proxmox hosts with AI | 17 | 2 | 93 | 3 | 1 | 3 months ago | No Closed Issues |
@@ -52,26 +52,26 @@ Total stars across owned repositories scanned: **1,926** ⭐
 | [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf | 2 | 0 | 61 | 2 | 1 | 3 months ago | No Closed Issues |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github Actions | 2 | 2 | 12 | 1 | 1 | 3 months ago | 538d 5h 6m 11s |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | 2 | 1 | 45 | 1 | 0 | 11 months ago | No Closed Issues |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories | 2 | 0 | 523 | 2 | 0 | 23 hours ago | No Closed Issues |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories | 2 | 0 | 524 | 2 | 0 | 23 hours ago | No Closed Issues |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | 2 | 0 | 46 | 2 | 1 | 2 months ago | No Closed Issues |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | 1 | 1 | 147 | 2 | 0 | 5 years ago | No Closed Issues |
 | [audiogen](https://github.com/fabriziosalmi/audiogen) | AI-Powered Sound Generation & Classification. | 1 | 1 | 13 | 1 | 0 | 3 months ago | No Closed Issues |
 | [blockchain-poc](https://github.com/fabriziosalmi/blockchain-poc) | Utilizing blockchain technology to retrieve, process, and display domain blacklists through Python and a web interface | 1 | 0 | 18 | 1 | 1 | 2 months ago | 506d 1h 59m 41s |
 | [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ensemble models and voting quorum) | 1 | 0 | 5 | 1 | 0 | 3 months ago | No Closed Issues |
 | [llm-benchmarks](https://github.com/fabriziosalmi/llm-benchmarks) | benchmarking large language models (LLMs) with a focus on their mathematical capabilities | 1 | 1 | 23 | 1 | 0 | 1 years ago | No Closed Issues |
-| [newsgator](https://github.com/fabriziosalmi/newsgator) | No description | 1 | 0 | 10 | 2 | 1 | 3 days ago | No Closed Issues |
+| [newsgator](https://github.com/fabriziosalmi/newsgator) | No description | 1 | 0 | 10 | 2 | 1 | 4 days ago | No Closed Issues |
 | [proxima-ui](https://github.com/fabriziosalmi/proxima-ui) | A simple web interface to manage Proxmox hosts, vm and containers | 1 | 0 | 84 | 2 | 1 | 2 weeks ago | 35m 59.0s |
 | [reverse-proxy-manager](https://github.com/fabriziosalmi/reverse-proxy-manager) | Centralized proxy management system for distributed proxy nodes | 1 | 0 | 177 | 2 | 1 | 2 weeks ago | No Closed Issues |
 | [rivoluzioneinformatica-website](https://github.com/fabriziosalmi/rivoluzioneinformatica-website) | https://www.rivoluzioneinformatica.org | 1 | 0 | 41 | 1 | 0 | 8 months ago | No Closed Issues |
-| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | 1 | 0 | 778 | 2 | 0 | 20 hours ago | No Closed Issues |
+| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | 1 | 0 | 780 | 2 | 0 | 20 hours ago | No Closed Issues |
 | [ai-chatbot-encryption](https://github.com/fabriziosalmi/ai-chatbot-encryption) | Encrypt your AI powered chatbot sessions | 0 | 1 | 7 | 1 | 0 | 4 months ago | No Closed Issues |
-| [antifa-model](https://github.com/fabriziosalmi/antifa-model) | Strumento per l'analisi dei contenuti online | 0 | 0 | 40 | 2 | 1 | 6 days ago | No Closed Issues |
+| [antifa-model](https://github.com/fabriziosalmi/antifa-model) | Strumento per l'analisi dei contenuti online | 0 | 0 | 40 | 2 | 1 | 1 weeks ago | No Closed Issues |
 | [audiolibri](https://github.com/fabriziosalmi/audiolibri) | https://audiolibri.org - Raccolta di audiolibri gratis in Italiano | 0 | 0 | 69 | 1 | 0 | 2 weeks ago | No Closed Issues |
-| [challenged](https://github.com/fabriziosalmi/challenged) | No description | 0 | 0 | 10 | 1 | 0 | 5 days ago | No Closed Issues |
+| [challenged](https://github.com/fabriziosalmi/challenged) | No description | 0 | 0 | 10 | 1 | 0 | 6 days ago | No Closed Issues |
 | [crossword-generator](https://github.com/fabriziosalmi/crossword-generator) | No description | 0 | 0 | 5 | 1 | 0 | 2 months ago | No Closed Issues |
 | [crosswords](https://github.com/fabriziosalmi/crosswords) | Interactive Crossword Puzzle Generator | 0 | 0 | 37 | 1 | 0 | 1 months ago | No Closed Issues |
-| [domainsblacklists](https://github.com/fabriziosalmi/domainsblacklists) | domainsblacklists.com website | 0 | 1 | 9 | 1 | 0 | 3 weeks ago | No Closed Issues |
-| [fabriziosalmi](https://github.com/fabriziosalmi/fabriziosalmi) | No description | 0 | 0 | 6 | 1 | 0 | yesterday | No Closed Issues |
+| [domainsblacklists](https://github.com/fabriziosalmi/domainsblacklists) | domainsblacklists.com website | 0 | 1 | 9 | 1 | 0 | 4 weeks ago | No Closed Issues |
+| [fabriziosalmi](https://github.com/fabriziosalmi/fabriziosalmi) | No description | 0 | 0 | 6 | 1 | 0 | 2 days ago | No Closed Issues |
 | [freeundergroundtekno](https://github.com/fabriziosalmi/freeundergroundtekno) | No description | 0 | 0 | 13 | 1 | 0 | 5 months ago | No Closed Issues |
 | [github-games](https://github.com/fabriziosalmi/github-games) | Web based games hosted on GitHub Pages | 0 | 0 | 44 | 1 | 0 | 2 months ago | No Closed Issues |
 | [iGPT](https://github.com/fabriziosalmi/iGPT) | iGPT: the fastest fLLM out there 🚀🚀🚀 | 0 | 1 | 57 | 1 | 0 | 1 years ago | No Closed Issues |
@@ -79,5 +79,5 @@ Total stars across owned repositories scanned: **1,926** ⭐
 | [tensorflow-poc](https://github.com/fabriziosalmi/tensorflow-poc) | MNIST PoC using TensorFlow | 0 | 0 | 13 | 1 | 0 | 1 years ago | No Closed Issues |
 | [test-aws-terraform](https://github.com/fabriziosalmi/test-aws-terraform) | Terraform WordPress Deployment on AWS | 0 | 0 | 8 | 1 | 0 | 2 months ago | No Closed Issues |
 | [text-boundaries](https://github.com/fabriziosalmi/text-boundaries) | A Python-based tool for preprocessing, cleaning, and analyzing text datasets, designed to filter, deduplicate, sort data, and generate statistical insights.  | 0 | 1 | 17 | 1 | 0 | 8 months ago | No Closed Issues |
-| [transversal](https://github.com/fabriziosalmi/transversal) | No description | 0 | 0 | 20 | 1 | 0 | 2 days ago | No Closed Issues |
+| [transversal](https://github.com/fabriziosalmi/transversal) | No description | 0 | 0 | 20 | 1 | 0 | 3 days ago | No Closed Issues |
 | [web-kick](https://github.com/fabriziosalmi/web-kick) | No description | 0 | 0 | 29 | 1 | 0 | 2 months ago | No Closed Issues |
