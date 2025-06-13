@@ -5,3 +5,4 @@ __pycache__/
 *_github_stats.md
 .DS_Store
 *.pyc
+github_stats.log

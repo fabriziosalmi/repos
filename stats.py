@@ -4,6 +4,7 @@ import requests
 import datetime
 import time
 import json
+import sys
 from rich.console import Console
 from rich.table import Table
 from rich.progress import track
@@ -26,7 +27,129 @@ MAX_RETRIES = 5
 INITIAL_RETRY_DELAY = 1 # seconds
 MAX_RETRY_DELAY = 60 # seconds
 
+# Cache configuration
+CACHE_FILE = "github_stats_cache.json"
+CACHE_DURATION_HOURS = 1  # Cache valid for 1 hour
+
 # --- Helper Functions ---
+
+def load_cache():
+    """Load cached data if it exists and is still valid."""
+    try:
+        if os.path.exists(CACHE_FILE):
+            with open(CACHE_FILE, 'r', encoding='utf-8') as f:
+                cache_data = json.load(f)
+                
+            cache_time = datetime.datetime.fromisoformat(cache_data.get('timestamp', ''))
+            now = datetime.datetime.now(datetime.timezone.utc)
+            
+            # Check if cache is still valid
+            if (now - cache_time).total_seconds() < CACHE_DURATION_HOURS * 3600:
+                logging.info("Using cached data (still valid)")
+                return cache_data.get('data')
+                
+        logging.info("Cache not found or expired")
+        return None
+    except Exception as e:
+        logging.warning(f"Error loading cache: {e}")
+        return None
+
+def save_cache(data):
+    """Save data to cache."""
+    try:
+        cache_data = {
+            'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'data': data
+        }
+        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, indent=2, default=str)
+        logging.info("Data cached successfully")
+    except Exception as e:
+        logging.warning(f"Error saving cache: {e}")
+
+def validate_data_completeness(repositories, total_stars):
+    """Validate that the collected data is complete and not corrupted."""
+    if not repositories or not isinstance(repositories, list):
+        return False, "No repositories found or invalid data format"
+    
+    if total_stars < 0:
+        return False, "Invalid total stars count"
+    
+    # Check for essential fields in repositories
+    required_fields = ['name', 'full_name', 'description', 'stars', 'url']
+    for repo in repositories:
+        if not isinstance(repo, dict):
+            return False, f"Invalid repository data format: {type(repo)}"
+        
+        for field in required_fields:
+            if field not in repo:
+                return False, f"Missing required field '{field}' in repository data"
+    
+    logging.info(f"Data validation passed: {len(repositories)} repositories, {total_stars} total stars")
+    return True, "Data validation successful"
+
+def safe_file_write(filename, write_func):
+    """Safely write to a file with backup and validation."""
+    backup_file = f"{filename}.backup"
+    temp_file = f"{filename}.tmp"
+    
+    try:
+        # Create backup if original exists
+        if os.path.exists(filename):
+            import shutil
+            shutil.copy2(filename, backup_file)
+            logging.info(f"Created backup: {backup_file}")
+        
+        # Write using the provided function - handle different function signatures
+        try:
+            # Most write functions expect a filename parameter
+            write_func()
+            
+            # Check if the target file was created
+            if os.path.exists(filename):
+                # File was created successfully
+                pass
+            else:
+                raise IOError(f"Write function did not create the expected file: {filename}")
+                
+        except Exception as write_error:
+            logging.error(f"Error during write operation: {write_error}")
+            raise
+        
+        # Verify file exists and has content
+        if not os.path.exists(filename) or os.path.getsize(filename) == 0:
+            raise IOError("Output file is empty or doesn't exist")
+        
+        logging.info(f"Successfully wrote {filename}")
+        
+        # Clean up backup after successful write
+        if os.path.exists(backup_file):
+            os.remove(backup_file)
+        
+        return True
+            
+    except Exception as e:
+        logging.error(f"Error writing {filename}: {e}")
+        
+        # Restore from backup if it exists
+        if os.path.exists(backup_file):
+            try:
+                import shutil
+                if os.path.exists(filename):
+                    os.remove(filename)
+                shutil.move(backup_file, filename)
+                logging.info(f"Restored {filename} from backup")
+            except Exception as restore_error:
+                logging.error(f"Failed to restore backup: {restore_error}")
+        
+        # Clean up temp file
+        if os.path.exists(temp_file):
+            try:
+                os.remove(temp_file)
+            except Exception:
+                pass
+        
+        return False
 
 def get_human_readable_time(timestamp):
     """Converts a timezone-aware datetime object to a human-readable time difference."""
@@ -299,6 +422,46 @@ def get_average_issue_resolution_time(repo_full_name, headers, console):
         # Return None if failed to process any pages (handled earlier)
         return 0.0
 
+def get_repository_languages(repo_full_name, headers, console):
+    """Fetch repository languages and their usage statistics."""
+    languages_url = f"{GITHUB_API_BASE_URL}/repos/{repo_full_name}/languages"
+    response = make_github_request(languages_url, headers, console=console)
+    
+    if response is None:
+        return {}
+    
+    try:
+        languages = response.json()
+        if not isinstance(languages, dict):
+            logging.warning(f"Unexpected response format for languages of {repo_full_name}")
+            return {}
+        
+        # Calculate percentages
+        total_bytes = sum(languages.values())
+        if total_bytes == 0:
+            return {}
+        
+        language_stats = {}
+        for language, bytes_count in languages.items():
+            percentage = (bytes_count / total_bytes) * 100
+            language_stats[language] = {
+                'bytes': bytes_count,
+                'percentage': round(percentage, 2)
+            }
+        
+        # Sort by percentage descending
+        sorted_languages = dict(sorted(language_stats.items(), 
+                                     key=lambda x: x[1]['percentage'], 
+                                     reverse=True))
+        
+        return sorted_languages
+        
+    except json.JSONDecodeError:
+        logging.warning(f"Failed to decode languages JSON for {repo_full_name}")
+        return {}
+    except Exception as e:
+        logging.warning(f"Error fetching languages for {repo_full_name}: {e}")
+        return {}
 
 # --- Renamed Function for Clarity ---
 def get_user_repositories_stats(username, token=None, console=None):
@@ -372,6 +535,16 @@ def get_user_repositories_stats(username, token=None, console=None):
                     'description': repo.get('description') or "No description", # Ensure description is never None
                     'stars': repo.get('stargazers_count', 0),
                     'forks': repo.get('forks_count', 0),
+                    'watchers': repo.get('watchers_count', 0),  # Add watchers count
+                    'language': repo.get('language', 'Not specified'),  # Primary language
+                    'archived': repo.get('archived', False),  # Archived status
+                    'disabled': repo.get('disabled', False),  # Disabled status
+                    'private': repo.get('private', False),  # Private status
+                    'fork': repo.get('fork', False),  # Fork status
+                    'license': repo.get('license', {}).get('name') if repo.get('license') else 'No license',  # License
+                    'default_branch': repo.get('default_branch', 'main'),  # Default branch
+                    'open_issues_count': repo.get('open_issues_count', 0),  # Open issues count
+                    'size': repo.get('size', 0),  # Repository size in KB
                     # Use pushed_at for a better sense of recent code activity, fallback to updated_at
                     'last_update_api': parse_github_datetime(repo.get('pushed_at') or repo.get('updated_at')),
                     'created_at_api': parse_github_datetime(repo.get('created_at')),
@@ -527,9 +700,23 @@ def get_user_repositories_stats(username, token=None, console=None):
                      closed_issues_count = 0 # Issues disabled means 0 closed issues
 
                 repo_info['closed_issues_count'] = closed_issues_count
+
+                # --- Language Statistics ---
+                # Only fetch language stats for active repositories to optimize API usage
+                if not repo_info.get('archived', False) and not repo_info.get('disabled', False):
+                    language_stats = get_repository_languages(full_name, headers, console)
+                    repo_info['language_stats'] = language_stats
+                    
+                    # Update primary language if we have more detailed stats
+                    if language_stats:
+                        primary_language = list(language_stats.keys())[0]  # Most used language
+                        repo_info['language'] = primary_language
+                else:
+                    repo_info['language_stats'] = {}
+
                 repo_info['processed_details'] = True
                 # Optional delay between detailed fetches for different repos
-                time.sleep(0.05) # Shorter delay
+                time.sleep(0.1) # Slightly longer delay to be respectful to API
 
             except Exception as e:
                 # Catch broader errors during processing of a single repo
@@ -663,23 +850,43 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
 
             # Detailed Repository Table
             f.write(f"## Repository Details\n\n")
-            # Added more icons/clarity to headers
-            f.write("| Repository | Description | Stars ⭐ | Forks 🍴 | Commits 💾 | Contributors 👥 | Closed Issues ✅ | Last Update 🕒 | Avg. Issue Res. ⏱️ |\n")
-            f.write("|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n") # Added alignment hints
+            # Enhanced headers with new information
+            f.write("| Repository | Description | Language 💻 | Stars ⭐ | Forks 🍴 | Watchers 👀 | Commits 💾 | Contributors 👥 | Issues ✅ | Last Update 🕒 | Status 📊 |\n")
+            f.write("|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n")
 
             for repo in repositories:
                 # Sanitize description for Markdown table cells
-                description = repo.get('description', '')
-                # Limit description length in table?
-                # max_desc_len = 100
-                # if len(description) > max_desc_len:
-                #    description = description[:max_desc_len-3] + "..."
+                description = repo.get('description', 'No description')
                 description = description.replace("|", "\\|") # Escape pipe characters
                 description = description.replace("\n", "<br>") # Keep newlines visually
+                
+                # Truncate long descriptions
+                if len(description) > 50:
+                    description = description[:47] + "..."
 
-                # Format numbers and resolution time, handle N/A
+                # Get language info
+                language = repo.get('language', 'N/A')
+                if language == 'Not specified':
+                    language = 'N/A'
+
+                # Get status indicator (convert rich markup to simple text for markdown)
+                status_indicator = get_repository_status_indicator(repo)
+                # Remove rich markup for markdown
+                status_text = status_indicator
+                if '[' in status_text and ']' in status_text:
+                    # Extract just the emoji and text part
+                    import re
+                    match = re.search(r'[^[]*\]([^[]*)\[', status_text)
+                    if match:
+                        status_text = match.group(1)
+                    else:
+                        # Fallback: just remove the markup
+                        status_text = re.sub(r'\[[^\]]*\]', '', status_text)
+
+                # Format numbers, handle N/A
                 stars_str = f"{repo.get('stars', 0):,}"
                 forks_str = f"{repo.get('forks', 0):,}"
+                watchers_str = f"{repo.get('watchers', 0):,}"
 
                 commits_val = repo.get('commit_count')
                 commits_str = f"{commits_val:,}" if commits_val is not None else "N/A"
@@ -691,21 +898,22 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
                 issues_str = f"{issues_val:,}" if issues_val is not None else "N/A"
 
                 last_update_str = repo.get('last_update_str', "Unknown")
-                resolution_time_str = format_resolution_time(repo.get('avg_issue_resolution_time')) # Handles None/0/float
 
-                # Sanitize repo name for link text: escape markdown special chars like []
+                # Sanitize repo name for link text
                 repo_name_sanitized = repo.get('name', 'N/A').replace('[', '\\[').replace(']', '\\]')
                 repo_url = repo.get('url', '#')
 
-                f.write(f"| [{repo_name_sanitized}]({repo_url}) " # Link repo name
+                f.write(f"| [{repo_name_sanitized}]({repo_url}) "
                         f"| {description} "
+                        f"| {language} "
                         f"| {stars_str} "
                         f"| {forks_str} "
+                        f"| {watchers_str} "
                         f"| {commits_str} "
                         f"| {contrib_str} "
                         f"| {issues_str} "
                         f"| {last_update_str} "
-                        f"| {resolution_time_str} |\n")
+                        f"| {status_text} |\n")
 
         logging.info(f"Markdown report saved to {filename}")
         print(f"Markdown report saved to {filename}") # User feedback
@@ -722,164 +930,393 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
 
 if __name__ == '__main__':
     start_time = time.time()
-    # Consider using argparse for command-line arguments (username, token, output files)
-    # import argparse
-    # parser = argparse.ArgumentParser(description="Fetch GitHub repo stats.")
-    # parser.add_argument("username", help="GitHub username")
-    # parser.add_argument("-t", "--token", help="GitHub Personal Access Token (or set MY_PAT env var)", default=os.environ.get('MY_PAT'))
-    # parser.add_argument("-o", "--output-prefix", help="Prefix for output files (JSON, MD)", default=None)
-    # args = parser.parse_args()
-    # target_username = args.username
-    # github_token = args.token
-    # output_prefix = args.output_prefix if args.output_prefix else target_username
+def main():
+    """Main function with comprehensive error handling and validation."""
+    start_time = time.time()
+    
+    try:
+        # For simplicity, keeping hardcoded username and env var token:
+        target_username = 'fabriziosalmi'
+        github_token = os.environ.get('MY_PAT')
+        output_prefix = target_username
 
-    # For simplicity, keeping hardcoded username and env var token:
-    target_username = 'fabriziosalmi'
-    github_token = os.environ.get('MY_PAT')
-    output_prefix = target_username
+        # Configure Rich Console
+        custom_theme = Theme({
+            # FIX APPLIED: Removed 'link' from repo_name style
+            "repo_name": "bold cyan",
+            "description": "dim",
+            "stars": "yellow",
+            "forks": "blue",
+            "commits": "magenta",
+            "contributors": "green",
+            "issues": "purple",
+            "last_update": "default",
+            "header": "bold white on blue",
+            "total_stars": "bold yellow",
+            "avg_resolution": "bold green",
+            "info": "dim cyan",
+            "warning": "yellow",
+            "error": "bold red",
+            "na": "dim" # Style for N/A values
+        })
+        console = Console(theme=custom_theme, record=False)
 
-
-    # Configure Rich Console
-    custom_theme = Theme({
-        # FIX APPLIED: Removed 'link' from repo_name style
-        "repo_name": "bold cyan",
-        "description": "dim",
-        "stars": "yellow",
-        "forks": "blue",
-        "commits": "magenta",
-        "contributors": "green",
-        "issues": "purple",
-        "last_update": "default",
-        "header": "bold white on blue",
-        "total_stars": "bold yellow",
-        "avg_resolution": "bold green",
-        "info": "dim cyan",
-        "warning": "yellow",
-        "error": "bold red",
-        "na": "dim" # Style for N/A values
-    })
-    console = Console(theme=custom_theme, record=False) # Set record=True to save HTML/SVG
-
-    console.print(f"[info]Fetching repository statistics for user: [bold]{target_username}[/bold]...[/]")
-    if not github_token:
-        console.print("[warning]Environment variable 'MY_PAT' not set. Using unauthenticated requests (lower rate limits).[/warning]")
-    else:
-        console.print("[info]Using GitHub token from MY_PAT environment variable.[/info]")
-
-
-    # Call the main data fetching function
-    user_repositories, total_stars, top_10_repo_full_names = get_user_repositories_stats(
-        target_username,
-        github_token,
-        console
-    )
-
-    if user_repositories is not None: # Check if the fetch was successful
-        repo_count = len(user_repositories)
-        console.print(f"[info]Successfully retrieved data for {repo_count} repositories.[/]")
-
-        # --- Display Table (Rich) ---
-        if repo_count > 0:
-            table = Table(
-                title=f"GitHub Repository Statistics for {target_username}",
-                show_header=True,
-                header_style="header",
-                expand=False, # Prevent table from expanding excessively
-                show_lines=False, # Cleaner look without lines
-                padding=(0, 1) # Adjust padding
-            )
-            # Adjusting column widths and justifications
-            table.add_column("Repository", style="repo_name", min_width=18, max_width=30, overflow="ellipsis", justify="left", no_wrap=True)
-            table.add_column("Description", style="description", max_width=40, overflow="ellipsis", justify="left", no_wrap=True)
-            table.add_column("⭐", style="stars", justify="right", min_width=6) # Use Icon
-            table.add_column("🍴", style="forks", justify="right", min_width=5) # Use Icon
-            table.add_column("💾", style="commits", justify="right", min_width=7) # Icon Header
-            table.add_column("👥", style="contributors", justify="right", min_width=5) # Icon Header
-            table.add_column("✅ Issues", style="issues", justify="right", min_width=8) # Icon Header + clarifying text
-            table.add_column("Updated", style="last_update", justify="right", min_width=12, no_wrap=True)
-            table.add_column("Avg Issue Res.", style="avg_resolution", justify="right", min_width=14, no_wrap=True)
-
-            for repo in user_repositories:
-                # Format numbers with commas for table too, handle N/A
-                stars_str = f"{repo.get('stars', 0):,}"
-                forks_str = f"{repo.get('forks', 0):,}"
-
-                commits_val = repo.get('commit_count')
-                commits_str = f"{commits_val:,}" if commits_val is not None else "[na]N/A[/]" # Use Rich markup style
-
-                contrib_val = repo.get('contributors_count')
-                contrib_str = f"{contrib_val:,}" if contrib_val is not None else "[na]N/A[/]"
-
-                issues_val = repo.get('closed_issues_count')
-                issues_str = f"{issues_val:,}" if issues_val is not None else "[na]N/A[/]"
-
-
-                resolution_time_str = format_resolution_time(repo.get('avg_issue_resolution_time'))
-                if resolution_time_str == "N/A":
-                    resolution_time_str = "[na]N/A[/]" # Style N/A in table
-                elif resolution_time_str == "No Closed Issues":
-                     resolution_time_str = "[dim]No Issues[/]" # Shorter text
-
-                # Create a Text object for the link, handle missing URL
-                repo_name_display = repo.get('name', 'N/A')
-                repo_url = repo.get('url')
-                # Use Text.from_markup for link handling within the cell automatically
-                if repo_url and repo_url != '#':
-                    repo_link_markup = f"[{repo_name_display}]({repo_url})"
-                    # repo_link = Text.from_markup(f"[{repo_name_display}]({repo_url})", style="repo_name") # Apply style here too
-                else:
-                     repo_link_markup = repo_name_display # No link if URL missing
-                     # repo_link = Text(repo_name_display, style="repo_name")
-
-                # Pass markup string directly to add_row, Rich handles Text creation & styling
-                table.add_row(
-                    repo_link_markup, # Pass markup string
-                    repo.get('description', ''), # Use get with default
-                    stars_str,
-                    forks_str,
-                    commits_str,
-                    contrib_str,
-                    issues_str,
-                    repo.get('last_update_str', '[na]Unknown[/]'), # Use get with default, style Unknown
-                    resolution_time_str,
-                )
-            console.print(table)
+        console.print(f"[info]Fetching repository statistics for user: [bold]{target_username}[/bold]...[/]")
+        if not github_token:
+            console.print("[warning]Environment variable 'MY_PAT' not set. Using unauthenticated requests (lower rate limits).[/warning]")
         else:
-            console.print(f"[info]No repositories found for user {target_username} to display in table.[/info]")
+            console.print("[info]Using GitHub token from MY_PAT environment variable.[/info]")
+
+        # Check if we can use cached data
+        cached_data = load_cache()
+        if cached_data:
+            console.print("[info]Using cached data to avoid API rate limits.[/info]")
+            user_repositories = cached_data.get('repositories', [])
+            total_stars = cached_data.get('total_stars', 0)
+            top_10_repo_full_names = cached_data.get('top_10_repo_full_names', [])
+        else:
+            # Call the main data fetching function
+            user_repositories, total_stars, top_10_repo_full_names = get_user_repositories_stats(
+                target_username,
+                github_token,
+                console
+            )
+            
+            # Save fetched data to cache
+            if user_repositories is not None:
+                cache_data = {
+                    'repositories': user_repositories,
+                    'total_stars': total_stars,
+                    'top_10_repo_full_names': top_10_repo_full_names
+                }
+                save_cache(cache_data)
+
+        if user_repositories is not None:
+            # Validate data completeness before proceeding
+            is_valid, validation_message = validate_data_completeness(user_repositories, total_stars)
+            if not is_valid:
+                console.print(f"[error]Data validation failed: {validation_message}[/error]")
+                logging.error(f"Data validation failed: {validation_message}")
+                return False
+
+            repo_count = len(user_repositories)
+            console.print(f"[info]Successfully retrieved data for {repo_count} repositories.[/]")
+
+            # --- Display Table (Rich) ---
+            if repo_count > 0:
+                table = Table(
+                    title=f"GitHub Repository Statistics for {target_username}",
+                    show_header=True,
+                    header_style="header",
+                    expand=False,
+                    show_lines=False,
+                    padding=(0, 1)
+                )
+                
+                # Add columns with enhanced information
+                table.add_column("Repository", style="repo_name", min_width=18, max_width=25, overflow="ellipsis", justify="left", no_wrap=True)
+                table.add_column("Description", style="description", max_width=35, overflow="ellipsis", justify="left", no_wrap=True)
+                table.add_column("Language", style="info", min_width=8, max_width=12, overflow="ellipsis", justify="center", no_wrap=True)
+                table.add_column("⭐", style="stars", justify="right", min_width=4)
+                table.add_column("🍴", style="forks", justify="right", min_width=4)
+                table.add_column("👀", style="info", justify="right", min_width=4, no_wrap=True)  # Watchers
+                table.add_column("💾", style="commits", justify="right", min_width=5)
+                table.add_column("👥", style="contributors", justify="right", min_width=4)
+                table.add_column("✅", style="issues", justify="right", min_width=4)  # Closed issues
+                table.add_column("Updated", style="last_update", justify="right", min_width=10, no_wrap=True)
+                table.add_column("Status", style="info", justify="center", min_width=8, no_wrap=True)
+
+                for repo in user_repositories:
+                    # Handle repository status (archived, inactive, etc.)
+                    status_indicator = get_repository_status_indicator(repo)
+                    
+                    # Format numbers with commas for table
+                    stars_str = f"{repo.get('stars', 0):,}"
+                    forks_str = f"{repo.get('forks', 0):,}"
+                    watchers_str = f"{repo.get('watchers', 0):,}"
+
+                    # Get primary language with fallback
+                    language = repo.get('language', 'N/A')
+                    if language == 'Not specified' or language == 'N/A':
+                        language = "[dim]N/A[/]"
+                    elif language:
+                        # Truncate long language names
+                        if len(language) > 10:
+                            language = language[:8] + ".."
+
+                    commits_val = repo.get('commit_count')
+                    commits_str = f"{commits_val:,}" if commits_val is not None else "[na]N/A[/]"
+
+                    contrib_val = repo.get('contributors_count')
+                    contrib_str = f"{contrib_val:,}" if contrib_val is not None else "[na]N/A[/]"
+
+                    issues_val = repo.get('closed_issues_count')
+                    issues_str = f"{issues_val:,}" if issues_val is not None else "[na]N/A[/]"
+
+                    # Simplified last update (remove "ago" to save space)
+                    last_update_str = repo.get('last_update_str', '[na]Unknown[/]')
+                    if last_update_str.endswith(' ago'):
+                        last_update_str = last_update_str[:-4]  # Remove " ago"
+                    # Simplified last update (remove "ago" to save space)
+                    last_update_str = repo.get('last_update_str', '[na]Unknown[/]')
+                    if last_update_str.endswith(' ago'):
+                        last_update_str = last_update_str[:-4]  # Remove " ago"
+
+                    # Create repository link
+                    repo_name_display = repo.get('name', 'N/A')
+                    repo_url = repo.get('url')
+                    if repo_url and repo_url != '#':
+                        repo_link_markup = f"[{repo_name_display}]({repo_url})"
+                    else:
+                        repo_link_markup = repo_name_display
+
+                    # Ensure description is never None and truncate if too long
+                    description = repo.get('description') or "No description provided"
+                    if len(description) > 35:
+                        description = description[:32] + "..."
+
+                    table.add_row(
+                        repo_link_markup,
+                        description,
+                        language,
+                        stars_str,
+                        forks_str,
+                        watchers_str,
+                        commits_str,
+                        contrib_str,
+                        issues_str,
+                        last_update_str,
+                        status_indicator,
+                    )
+                console.print(table)
+            else:
+                console.print(f"[info]No repositories found for user {target_username} to display in table.[/info]")
+
+            console.print(f"\n[total_stars]Total Stars Across All Repositories: {total_stars:,}[/]")
+
+            # --- Generate and Display Insights ---
+            insights = generate_repository_insights(user_repositories)
+            console.print(f"\n[header]📊 Repository Insights[/header]")
+            
+            # Language distribution
+            if insights['top_languages']:
+                console.print(f"[info]🔤 Top Languages:[/info]")
+                for lang, count in insights['top_languages']:
+                    percentage = (count / insights['total_repositories']) * 100
+                    console.print(f"  • {lang}: {count} repos ({percentage:.1f}%)")
+            
+            # Activity insights
+            console.print(f"\n[info]📈 Activity Status:[/info]")
+            console.print(f"  • Active (≤30 days): {insights['activity_distribution']['active']} repos")
+            console.print(f"  • Stale (30-180 days): {insights['activity_distribution']['stale']} repos")
+            console.print(f"  • Inactive (>180 days): {insights['activity_distribution']['inactive']} repos")
+            
+            # Repository health
+            console.print(f"\n[info]🏥 Repository Health:[/info]")
+            console.print(f"  • Archived: {insights['archived_count']} repos")
+            console.print(f"  • Forks: {insights['fork_count']} repos")
+            console.print(f"  • Total Watchers: {insights['total_watchers']:,}")
+            console.print(f"  • Open Issues: {insights['total_open_issues']:,}")
+
+            # --- Save to JSON with safe file writing ---
+            json_filename = f"{output_prefix}_github_stats.json"
+            json_data = {
+                'username': target_username,
+                'fetch_time_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                'total_stars': total_stars,
+                'repository_count': repo_count,
+                'repositories': user_repositories,
+            }
+            
+            def write_json():
+                save_to_json(json_data, filename=json_filename)
+            
+            if not safe_file_write(json_filename, write_json):
+                console.print(f"[error]Failed to write JSON file: {json_filename}[/error]")
+                return False
+
+            # --- Create Markdown Table with safe file writing ---
+            md_filename = f"{output_prefix}_github_stats.md"
+            
+            def write_markdown():
+                create_markdown_table(user_repositories, total_stars, top_10_repo_full_names, target_username, filename=md_filename)
+            
+            if not safe_file_write(md_filename, write_markdown):
+                console.print(f"[error]Failed to write Markdown file: {md_filename}[/error]")
+                return False
+
+            # --- Create HTML Report with safe file writing ---
+            html_filename = "docs/index.html"
+            
+            def write_html():
+                stats2html.create_html_report(
+                    user_repositories, 
+                    total_stars, 
+                    top_10_repo_full_names, 
+                    target_username,
+                    format_resolution_time
+                )
+            
+            if not safe_file_write(html_filename, write_html):
+                console.print(f"[error]Failed to write HTML file: {html_filename}[/error]")
+                return False
+
+            console.print("[info]All files generated successfully.[/info]")
+            return True
+
+        else:
+            # Handle case where get_user_repositories_stats returned None
+            console.print(f"[error]Could not retrieve repository data for {target_username}. Please check logs or username/token.[/error]")
+            logging.error(f"Failed to retrieve repository data for {target_username}")
+            return False
+
+    except KeyboardInterrupt:
+        console.print("[warning]Process interrupted by user.[/warning]")
+        logging.info("Process interrupted by user")
+        return False
+    except Exception as e:
+        console.print(f"[error]Critical error occurred: {e}[/error]")
+        logging.error(f"Critical error in main function: {e}", exc_info=True)
+        return False
+    finally:
+        end_time = time.time()
+        console.print(f"[info]Script finished in {end_time - start_time:.2f} seconds.[/info]")
 
 
-        console.print(f"\n[total_stars]Total Stars Across All Repositories: {total_stars:,}[/]")
+def get_repository_status_indicator(repo):
+    """Generate status indicator for repository based on various criteria."""
+    # Check archived status first (highest priority)
+    if repo.get('archived', False):
+        return "[yellow]📦 ARCHIVED[/yellow]"
+    
+    # Check disabled status
+    if repo.get('disabled', False):
+        return "[red]🚫 DISABLED[/red]"
+    
+    # Check if it's a fork
+    if repo.get('fork', False):
+        return "[cyan]🍴 FORK[/cyan]"
+    
+    # Check if repository is inactive (no updates in over 1 year)
+    last_update = repo.get('last_update_api')
+    if last_update:
+        try:
+            now = datetime.datetime.now(datetime.timezone.utc)
+            days_since_update = (now - last_update).days
+            if days_since_update > 365:
+                return "[dim]⚠️ INACTIVE[/dim]"
+            elif days_since_update > 180:
+                return "[dim]⏰ STALE[/dim]"
+            elif days_since_update <= 7:
+                return "[bright_green]🔥 ACTIVE[/bright_green]"
+        except Exception:
+            pass
+    
+    # Check if repository has no description
+    if not repo.get('description') or repo.get('description') == "No description":
+        return "[dim]📝 NO DESC[/dim]"
+    
+    # Check if it's a private repository
+    if repo.get('private', False):
+        return "[magenta]🔒 PRIVATE[/magenta]"
+    
+    # Active repository (default)
+    return "[green]✅ ACTIVE[/green]"
 
-        # --- Save to JSON ---
-        json_filename = f"{output_prefix}_github_stats.json"
-        json_data = {
-            'username': target_username,
-            'fetch_time_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            'total_stars': total_stars,
-            'repository_count': repo_count,
-            'repositories': user_repositories, # Contains all collected data
-        }
-        save_to_json(json_data, filename=json_filename)
 
-        # --- Create Markdown Table ---
-        md_filename = f"{output_prefix}_github_stats.md"
-        # Pass the correct list of full names for the chart
-        create_markdown_table(user_repositories, total_stars, top_10_repo_full_names, target_username, filename=md_filename)
-
-        # --- Create HTML Report ---
-        # Use the imported HTML generation function, passing our format_resolution_time function
-        stats2html.create_html_report(
-            user_repositories, 
-            total_stars, 
-            top_10_repo_full_names, 
-            target_username,
-            format_resolution_time
-        )
-
+# --- Main Execution Block ---
+if __name__ == '__main__':
+    # Set up logging with more detailed configuration
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler('github_stats.log'),
+            logging.StreamHandler()
+        ]
+    )
+    
+    success = main()
+    if not success:
+        logging.error("Script execution failed")
+        sys.exit(1)
     else:
-        # Handle case where get_user_repositories_stats returned None
-        console.print(f"[error]Could not retrieve repository data for {target_username}. Please check logs or username/token.[/error]")
+        logging.info("Script execution completed successfully")
+        sys.exit(0)
 
-    end_time = time.time()
-    console.print(f"[info]Script finished in {end_time - start_time:.2f} seconds.[/info]")
+def generate_repository_insights(repositories):
+    """Generate insights about the repository collection."""
+    if not repositories:
+        return {}
+    
+    insights = {
+        'total_repositories': len(repositories),
+        'archived_count': 0,
+        'fork_count': 0,
+        'language_distribution': {},
+        'size_distribution': {'small': 0, 'medium': 0, 'large': 0},
+        'activity_distribution': {'active': 0, 'stale': 0, 'inactive': 0},
+        'total_watchers': 0,
+        'total_open_issues': 0,
+        'top_languages': [],
+        'repository_ages': {'new': 0, 'mature': 0, 'old': 0}
+    }
+    
+    now = datetime.datetime.now(datetime.timezone.utc)
+    
+    for repo in repositories:
+        # Count archived and forks
+        if repo.get('archived', False):
+            insights['archived_count'] += 1
+        if repo.get('fork', False):
+            insights['fork_count'] += 1
+            
+        # Language distribution
+        language = repo.get('language', 'Unknown')
+        if language and language != 'Not specified':
+            insights['language_distribution'][language] = insights['language_distribution'].get(language, 0) + 1
+        
+        # Size distribution (in KB)
+        size = repo.get('size', 0)
+        if size < 1000:  # < 1MB
+            insights['size_distribution']['small'] += 1
+        elif size < 10000:  # < 10MB
+            insights['size_distribution']['medium'] += 1
+        else:
+            insights['size_distribution']['large'] += 1
+        
+        # Activity distribution
+        last_update = repo.get('last_update_api')
+        if last_update:
+            days_since_update = (now - last_update).days
+            if days_since_update <= 30:
+                insights['activity_distribution']['active'] += 1
+            elif days_since_update <= 180:
+                insights['activity_distribution']['stale'] += 1
+            else:
+                insights['activity_distribution']['inactive'] += 1
+        
+        # Repository age
+        created_at = repo.get('created_at_api')
+        if created_at:
+            days_old = (now - created_at).days
+            if days_old <= 365:  # Less than 1 year
+                insights['repository_ages']['new'] += 1
+            elif days_old <= 1825:  # Less than 5 years
+                insights['repository_ages']['mature'] += 1
+            else:
+                insights['repository_ages']['old'] += 1
+        
+        # Aggregate totals
+        insights['total_watchers'] += repo.get('watchers', 0)
+        insights['total_open_issues'] += repo.get('open_issues_count', 0)
+    
+    # Top languages (sorted by count)
+    insights['top_languages'] = sorted(
+        insights['language_distribution'].items(), 
+        key=lambda x: x[1], 
+        reverse=True
+    )[:5]  # Top 5 languages
+    
+    return insights
 
