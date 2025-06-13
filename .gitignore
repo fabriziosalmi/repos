@@ -6,3 +6,4 @@ __pycache__/
 .DS_Store
 *.pyc
 github_stats.log
+completion_report.py
