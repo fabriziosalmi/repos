@@ -1,2 +1,17 @@
-requests>=2.25.0  # For making HTTP requests
-rich>=10.0.0     # For rich text formatting, tables, progress bars, etc.
+# GitHub Repository Stats Generator Requirements
+
+# Core dependencies
+requests>=2.28.0  # For making HTTP requests to GitHub API
+rich>=12.0.0      # For rich text formatting, tables, progress bars, etc.
+python-dateutil>=2.8.0  # For date parsing and manipulation
+
+# Optional dependencies for enhanced functionality
+python-dotenv>=0.19.0  # For .env file support (optional)
+beautifulsoup4>=4.11.0  # For HTML parsing if needed (optional)
+lxml>=4.9.0  # XML processing (optional)
+
+# Development dependencies (optional)
+# pytest>=7.0.0  # For testing
+# black>=22.0.0  # Code formatting  
+# flake8>=4.0.0  # Linting
+# mypy>=0.950  # Type checking

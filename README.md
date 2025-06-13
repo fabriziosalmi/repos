@@ -1,5 +1,35 @@
 # GitHub Repository Stats for fabriziosalmi
 
+## 🚀 Recent Enhancements
+
+This repository statistics system has been significantly enhanced with the following improvements:
+
+### ✅ Critical Bugfixes & Error Handling
+- **Comprehensive error handling** with automatic failure recovery
+- **GitHub Actions workflow** enhanced with validation checks and automatic issue creation on failures
+- **Backup/restore functionality** for safe file operations
+- **Detailed logging** with both file and console output
+
+### 📊 Enhanced Repository Information
+- **Rich metadata collection**: Added language, watchers, archived status, fork status, license, repository size, and more
+- **Language statistics**: Detailed programming language breakdown for each repository
+- **Visual status indicators**: Priority-based status detection (ARCHIVED, INACTIVE, STALE, ACTIVE, etc.)
+- **Repository insights**: Statistical analysis with language distribution and activity metrics
+
+### 🎯 Performance Optimizations
+- **Smart API rate limiting** with proactive delays and exponential backoff
+- **Enhanced caching system** with better cache management
+- **Conditional API calls** to avoid unnecessary requests for archived repositories
+- **Optimized table rendering** with improved column layout and responsive design
+
+### 📈 Display Improvements
+- **Expanded table columns**: Language, Watchers, and enhanced status indicators
+- **Statistical insights section**: Repository health metrics and language distribution
+- **Modern UI enhancements**: Better visual hierarchy and readability
+- **Responsive design**: Optimized for various screen sizes
+
+---
+
 Total stars across owned repositories scanned: **1,950** ⭐
 
 ## Overall Stats
