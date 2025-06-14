@@ -1223,27 +1223,6 @@ def get_repository_status_indicator(repo):
     # Active repository (default)
     return "[green]✅ ACTIVE[/green]"
 
-
-# --- Main Execution Block ---
-if __name__ == '__main__':
-    # Set up logging with more detailed configuration
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler('github_stats.log'),
-            logging.StreamHandler()
-        ]
-    )
-    
-    success = main()
-    if not success:
-        logging.error("Script execution failed")
-        sys.exit(1)
-    else:
-        logging.info("Script execution completed successfully")
-        sys.exit(0)
-
 def generate_repository_insights(repositories):
     """Generate insights about the repository collection."""
     if not repositories:
@@ -1319,4 +1298,26 @@ def generate_repository_insights(repositories):
     )[:5]  # Top 5 languages
     
     return insights
+    
+# --- Main Execution Block ---
+if __name__ == '__main__':
+    # Set up logging with more detailed configuration
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler('github_stats.log'),
+            logging.StreamHandler()
+        ]
+    )
+    
+    success = main()
+    if not success:
+        logging.error("Script execution failed")
+        sys.exit(1)
+    else:
+        logging.info("Script execution completed successfully")
+        sys.exit(0)
+
+
 
