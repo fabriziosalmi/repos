@@ -1,6 +1,6 @@
 # GitHub Repository Stats for fabriziosalmi
 
-Total stars across owned repositories scanned: **2,139** ⭐
+Total stars across owned repositories scanned: **2,143** ⭐
 
 ## Overall Stats
 
@@ -23,7 +23,7 @@ Total stars across owned repositories scanned: **2,139** ⭐
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite ... | Python | 255 | 11 | 255 | 847 | 3 | 1 | 1 weeks ago | ✅ ACTIVE |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources ... | Python | 245 | 16 | 245 | 114 | 6 | 1 | 3 months ago | ✅ ACTIVE |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on... | Python | 200 | 8 | 200 | 632 | 2 | 1 | 3 months ago | ✅ ACTIVE |
-| [certmate](https://github.com/fabriziosalmi/certmate) | SSL Certificate Management System (API + UI) | HTML | 103 | 1 | 103 | 49 | 3 | 1 | 10 hours ago | 🔥 ACTIVE |
+| [certmate](https://github.com/fabriziosalmi/certmate) | SSL Certificate Management System (API + UI) | HTML | 107 | 1 | 107 | 49 | 3 | 1 | 14 hours ago | 🔥 ACTIVE |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assi... | None | 67 | 6 | 67 | 37 | 1 | 1 | 4 months ago | ✅ ACTIVE |
 | [lws](https://github.com/fabriziosalmi/lws) | proxmox/lxc/docker unified CLI | Python | 63 | 5 | 63 | 107 | 2 | 1 | 1 months ago | ✅ ACTIVE |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions/API (exp... | Python | 49 | 19 | 49 | 870 | 3 | 1 | 3 weeks ago | ✅ ACTIVE |
@@ -31,7 +31,7 @@ Total stars across owned repositories scanned: **2,139** ⭐
 | [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive ... | Go | 32 | 3 | 32 | 77 | 2 | 1 | 1 months ago | ✅ ACTIVE |
 | [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | Python | 31 | 3 | 31 | 110 | 1 | 0 | 1 months ago | ✅ ACTIVE |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitH... | Python | 26 | 3 | 26 | 90 | 2 | 1 | 4 months ago | ✅ ACTIVE |
-| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with AP... | Python | 24 | 5 | 24 | 177 | 3 | 1 | 16 hours ago | 🔥 ACTIVE |
+| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with AP... | Python | 24 | 5 | 24 | 177 | 3 | 1 | 20 hours ago | 🔥 ACTIVE |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫 | Python | 19 | 1 | 19 | 44 | 3 | 1 | 1 months ago | ✅ ACTIVE |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multi... | JavaScript | 19 | 4 | 19 | 33 | 1 | 1 | 1 months ago | ✅ ACTIVE |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resource... | Python | 19 | 2 | 19 | 93 | 3 | 1 | 4 months ago | ✅ ACTIVE |
@@ -56,7 +56,7 @@ Total stars across owned repositories scanned: **2,139** ⭐
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github ... | None | 2 | 2 | 2 | 12 | 1 | 1 | 4 months ago | ✅ ACTIVE |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | Shell | 2 | 1 | 2 | 45 | 1 | 0 | 1 years ago | ⚠️ INACTIVE |
 | [open-video-watermark](https://github.com/fabriziosalmi/open-video-watermark) | A video watermarking web application | Python | 2 | 0 | 2 | 13 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories | Python | 2 | 0 | 2 | 563 | 2 | 1 | 19 hours ago | 🔥 ACTIVE |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories | Python | 2 | 0 | 2 | 564 | 2 | 1 | 4 hours ago | 🔥 ACTIVE |
 | [reverse-proxy-manager](https://github.com/fabriziosalmi/reverse-proxy-manager) | Centralized proxy management system for distrib... | Python | 2 | 0 | 2 | 177 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | Python | 2 | 0 | 2 | 50 | 2 | 1 | 4 days ago | 🔥 ACTIVE |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | None | 1 | 1 | 1 | 147 | 2 | 0 | 5 years ago | 📦 ARCHIVED |
@@ -65,10 +65,10 @@ Total stars across owned repositories scanned: **2,139** ⭐
 | [extreme-content-detector](https://github.com/fabriziosalmi/extreme-content-detector) | Strumento per l'analisi dei contenuti online | JavaScript | 1 | 0 | 1 | 42 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [gradios](https://github.com/fabriziosalmi/gradios) | Enhanced GPT Response Generator (CoT, ToT, ense... | Python | 1 | 0 | 1 | 5 | 1 | 0 | 4 months ago | ✅ ACTIVE |
 | [llm-benchmarks](https://github.com/fabriziosalmi/llm-benchmarks) | benchmarking large language models (LLMs) with ... | Python | 1 | 1 | 1 | 23 | 1 | 0 | 1 years ago | ⚠️ INACTIVE |
-| [proxima-ui](https://github.com/fabriziosalmi/proxima-ui) | A simple web interface to manage Proxmox hosts,... | HTML | 1 | 0 | 1 | 87 | 2 | 1 | 1 weeks ago | ✅ ACTIVE |
+| [proxima-ui](https://github.com/fabriziosalmi/proxima-ui) | A simple web interface to manage Proxmox hosts,... | HTML | 1 | 0 | 1 | 87 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [repolizer](https://github.com/fabriziosalmi/repolizer) | GitHub Repository Health Analyzer | HTML | 1 | 0 | 1 | 265 | 1 | 1 | 5 days ago | 🔥 ACTIVE |
 | [rivoluzioneinformatica-website](https://github.com/fabriziosalmi/rivoluzioneinformatica-website) | https://www.rivoluzioneinformatica.org | HTML | 1 | 0 | 1 | 41 | 1 | 0 | 9 months ago | 📦 ARCHIVED |
-| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | Python | 1 | 0 | 1 | 838 | 2 | 0 | 14 hours ago | 🔥 ACTIVE |
+| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | Python | 1 | 0 | 1 | 838 | 2 | 0 | 19 hours ago | 🔥 ACTIVE |
 | [ai-chatbot-encryption](https://github.com/fabriziosalmi/ai-chatbot-encryption) | Encrypt your AI powered chatbot sessions | None | 0 | 1 | 0 | 7 | 1 | 0 | 5 months ago | ✅ ACTIVE |
 | [audiolibri](https://github.com/fabriziosalmi/audiolibri) | https://audiolibri.org - Raccolta di audiolibri... | Python | 0 | 0 | 0 | 92 | 1 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [audiolibri-editor](https://github.com/fabriziosalmi/audiolibri-editor) | audiolibri.org data editor | HTML | 0 | 0 | 0 | 8 | 1 | 0 | 2 weeks ago | ✅ ACTIVE |
