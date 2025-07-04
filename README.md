@@ -1,6 +1,6 @@
 # GitHub Repository Stats for fabriziosalmi
 
-Total stars across owned repositories scanned: **2,385** ⭐
+Total stars across owned repositories scanned: **2,436** ⭐
 
 ## Overall Stats
 
@@ -18,23 +18,23 @@ Total stars across owned repositories scanned: **2,385** ⭐
 
 | Repository | Description | Language 💻 | Stars ⭐ | Forks 🍴 | Watchers 👀 | Commits 💾 | Contributors 👥 | Issues ✅ | Last Update 🕒 | Status 📊 |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, R... | Go | 537 | 16 | 537 | 584 | 4 | 1 | 2 months ago | ✅ ACTIVE |
-| [certmate](https://github.com/fabriziosalmi/certmate) | SSL Certificate Management System (API + UI) | HTML | 331 | 8 | 331 | 67 | 3 | 1 | yesterday | 🔥 ACTIVE |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, R... | Go | 541 | 16 | 541 | 584 | 4 | 1 | 2 months ago | ✅ ACTIVE |
+| [certmate](https://github.com/fabriziosalmi/certmate) | SSL Certificate Management System (API + UI) | HTML | 377 | 11 | 377 | 67 | 3 | 1 | 2 days ago | 🔥 ACTIVE |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for N... | Python | 282 | 6 | 282 | 261 | 5 | 1 | 4 months ago | ✅ ACTIVE |
-| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite ... | Python | 260 | 11 | 260 | 847 | 3 | 1 | 2 weeks ago | ✅ ACTIVE |
+| [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite ... | Python | 261 | 11 | 261 | 847 | 3 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources ... | Python | 247 | 16 | 247 | 114 | 6 | 1 | 3 months ago | ✅ ACTIVE |
 | [proxmox-lxc-autoscale](https://github.com/fabriziosalmi/proxmox-lxc-autoscale) | Automatically scale LXC containers resources on... | Python | 202 | 8 | 202 | 632 | 2 | 1 | 3 months ago | ✅ ACTIVE |
 | [DevGPT](https://github.com/fabriziosalmi/DevGPT) | Code togheter, right now! GPT powered code assi... | None | 67 | 6 | 67 | 37 | 1 | 1 | 4 months ago | ✅ ACTIVE |
-| [lws](https://github.com/fabriziosalmi/lws) | proxmox/lxc/docker unified CLI | Python | 63 | 5 | 63 | 107 | 2 | 1 | 1 months ago | ✅ ACTIVE |
+| [lws](https://github.com/fabriziosalmi/lws) | proxmox/lxc/docker unified CLI | Python | 63 | 5 | 63 | 107 | 2 | 1 | 2 months ago | ✅ ACTIVE |
 | [websites-monitor](https://github.com/fabriziosalmi/websites-monitor) | Websites monitoring via GitHub Actions/API (exp... | Python | 49 | 19 | 49 | 870 | 3 | 1 | 1 months ago | ✅ ACTIVE |
 | [brandkit](https://github.com/fabriziosalmi/brandkit) | Yet another brand assets generator | HTML | 37 | 2 | 37 | 43 | 1 | 0 | 1 weeks ago | ✅ ACTIVE |
 | [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive ... | Go | 31 | 3 | 31 | 77 | 2 | 1 | 1 months ago | ✅ ACTIVE |
-| [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | Python | 31 | 3 | 31 | 110 | 1 | 0 | 1 months ago | ✅ ACTIVE |
+| [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | Python | 31 | 3 | 31 | 110 | 1 | 0 | 2 months ago | ✅ ACTIVE |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitH... | Python | 26 | 3 | 26 | 90 | 2 | 1 | 4 months ago | ✅ ACTIVE |
-| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with AP... | Python | 25 | 5 | 25 | 182 | 3 | 1 | 20 hours ago | 🔥 ACTIVE |
+| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with AP... | Python | 25 | 5 | 25 | 183 | 3 | 1 | 19 hours ago | 🔥 ACTIVE |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫 | Python | 20 | 1 | 20 | 44 | 3 | 1 | 2 months ago | ✅ ACTIVE |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resource... | Python | 20 | 2 | 20 | 93 | 3 | 1 | 4 months ago | ✅ ACTIVE |
-| [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multi... | JavaScript | 19 | 4 | 19 | 33 | 1 | 1 | 1 months ago | ✅ ACTIVE |
+| [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multi... | JavaScript | 19 | 4 | 19 | 33 | 1 | 1 | 2 months ago | ✅ ACTIVE |
 | [limits](https://github.com/fabriziosalmi/limits) | Automated rate limits implementation for web se... | Python | 18 | 3 | 18 | 42 | 1 | 0 | 1 months ago | ✅ ACTIVE |
 | [secure-proxy-manager](https://github.com/fabriziosalmi/secure-proxy-manager) | Secure proxy solution with filtering, real-time... | HTML | 16 | 0 | 16 | 262 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [csv-anonymizer](https://github.com/fabriziosalmi/csv-anonymizer) | CSV fuzzer/anonymizer | JavaScript | 10 | 0 | 10 | 30 | 1 | 0 | 2 months ago | ✅ ACTIVE |
@@ -42,7 +42,7 @@ Total stars across owned repositories scanned: **2,385** ⭐
 | [webtek](https://github.com/fabriziosalmi/webtek) | WebTeK: the worldwide streaming teknival ꩜ http... | HTML | 8 | 4 | 8 | 502 | 6 | 1 | 3 months ago | ✅ ACTIVE |
 | [wafcontrol](https://github.com/fabriziosalmi/wafcontrol) | Cloudflare WAF Settings Automation using GitHub... | Python | 7 | 1 | 7 | 59 | 1 | 0 | 6 months ago | ⏰ STALE |
 | [ethical-ai](https://github.com/fabriziosalmi/ethical-ai) | Automate LLM ethical self-assessments | Python | 6 | 1 | 6 | 108 | 2 | 1 | 2 months ago | ✅ ACTIVE |
-| [newsgator](https://github.com/fabriziosalmi/newsgator) | Yet another RSS feed aggregator with LLM powers. | Python | 6 | 0 | 6 | 14 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
+| [newsgator](https://github.com/fabriziosalmi/newsgator) | Yet another RSS feed aggregator with LLM powers. | Python | 6 | 0 | 6 | 14 | 2 | 1 | 3 weeks ago | ✅ ACTIVE |
 | [bootstrap-w3c-seo](https://github.com/fabriziosalmi/bootstrap-w3c-seo) | Sleek, intuitive, and powerful front-end framew... | PHP | 5 | 2 | 5 | 3,592 | 257 | 0 | 8 years ago | 📦 ARCHIVED |
 | [fqdn-model](https://github.com/fabriziosalmi/fqdn-model) | Tiny and fast FQDN classifier to detect malicio... | Python | 5 | 0 | 5 | 57 | 1 | 1 | 2 months ago | ✅ ACTIVE |
 | [awesomeness](https://github.com/fabriziosalmi/awesomeness) | List of awesome open source projects | None | 4 | 0 | 4 | 28 | 1 | 0 | 6 months ago | ⏰ STALE |
@@ -55,8 +55,8 @@ Total stars across owned repositories scanned: **2,385** ⭐
 | [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules dai... | Python | 2 | 0 | 2 | 61 | 2 | 1 | 4 months ago | ✅ ACTIVE |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github ... | None | 2 | 2 | 2 | 12 | 1 | 1 | 4 months ago | ✅ ACTIVE |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | Shell | 2 | 1 | 2 | 45 | 1 | 0 | 1 years ago | ⚠️ INACTIVE |
-| [open-video-watermark](https://github.com/fabriziosalmi/open-video-watermark) | A video watermarking web application | Python | 2 | 0 | 2 | 13 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories | Python | 2 | 0 | 2 | 573 | 2 | 1 | 23 hours ago | 🔥 ACTIVE |
+| [open-video-watermark](https://github.com/fabriziosalmi/open-video-watermark) | A video watermarking web application | Python | 2 | 0 | 2 | 13 | 2 | 1 | 3 weeks ago | ✅ ACTIVE |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories | Python | 2 | 0 | 2 | 574 | 2 | 1 | 22 hours ago | 🔥 ACTIVE |
 | [reverse-proxy-manager](https://github.com/fabriziosalmi/reverse-proxy-manager) | Centralized proxy management system for distrib... | Python | 2 | 0 | 2 | 177 | 2 | 1 | 3 weeks ago | ✅ ACTIVE |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | Python | 2 | 0 | 2 | 50 | 2 | 1 | 1 weeks ago | ✅ ACTIVE |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | None | 1 | 1 | 1 | 147 | 2 | 0 | 5 years ago | 📦 ARCHIVED |
@@ -68,22 +68,22 @@ Total stars across owned repositories scanned: **2,385** ⭐
 | [proxima-ui](https://github.com/fabriziosalmi/proxima-ui) | A simple web interface to manage Proxmox hosts,... | HTML | 1 | 0 | 1 | 87 | 2 | 1 | 2 weeks ago | ✅ ACTIVE |
 | [repolizer](https://github.com/fabriziosalmi/repolizer) | GitHub Repository Health Analyzer | HTML | 1 | 0 | 1 | 265 | 1 | 1 | 1 weeks ago | ✅ ACTIVE |
 | [rivoluzioneinformatica-website](https://github.com/fabriziosalmi/rivoluzioneinformatica-website) | https://www.rivoluzioneinformatica.org | HTML | 1 | 0 | 1 | 41 | 1 | 0 | 9 months ago | 📦 ARCHIVED |
-| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | Python | 1 | 0 | 1 | 848 | 2 | 0 | 19 hours ago | 🔥 ACTIVE |
+| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | Python | 1 | 0 | 1 | 850 | 2 | 0 | 17 hours ago | 🔥 ACTIVE |
 | [ai-chatbot-encryption](https://github.com/fabriziosalmi/ai-chatbot-encryption) | Encrypt your AI powered chatbot sessions | None | 0 | 1 | 0 | 7 | 1 | 0 | 5 months ago | ✅ ACTIVE |
-| [audiolibri](https://github.com/fabriziosalmi/audiolibri) | https://audiolibri.org - Raccolta di audiolibri... | Python | 0 | 0 | 0 | 92 | 1 | 1 | 2 weeks ago | ✅ ACTIVE |
-| [audiolibri-editor](https://github.com/fabriziosalmi/audiolibri-editor) | audiolibri.org data editor | HTML | 0 | 0 | 0 | 8 | 1 | 0 | 2 weeks ago | ✅ ACTIVE |
-| [certmate-website](https://github.com/fabriziosalmi/certmate-website) | CertMate website powered by GitHub pages. | HTML | 0 | 0 | 0 | 2 | 1 | 0 | 2 days ago | 🔥 ACTIVE |
+| [audiolibri](https://github.com/fabriziosalmi/audiolibri) | https://audiolibri.org - Raccolta di audiolibri... | Python | 0 | 0 | 0 | 92 | 1 | 1 | 3 weeks ago | ✅ ACTIVE |
+| [audiolibri-editor](https://github.com/fabriziosalmi/audiolibri-editor) | audiolibri.org data editor | HTML | 0 | 0 | 0 | 8 | 1 | 0 | 3 weeks ago | ✅ ACTIVE |
+| [certmate-website](https://github.com/fabriziosalmi/certmate-website) | CertMate website powered by GitHub pages. | HTML | 0 | 0 | 0 | 2 | 1 | 0 | 3 days ago | 🔥 ACTIVE |
 | [challenged](https://github.com/fabriziosalmi/challenged) | No description | None | 0 | 0 | 0 | 10 | 1 | 0 | 1 months ago | 📝 NO DESC |
 | [crosswords](https://github.com/fabriziosalmi/crosswords) | Interactive Crossword Puzzle Generator | Python | 0 | 0 | 0 | 39 | 1 | 0 | 1 weeks ago | ✅ ACTIVE |
-| [domainsblacklists](https://github.com/fabriziosalmi/domainsblacklists) | domainsblacklists.com website | CSS | 0 | 1 | 0 | 11 | 1 | 0 | 2 weeks ago | ✅ ACTIVE |
-| [fabriziosalmi](https://github.com/fabriziosalmi/fabriziosalmi) | No description | None | 0 | 0 | 0 | 12 | 1 | 0 | 13 hours ago | 🔥 ACTIVE |
-| [freeundergroundtekno](https://github.com/fabriziosalmi/freeundergroundtekno) | No description | None | 0 | 0 | 0 | 20 | 1 | 0 | 2 weeks ago | 📝 NO DESC |
+| [domainsblacklists](https://github.com/fabriziosalmi/domainsblacklists) | domainsblacklists.com website | CSS | 0 | 1 | 0 | 11 | 1 | 0 | 3 weeks ago | ✅ ACTIVE |
+| [fabriziosalmi](https://github.com/fabriziosalmi/fabriziosalmi) | No description | None | 0 | 0 | 0 | 12 | 1 | 0 | yesterday | 🔥 ACTIVE |
+| [freeundergroundtekno](https://github.com/fabriziosalmi/freeundergroundtekno) | No description | None | 0 | 0 | 0 | 20 | 1 | 0 | 3 weeks ago | 📝 NO DESC |
 | [github-games](https://github.com/fabriziosalmi/github-games) | Web based games hosted on GitHub Pages | None | 0 | 0 | 0 | 44 | 1 | 0 | 3 months ago | ✅ ACTIVE |
 | [iGPT](https://github.com/fabriziosalmi/iGPT) | iGPT: the fastest fLLM out there 🚀🚀🚀 | HTML | 0 | 1 | 0 | 57 | 1 | 0 | 1 years ago | ⚠️ INACTIVE |
-| [k8s](https://github.com/fabriziosalmi/k8s) | Kubernetes Homelab Scripts 🛠️ (k8s) | Shell | 0 | 0 | 0 | 14 | 1 | 0 | 2 weeks ago | ✅ ACTIVE |
+| [k8s](https://github.com/fabriziosalmi/k8s) | Kubernetes Homelab Scripts 🛠️ (k8s) | Shell | 0 | 0 | 0 | 14 | 1 | 0 | 3 weeks ago | ✅ ACTIVE |
 | [tensorflow-poc](https://github.com/fabriziosalmi/tensorflow-poc) | MNIST PoC using TensorFlow | Python | 0 | 0 | 0 | 13 | 1 | 0 | 1 years ago | 📦 ARCHIVED |
 | [test-aws-terraform](https://github.com/fabriziosalmi/test-aws-terraform) | Terraform WordPress Deployment on AWS | HCL | 0 | 0 | 0 | 8 | 1 | 0 | 4 months ago | ✅ ACTIVE |
 | [text-boundaries](https://github.com/fabriziosalmi/text-boundaries) | A Python-based tool for preprocessing, cleaning... | Python | 0 | 1 | 0 | 17 | 1 | 0 | 9 months ago | ⏰ STALE |
 | [transversal](https://github.com/fabriziosalmi/transversal) | No description | HTML | 0 | 0 | 0 | 22 | 1 | 0 | 1 months ago | 📝 NO DESC |
 | [versiontracker](https://github.com/fabriziosalmi/versiontracker) | No description | Python | 0 | 0 | 0 | 2 | 1 | 0 | 2 weeks ago | 📝 NO DESC |
-| [web-kick](https://github.com/fabriziosalmi/web-kick) | No description | JavaScript | 0 | 0 | 0 | 30 | 1 | 0 | 2 weeks ago | 📝 NO DESC |
+| [web-kick](https://github.com/fabriziosalmi/web-kick) | No description | JavaScript | 0 | 0 | 0 | 30 | 1 | 0 | 3 weeks ago | 📝 NO DESC |
