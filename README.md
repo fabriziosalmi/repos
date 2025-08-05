@@ -1,6 +1,6 @@
 # GitHub Repository Stats for fabriziosalmi
 
-Total stars across owned repositories scanned: **2,968** ⭐
+Total stars across owned repositories scanned: **2,970** ⭐
 
 ## Overall Stats
 
@@ -18,8 +18,8 @@ Total stars across owned repositories scanned: **2,968** ⭐
 
 | Repository | Description | Language 💻 | Stars ⭐ | Forks 🍴 | Watchers 👀 | Commits 💾 | Contributors 👥 | Issues ✅ | Last Update 🕒 | Status 📊 |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| [certmate](https://github.com/fabriziosalmi/certmate) | SSL Certificate Management System (API + UI) | Python | 846 | 41 | 846 | 86 | 3 | 1 | 2 weeks ago | ✅ ACTIVE |
-| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, R... | Go | 565 | 17 | 565 | 585 | 4 | 1 | 3 weeks ago | ✅ ACTIVE |
+| [certmate](https://github.com/fabriziosalmi/certmate) | SSL Certificate Management System (API + UI) | Python | 847 | 41 | 847 | 86 | 3 | 1 | 2 weeks ago | ✅ ACTIVE |
+| [caddy-waf](https://github.com/fabriziosalmi/caddy-waf) | Caddy WAF (Regex Rules, IP and DNS filtering, R... | Go | 566 | 17 | 566 | 585 | 4 | 1 | 3 weeks ago | ✅ ACTIVE |
 | [patterns](https://github.com/fabriziosalmi/patterns) | Automated OWASP CRS and Bad Bot Detection for N... | Python | 282 | 7 | 282 | 261 | 5 | 1 | 5 months ago | ✅ ACTIVE |
 | [UglyFeed](https://github.com/fabriziosalmi/UglyFeed) | Retrieve, aggregate, filter, evaluate, rewrite ... | Python | 269 | 12 | 269 | 849 | 3 | 1 | 3 weeks ago | ✅ ACTIVE |
 | [proxmox-vm-autoscale](https://github.com/fabriziosalmi/proxmox-vm-autoscale) | Automatically scale virtual machines resources ... | Python | 256 | 18 | 256 | 114 | 6 | 1 | 3 weeks ago | ✅ ACTIVE |
@@ -31,7 +31,7 @@ Total stars across owned repositories scanned: **2,968** ⭐
 | [caddy-mib](https://github.com/fabriziosalmi/caddy-mib) | Track and ban client IPs generating repetitive ... | Go | 33 | 3 | 33 | 77 | 2 | 1 | 2 months ago | ✅ ACTIVE |
 | [iamnotacoder](https://github.com/fabriziosalmi/iamnotacoder) | AI code generation and improvement | Python | 31 | 3 | 31 | 110 | 1 | 0 | 3 months ago | ✅ ACTIVE |
 | [zonecontrol](https://github.com/fabriziosalmi/zonecontrol) | Cloudflare Zones Settings Automation using GitH... | Python | 26 | 3 | 26 | 90 | 2 | 1 | 5 months ago | ✅ ACTIVE |
-| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with AP... | Python | 25 | 5 | 25 | 213 | 3 | 1 | 20 hours ago | 🔥 ACTIVE |
+| [cf-box](https://github.com/fabriziosalmi/cf-box) | cf-box is a set of Python tools to play with AP... | Python | 25 | 5 | 25 | 214 | 3 | 1 | 20 hours ago | 🔥 ACTIVE |
 | [blacklists](https://github.com/fabriziosalmi/blacklists) | Hourly updated domains blacklist 🚫 | Python | 22 | 2 | 22 | 44 | 3 | 1 | 3 months ago | ✅ ACTIVE |
 | [proxmox-lxc-autoscale-ml](https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml) | Automatically scale the LXC containers resource... | Python | 21 | 2 | 21 | 93 | 3 | 1 | 5 months ago | ✅ ACTIVE |
 | [dnscontrol-actions](https://github.com/fabriziosalmi/dnscontrol-actions) | Automate DNS updates and rollbacks across multi... | JavaScript | 19 | 4 | 19 | 33 | 1 | 1 | 3 months ago | ✅ ACTIVE |
@@ -49,7 +49,7 @@ Total stars across owned repositories scanned: **2,968** ⭐
 | [caddy-adf](https://github.com/fabriziosalmi/caddy-adf) | Yet another caddy WAF exploration | Go | 4 | 0 | 4 | 100 | 1 | 1 | 6 months ago | ⏰ STALE |
 | [linux](https://github.com/fabriziosalmi/linux) | Linux Scripts & Snippets Collection | Jupyter Notebook | 4 | 0 | 4 | 86 | 1 | 0 | 5 months ago | ✅ ACTIVE |
 | [pdf-ocr](https://github.com/fabriziosalmi/pdf-ocr) | Converts scanned PDF documents to multiple form... | HTML | 4 | 0 | 4 | 44 | 1 | 1 | 3 months ago | ✅ ACTIVE |
-| [repos](https://github.com/fabriziosalmi/repos) | My repositories | Python | 4 | 0 | 4 | 608 | 2 | 1 | 23 hours ago | 🔥 ACTIVE |
+| [repos](https://github.com/fabriziosalmi/repos) | My repositories | Python | 4 | 0 | 4 | 609 | 2 | 1 | 23 hours ago | 🔥 ACTIVE |
 | [tubeconv](https://github.com/fabriziosalmi/tubeconv) | Convert social videos to high-quality MP3 files | JavaScript | 4 | 0 | 4 | 12 | 2 | 1 | 1 months ago | ✅ ACTIVE |
 | [You-Know-What-AI-Mean](https://github.com/fabriziosalmi/You-Know-What-AI-Mean) | A comprehensive hallucination through the multi... | HTML | 4 | 1 | 4 | 135 | 2 | 0 | 1 years ago | ⚠️ INACTIVE |
 | [reverse-proxy-manager](https://github.com/fabriziosalmi/reverse-proxy-manager) | Centralized proxy management system for distrib... | Python | 3 | 0 | 3 | 179 | 2 | 1 | 3 weeks ago | ✅ ACTIVE |
@@ -57,7 +57,7 @@ Total stars across owned repositories scanned: **2,968** ⭐
 | [caddy-feeds](https://github.com/fabriziosalmi/caddy-feeds) | IP blacklist, DNS blacklist and OWASP rules dai... | Python | 2 | 0 | 2 | 61 | 2 | 1 | 5 months ago | ✅ ACTIVE |
 | [cloudflare-backup-actions](https://github.com/fabriziosalmi/cloudflare-backup-actions) | Cloudflare zones and records backup via Github ... | None | 2 | 2 | 2 | 12 | 1 | 1 | 5 months ago | ✅ ACTIVE |
 | [mtls-cloudflare-aws](https://github.com/fabriziosalmi/mtls-cloudflare-aws) | mTLS implementation between Cloudflare and AWS | Shell | 2 | 1 | 2 | 45 | 1 | 0 | 1 years ago | ⚠️ INACTIVE |
-| [nginx-waf-ai](https://github.com/fabriziosalmi/nginx-waf-ai) | Automatically detect threats and deploy WAF rul... | Python | 2 | 1 | 2 | 49 | 1 | 1 | yesterday | 🔥 ACTIVE |
+| [nginx-waf-ai](https://github.com/fabriziosalmi/nginx-waf-ai) | Automatically detect threats and deploy WAF rul... | Python | 2 | 1 | 2 | 49 | 1 | 1 | 2 days ago | 🔥 ACTIVE |
 | [open-video-watermark](https://github.com/fabriziosalmi/open-video-watermark) | A video watermarking web application | Python | 2 | 0 | 2 | 13 | 2 | 1 | 1 months ago | ✅ ACTIVE |
 | [sci-fi](https://github.com/fabriziosalmi/sci-fi) | Simple Code Improver - Framework & Interface | Python | 2 | 0 | 2 | 50 | 2 | 1 | 1 months ago | ✅ ACTIVE |
 | [any-to-mp4](https://github.com/fabriziosalmi/any-to-mp4) | Convert any kind of file to video. | None | 1 | 1 | 1 | 147 | 2 | 0 | 5 years ago | 📦 ARCHIVED |
@@ -70,7 +70,7 @@ Total stars across owned repositories scanned: **2,968** ⭐
 | [repolizer](https://github.com/fabriziosalmi/repolizer) | GitHub Repository Health Analyzer | HTML | 1 | 0 | 1 | 265 | 1 | 1 | 1 months ago | ✅ ACTIVE |
 | [rivoluzioneinformatica-website](https://github.com/fabriziosalmi/rivoluzioneinformatica-website) | https://www.rivoluzioneinformatica.org | HTML | 1 | 0 | 1 | 41 | 1 | 0 | 10 months ago | 📦 ARCHIVED |
 | [test-aws-terraform](https://github.com/fabriziosalmi/test-aws-terraform) | Terraform WordPress Deployment on AWS | HCL | 1 | 0 | 1 | 8 | 1 | 0 | 5 months ago | ✅ ACTIVE |
-| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | Python | 1 | 0 | 1 | 910 | 2 | 0 | 19 hours ago | 🔥 ACTIVE |
+| [uglyfeed-cdn](https://github.com/fabriziosalmi/uglyfeed-cdn) | 🌍 UglyFeed RSS feeds | Python | 1 | 0 | 1 | 912 | 2 | 0 | 19 hours ago | 🔥 ACTIVE |
 | [ai-chatbot-encryption](https://github.com/fabriziosalmi/ai-chatbot-encryption) | Encrypt your AI powered chatbot sessions | None | 0 | 1 | 0 | 7 | 1 | 0 | 6 months ago | ⏰ STALE |
 | [audiolibri](https://github.com/fabriziosalmi/audiolibri) | https://audiolibri.org - Raccolta di audiolibri... | Python | 0 | 0 | 0 | 92 | 1 | 1 | 1 months ago | ✅ ACTIVE |
 | [audiolibri-editor](https://github.com/fabriziosalmi/audiolibri-editor) | audiolibri.org data editor | HTML | 0 | 0 | 0 | 8 | 1 | 0 | 1 weeks ago | ✅ ACTIVE |
