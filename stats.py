@@ -463,6 +463,90 @@ def get_repository_languages(repo_full_name, headers, console):
         logging.warning(f"Error fetching languages for {repo_full_name}: {e}")
         return {}
 
+# New helper to fetch latest release or tag info including rationale
+def get_latest_version_info(repo_full_name, headers, console=None):
+    """Return latest version info from releases or tags for a repository.
+    Tries the latest release first. If none, falls back to the latest tag.
+    Includes a short rationale (release body or commit message subject).
+    Returns a dict with keys: type, name, url, date_api, date_str, rationale.
+    """
+    base_api = f"{GITHUB_API_BASE_URL}/repos/{repo_full_name}"
+
+    # 1) Try latest release
+    release_url = f"{base_api}/releases/latest"
+    rel_resp = make_github_request(release_url, headers, console=console)
+    if rel_resp and rel_resp.status_code == 200:
+        try:
+            rel = rel_resp.json()
+            tag_name = rel.get('tag_name') or rel.get('name') or 'unknown'
+            html_url = rel.get('html_url') or f"https://github.com/{repo_full_name}/releases"
+            published_at = parse_github_datetime(rel.get('published_at'))
+            rationale_raw = rel.get('name') or ''
+            if not rationale_raw:
+                # fallback to beginning of body
+                rationale_raw = (rel.get('body') or '').strip()
+            rationale = (rationale_raw or '').splitlines()[0][:120] if rationale_raw else ''
+            return {
+                'type': 'release',
+                'name': tag_name,
+                'url': html_url,
+                'date_api': published_at,
+                'date_str': get_human_readable_time(published_at) if published_at else 'Unknown',
+                'rationale': rationale
+            }
+        except Exception as e:
+            logging.warning(f"Failed parsing latest release for {repo_full_name}: {e}")
+
+    # 2) Fallback to latest tag
+    tags_url = f"{base_api}/tags"
+    tags_resp = make_github_request(tags_url, headers, params={'per_page': 1}, console=console)
+    if tags_resp and tags_resp.status_code == 200:
+        try:
+            tags = tags_resp.json()
+            if isinstance(tags, list) and tags:
+                tag = tags[0]
+                tag_name = tag.get('name') or 'unknown'
+                commit_sha = ((tag.get('commit') or {}).get('sha'))
+                # Try to fetch the commit to derive date and rationale
+                commit_date = None
+                rationale = ''
+                if commit_sha:
+                    commit_url = f"{base_api}/commits/{commit_sha}"
+                    commit_resp = make_github_request(commit_url, headers, console=console)
+                    if commit_resp and commit_resp.status_code == 200:
+                        try:
+                            c = commit_resp.json()
+                            info = (c.get('commit') or {})
+                            # Prefer committer date, fallback to author
+                            date_str = (info.get('committer') or {}).get('date') or (info.get('author') or {}).get('date')
+                            commit_date = parse_github_datetime(date_str)
+                            msg = (info.get('message') or '').strip()
+                            rationale = msg.splitlines()[0][:120] if msg else ''
+                        except Exception as e:
+                            logging.warning(f"Failed parsing commit {commit_sha} for {repo_full_name}: {e}")
+                # Construct a safe URL to the tag tree view (works even without release)
+                tag_url = f"https://github.com/{repo_full_name}/tree/{url_quote(tag_name)}"
+                return {
+                    'type': 'tag',
+                    'name': tag_name,
+                    'url': tag_url,
+                    'date_api': commit_date,
+                    'date_str': get_human_readable_time(commit_date) if commit_date else 'Unknown',
+                    'rationale': rationale
+                }
+        except Exception as e:
+            logging.warning(f"Failed parsing tags for {repo_full_name}: {e}")
+
+    # Nothing found
+    return {
+        'type': None,
+        'name': None,
+        'url': None,
+        'date_api': None,
+        'date_str': 'Unknown',
+        'rationale': ''
+    }
+
 # --- Renamed Function for Clarity ---
 def get_user_repositories_stats(username, token=None, console=None):
     """Fetches owned repos for a user, calculates stats, and handles sorting."""
@@ -714,6 +798,15 @@ def get_user_repositories_stats(username, token=None, console=None):
                 else:
                     repo_info['language_stats'] = {}
 
+                # --- Latest Version (release/tag) ---
+                version_info = get_latest_version_info(full_name, headers, console)
+                repo_info['latest_version'] = version_info.get('name')
+                repo_info['latest_version_type'] = version_info.get('type')
+                repo_info['latest_version_url'] = version_info.get('url')
+                repo_info['latest_version_date_api'] = version_info.get('date_api')
+                repo_info['latest_version_date_str'] = version_info.get('date_str')
+                repo_info['latest_version_rationale'] = version_info.get('rationale')
+
                 repo_info['processed_details'] = True
                 # Optional delay between detailed fetches for different repos
                 time.sleep(0.1) # Slightly longer delay to be respectful to API
@@ -850,9 +943,9 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
 
             # Detailed Repository Table
             f.write(f"## Repository Details\n\n")
-            # Enhanced headers with new information
-            f.write("| Repository | Description | Language 💻 | Stars ⭐ | Forks 🍴 | Watchers 👀 | Commits 💾 | Contributors 👥 | Issues ✅ | Last Update 🕒 | Status 📊 |\n")
-            f.write("|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n")
+            # Enhanced headers with version info
+            f.write("| Repository | Description | Language 💻 | Version 🏷️ | Released 📅 | Stars ⭐ | Forks 🍴 | Watchers 👀 | Commits 💾 | Contributors 👥 | Issues ✅ | Last Update 🕒 | Status 📊 | Notes 📝 |\n")
+            f.write("|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|\n")
 
             for repo in repositories:
                 # Sanitize description for Markdown table cells
@@ -899,13 +992,30 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
 
                 last_update_str = repo.get('last_update_str', "Unknown")
 
+                # Version info
+                ver_name = repo.get('latest_version') or '—'
+                ver_url = repo.get('latest_version_url') or ''
+                ver_date = repo.get('latest_version_date_str', 'Unknown')
+                note = repo.get('latest_version_rationale') or ''
+                # Truncate rationale for markdown
+                if len(note) > 80:
+                    note = note[:77] + '...'
+
                 # Sanitize repo name for link text
                 repo_name_sanitized = repo.get('name', 'N/A').replace('[', '\\[').replace(']', '\\]')
                 repo_url = repo.get('url', '#')
 
+                # Build version cell with link if available
+                if ver_url and ver_name != '—':
+                    ver_cell = f"[{ver_name}]({ver_url})"
+                else:
+                    ver_cell = ver_name
+
                 f.write(f"| [{repo_name_sanitized}]({repo_url}) "
                         f"| {description} "
                         f"| {language} "
+                        f"| {ver_cell} "
+                        f"| {ver_date} "
                         f"| {stars_str} "
                         f"| {forks_str} "
                         f"| {watchers_str} "
@@ -913,7 +1023,8 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
                         f"| {contrib_str} "
                         f"| {issues_str} "
                         f"| {last_update_str} "
-                        f"| {status_text} |\n")
+                        f"| {status_text} "
+                        f"| {note} |\n")
 
         logging.info(f"Markdown report saved to {filename}")
         print(f"Markdown report saved to {filename}") # User feedback
@@ -1017,6 +1128,8 @@ def main():
                 table.add_column("Repository", style="repo_name", min_width=18, max_width=25, overflow="ellipsis", justify="left", no_wrap=True)
                 table.add_column("Description", style="description", max_width=35, overflow="ellipsis", justify="left", no_wrap=True)
                 table.add_column("Language", style="info", min_width=8, max_width=12, overflow="ellipsis", justify="center", no_wrap=True)
+                table.add_column("Ver", style="info", justify="center", min_width=6, no_wrap=True)
+                table.add_column("Rel.", style="last_update", justify="right", min_width=8, no_wrap=True)
                 table.add_column("⭐", style="stars", justify="right", min_width=4)
                 table.add_column("🍴", style="forks", justify="right", min_width=4)
                 table.add_column("👀", style="info", justify="right", min_width=4, no_wrap=True)  # Watchers
@@ -1040,7 +1153,6 @@ def main():
                     if language == 'Not specified' or language == 'N/A':
                         language = "[dim]N/A[/]"
                     elif language:
-                        # Truncate long language names
                         if len(language) > 10:
                             language = language[:8] + ".."
 
@@ -1053,14 +1165,16 @@ def main():
                     issues_val = repo.get('closed_issues_count')
                     issues_str = f"{issues_val:,}" if issues_val is not None else "[na]N/A[/]"
 
-                    # Simplified last update (remove "ago" to save space)
+                    # Simplified last update
                     last_update_str = repo.get('last_update_str', '[na]Unknown[/]')
                     if last_update_str.endswith(' ago'):
-                        last_update_str = last_update_str[:-4]  # Remove " ago"
-                    # Simplified last update (remove "ago" to save space)
-                    last_update_str = repo.get('last_update_str', '[na]Unknown[/]')
-                    if last_update_str.endswith(' ago'):
-                        last_update_str = last_update_str[:-4]  # Remove " ago"
+                        last_update_str = last_update_str[:-4]
+
+                    # Latest version compact display
+                    ver_name = repo.get('latest_version') or '—'
+                    if ver_name and len(ver_name) > 10:
+                        ver_name = ver_name[:9] + '…'
+                    ver_date = repo.get('latest_version_date_str', 'Unknown')
 
                     # Create repository link
                     repo_name_display = repo.get('name', 'N/A')
@@ -1079,6 +1193,8 @@ def main():
                         repo_link_markup,
                         description,
                         language,
+                        ver_name,
+                        ver_date,
                         stars_str,
                         forks_str,
                         watchers_str,
