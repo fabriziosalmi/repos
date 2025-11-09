@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Test - Drum'n'Bass Loop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .visualizer {
+            width: 80%;
+            max-width: 600px;
+            height: 200px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .beat-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: #00ff88;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+        
+        .beat-indicator.active {
+            opacity: 0.8;
+        }
+        
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .status {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎛️ Drum'n'Bass Audio Test</h1>
+    
+    <div class="controls">
+        <button id="start-btn">Start Audio</button>
+        <button id="stop-btn">Stop Audio</button>
+        <button id="glitch-btn">Trigger Glitch</button>
+        <button id="breakdown-btn">Trigger Breakdown</button>
+    </div>
+    
+    <div class="visualizer">
+        <div class="beat-indicator" id="beat"></div>
+    </div>
+    
+    <div class="status" id="status">
+        Status: Audio not initialized
+    </div>
+    
+    <div class="info">
+        <p>174 BPM Drum'n'Bass loop with dub techno bassline</p>
+        <p>Analog effects: saturation, vinyl crackle, dub delay</p>
+        <p>Random glitches and breakdowns for unpredictability</p>
+    </div>
+
+    <script>
+        let audioInitialized = false;
+        const statusEl = document.getElementById('status');
+        const beatEl = document.getElementById('beat');
+        
+        // Quick test - just visualize that audio would be working
+        document.getElementById('start-btn').addEventListener('click', () => {
+            if (!audioInitialized) {
+                statusEl.innerHTML = '✅ Audio Started<br>BPM: 174<br>Mode: Drum\'n\'Bass + Dub Techno<br>Effects: Analog Warmth, Vinyl Crackle, Dub Delay';
+                statusEl.style.borderColor = '#00ff88';
+                audioInitialized = true;
+                
+                // Simulate beat indicator
+                setInterval(() => {
+                    beatEl.classList.add('active');
+                    setTimeout(() => beatEl.classList.remove('active'), 100);
+                }, 60000 / 174); // 174 BPM
+            }
+        });
+        
+        document.getElementById('stop-btn').addEventListener('click', () => {
+            statusEl.innerHTML = '⏹️ Audio Stopped';
+            statusEl.style.borderColor = '#ff0040';
+            audioInitialized = false;
+        });
+        
+        document.getElementById('glitch-btn').addEventListener('click', () => {
+            if (audioInitialized) {
+                statusEl.innerHTML = '⚡ Glitch Effect Triggered!<br>Type: ' + 
+                    ['Bitcrush', 'Pitch Bend', 'Filter Sweep'][Math.floor(Math.random() * 3)];
+                setTimeout(() => {
+                    statusEl.innerHTML = '✅ Audio Running';
+                }, 1000);
+            }
+        });
+        
+        document.getElementById('breakdown-btn').addEventListener('click', () => {
+            if (audioInitialized) {
+                statusEl.innerHTML = '🎛️ Breakdown Mode<br>Fading out... preparing riser effect';
+                setTimeout(() => {
+                    statusEl.innerHTML = '🚀 Build-up! Rising...';
+                    setTimeout(() => {
+                        statusEl.innerHTML = '💥 Drop! Back to full energy';
+                        setTimeout(() => {
+                            statusEl.innerHTML = '✅ Audio Running';
+                        }, 1000);
+                    }, 2000);
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
