@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <!-- External Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -89,6 +88,7 @@
             transition: all 0.1s ease;
             transform: translate(-50%, -50%);
             mix-blend-mode: difference;
+            will-change: transform;
         }
 
         .cursor-follower {
@@ -102,11 +102,74 @@
             transition: all 0.15s ease;
             transform: translate(-50%, -50%);
             box-shadow: var(--glow-primary);
+            will-change: transform;
         }
 
         .cursor.hover {
             transform: translate(-50%, -50%) scale(1.5);
             border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent), 0 0 60px rgba(255, 0, 128, 0.4);
+        }
+
+        .cursor-follower.hover {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(255, 0, 128, 0.6);
+        }
+
+        /* Cursor Trail Particles */
+        .cursor-trail {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9997;
+            opacity: 0.8;
+            will-change: transform, opacity;
+            background: radial-gradient(circle, var(--primary), var(--secondary));
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Cursor Glow Ripple */
+        .cursor-ripple {
+            position: fixed;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            pointer-events: none;
+            z-index: 9996;
+            opacity: 0;
+            will-change: transform, opacity;
+            animation: ripple-expand 1s ease-out forwards;
+        }
+
+        @keyframes ripple-expand {
+            0% {
+                width: 20px;
+                height: 20px;
+                opacity: 0.8;
+                box-shadow: 0 0 20px currentColor;
+            }
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 40px currentColor;
+            }
+            100% {
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+                box-shadow: 0 0 0 currentColor;
+            }
+        }
+
+        /* Click burst particles */
+        .burst-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9995;
+            will-change: transform, opacity;
         }
 
         /* Canvas Background */
@@ -117,6 +180,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            will-change: contents;
         }
 
         /* Mesh Gradient Background */
@@ -158,11 +222,35 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem 0;
             transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         .navbar.scrolled {
             background: rgba(10, 10, 15, 0.95);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle,
+                rgba(0, 255, 136, 0.15) 0%,
+                rgba(0, 212, 255, 0.1) 30%,
+                transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            left: var(--glow-x, 50%);
+            top: var(--glow-y, 50%);
+            transform: translate(-50%, -50%);
+            filter: blur(30px);
+        }
+
+        .navbar:hover::before {
+            opacity: 1;
         }
 
         .nav-content {
@@ -172,6 +260,8 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -406,6 +496,8 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            contain: layout style paint;
+            will-change: transform, opacity;
         }
 
         .bento-item::before {
@@ -423,12 +515,27 @@
         .bento-item:hover {
             transform: translateY(-8px);
             border-color: var(--primary);
-            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2),
-                        inset 0 0 40px rgba(0, 255, 136, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3),
+                        0 0 80px rgba(0, 212, 255, 0.2),
+                        inset 0 0 40px rgba(0, 255, 136, 0.08);
+            animation: cardPulse 2s ease-in-out infinite;
         }
 
         .bento-item:hover::before {
-            opacity: 0.05;
+            opacity: 0.08;
+        }
+
+        @keyframes cardPulse {
+            0%, 100% {
+                box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3),
+                            0 0 80px rgba(0, 212, 255, 0.2),
+                            inset 0 0 40px rgba(0, 255, 136, 0.08);
+            }
+            50% {
+                box-shadow: 0 25px 70px rgba(0, 255, 136, 0.4),
+                            0 0 100px rgba(0, 212, 255, 0.3),
+                            inset 0 0 60px rgba(0, 255, 136, 0.12);
+            }
         }
 
         /* Glass Card 3D Tilt Effect */
@@ -568,6 +675,8 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            contain: layout style paint;
+            will-change: transform, opacity;
         }
 
         .repo-card::after {
@@ -586,11 +695,35 @@
         .repo-card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: var(--primary);
-            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.35),
+                        0 0 80px rgba(0, 212, 255, 0.25);
+            animation: cardPulse 2s ease-in-out infinite;
         }
 
         .repo-card:hover::after {
             transform: scaleX(1);
+        }
+
+        /* Card spotlight effect */
+        .card-spotlight {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(0, 255, 136, 0.15) 0%,
+                rgba(0, 212, 255, 0.1) 30%,
+                transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            transform: translate(-50%, -50%);
+            filter: blur(20px);
+        }
+
+        .bento-item:hover .card-spotlight,
+        .repo-card:hover .card-spotlight {
+            opacity: 1;
         }
 
         .repo-header {
@@ -815,6 +948,7 @@
             height: 100%;
             z-index: -3;
             opacity: 0.1;
+            will-change: contents;
         }
 
         /* Smooth Scroll */
@@ -884,7 +1018,7 @@
     <section class="hero" id="overview">
         <div class="hero-content">
             <div class="avatar-container">
-                <img src="https://github.com/fabriziosalmi.png" alt="fabriziosalmi" class="avatar">
+                <img src="https://github.com/fabriziosalmi.png" alt="fabriziosalmi" class="avatar" loading="eager">
             </div>
             <h1 class="neon-text">fabriziosalmi</h1>
             <p class="hero-subtitle">Building the future, one commit at a time</p>
@@ -1063,13 +1197,36 @@
     </footer>
 
     <script>
+        // ===== UTILITIES =====
+        // Debounce function to limit function calls
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Track page visibility for performance optimization
+        let isPageVisible = true;
+        document.addEventListener('visibilitychange', () => {
+            isPageVisible = !document.hidden;
+        });
+
         // ===== DATA =====
         let repositories = [];
 
         // Load repositories from JSON
         async function loadRepositories() {
             try {
-                const response = await fetch('repositories-data.json');
+                const response = await fetch('./repositories-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 repositories = await response.json();
 
                 // Sort by stars (descending) and take top repositories for display
@@ -1077,20 +1234,10 @@
 
                 renderRepositories();
             } catch (error) {
-                console.error('Error loading repositories:', error);
-                // Fallback data in case JSON fails to load
-                repositories = [
-                    {
-                        name: "certmate",
-                        description: "SSL Certificate Management System (API + UI)",
-                        url: "https://github.com/fabriziosalmi/certmate",
-                        stars: 894,
-                        forks: 53,
-                        commits: 120,
-                        contributors: 3,
-                        issues: 1
-                    }
-                ];
+                console.warn('Could not load repositories-data.json, using fallback data:', error.message);
+                // Fallback: Load from inline data or show message
+                // For local file:// protocol, JSON fetch might fail
+                repositories = [];
                 renderRepositories();
             }
         }
@@ -1108,13 +1255,69 @@
 
         let mouseX = 0, mouseY = 0;
         let followerX = 0, followerY = 0;
+        let isHovering = false;
 
+        // Trail particles array
+        const trailParticles = [];
+        const maxTrails = 8;
+        let trailCounter = 0;
+
+        // Use passive listener for better performance
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             cursor.style.left = mouseX + 'px';
             cursor.style.top = mouseY + 'px';
-        });
+
+            // Create trail particles only when hovering interactive elements
+            if (isHovering && trailCounter % 2 === 0) {
+                createTrailParticle(mouseX, mouseY);
+            }
+            trailCounter++;
+        }, { passive: true });
+
+        function createTrailParticle(x, y) {
+            if (trailParticles.length >= maxTrails) {
+                const oldest = trailParticles.shift();
+                oldest.remove();
+            }
+
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+            trailParticles.push(trail);
+
+            // Animate trail fade and movement
+            let opacity = 0.8;
+            let size = 6;
+            let offsetX = (Math.random() - 0.5) * 20;
+            let offsetY = (Math.random() - 0.5) * 20;
+
+            const animateTrail = () => {
+                opacity -= 0.04;
+                size *= 0.95;
+                x += offsetX * 0.1;
+                y += offsetY * 0.1;
+
+                trail.style.opacity = opacity;
+                trail.style.width = size + 'px';
+                trail.style.height = size + 'px';
+                trail.style.left = x + 'px';
+                trail.style.top = y + 'px';
+
+                if (opacity > 0) {
+                    requestAnimationFrame(animateTrail);
+                } else {
+                    trail.remove();
+                    const index = trailParticles.indexOf(trail);
+                    if (index > -1) trailParticles.splice(index, 1);
+                }
+            };
+
+            requestAnimationFrame(animateTrail);
+        }
 
         function animateFollower() {
             followerX += (mouseX - followerX) * 0.1;
@@ -1126,10 +1329,57 @@
         animateFollower();
 
         // Cursor hover effect on interactive elements
-        document.querySelectorAll('a, button, .repo-card, .bento-item').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        document.querySelectorAll('a, button, .repo-card, .bento-item, .nav-links a, .achievement-badge').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+                isHovering = true;
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+                isHovering = false;
+            });
         });
+
+        // Add spotlight effect to cards
+        function addCardSpotlight() {
+            document.querySelectorAll('.bento-item, .repo-card').forEach(card => {
+                // Create spotlight element
+                const spotlight = document.createElement('div');
+                spotlight.className = 'card-spotlight';
+                card.appendChild(spotlight);
+
+                // Track mouse movement over card
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    spotlight.style.left = x + 'px';
+                    spotlight.style.top = y + 'px';
+                });
+            });
+        }
+
+        // Call after DOM is ready
+        setTimeout(addCardSpotlight, 100);
+
+        // Create ripple effect on click
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'cursor-ripple';
+            ripple.style.left = (e.clientX - 10) + 'px';
+            ripple.style.top = (e.clientY - 10) + 'px';
+
+            // Random color variation
+            const colors = ['var(--primary)', 'var(--secondary)', 'var(--accent)'];
+            ripple.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+
+            document.body.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 1000);
+        }, { passive: true });
 
         // ===== NAVBAR SCROLL EFFECT =====
         const navbar = document.getElementById('navbar');
@@ -1141,6 +1391,20 @@
             }
         });
 
+        // Navbar glow effect following cursor
+        navbar.addEventListener('mousemove', (e) => {
+            const rect = navbar.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            navbar.style.setProperty('--mouse-x', x + 'px');
+            navbar.style.setProperty('--mouse-y', y + 'px');
+
+            // Update the ::before pseudo-element position
+            navbar.style.setProperty('--glow-x', x + 'px');
+            navbar.style.setProperty('--glow-y', y + 'px');
+        });
+
         // ===== PARTICLES BACKGROUND =====
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -1148,7 +1412,9 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 100;
+        const particleCount = 60; // Reduced from 100 for better performance
+        const maxConnectionDistance = 100;
+        const maxConnectionDistanceSq = maxConnectionDistance * maxConnectionDistance; // Pre-calculate for optimization
 
         class Particle {
             constructor() {
@@ -1181,39 +1447,45 @@
         }
 
         function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (isPageVisible) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            // Connect nearby particles
-            particles.forEach((p1, i) => {
-                particles.slice(i + 1).forEach(p2 => {
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 100) {
-                        ctx.strokeStyle = `rgba(0, 255, 136, ${0.2 * (1 - distance / 100)})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
                 });
-            });
+
+                // Connect nearby particles - optimized with squared distance
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const dx = p1.x - p2.x;
+                        const dy = p1.y - p2.y;
+                        const distanceSq = dx * dx + dy * dy; // Use squared distance to avoid sqrt
+
+                        if (distanceSq < maxConnectionDistanceSq) {
+                            const distance = Math.sqrt(distanceSq); // Only calculate sqrt when needed
+                            ctx.strokeStyle = `rgba(0, 255, 136, ${0.2 * (1 - distance / maxConnectionDistance)})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    });
+                });
+            }
 
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
 
-        window.addEventListener('resize', () => {
+        // Debounced resize handler for better performance
+        const handleCanvasResize = debounce(() => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        });
+        }, 250);
+
+        window.addEventListener('resize', handleCanvasResize);
 
         // ===== CODE RAIN EFFECT =====
         const codeCanvas = document.getElementById('code-rain-canvas');
@@ -1226,25 +1498,35 @@
         const columns = codeCanvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
 
-        function drawCodeRain() {
-            codeCtx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-            codeCtx.fillRect(0, 0, codeCanvas.width, codeCanvas.height);
+        // Optimized code rain with throttling using requestAnimationFrame
+        let lastCodeRainTime = 0;
+        const codeRainInterval = 50; // Update every 50ms
 
-            codeCtx.fillStyle = '#00ff88';
-            codeCtx.font = fontSize + 'px monospace';
+        function drawCodeRain(currentTime) {
+            if (isPageVisible && currentTime - lastCodeRainTime >= codeRainInterval) {
+                codeCtx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+                codeCtx.fillRect(0, 0, codeCanvas.width, codeCanvas.height);
 
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                codeCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+                codeCtx.fillStyle = '#00ff88';
+                codeCtx.font = fontSize + 'px monospace';
 
-                if (drops[i] * fontSize > codeCanvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    codeCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > codeCanvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
                 }
-                drops[i]++;
+
+                lastCodeRainTime = currentTime;
             }
+
+            requestAnimationFrame(drawCodeRain);
         }
 
-        setInterval(drawCodeRain, 50);
+        requestAnimationFrame(drawCodeRain);
 
         // ===== COUNTER ANIMATION =====
         function animateCounter(element, target) {
@@ -1267,18 +1549,21 @@
         // ===== GSAP SCROLL ANIMATIONS =====
         gsap.registerPlugin(ScrollTrigger);
 
-        // Animate stat cards on scroll
+        // Animate stat cards on scroll with GPU acceleration
         gsap.from('.bento-item', {
             scrollTrigger: {
                 trigger: '.bento-grid',
                 start: 'top 80%',
-                toggleActions: 'play none none reverse'
+                toggleActions: 'play none none reverse',
+                markers: false,
+                once: false
             },
             y: 100,
             opacity: 0,
             duration: 0.8,
             stagger: 0.1,
             ease: 'power3.out',
+            force3D: true, // Force GPU acceleration
             onStart: function() {
                 // Animate counters when they come into view
                 document.querySelectorAll('.stat-value[data-target]').forEach(el => {
@@ -1303,6 +1588,7 @@
                 const description = repo.description.charAt(0).toUpperCase() + repo.description.slice(1);
 
                 card.innerHTML = `
+                    <div class="card-spotlight"></div>
                     <div class="repo-header">
                         <a href="${repo.url}" target="_blank" class="repo-name">
                             <i class="bi bi-folder-fill"></i>
@@ -1330,6 +1616,16 @@
                     </div>
                 `;
 
+                // Add spotlight tracking
+                const spotlight = card.querySelector('.card-spotlight');
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    spotlight.style.left = x + 'px';
+                    spotlight.style.top = y + 'px';
+                });
+
                 // Add ripple effect on click
                 card.addEventListener('click', function(e) {
                     if (e.target.tagName !== 'A') {
@@ -1346,18 +1642,20 @@
                 container.appendChild(card);
             });
 
-            // Re-apply GSAP animations for newly added cards
+            // Re-apply GSAP animations for newly added cards with GPU acceleration
             gsap.from('.repo-card', {
                 scrollTrigger: {
                     trigger: '.repos-grid',
                     start: 'top 80%',
-                    toggleActions: 'play none none reverse'
+                    toggleActions: 'play none none reverse',
+                    markers: false
                 },
                 y: 100,
                 opacity: 0,
                 duration: 0.8,
                 stagger: 0.15,
-                ease: 'power3.out'
+                ease: 'power3.out',
+                force3D: true // Force GPU acceleration
             });
         }
 
@@ -1365,86 +1663,105 @@
         loadRepositories();
 
         // ===== CHARTS =====
-        // Activity Chart
+        // Activity Chart with size validation
         const activityCtx = document.getElementById('activity-chart');
-        if (activityCtx) {
-            new Chart(activityCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                    datasets: [{
-                        label: 'Commits',
-                        data: [120, 190, 150, 220, 180, 250, 290, 240, 200, 270, 310, 280],
-                        borderColor: '#00ff88',
-                        backgroundColor: 'rgba(0, 255, 136, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#a0a0b0'
-                            }
+        if (activityCtx && activityCtx.parentElement) {
+            // Ensure canvas has reasonable dimensions
+            const parentWidth = activityCtx.parentElement.clientWidth;
+            const parentHeight = activityCtx.parentElement.clientHeight;
+
+            if (parentWidth > 0 && parentWidth < 10000 && parentHeight > 0 && parentHeight < 10000) {
+                try {
+                    new Chart(activityCtx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                            datasets: [{
+                                label: 'Commits',
+                                data: [120, 190, 150, 220, 180, 250, 290, 240, 200, 270, 310, 280],
+                                borderColor: '#00ff88',
+                                backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                                tension: 0.4,
+                                fill: true,
+                                pointRadius: 4,
+                                pointHoverRadius: 6
+                            }]
                         },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
                             },
-                            ticks: {
-                                color: '#a0a0b0'
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    ticks: {
+                                        color: '#a0a0b0'
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    ticks: {
+                                        color: '#a0a0b0'
+                                    }
+                                }
                             }
                         }
-                    }
+                    });
+                } catch (error) {
+                    console.warn('Could not create activity chart:', error.message);
                 }
-            });
+            }
         }
 
-        // Mini commits chart
+        // Mini commits chart with size validation
         const commitsChartCtx = document.getElementById('commits-chart');
-        if (commitsChartCtx) {
-            new Chart(commitsChartCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                    datasets: [{
-                        data: [45, 52, 38, 65, 72, 28, 15],
-                        backgroundColor: 'rgba(255, 0, 128, 0.6)',
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            display: false
+        if (commitsChartCtx && commitsChartCtx.parentElement) {
+            const parentWidth = commitsChartCtx.parentElement.clientWidth;
+            const parentHeight = commitsChartCtx.parentElement.clientHeight;
+
+            if (parentWidth > 0 && parentWidth < 10000 && parentHeight > 0 && parentHeight < 10000) {
+                try {
+                    new Chart(commitsChartCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            datasets: [{
+                                data: [45, 52, 38, 65, 72, 28, 15],
+                                backgroundColor: 'rgba(255, 0, 128, 0.6)',
+                                borderRadius: 4
+                            }]
                         },
-                        x: {
-                            display: false
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    display: false
+                                },
+                                x: {
+                                    display: false
+                                }
+                            }
                         }
-                    }
+                    });
+                } catch (error) {
+                    console.warn('Could not create commits chart:', error.message);
                 }
-            });
+            }
         }
 
         // ===== BACK TO TOP =====
