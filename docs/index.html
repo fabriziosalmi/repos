@@ -169,6 +169,50 @@
             z-index: 9995;
         }
 
+        /* Police Light Flash Overlay - Another World Style */
+        .police-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+            opacity: 0;
+            mix-blend-mode: screen;
+            filter: blur(60px);
+        }
+
+        @keyframes policeFlash {
+            0% {
+                opacity: 0;
+                transform: translateX(-150%);
+            }
+            10% {
+                opacity: 0.4;
+            }
+            30% {
+                opacity: 0.6;
+                transform: translateX(0%);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(50%);
+            }
+            70% {
+                opacity: 0.3;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(200%);
+            }
+        }
+
+        .police-flash.active {
+            animation: policeFlash 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
         /* Canvas Background */
         #particles-canvas {
             position: fixed;
@@ -1037,6 +1081,9 @@
     </style>
 </head>
 <body class="smooth-scroll">
+    <!-- Police Flash Overlay -->
+    <div class="police-flash" id="police-flash"></div>
+
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="loader"></div>
@@ -1380,6 +1427,37 @@
                     noise.start(now);
                     noise.stop(now + 0.3);
                     break;
+
+                case 'police-flash':
+                    // Electric flash sound - rapid burst
+                    const flash1 = audioContext.createOscillator();
+                    const flash2 = audioContext.createOscillator();
+                    const flashGain = audioContext.createGain();
+
+                    flash1.type = 'square';
+                    flash2.type = 'sawtooth';
+
+                    // Blue light frequency
+                    flash1.frequency.setValueAtTime(1200, now);
+                    flash1.frequency.exponentialRampToValueAtTime(400, now + 0.15);
+
+                    // Red light frequency
+                    flash2.frequency.setValueAtTime(800, now + 0.15);
+                    flash2.frequency.exponentialRampToValueAtTime(200, now + 0.3);
+
+                    flashGain.gain.setValueAtTime(0, now);
+                    flashGain.gain.linearRampToValueAtTime(0.2, now + 0.05);
+                    flashGain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+
+                    flash1.connect(flashGain);
+                    flash2.connect(flashGain);
+                    flashGain.connect(masterGain);
+
+                    flash1.start(now);
+                    flash1.stop(now + 0.15);
+                    flash2.start(now + 0.15);
+                    flash2.stop(now + 0.3);
+                    break;
             }
         }
 
@@ -1548,6 +1626,95 @@
                 triggerRandomAvatarEffect();
             });
         }
+
+        // ===== POLICE FLASH EFFECT (Another World Style) =====
+        const policeFlash = document.getElementById('police-flash');
+        let lastFlashTime = 0;
+        let hasFlashedOnce = false;
+
+        function triggerPoliceFlash() {
+            const now = Date.now();
+
+            // Prevent flash spam (minimum 10s between flashes)
+            if (now - lastFlashTime < 10000) return;
+
+            lastFlashTime = now;
+            hasFlashedOnce = true;
+
+            console.log('⚡ Police flash triggered!');
+
+            // Random color: blue or red police light
+            const colors = [
+                {
+                    // Blue police light
+                    gradient: 'radial-gradient(circle at 30% 50%, rgba(0, 128, 255, 0.8) 0%, rgba(0, 200, 255, 0.6) 20%, rgba(0, 128, 255, 0.3) 40%, transparent 70%)'
+                },
+                {
+                    // Red police light
+                    gradient: 'radial-gradient(circle at 70% 50%, rgba(255, 0, 64, 0.8) 0%, rgba(255, 40, 100, 0.6) 20%, rgba(255, 0, 64, 0.3) 40%, transparent 70%)'
+                }
+            ];
+
+            const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+            policeFlash.style.background = chosenColor.gradient;
+
+            // Trigger animation
+            policeFlash.classList.remove('active');
+            void policeFlash.offsetWidth; // Force reflow
+            policeFlash.classList.add('active');
+
+            // Play sound
+            playSound('police-flash');
+
+            // Remove animation class after completion
+            setTimeout(() => {
+                policeFlash.classList.remove('active');
+            }, 1800);
+        }
+
+        // Timer trigger: after 15 seconds on site
+        setTimeout(() => {
+            if (!hasFlashedOnce && Math.random() > 0.3) { // 70% chance
+                triggerPoliceFlash();
+            }
+        }, 15000);
+
+        // Additional random triggers (30-60s intervals after first flash)
+        function scheduleRandomFlash() {
+            const delay = 30000 + Math.random() * 30000; // 30-60 seconds
+            setTimeout(() => {
+                if (Math.random() > 0.5) { // 50% chance
+                    triggerPoliceFlash();
+                }
+                scheduleRandomFlash(); // Schedule next
+            }, delay);
+        }
+
+        // Start random flash schedule after initial 15s
+        setTimeout(scheduleRandomFlash, 15000);
+
+        // Scroll velocity detector
+        let lastScrollTime = Date.now();
+        let lastScrollY = window.scrollY;
+        let scrollVelocity = 0;
+
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            const currentScrollY = window.scrollY;
+            const timeDelta = now - lastScrollTime;
+            const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+
+            // Calculate velocity (pixels per ms)
+            scrollVelocity = scrollDelta / timeDelta;
+
+            // Trigger flash on fast scroll (velocity > 3 pixels/ms)
+            if (scrollVelocity > 3 && Math.random() > 0.7) { // 30% chance on fast scroll
+                triggerPoliceFlash();
+            }
+
+            lastScrollTime = now;
+            lastScrollY = currentScrollY;
+        }, { passive: true });
 
         // ===== CUSTOM CURSOR =====
         const cursor = document.querySelector('.cursor');
