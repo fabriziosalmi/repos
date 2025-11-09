@@ -1063,14 +1063,9 @@
                     <i class="bi bi-github"></i> Profile
                 </a></li>
             </ul>
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <button class="theme-toggle" id="audio-toggle" title="Toggle Sound">
-                    <i class="bi bi-volume-up-fill" id="audio-icon"></i>
-                </button>
-                <div class="theme-toggle">
-                    <i class="bi bi-moon-stars"></i>
-                </div>
-            </div>
+            <button class="theme-toggle" id="audio-toggle" title="Toggle Sound">
+                <i class="bi bi-volume-up-fill" id="audio-icon"></i>
+            </button>
         </div>
     </nav>
 
@@ -1108,15 +1103,15 @@
                         <i class="bi bi-star-fill"></i>
                     </div>
                     <div class="stat-value" data-target="3290">0</div>
-                    <div class="stat-label">Total Stars</div>
+                    <div class="stat-label">Total Stars ⭐</div>
                     <div class="achievements">
                         <div class="achievement-badge">
-                            <span class="achievement-icon">🌟</span>
-                            <span>Star Collector</span>
+                            <span class="achievement-icon">🏆</span>
+                            <span>Top: certmate (894★)</span>
                         </div>
                         <div class="achievement-badge">
-                            <span class="achievement-icon">🚀</span>
-                            <span>Rising Star</span>
+                            <span class="achievement-icon">🔥</span>
+                            <span>38.3 avg/repo</span>
                         </div>
                     </div>
                 </div>
@@ -1127,8 +1122,18 @@
                         <i class="bi bi-git"></i>
                     </div>
                     <div class="stat-value" style="background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;" data-target="15489">0</div>
-                    <div class="stat-label">Total Commits</div>
-                    <canvas id="commits-chart" style="margin-top: 1rem; height: 100px;"></canvas>
+                    <div class="stat-label">Total Commits 💻</div>
+                    <div class="achievements">
+                        <div class="achievement-badge">
+                            <span class="achievement-icon">📊</span>
+                            <span>180 avg/repo</span>
+                        </div>
+                        <div class="achievement-badge">
+                            <span class="achievement-icon">💪</span>
+                            <span>Prolific Coder</span>
+                        </div>
+                    </div>
+                    <canvas id="commits-chart" style="margin-top: 1rem; height: 80px;"></canvas>
                 </div>
 
                 <!-- Repositories - Medium -->
@@ -1155,43 +1160,39 @@
                         <i class="bi bi-people-fill"></i>
                     </div>
                     <div class="stat-value" data-target="424">0</div>
-                    <div class="stat-label">Contributors</div>
+                    <div class="stat-label">Contributors 👥</div>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        Community Powered
+                    </div>
                 </div>
 
-                <!-- Issues - Small -->
+                <!-- Code Activity - Small -->
                 <div class="bento-item stat-small">
                     <div class="stat-icon">
-                        <i class="bi bi-check-circle-fill"></i>
+                        <i class="bi bi-lightning-charge-fill"></i>
                     </div>
-                    <div class="stat-value" data-target="54">0</div>
-                    <div class="stat-label">Closed Issues</div>
+                    <div class="stat-value" style="font-size: 2rem;">42</div>
+                    <div class="stat-label">Commits/Day 📈</div>
                 </div>
 
-                <!-- Avg Resolution - Small -->
+                <!-- Impact Score - Small -->
                 <div class="bento-item stat-small">
-                    <div class="stat-icon">
-                        <i class="bi bi-hourglass-split"></i>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #ff0080, #b800ff);">
+                        <i class="bi bi-trophy-fill"></i>
                     </div>
-                    <div class="stat-value" style="font-size: 1.5rem;">107d 21h</div>
-                    <div class="stat-label">Avg Resolution</div>
+                    <div class="stat-value" style="font-size: 2rem;">9.2</div>
+                    <div class="stat-label">Impact Score 🎯</div>
                 </div>
 
-                <!-- Latest Update - Small -->
+                <!-- Latest Activity - Small -->
                 <div class="bento-item stat-small">
                     <div class="stat-icon">
                         <i class="bi bi-clock-history"></i>
                     </div>
-                    <div class="stat-value" style="font-size: 1.8rem;">1 week</div>
-                    <div class="stat-label">Last Update</div>
+                    <div class="stat-value" style="font-size: 1.6rem;">Active</div>
+                    <div class="stat-label">Status 🔴 LIVE</div>
                 </div>
 
-                <!-- Activity Heatmap - Wide -->
-                <div class="bento-item stat-wide">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--text-primary);">
-                        <i class="bi bi-graph-up"></i> Activity Overview
-                    </h3>
-                    <canvas id="activity-chart" style="height: 200px;"></canvas>
-                </div>
             </div>
         </div>
     </section>
@@ -1211,13 +1212,13 @@
                         </div>
                         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                             <button class="filter-btn active" data-filter="all" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); background: var(--gradient-primary); color: var(--bg-dark); font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                                All (86)
+                                <i class="bi bi-grid-fill"></i> All <span id="total-count">(86)</span>
                             </button>
                             <button class="filter-btn" data-filter="top" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                                Top 20
+                                <i class="bi bi-star-fill"></i> Top 20
                             </button>
-                            <button class="filter-btn" data-filter="recent" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                                Recent
+                            <button class="filter-btn" data-filter="popular" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                                <i class="bi bi-fire"></i> Most Forked
                             </button>
                         </div>
                     </div>
@@ -1958,12 +1959,24 @@
         // ===== RENDER REPOSITORIES =====
         function renderRepositories() {
             const container = document.getElementById('repos-container');
-            if (!container) return;
+            if (!container) {
+                console.error('repos-container not found!');
+                return;
+            }
 
             container.innerHTML = ''; // Clear existing content
 
+            console.log(`Rendering ${repositories.length} repositories`);
+
             if (repositories.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No repositories to display</p>';
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 4rem;">
+                        <h3 style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            <i class="bi bi-exclamation-triangle"></i> Loading repositories...
+                        </h3>
+                        <p style="color: var(--text-muted);">If this persists, check console for errors</p>
+                    </div>
+                `;
                 return;
             }
 
@@ -2058,85 +2071,7 @@
 
         // ===== CHARTS =====
         // Store chart instances
-        let activityChartInstance = null;
         let commitsChartInstance = null;
-
-        // Activity Chart with size validation
-        function createActivityChart() {
-            const activityCtx = document.getElementById('activity-chart');
-            if (!activityCtx || !activityCtx.parentElement) return;
-
-            // Destroy existing chart
-            if (activityChartInstance) {
-                activityChartInstance.destroy();
-                activityChartInstance = null;
-            }
-
-            // Ensure canvas has reasonable dimensions
-            const parentWidth = activityCtx.parentElement.clientWidth;
-            const parentHeight = activityCtx.parentElement.clientHeight;
-
-            // Strict limits to prevent canvas overflow
-            const maxWidth = 2000;
-            const maxHeight = 400;
-
-            if (parentWidth > 0 && parentWidth < maxWidth && parentHeight > 0 && parentHeight < maxHeight) {
-                try {
-                    // Explicitly set canvas size
-                    activityCtx.width = Math.min(parentWidth, maxWidth);
-                    activityCtx.height = Math.min(parentHeight, maxHeight);
-
-                    activityChartInstance = new Chart(activityCtx, {
-                        type: 'line',
-                        data: {
-                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                            datasets: [{
-                                label: 'Commits',
-                                data: [120, 190, 150, 220, 180, 250, 290, 240, 200, 270, 310, 280],
-                                borderColor: '#00ff88',
-                                backgroundColor: 'rgba(0, 255, 136, 0.1)',
-                                tension: 0.4,
-                                fill: true,
-                                pointRadius: 4,
-                                pointHoverRadius: 6
-                            }]
-                        },
-                        options: {
-                            responsive: false, // Changed to false to prevent auto-resize
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: {
-                                    display: false
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    grid: {
-                                        color: 'rgba(255, 255, 255, 0.1)'
-                                    },
-                                    ticks: {
-                                        color: '#a0a0b0'
-                                    }
-                                },
-                                x: {
-                                    grid: {
-                                        color: 'rgba(255, 255, 255, 0.1)'
-                                    },
-                                    ticks: {
-                                        color: '#a0a0b0'
-                                    }
-                                }
-                            }
-                        }
-                    });
-                } catch (error) {
-                    console.warn('Could not create activity chart:', error.message);
-                }
-            }
-        }
-
-        createActivityChart();
 
         // Mini commits chart with size validation
         function createCommitsChart() {
