@@ -1312,33 +1312,348 @@
         let isMusicEnabled = true;
         let masterGain = null;
         let musicGain = null;
+        
+        // Analog effects chain
+        let vinylCrackle = null;
+        let tapeWow = null;
+        let analogWarmth = null;
+        let dubDelay = null;
+        let drumLoop = null;
+        let bassLoop = null;
+        
+        // Drum'n'bass loop elements
+        let kickScheduler = null;
+        let snareScheduler = null;
+        let hatScheduler = null;
+        let basslineScheduler = null;
+        
+        // Glitch & randomness
+        let glitchInterval = null;
+        let breakdownTimeout = null;
 
         // Initialize audio on first user interaction
         function initAudio() {
             if (!audioContext) {
                 audioContext = new AudioContext();
+                
+                // Master chain with analog warmth
                 masterGain = audioContext.createGain();
-                masterGain.gain.value = 0.3; // Master volume
+                masterGain.gain.value = 0.28;
+                
+                // Analog saturation/warmth using wave shaper
+                analogWarmth = audioContext.createWaveShaper();
+                analogWarmth.curve = makeDistortionCurve(15); // Subtle saturation
+                analogWarmth.oversample = '4x';
+                
+                // Vinyl crackle (subtle noise)
+                createVinylCrackle();
+                
+                // Dub echo/delay effect
+                dubDelay = audioContext.createDelay(2.0);
+                dubDelay.delayTime.value = 0.375; // Dotted eighth note feel
+                const delayFeedback = audioContext.createGain();
+                delayFeedback.gain.value = 0.35;
+                const delayFilter = audioContext.createBiquadFilter();
+                delayFilter.type = 'lowpass';
+                delayFilter.frequency.value = 2800;
+                
+                dubDelay.connect(delayFeedback);
+                delayFeedback.connect(delayFilter);
+                delayFilter.connect(dubDelay);
+                delayFilter.connect(masterGain);
+                
+                // Music gain (lower for background)
+                musicGain = audioContext.createGain();
+                musicGain.gain.value = 0.08; // Very low volume for background
+                musicGain.connect(analogWarmth);
+                musicGain.connect(dubDelay);
+                
+                analogWarmth.connect(masterGain);
                 masterGain.connect(audioContext.destination);
 
-                musicGain = audioContext.createGain();
-                musicGain.gain.value = 0.15; // Background music volume
-                musicGain.connect(masterGain);
-
-                // Start ambient music
+                // Start drum'n'bass loop
                 if (isMusicEnabled) {
+                    startDrumNBass();
                     startAmbientMusic();
+                    startGlitchEffects();
                 }
             }
         }
+        
+        // Analog distortion curve for warmth
+        function makeDistortionCurve(amount) {
+            const samples = 44100;
+            const curve = new Float32Array(samples);
+            const deg = Math.PI / 180;
+            for (let i = 0; i < samples; ++i) {
+                const x = (i * 2) / samples - 1;
+                curve[i] = ((3 + amount) * x * 20 * deg) / (Math.PI + amount * Math.abs(x));
+            }
+            return curve;
+        }
+        
+        // Create vinyl crackle texture
+        function createVinylCrackle() {
+            if (!audioContext) return;
+            
+            const bufferSize = audioContext.sampleRate * 0.5;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                // Random pops and crackles
+                data[i] = (Math.random() - 0.5) * 0.015;
+            }
+            
+            vinylCrackle = audioContext.createBufferSource();
+            vinylCrackle.buffer = buffer;
+            vinylCrackle.loop = true;
+            
+            const crackleGain = audioContext.createGain();
+            crackleGain.gain.value = 0.003; // Very subtle
+            
+            const crackleFilter = audioContext.createBiquadFilter();
+            crackleFilter.type = 'highpass';
+            crackleFilter.frequency.value = 3000;
+            
+            vinylCrackle.connect(crackleFilter);
+            crackleFilter.connect(crackleGain);
+            crackleGain.connect(masterGain);
+            
+            vinylCrackle.start();
+        }
+        
+        // Drum'n'Bass loop engine
+        function startDrumNBass() {
+            if (!audioContext || !isMusicEnabled) return;
+            
+            const bpm = 174; // Classic DnB tempo
+            const beatDuration = 60 / bpm;
+            let beatCount = 0;
+            
+            function scheduleDrums() {
+                const now = audioContext.currentTime;
+                const scheduleAhead = 0.1;
+                
+                // Kick pattern (4/4 with variations)
+                if (beatCount % 4 === 0 || beatCount % 4 === 2) {
+                    scheduleKick(now + scheduleAhead);
+                }
+                
+                // Snare on 2 and 4
+                if (beatCount % 4 === 1 || beatCount % 4 === 3) {
+                    scheduleSnare(now + scheduleAhead);
+                }
+                
+                // Breakbeat hi-hats (16th notes with variations)
+                if (Math.random() > 0.3) {
+                    scheduleHihat(now + scheduleAhead, Math.random() > 0.5);
+                }
+                
+                // Bassline (1/8 notes with dub variations)
+                if (beatCount % 2 === 0 && Math.random() > 0.2) {
+                    scheduleBass(now + scheduleAhead, beatCount);
+                }
+                
+                beatCount++;
+                
+                // Random breakdown every 32-64 beats
+                if (beatCount % 32 === 0 && Math.random() > 0.7) {
+                    triggerBreakdown();
+                }
+            }
+            
+            drumLoop = setInterval(scheduleDrums, beatDuration * 250); // 1/4 notes
+        }
+        
+        function scheduleKick(time) {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(150, time);
+            osc.frequency.exponentialRampToValueAtTime(40, time + 0.5);
+            
+            gain.gain.setValueAtTime(0.4, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
+            
+            osc.connect(gain);
+            gain.connect(musicGain);
+            
+            osc.start(time);
+            osc.stop(time + 0.5);
+        }
+        
+        function scheduleSnare(time) {
+            // Noise-based snare
+            const bufferSize = audioContext.sampleRate * 0.2;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            
+            const noise = audioContext.createBufferSource();
+            noise.buffer = buffer;
+            
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 1000;
+            
+            const gain = audioContext.createGain();
+            gain.gain.setValueAtTime(0.15, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(musicGain);
+            
+            noise.start(time);
+            noise.stop(time + 0.2);
+        }
+        
+        function scheduleHihat(time, open) {
+            const bufferSize = audioContext.sampleRate * (open ? 0.3 : 0.05);
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            
+            const noise = audioContext.createBufferSource();
+            noise.buffer = buffer;
+            
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 7000;
+            
+            const gain = audioContext.createGain();
+            gain.gain.setValueAtTime(open ? 0.06 : 0.04, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + bufferSize / audioContext.sampleRate);
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(musicGain);
+            
+            noise.start(time);
+            noise.stop(time + bufferSize / audioContext.sampleRate);
+        }
+        
+        function scheduleBass(time, beatCount) {
+            // Dub techno style bassline
+            const frequencies = [55, 65, 73, 82]; // A1, C2, D2, E2
+            const freq = frequencies[beatCount % 4];
+            
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            osc.type = 'sawtooth';
+            osc.frequency.value = freq;
+            
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(800, time);
+            filter.frequency.exponentialRampToValueAtTime(200, time + 0.3);
+            filter.Q.value = 8;
+            
+            gain.gain.setValueAtTime(0.12, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(musicGain);
+            gain.connect(dubDelay); // Send to dub delay
+            
+            osc.start(time);
+            osc.stop(time + 0.5);
+        }
+        
+        // Random glitch effects
+        function startGlitchEffects() {
+            glitchInterval = setInterval(() => {
+                if (!isMusicEnabled || Math.random() > 0.15) return;
+                
+                const now = audioContext.currentTime;
+                const glitchType = Math.floor(Math.random() * 3);
+                
+                switch(glitchType) {
+                    case 0: // Bitcrush effect
+                        const crusher = audioContext.createWaveShaper();
+                        crusher.curve = makeDistortionCurve(150);
+                        musicGain.connect(crusher);
+                        crusher.connect(masterGain);
+                        setTimeout(() => {
+                            crusher.disconnect();
+                        }, 50);
+                        break;
+                        
+                    case 1: // Pitch bend
+                        const pitchOsc = audioContext.createOscillator();
+                        const pitchGain = audioContext.createGain();
+                        pitchOsc.frequency.setValueAtTime(Math.random() * 3000 + 500, now);
+                        pitchGain.gain.setValueAtTime(0.08, now);
+                        pitchGain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                        pitchOsc.connect(pitchGain);
+                        pitchGain.connect(masterGain);
+                        pitchOsc.start(now);
+                        pitchOsc.stop(now + 0.1);
+                        break;
+                        
+                    case 2: // Filter sweep
+                        const sweepFilter = audioContext.createBiquadFilter();
+                        sweepFilter.type = 'bandpass';
+                        sweepFilter.frequency.setValueAtTime(200, now);
+                        sweepFilter.frequency.exponentialRampToValueAtTime(8000, now + 0.3);
+                        sweepFilter.Q.value = 20;
+                        break;
+                }
+            }, 3000); // Random glitch every 3 seconds
+        }
+        
+        function triggerBreakdown() {
+            console.log('🎛️ Breakdown triggered!');
+            
+            // Fade out music briefly
+            const fadeTime = audioContext.currentTime;
+            musicGain.gain.exponentialRampToValueAtTime(0.02, fadeTime + 2);
+            
+            setTimeout(() => {
+                musicGain.gain.exponentialRampToValueAtTime(0.08, audioContext.currentTime + 1);
+                
+                // Add riser effect
+                const riser = audioContext.createOscillator();
+                const riserGain = audioContext.createGain();
+                const riserFilter = audioContext.createBiquadFilter();
+                
+                riser.type = 'sawtooth';
+                riser.frequency.setValueAtTime(40, audioContext.currentTime);
+                riser.frequency.exponentialRampToValueAtTime(2000, audioContext.currentTime + 2);
+                
+                riserFilter.type = 'highpass';
+                riserFilter.frequency.setValueAtTime(100, audioContext.currentTime);
+                riserFilter.frequency.exponentialRampToValueAtTime(5000, audioContext.currentTime + 2);
+                
+                riserGain.gain.setValueAtTime(0, audioContext.currentTime);
+                riserGain.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 1.5);
+                riserGain.gain.linearRampToValueAtTime(0, audioContext.currentTime + 2);
+                
+                riser.connect(riserFilter);
+                riserFilter.connect(riserGain);
+                riserGain.connect(masterGain);
+                
+                riser.start(audioContext.currentTime);
+                riser.stop(audioContext.currentTime + 2);
+            }, 2000);
+        }
 
-        // Synthesized sound effects
+        // Synthesized sound effects with analog character
         function playSound(type) {
             if (!isSoundEnabled) return;
             if (!audioContext) {
                 console.warn('Audio not initialized yet, initializing now...');
                 initAudio();
-                // Retry after init
                 setTimeout(() => playSound(type), 100);
                 return;
             }
@@ -1346,37 +1661,61 @@
             const now = audioContext.currentTime;
             const osc = audioContext.createOscillator();
             const gain = audioContext.createGain();
+            
+            // Add subtle analog variation
+            const detune = (Math.random() - 0.5) * 8; // Random pitch variation
 
             osc.connect(gain);
             gain.connect(masterGain);
 
             switch(type) {
                 case 'hover':
-                    osc.frequency.setValueAtTime(800, now);
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(800 + detune, now);
                     osc.frequency.exponentialRampToValueAtTime(1200, now + 0.05);
-                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.setValueAtTime(0.08, now);
                     gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
                     osc.start(now);
                     osc.stop(now + 0.05);
                     break;
 
                 case 'click':
-                    osc.frequency.setValueAtTime(600, now);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(600 + detune, now);
                     osc.frequency.exponentialRampToValueAtTime(200, now + 0.1);
-                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.setValueAtTime(0.12, now);
                     gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
                     osc.start(now);
                     osc.stop(now + 0.1);
                     break;
 
                 case 'glitch':
+                    // Multi-layered glitch
+                    const glitch2 = audioContext.createOscillator();
+                    const glitch2Gain = audioContext.createGain();
+                    
                     osc.type = 'sawtooth';
+                    glitch2.type = 'square';
+                    
                     osc.frequency.setValueAtTime(100, now);
                     osc.frequency.exponentialRampToValueAtTime(2000, now + 0.3);
-                    gain.gain.setValueAtTime(0.2, now);
+                    
+                    glitch2.frequency.setValueAtTime(3000, now);
+                    glitch2.frequency.exponentialRampToValueAtTime(100, now + 0.3);
+                    
+                    gain.gain.setValueAtTime(0.15, now);
                     gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    
+                    glitch2Gain.gain.setValueAtTime(0.1, now);
+                    glitch2Gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    
                     osc.start(now);
                     osc.stop(now + 0.3);
+                    
+                    glitch2.connect(glitch2Gain);
+                    glitch2Gain.connect(masterGain);
+                    glitch2.start(now);
+                    glitch2.stop(now + 0.3);
                     break;
 
                 case 'spin':
@@ -1416,7 +1755,7 @@
                     break;
 
                 case 'police-flash':
-                    // Electric flash sound - rapid burst
+                    // Electric flash with dub delay
                     const flash1 = audioContext.createOscillator();
                     const flash2 = audioContext.createOscillator();
                     const flashGain = audioContext.createGain();
@@ -1424,21 +1763,20 @@
                     flash1.type = 'square';
                     flash2.type = 'sawtooth';
 
-                    // Blue light frequency
                     flash1.frequency.setValueAtTime(1200, now);
                     flash1.frequency.exponentialRampToValueAtTime(400, now + 0.15);
 
-                    // Red light frequency
                     flash2.frequency.setValueAtTime(800, now + 0.15);
                     flash2.frequency.exponentialRampToValueAtTime(200, now + 0.3);
 
                     flashGain.gain.setValueAtTime(0, now);
-                    flashGain.gain.linearRampToValueAtTime(0.2, now + 0.05);
+                    flashGain.gain.linearRampToValueAtTime(0.18, now + 0.05);
                     flashGain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
 
                     flash1.connect(flashGain);
                     flash2.connect(flashGain);
                     flashGain.connect(masterGain);
+                    if (dubDelay) flashGain.connect(dubDelay); // Dub echo!
 
                     flash1.start(now);
                     flash1.stop(now + 0.15);
@@ -1944,16 +2282,26 @@
 
                 if (isSoundEnabled) {
                     audioIcon.className = 'bi bi-volume-up-fill';
-                    console.log('🔊 Audio enabled');
+                    console.log('🔊 Audio enabled - Drum\'n\'Bass mode activated');
                     if (!audioContext) {
-                        initAudio(); // Re-init if needed
-                    } else if (isMusicEnabled && musicOscillators.length === 0) {
-                        startAmbientMusic();
+                        initAudio();
+                    } else {
+                        // Restart all audio elements
+                        if (musicOscillators.length === 0) {
+                            startAmbientMusic();
+                        }
+                        if (!drumLoop) {
+                            startDrumNBass();
+                        }
+                        if (!glitchInterval) {
+                            startGlitchEffects();
+                        }
                     }
                 } else {
                     audioIcon.className = 'bi bi-volume-mute-fill';
                     console.log('🔇 Audio disabled');
-                    // Stop music
+                    
+                    // Stop all music elements
                     if (musicOscillators.length > 0) {
                         musicOscillators.forEach(({osc, lfo}) => {
                             try {
@@ -1964,6 +2312,28 @@
                             }
                         });
                         musicOscillators = [];
+                    }
+                    
+                    // Stop drum loop
+                    if (drumLoop) {
+                        clearInterval(drumLoop);
+                        drumLoop = null;
+                    }
+                    
+                    // Stop glitch effects
+                    if (glitchInterval) {
+                        clearInterval(glitchInterval);
+                        glitchInterval = null;
+                    }
+                    
+                    // Stop vinyl crackle
+                    if (vinylCrackle) {
+                        try {
+                            vinylCrackle.stop();
+                            vinylCrackle = null;
+                        } catch(e) {
+                            // Already stopped
+                        }
                     }
                 }
             });
