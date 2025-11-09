@@ -125,7 +125,6 @@
             pointer-events: none;
             z-index: 9997;
             opacity: 0.8;
-            will-change: transform, opacity;
             background: radial-gradient(circle, var(--primary), var(--secondary));
             box-shadow: 0 0 10px var(--primary);
         }
@@ -138,7 +137,6 @@
             pointer-events: none;
             z-index: 9996;
             opacity: 0;
-            will-change: transform, opacity;
             animation: ripple-expand 1s ease-out forwards;
         }
 
@@ -169,7 +167,6 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 9995;
-            will-change: transform, opacity;
         }
 
         /* Canvas Background */
@@ -180,7 +177,6 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            will-change: contents;
         }
 
         /* Mesh Gradient Background */
@@ -359,6 +355,7 @@
                         0 0 100px rgba(0, 212, 255, 0.2);
             transition: all 0.5s ease;
             animation: float 6s ease-in-out infinite;
+            position: relative;
         }
 
         @keyframes float {
@@ -370,6 +367,82 @@
             transform: scale(1.1) rotate(5deg);
             box-shadow: 0 0 80px rgba(0, 255, 136, 0.5),
                         0 0 120px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Avatar Glitch Effects */
+        @keyframes glitch {
+            0% {
+                transform: translate(0) scale(1);
+                filter: hue-rotate(0deg) brightness(1);
+            }
+            10% {
+                transform: translate(-5px, 5px) scale(1.05);
+                filter: hue-rotate(90deg) brightness(1.2) contrast(1.5);
+            }
+            20% {
+                transform: translate(5px, -5px) scale(0.95);
+                filter: hue-rotate(180deg) brightness(0.8) invert(0.2);
+            }
+            30% {
+                transform: translate(-5px, -5px) scale(1.1);
+                filter: hue-rotate(270deg) brightness(1.5) saturate(2);
+            }
+            40% {
+                transform: translate(5px, 5px) scale(0.9);
+                filter: hue-rotate(0deg) brightness(0.6) contrast(2);
+            }
+            100% {
+                transform: translate(0) scale(1);
+                filter: hue-rotate(0deg) brightness(1);
+            }
+        }
+
+        @keyframes spinGlow {
+            0% {
+                transform: rotate(0deg) scale(1);
+                box-shadow: 0 0 60px rgba(0, 255, 136, 0.3);
+            }
+            25% {
+                transform: rotate(90deg) scale(1.2);
+                box-shadow: 0 0 100px rgba(255, 0, 128, 0.8), 0 0 150px rgba(0, 212, 255, 0.6);
+            }
+            50% {
+                transform: rotate(180deg) scale(0.8);
+                box-shadow: 0 0 120px rgba(184, 0, 255, 0.9);
+            }
+            75% {
+                transform: rotate(270deg) scale(1.3);
+                box-shadow: 0 0 140px rgba(0, 255, 136, 0.9), 0 0 180px rgba(255, 170, 0, 0.7);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+                box-shadow: 0 0 60px rgba(0, 255, 136, 0.3);
+            }
+        }
+
+        @keyframes strobe {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            10% { opacity: 0.3; filter: brightness(3) saturate(0); }
+            20% { opacity: 1; filter: brightness(0.5) invert(1); }
+            30% { opacity: 0.5; filter: brightness(2) hue-rotate(180deg); }
+            40% { opacity: 1; filter: brightness(0.7) contrast(3); }
+            50% { opacity: 0.2; filter: brightness(5); }
+            60% { opacity: 1; filter: brightness(1) invert(0.5); }
+            70% { opacity: 0.4; filter: brightness(2.5); }
+            80% { opacity: 1; filter: brightness(0.8); }
+            90% { opacity: 0.6; filter: brightness(1.5); }
+        }
+
+        .avatar.glitch-active {
+            animation: glitch 0.3s steps(2, end) infinite, float 6s ease-in-out infinite;
+        }
+
+        .avatar.spin-active {
+            animation: spinGlow 1.5s ease-in-out, float 6s ease-in-out infinite;
+        }
+
+        .avatar.strobe-active {
+            animation: strobe 0.5s steps(5, end), float 6s ease-in-out infinite;
         }
 
         .hero h1 {
@@ -497,7 +570,6 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             contain: layout style paint;
-            will-change: transform, opacity;
         }
 
         .bento-item::before {
@@ -518,24 +590,10 @@
             box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3),
                         0 0 80px rgba(0, 212, 255, 0.2),
                         inset 0 0 40px rgba(0, 255, 136, 0.08);
-            animation: cardPulse 2s ease-in-out infinite;
         }
 
         .bento-item:hover::before {
             opacity: 0.08;
-        }
-
-        @keyframes cardPulse {
-            0%, 100% {
-                box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3),
-                            0 0 80px rgba(0, 212, 255, 0.2),
-                            inset 0 0 40px rgba(0, 255, 136, 0.08);
-            }
-            50% {
-                box-shadow: 0 25px 70px rgba(0, 255, 136, 0.4),
-                            0 0 100px rgba(0, 212, 255, 0.3),
-                            inset 0 0 60px rgba(0, 255, 136, 0.12);
-            }
         }
 
         /* Glass Card 3D Tilt Effect */
@@ -676,7 +734,6 @@
             overflow: hidden;
             cursor: pointer;
             contain: layout style paint;
-            will-change: transform, opacity;
         }
 
         .repo-card::after {
@@ -697,7 +754,6 @@
             border-color: var(--primary);
             box-shadow: 0 20px 60px rgba(0, 255, 136, 0.35),
                         0 0 80px rgba(0, 212, 255, 0.25);
-            animation: cardPulse 2s ease-in-out infinite;
         }
 
         .repo-card:hover::after {
@@ -947,8 +1003,7 @@
             width: 100%;
             height: 100%;
             z-index: -3;
-            opacity: 0.1;
-            will-change: contents;
+            opacity: 0.05; /* Reduced from 0.1 for lighter effect */
         }
 
         /* Smooth Scroll */
@@ -1008,8 +1063,13 @@
                     <i class="bi bi-github"></i> Profile
                 </a></li>
             </ul>
-            <div class="theme-toggle">
-                <i class="bi bi-moon-stars"></i>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <button class="theme-toggle" id="audio-toggle" title="Toggle Sound">
+                    <i class="bi bi-volume-up-fill" id="audio-icon"></i>
+                </button>
+                <div class="theme-toggle">
+                    <i class="bi bi-moon-stars"></i>
+                </div>
             </div>
         </div>
     </nav>
@@ -1196,7 +1256,161 @@
         </div>
     </footer>
 
+    <!-- Repositories data inline for local file:// support -->
     <script>
+        // Load JSON data inline as fallback for file:// protocol
+        window.REPOS_DATA = null;
+        fetch('./repositories-data.json')
+            .then(r => r.json())
+            .then(data => {
+                window.REPOS_DATA = data;
+                console.log('Repositories data loaded:', data.length);
+            })
+            .catch(e => console.warn('Fetch failed, will use inline data if available:', e));
+    </script>
+
+    <script>
+        // ===== WEB AUDIO API SETUP =====
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioContext = null;
+        let isSoundEnabled = true;
+        let isMusicEnabled = true;
+        let masterGain = null;
+        let musicGain = null;
+
+        // Initialize audio on first user interaction
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new AudioContext();
+                masterGain = audioContext.createGain();
+                masterGain.gain.value = 0.3; // Master volume
+                masterGain.connect(audioContext.destination);
+
+                musicGain = audioContext.createGain();
+                musicGain.gain.value = 0.15; // Background music volume
+                musicGain.connect(masterGain);
+
+                // Start ambient music
+                if (isMusicEnabled) {
+                    startAmbientMusic();
+                }
+            }
+        }
+
+        // Synthesized sound effects
+        function playSound(type) {
+            if (!isSoundEnabled || !audioContext) return;
+
+            const now = audioContext.currentTime;
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+
+            osc.connect(gain);
+            gain.connect(masterGain);
+
+            switch(type) {
+                case 'hover':
+                    osc.frequency.setValueAtTime(800, now);
+                    osc.frequency.exponentialRampToValueAtTime(1200, now + 0.05);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                    break;
+
+                case 'click':
+                    osc.frequency.setValueAtTime(600, now);
+                    osc.frequency.exponentialRampToValueAtTime(200, now + 0.1);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                    break;
+
+                case 'glitch':
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(100, now);
+                    osc.frequency.exponentialRampToValueAtTime(2000, now + 0.3);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                    break;
+
+                case 'spin':
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, now);
+                    osc.frequency.exponentialRampToValueAtTime(1600, now + 1.5);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
+                    osc.start(now);
+                    osc.stop(now + 1.5);
+                    break;
+
+                case 'whoosh':
+                    const noise = audioContext.createBufferSource();
+                    const bufferSize = audioContext.sampleRate * 0.3;
+                    const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                    const output = buffer.getChannelData(0);
+                    for (let i = 0; i < bufferSize; i++) {
+                        output[i] = Math.random() * 2 - 1;
+                    }
+                    noise.buffer = buffer;
+
+                    const filter = audioContext.createBiquadFilter();
+                    filter.type = 'highpass';
+                    filter.frequency.setValueAtTime(2000, now);
+                    filter.frequency.exponentialRampToValueAtTime(100, now + 0.3);
+
+                    const noiseGain = audioContext.createGain();
+                    noiseGain.gain.setValueAtTime(0.1, now);
+                    noiseGain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+
+                    noise.connect(filter);
+                    filter.connect(noiseGain);
+                    noiseGain.connect(masterGain);
+                    noise.start(now);
+                    noise.stop(now + 0.3);
+                    break;
+            }
+        }
+
+        // Ambient background music (synthesized)
+        let musicOscillators = [];
+        function startAmbientMusic() {
+            if (!audioContext || !isMusicEnabled) return;
+
+            // Create multiple oscillators for ambient pad
+            const notes = [220, 277, 330, 440]; // Am7 chord
+
+            notes.forEach((freq, index) => {
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+
+                // LFO for subtle modulation
+                const lfo = audioContext.createOscillator();
+                const lfoGain = audioContext.createGain();
+                lfo.frequency.value = 0.1 + (index * 0.05);
+                lfoGain.gain.value = 2;
+                lfo.connect(lfoGain);
+                lfoGain.connect(osc.frequency);
+
+                gain.gain.value = 0;
+                gain.gain.linearRampToValueAtTime(0.02, audioContext.currentTime + 2 + index * 0.5);
+
+                osc.connect(gain);
+                gain.connect(musicGain);
+
+                osc.start();
+                lfo.start();
+
+                musicOscillators.push({osc, lfo, gain});
+            });
+        }
+
         // ===== UTILITIES =====
         // Debounce function to limit function calls
         function debounce(func, wait) {
@@ -1222,6 +1436,16 @@
 
         // Load repositories from JSON
         async function loadRepositories() {
+            // First, check if data was already loaded by inline script
+            if (window.REPOS_DATA && window.REPOS_DATA.length > 0) {
+                repositories = window.REPOS_DATA;
+                repositories.sort((a, b) => b.stars - a.stars);
+                console.log(`Using preloaded repositories data: ${repositories.length} repos`);
+                renderRepositories();
+                return;
+            }
+
+            // Otherwise try fetch
             try {
                 const response = await fetch('./repositories-data.json');
                 if (!response.ok) {
@@ -1229,16 +1453,26 @@
                 }
                 repositories = await response.json();
 
-                // Sort by stars (descending) and take top repositories for display
+                // Sort by stars (descending)
                 repositories.sort((a, b) => b.stars - a.stars);
 
+                console.log(`Loaded ${repositories.length} repositories via fetch`);
                 renderRepositories();
             } catch (error) {
-                console.warn('Could not load repositories-data.json, using fallback data:', error.message);
-                // Fallback: Load from inline data or show message
-                // For local file:// protocol, JSON fetch might fail
-                repositories = [];
-                renderRepositories();
+                console.warn('Could not load repositories-data.json:', error.message);
+
+                // Wait a bit for window.REPOS_DATA to be populated
+                setTimeout(() => {
+                    if (window.REPOS_DATA && window.REPOS_DATA.length > 0) {
+                        repositories = window.REPOS_DATA;
+                        repositories.sort((a, b) => b.stars - a.stars);
+                        console.log(`Using delayed repositories data: ${repositories.length} repos`);
+                        renderRepositories();
+                    } else {
+                        console.error('No repositories data available');
+                        renderRepositories(); // Render empty state
+                    }
+                }, 500);
             }
         }
 
@@ -1246,8 +1480,55 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
+                // Initialize audio on first load
+                document.addEventListener('click', initAudio, { once: true });
             }, 1000);
         });
+
+        // ===== AVATAR EFFECTS =====
+        const avatar = document.querySelector('.avatar');
+        let avatarEffectTimeout = null;
+
+        function triggerRandomAvatarEffect() {
+            if (!avatar) return;
+
+            const effects = ['glitch', 'spin', 'strobe'];
+            const randomEffect = effects[Math.floor(Math.random() * effects.length)];
+
+            // Remove any existing effect classes
+            avatar.classList.remove('glitch-active', 'spin-active', 'strobe-active');
+
+            // Add new effect class
+            avatar.classList.add(`${randomEffect}-active`);
+
+            // Play sound effect
+            playSound(randomEffect === 'glitch' ? 'glitch' : randomEffect === 'spin' ? 'spin' : 'whoosh');
+
+            // Remove effect after animation completes
+            const duration = randomEffect === 'spin' ? 1500 : randomEffect === 'glitch' ? 300 : 500;
+            setTimeout(() => {
+                avatar.classList.remove(`${randomEffect}-active`);
+            }, duration);
+
+            // Schedule next random effect (between 8-15 seconds)
+            const nextDelay = 8000 + Math.random() * 7000;
+            avatarEffectTimeout = setTimeout(triggerRandomAvatarEffect, nextDelay);
+        }
+
+        // Start random avatar effects after page load
+        setTimeout(() => {
+            triggerRandomAvatarEffect();
+        }, 5000); // First effect after 5 seconds
+
+        // Manual trigger on avatar click
+        if (avatar) {
+            avatar.addEventListener('click', () => {
+                playSound('click');
+                // Clear scheduled effect and trigger immediately
+                clearTimeout(avatarEffectTimeout);
+                triggerRandomAvatarEffect();
+            });
+        }
 
         // ===== CUSTOM CURSOR =====
         const cursor = document.querySelector('.cursor');
@@ -1259,7 +1540,7 @@
 
         // Trail particles array
         const trailParticles = [];
-        const maxTrails = 8;
+        const maxTrails = 5; // Reduced from 8
         let trailCounter = 0;
 
         // Use passive listener for better performance
@@ -1269,8 +1550,8 @@
             cursor.style.left = mouseX + 'px';
             cursor.style.top = mouseY + 'px';
 
-            // Create trail particles only when hovering interactive elements
-            if (isHovering && trailCounter % 2 === 0) {
+            // Create trail particles only when hovering interactive elements, less frequently
+            if (isHovering && trailCounter % 4 === 0) { // Changed from % 2 to % 4
                 createTrailParticle(mouseX, mouseY);
             }
             trailCounter++;
@@ -1328,17 +1609,22 @@
         }
         animateFollower();
 
-        // Cursor hover effect on interactive elements
+        // Cursor hover effect on interactive elements with sound
         document.querySelectorAll('a, button, .repo-card, .bento-item, .nav-links a, .achievement-badge').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.classList.add('hover');
                 cursorFollower.classList.add('hover');
                 isHovering = true;
+                playSound('hover'); // Audio feedback
             });
             el.addEventListener('mouseleave', () => {
                 cursor.classList.remove('hover');
                 cursorFollower.classList.remove('hover');
                 isHovering = false;
+            });
+            // Click sound
+            el.addEventListener('click', () => {
+                playSound('click');
             });
         });
 
@@ -1350,14 +1636,21 @@
                 spotlight.className = 'card-spotlight';
                 card.appendChild(spotlight);
 
-                // Track mouse movement over card
+                // Throttle mouse movement updates for performance
+                let ticking = false;
                 card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const rect = card.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
 
-                    spotlight.style.left = x + 'px';
-                    spotlight.style.top = y + 'px';
+                            spotlight.style.left = x + 'px';
+                            spotlight.style.top = y + 'px';
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
                 });
             });
         }
@@ -1365,21 +1658,82 @@
         // Call after DOM is ready
         setTimeout(addCardSpotlight, 100);
 
-        // Create ripple effect on click
+        // Create ripple effect and particle burst on click
         document.addEventListener('click', (e) => {
+            // Ripple effect
             const ripple = document.createElement('div');
             ripple.className = 'cursor-ripple';
             ripple.style.left = (e.clientX - 10) + 'px';
             ripple.style.top = (e.clientY - 10) + 'px';
 
             // Random color variation
-            const colors = ['var(--primary)', 'var(--secondary)', 'var(--accent)'];
-            ripple.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+            const colors = ['var(--primary)', 'var(--secondary)', 'var(--accent)', 'var(--purple)'];
+            const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+            ripple.style.borderColor = chosenColor;
 
             document.body.appendChild(ripple);
-
             setTimeout(() => ripple.remove(), 1000);
+
+            // Particle burst effect - only on interactive elements
+            if (e.target.closest('a, button, .repo-card, .bento-item')) {
+                createBurstParticles(e.clientX, e.clientY, chosenColor);
+            }
         }, { passive: true });
+
+        // Create burst of particles on click
+        function createBurstParticles(x, y, color) {
+            const particleCount = 8; // Reduced from 12
+            const colorMap = {
+                'var(--primary)': '#00ff88',
+                'var(--secondary)': '#00d4ff',
+                'var(--accent)': '#ff0080',
+                'var(--purple)': '#b800ff'
+            };
+            const hexColor = colorMap[color] || '#00ff88';
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'burst-particle';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.background = hexColor;
+                particle.style.boxShadow = `0 0 10px ${hexColor}`;
+
+                document.body.appendChild(particle);
+
+                // Random direction and speed
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 3 + Math.random() * 2;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+
+                let posX = x;
+                let posY = y;
+                let opacity = 1;
+                let size = 4;
+
+                const animateBurst = () => {
+                    posX += vx;
+                    posY += vy;
+                    opacity -= 0.02;
+                    size *= 0.96;
+
+                    particle.style.left = posX + 'px';
+                    particle.style.top = posY + 'px';
+                    particle.style.opacity = opacity;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+
+                    if (opacity > 0) {
+                        requestAnimationFrame(animateBurst);
+                    } else {
+                        particle.remove();
+                    }
+                };
+
+                requestAnimationFrame(animateBurst);
+            }
+        }
 
         // ===== NAVBAR SCROLL EFFECT =====
         const navbar = document.getElementById('navbar');
@@ -1405,6 +1759,32 @@
             navbar.style.setProperty('--glow-y', y + 'px');
         });
 
+        // Audio toggle button
+        const audioToggle = document.getElementById('audio-toggle');
+        const audioIcon = document.getElementById('audio-icon');
+        if (audioToggle) {
+            audioToggle.addEventListener('click', () => {
+                isSoundEnabled = !isSoundEnabled;
+                isMusicEnabled = !isMusicEnabled;
+
+                if (isSoundEnabled) {
+                    audioIcon.className = 'bi bi-volume-up-fill';
+                    initAudio(); // Re-init if needed
+                } else {
+                    audioIcon.className = 'bi bi-volume-mute-fill';
+                    // Stop music
+                    if (musicOscillators.length > 0) {
+                        musicOscillators.forEach(({osc, lfo}) => {
+                            osc.stop();
+                            lfo.stop();
+                        });
+                        musicOscillators = [];
+                    }
+                }
+                playSound('click');
+            });
+        }
+
         // ===== PARTICLES BACKGROUND =====
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -1412,7 +1792,7 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 60; // Reduced from 100 for better performance
+        const particleCount = 40; // Reduced from 60 for better performance
         const maxConnectionDistance = 100;
         const maxConnectionDistanceSq = maxConnectionDistance * maxConnectionDistance; // Pre-calculate for optimization
 
@@ -1500,7 +1880,7 @@
 
         // Optimized code rain with throttling using requestAnimationFrame
         let lastCodeRainTime = 0;
-        const codeRainInterval = 50; // Update every 50ms
+        const codeRainInterval = 80; // Update every 80ms (reduced from 50ms for better performance)
 
         function drawCodeRain(currentTime) {
             if (isPageVisible && currentTime - lastCodeRainTime >= codeRainInterval) {
@@ -1578,7 +1958,14 @@
         // ===== RENDER REPOSITORIES =====
         function renderRepositories() {
             const container = document.getElementById('repos-container');
+            if (!container) return;
+
             container.innerHTML = ''; // Clear existing content
+
+            if (repositories.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No repositories to display</p>';
+                return;
+            }
 
             repositories.forEach((repo, index) => {
                 const card = document.createElement('div');
@@ -1616,14 +2003,21 @@
                     </div>
                 `;
 
-                // Add spotlight tracking
+                // Add spotlight tracking with throttle
                 const spotlight = card.querySelector('.card-spotlight');
+                let ticking = false;
                 card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    spotlight.style.left = x + 'px';
-                    spotlight.style.top = y + 'px';
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const rect = card.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            spotlight.style.left = x + 'px';
+                            spotlight.style.top = y + 'px';
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
                 });
 
                 // Add ripple effect on click
@@ -1663,16 +2057,36 @@
         loadRepositories();
 
         // ===== CHARTS =====
+        // Store chart instances
+        let activityChartInstance = null;
+        let commitsChartInstance = null;
+
         // Activity Chart with size validation
-        const activityCtx = document.getElementById('activity-chart');
-        if (activityCtx && activityCtx.parentElement) {
+        function createActivityChart() {
+            const activityCtx = document.getElementById('activity-chart');
+            if (!activityCtx || !activityCtx.parentElement) return;
+
+            // Destroy existing chart
+            if (activityChartInstance) {
+                activityChartInstance.destroy();
+                activityChartInstance = null;
+            }
+
             // Ensure canvas has reasonable dimensions
             const parentWidth = activityCtx.parentElement.clientWidth;
             const parentHeight = activityCtx.parentElement.clientHeight;
 
-            if (parentWidth > 0 && parentWidth < 10000 && parentHeight > 0 && parentHeight < 10000) {
+            // Strict limits to prevent canvas overflow
+            const maxWidth = 2000;
+            const maxHeight = 400;
+
+            if (parentWidth > 0 && parentWidth < maxWidth && parentHeight > 0 && parentHeight < maxHeight) {
                 try {
-                    new Chart(activityCtx, {
+                    // Explicitly set canvas size
+                    activityCtx.width = Math.min(parentWidth, maxWidth);
+                    activityCtx.height = Math.min(parentHeight, maxHeight);
+
+                    activityChartInstance = new Chart(activityCtx, {
                         type: 'line',
                         data: {
                             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -1688,7 +2102,7 @@
                             }]
                         },
                         options: {
-                            responsive: true,
+                            responsive: false, // Changed to false to prevent auto-resize
                             maintainAspectRatio: false,
                             plugins: {
                                 legend: {
@@ -1722,15 +2136,33 @@
             }
         }
 
+        createActivityChart();
+
         // Mini commits chart with size validation
-        const commitsChartCtx = document.getElementById('commits-chart');
-        if (commitsChartCtx && commitsChartCtx.parentElement) {
+        function createCommitsChart() {
+            const commitsChartCtx = document.getElementById('commits-chart');
+            if (!commitsChartCtx || !commitsChartCtx.parentElement) return;
+
+            // Destroy existing chart
+            if (commitsChartInstance) {
+                commitsChartInstance.destroy();
+                commitsChartInstance = null;
+            }
+
             const parentWidth = commitsChartCtx.parentElement.clientWidth;
             const parentHeight = commitsChartCtx.parentElement.clientHeight;
 
-            if (parentWidth > 0 && parentWidth < 10000 && parentHeight > 0 && parentHeight < 10000) {
+            // Strict limits
+            const maxWidth = 800;
+            const maxHeight = 200;
+
+            if (parentWidth > 0 && parentWidth < maxWidth && parentHeight > 0 && parentHeight < maxHeight) {
                 try {
-                    new Chart(commitsChartCtx, {
+                    // Explicitly set canvas size
+                    commitsChartCtx.width = Math.min(parentWidth, maxWidth);
+                    commitsChartCtx.height = Math.min(parentHeight, maxHeight);
+
+                    commitsChartInstance = new Chart(commitsChartCtx, {
                         type: 'bar',
                         data: {
                             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -1741,7 +2173,7 @@
                             }]
                         },
                         options: {
-                            responsive: true,
+                            responsive: false, // Changed to false
                             maintainAspectRatio: false,
                             plugins: {
                                 legend: {
@@ -1763,6 +2195,8 @@
                 }
             }
         }
+
+        createCommitsChart();
 
         // ===== BACK TO TOP =====
         document.getElementById('back-to-top').addEventListener('click', (e) => {
