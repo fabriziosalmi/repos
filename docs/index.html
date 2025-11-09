@@ -1300,7 +1300,14 @@
 
         // Synthesized sound effects
         function playSound(type) {
-            if (!isSoundEnabled || !audioContext) return;
+            if (!isSoundEnabled) return;
+            if (!audioContext) {
+                console.warn('Audio not initialized yet, initializing now...');
+                initAudio();
+                // Retry after init
+                setTimeout(() => playSound(type), 100);
+                return;
+            }
 
             const now = audioContext.currentTime;
             const osc = audioContext.createOscillator();
@@ -1481,9 +1488,20 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
-                // Initialize audio on first load
-                document.addEventListener('click', initAudio, { once: true });
             }, 1000);
+
+            // Initialize audio on first user interaction (any click or keypress)
+            const initAudioOnce = () => {
+                initAudio();
+                console.log('🔊 Audio initialized');
+                document.removeEventListener('click', initAudioOnce);
+                document.removeEventListener('keydown', initAudioOnce);
+                document.removeEventListener('touchstart', initAudioOnce);
+            };
+
+            document.addEventListener('click', initAudioOnce);
+            document.addEventListener('keydown', initAudioOnce);
+            document.addEventListener('touchstart', initAudioOnce);
         });
 
         // ===== AVATAR EFFECTS =====
@@ -1764,25 +1782,36 @@
         const audioToggle = document.getElementById('audio-toggle');
         const audioIcon = document.getElementById('audio-icon');
         if (audioToggle) {
-            audioToggle.addEventListener('click', () => {
+            audioToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+
                 isSoundEnabled = !isSoundEnabled;
                 isMusicEnabled = !isMusicEnabled;
 
                 if (isSoundEnabled) {
                     audioIcon.className = 'bi bi-volume-up-fill';
-                    initAudio(); // Re-init if needed
+                    console.log('🔊 Audio enabled');
+                    if (!audioContext) {
+                        initAudio(); // Re-init if needed
+                    } else if (isMusicEnabled && musicOscillators.length === 0) {
+                        startAmbientMusic();
+                    }
                 } else {
                     audioIcon.className = 'bi bi-volume-mute-fill';
+                    console.log('🔇 Audio disabled');
                     // Stop music
                     if (musicOscillators.length > 0) {
                         musicOscillators.forEach(({osc, lfo}) => {
-                            osc.stop();
-                            lfo.stop();
+                            try {
+                                osc.stop();
+                                lfo.stop();
+                            } catch(e) {
+                                // Already stopped
+                            }
                         });
                         musicOscillators = [];
                     }
                 }
-                playSound('click');
             });
         }
 
@@ -1927,31 +1956,34 @@
             }, 16);
         }
 
-        // ===== GSAP SCROLL ANIMATIONS =====
+        // ===== GSAP ANIMATIONS =====
         gsap.registerPlugin(ScrollTrigger);
 
-        // Animate stat cards on scroll with GPU acceleration
-        gsap.from('.bento-item', {
-            scrollTrigger: {
-                trigger: '.bento-grid',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse',
-                markers: false,
-                once: false
-            },
-            y: 100,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power3.out',
-            force3D: true, // Force GPU acceleration
-            onStart: function() {
-                // Animate counters when they come into view
-                document.querySelectorAll('.stat-value[data-target]').forEach(el => {
-                    const target = parseInt(el.getAttribute('data-target'));
-                    animateCounter(el, target);
-                });
-            }
+        // Simple animation for stat cards without scroll trigger issues
+        const bentoItems = document.querySelectorAll('.bento-item');
+        bentoItems.forEach((item, index) => {
+            gsap.fromTo(item,
+                {
+                    y: 80,
+                    opacity: 0
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.7,
+                    delay: 0.1 * index,
+                    ease: 'power3.out',
+                    onStart: function() {
+                        // Animate counters
+                        if (index === 0) {
+                            document.querySelectorAll('.stat-value[data-target]').forEach(el => {
+                                const target = parseInt(el.getAttribute('data-target'));
+                                animateCounter(el, target);
+                            });
+                        }
+                    }
+                }
+            );
         });
 
         // Repo cards animation will be handled by renderRepositories()
@@ -2049,20 +2081,29 @@
                 container.appendChild(card);
             });
 
-            // Re-apply GSAP animations for newly added cards with GPU acceleration
-            gsap.from('.repo-card', {
-                scrollTrigger: {
-                    trigger: '.repos-grid',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                    markers: false
-                },
-                y: 100,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: 'power3.out',
-                force3D: true // Force GPU acceleration
+            console.log(`✅ Added ${repositories.length} repo cards to DOM`);
+
+            // Simple fade-in animation without ScrollTrigger to avoid visibility issues
+            // Wait a frame for DOM to update
+            requestAnimationFrame(() => {
+                const cards = document.querySelectorAll('.repo-card');
+                console.log(`🎬 Animating ${cards.length} repo cards`);
+
+                cards.forEach((card, index) => {
+                    gsap.fromTo(card,
+                        {
+                            y: 50,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.6,
+                            delay: index * 0.05,
+                            ease: 'power3.out'
+                        }
+                    );
+                });
             });
         }
 
@@ -2139,27 +2180,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ===== SMOOTH REVEAL ON SCROLL =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.bento-item, .repo-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(50px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
+        // Removed IntersectionObserver to avoid conflicts with GSAP animations
     </script>
 </body>
 </html>
