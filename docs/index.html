@@ -153,7 +153,6 @@ No frameworks, no libraries, pure performance.
     <footer>
         <div class="footer-links">
             <a href="https://github.com/fabriziosalmi" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-            <a href="https://twitter.com/fabriziosalmi" target="_blank" rel="noopener" aria-label="Twitter">TW</a>
             <a href="mailto:fabrizio.salmi@gmail.com" aria-label="Email">✉️</a>
         </div>
         <p>© 2025 fabriziosalmi</p>
@@ -162,9 +161,15 @@ No frameworks, no libraries, pure performance.
     <!-- Deferred styles -->
     <!-- Enhanced Card Focus Effects -->
     <style>
+        /* Prevent card overlap between sections */
+        .stats-grid, .repos-grid {
+            isolation: isolate;
+        }
+
         .stat-card, .repo-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             will-change: transform, filter, opacity;
+            position: relative;
         }
 
         .stat-card.dimmed, .repo-card.dimmed {
@@ -175,8 +180,9 @@ No frameworks, no libraries, pure performance.
 
         .stat-card.focused, .repo-card.focused {
             filter: blur(0px) grayscale(0%) brightness(1.15);
-            transform: translateY(-15px) scale(1.05);
-            z-index: 100;
+            transform: translateY(-10px) scale(1.03);
+            z-index: 10;
+            position: relative;
             box-shadow: 0 30px 60px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.2);
             border-color: var(--neon-cyan) !important;
         }
