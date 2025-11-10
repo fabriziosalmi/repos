@@ -74,13 +74,40 @@
 - Avatar image
 **Visual**: Cursor scales to 1.5x and turns magenta near elements
 
-### 2. Scroll Effects
+### 2. Dynamic Card Spotlight (NEW!)
+**Always Active** (Desktop)
+**Effect**: Cards react dynamically to mouse position with 3 states:
+- **Focused** (< 300px from mouse):
+  - Closest card lifts up (+15px)
+  - Scales to 105%
+  - Enhanced glow (cyan + magenta shadows)
+  - Brightness 115%
+  - No blur/grayscale
+  - z-index raised
+- **Near** (300-600px from focused card):
+  - Slight blur (2px)
+  - 40% grayscale
+  - 70% brightness
+  - Scale 98%
+- **Dimmed** (> 600px when a card is focused):
+  - Strong blur (4px)
+  - 80% grayscale
+  - 50% brightness
+  - 40% opacity
+  - Scale 95%
+
+**Performance**: RAF-throttled, only recalculates on mousemove
+**Threshold Settings**:
+- Focus activation: 300px radius
+- Near zone: 600px radius
+
+### 3. Scroll Effects
 **Always Active**
 - **Progress Bar**: Gradient bar at top shows scroll position
 - **Parallax**: Avatar and cards move at different speeds
 - **Smooth Scroll**: Click navigation links for smooth scrolling
 
-### 3. Click Ripples
+### 4. Click Ripples
 **Always Active**
 **Effect**: Click anywhere (not on buttons/links) to create expanding cyan pulse rings
 

@@ -1,5 +1,44 @@
 # 📋 Changelog - Portfolio Cyberpunk
 
+## [2.1.0] - 2025-11-10 - SPOTLIGHT EFFECT
+
+### 🆕 NEW FEATURE: Dynamic Card Spotlight
+
+**Added**: Proximity-based card focus system with 3 visual states
+
+**How it works**:
+1. **Focused State** (< 300px from mouse):
+   - Card closest to mouse gets highlighted
+   - Lifts 15px, scales 105%
+   - Enhanced glow (cyan + magenta shadows)
+   - Brightness 115%, no blur/grayscale
+2. **Near State** (300-600px):
+   - Partial dimming effect
+   - Blur 2px, grayscale 40%, brightness 70%
+3. **Dimmed State** (> 600px when card is focused):
+   - Heavy blur 4px
+   - Grayscale 80%, brightness 50%
+   - Opacity 40%, scale 95%
+
+**Performance**:
+- RAF-throttled updates (only on mousemove)
+- Distance calculated from card center
+- MutationObserver for dynamic card loading
+- CSS transitions for smooth effects
+
+**Impact**:
+- ✨ Premium, professional feel
+- 🎯 Draws attention to hovered content
+- 🚀 Zero performance impact (throttled RAF)
+- 💎 Impresses designers, VCs, and nerds
+
+**Files Modified**:
+- `index.html` (lines 163-193: CSS, 416-503: JS)
+- `FEATURES.md` (documented new feature)
+- `QUICK_REFERENCE.md` (added controls)
+
+---
+
 ## [2.0.0] - 2025-11-10 - MAJOR UPDATE
 
 ### 🐛 CRITICAL FIX: Clickability Issue

@@ -5,6 +5,10 @@
 ### Desktop
 ```
 MOUSE               → Custom cursor with magnetic effect
+MOUSE NEAR CARDS    → Dynamic spotlight (blur/grayscale others)
+                      < 300px = FOCUS (bright, lifted)
+                      300-600px = NEAR (slight blur)
+                      > 600px = DIMMED (heavy blur, grayscale)
 CLICK               → Ripple waves
 SHIFT + DRAG        → Draw gestures (straight = trail, curve = explosion)
 HOVER BUTTONS       → Cursor scales 1.5x, turns magenta

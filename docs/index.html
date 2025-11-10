@@ -10,6 +10,7 @@
   ✓ Audio-Reactive Visualizer - FFT analysis, 64-bar circular spectrum, beat sync
   ✓ Gesture Recognition - Multi-touch, pattern detection, particle trails
   ✓ Magnetic Cursor - Smooth attraction to interactive elements
+  ✓ Dynamic Card Spotlight - Proximity-based blur, grayscale, brightness (300px/600px zones)
   ✓ Parallax Scrolling - Multi-layer depth effect
   ✓ Ambient Effects - Aurora flows, meteor showers, orbital glows
   ✓ Ripple Waves - Click-triggered expanding rings
@@ -159,6 +160,39 @@ No frameworks, no libraries, pure performance.
     </footer>
 
     <!-- Deferred styles -->
+    <!-- Enhanced Card Focus Effects -->
+    <style>
+        .stat-card, .repo-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            will-change: transform, filter, opacity;
+        }
+
+        .stat-card.dimmed, .repo-card.dimmed {
+            filter: blur(4px) grayscale(80%) brightness(0.5);
+            opacity: 0.4;
+            transform: scale(0.95);
+        }
+
+        .stat-card.focused, .repo-card.focused {
+            filter: blur(0px) grayscale(0%) brightness(1.15);
+            transform: translateY(-15px) scale(1.05);
+            z-index: 100;
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.2);
+            border-color: var(--neon-cyan) !important;
+        }
+
+        .stat-card.focused::before, .repo-card.focused::before {
+            opacity: 0.2 !important;
+        }
+
+        /* Proximity-based effects for cards near mouse */
+        .stat-card.near, .repo-card.near {
+            filter: blur(2px) grayscale(40%) brightness(0.7);
+            opacity: 0.7;
+            transform: scale(0.98);
+        }
+    </style>
+
     <style media="print" onload="this.media='all'">
         .cursor-trail{width:6px;height:6px;background:var(--neon-cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;opacity:.6}.nav-links a:hover{color:var(--neon-cyan)}.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--neon-cyan);transition:width .3s}.nav-links a:hover::after{width:100%}.audio-toggle:hover{background:var(--neon-cyan);color:var(--deep-space);box-shadow:0 0 20px var(--neon-cyan)}.avatar:hover{transform:scale(1.1) rotate(5deg);box-shadow:0 0 80px rgba(255,0,255,.5)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,255,255,.4)}.btn-outline:hover{background:var(--neon-magenta);color:var(--deep-space);box-shadow:0 10px 30px rgba(255,0,255,.4)}.section-title{text-align:center;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:4rem;background:linear-gradient(135deg,#fff,var(--neon-cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.stats-section{padding:6rem 5%;position:relative;z-index:1}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1400px;margin:0 auto}.stat-card{background:rgba(255,255,255,.03);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;text-align:center;transition:all .3s;position:relative;overflow:hidden;will-change:transform}.stat-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta));opacity:0;transition:opacity .3s}.stat-card:hover::before{opacity:.1}.stat-card:hover{transform:translateY(-10px);border-color:var(--neon-cyan);box-shadow:0 20px 40px rgba(0,255,255,.2)}.stat-icon{font-size:3rem;margin-bottom:1rem;background:linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.stat-value{font-size:2.5rem;font-weight:900;margin-bottom:.5rem;color:var(--neon-cyan)}.stat-label{color:rgba(255,255,255,.6);font-size:.9rem;text-transform:uppercase;letter-spacing:1px}.repos-section{padding:6rem 5%;background:linear-gradient(180deg,transparent,rgba(0,255,255,.02));position:relative;z-index:1}.repos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:2rem;max-width:1400px;margin:0 auto}.repo-card{background:rgba(255,255,255,.03);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;will-change:transform}.repo-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--neon-cyan),var(--neon-magenta));transform:scaleY(0);transition:transform .3s}.repo-card:hover::before{transform:scaleY(1)}.repo-card:hover{transform:translateX(10px);border-color:var(--neon-cyan);box-shadow:0 10px 30px rgba(0,255,255,.2)}.repo-name{font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--neon-cyan)}.repo-desc{color:rgba(255,255,255,.7);margin-bottom:1.5rem;line-height:1.6}.repo-stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.repo-stat{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.5);font-size:.9rem}footer{padding:4rem 5%;text-align:center;border-top:1px solid rgba(255,255,255,.1);position:relative;z-index:1}.footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem}.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:1.5rem;transition:all .3s}.footer-links a:hover{color:var(--neon-cyan);transform:translateY(-3px)}.ambient-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0;transition:opacity 2s ease;transform:translateZ(0)}.ambient-orb.active{opacity:.15}.aurora{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0;background:linear-gradient(45deg,transparent 0%,rgba(0,255,255,.05) 25%,transparent 50%,rgba(255,0,255,.05) 75%,transparent 100%);background-size:200% 200%;animation:aurora-flow 20s ease infinite;transition:opacity 3s ease;transform:translateZ(0)}.aurora.active{opacity:1}@keyframes aurora-flow{0%,100%{background-position:0 0}50%{background-position:100% 100%}}.meteor{position:fixed;width:2px;height:80px;background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(0,255,255,.8));border-radius:50%;pointer-events:none;z-index:1;animation:meteor-fall 2s linear}@keyframes meteor-fall{0%{opacity:1;transform:translateY(0) translateX(0) rotate(45deg)}100%{opacity:0;transform:translateY(100vh) translateX(50vw) rotate(45deg)}}.pulse-ring{position:fixed;border:2px solid var(--neon-cyan);border-radius:50%;pointer-events:none;z-index:0;opacity:0;animation:pulse-expand 3s ease-out}@keyframes pulse-expand{0%{width:50px;height:50px;opacity:.8}100%{width:400px;height:400px;opacity:0}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}@media(max-width:768px){.stats-grid,.repos-grid{grid-template-columns:1fr}.cta-buttons{flex-direction:column}}
     </style>
@@ -379,6 +413,95 @@ No frameworks, no libraries, pure performance.
         };
 
         setTimeout(createScrollIndicator, 1000);
+
+        // Dynamic Card Spotlight Focus System
+        const initCardFocus = () => {
+            let allCards = [];
+            let mouseX = 0;
+            let mouseY = 0;
+            let rafId = null;
+
+            const updateCards = () => {
+                // Refresh card list (in case new cards loaded)
+                allCards = [...document.querySelectorAll('.stat-card, .repo-card')];
+            };
+
+            const calculateDistance = (card, mx, my) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenterX = rect.left + rect.width / 2;
+                const cardCenterY = rect.top + rect.height / 2;
+                return Math.sqrt(Math.pow(mx - cardCenterX, 2) + Math.pow(my - cardCenterY, 2));
+            };
+
+            const updateCardStates = () => {
+                if(allCards.length === 0) return;
+
+                // Find closest card to mouse
+                let closestCard = null;
+                let closestDistance = Infinity;
+
+                allCards.forEach(card => {
+                    const distance = calculateDistance(card, mouseX, mouseY);
+                    if(distance < closestDistance) {
+                        closestDistance = distance;
+                        closestCard = card;
+                    }
+                });
+
+                // Apply classes based on distance
+                const FOCUS_THRESHOLD = 300; // px - distance to activate focus
+                const NEAR_THRESHOLD = 600;  // px - distance for partial dimming
+
+                allCards.forEach(card => {
+                    card.classList.remove('focused', 'dimmed', 'near');
+
+                    const distance = calculateDistance(card, mouseX, mouseY);
+
+                    if(card === closestCard && closestDistance < FOCUS_THRESHOLD) {
+                        // This card is focused
+                        card.classList.add('focused');
+                    } else if(closestDistance < FOCUS_THRESHOLD) {
+                        // Another card is focused, dim this one
+                        if(distance < NEAR_THRESHOLD) {
+                            card.classList.add('near');
+                        } else {
+                            card.classList.add('dimmed');
+                        }
+                    }
+                    // If no card is close enough, all remain in default state
+                });
+
+                rafId = null;
+            };
+
+            const throttledUpdate = () => {
+                if(!rafId) {
+                    rafId = requestAnimationFrame(updateCardStates);
+                }
+            };
+
+            // Track mouse position
+            document.addEventListener('mousemove', e => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                throttledUpdate();
+            }, {passive: true});
+
+            // Update card list when stats/repos load
+            const observer = new MutationObserver(() => {
+                updateCards();
+            });
+
+            observer.observe(document.getElementById('statsGrid'), {childList: true});
+            observer.observe(document.getElementById('reposGrid'), {childList: true});
+
+            // Initial update
+            setTimeout(updateCards, 2000);
+            setTimeout(updateCards, 5000); // Retry after data loads
+        };
+
+        // Initialize card focus after data loads
+        setTimeout(initCardFocus, 2500);
 
         // Start ambient (delayed)
         setTimeout(()=>{setTimeout(tA,20000);setTimeout(cAO,15000);setTimeout(tMS,30000)},2000);
