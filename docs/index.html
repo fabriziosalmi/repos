@@ -85,7 +85,7 @@ No frameworks, no libraries, pure performance.
     
     <!-- Critical CSS Inline (Above-the-fold only) -->
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--neon-cyan:#00ffff;--neon-magenta:#ff00ff;--neon-yellow:#ff0;--deep-space:#0a0a0f;--cosmic-purple:#1a0a2e;--electric-blue:#06f;--plasma-pink:#ff0080}html{scroll-behavior:smooth;cursor:none}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:radial-gradient(ellipse at top,var(--cosmic-purple),var(--deep-space));color:#fff;overflow-x:hidden;min-height:100vh;position:relative}.cursor{width:20px;height:20px;border:2px solid var(--neon-cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:all .1s ease;mix-blend-mode:difference;transform:translateZ(0)}.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;transform:translateZ(0)}.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s infinite}@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 5%;background:rgba(10,10,15,.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,255,255,.1);z-index:1000;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:#fff;text-decoration:none;font-weight:500;transition:all .3s;position:relative}.audio-toggle{background:0 0;border:2px solid var(--neon-cyan);color:var(--neon-cyan);width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:8rem 5% 4rem;position:relative;z-index:1}.avatar{width:200px;height:200px;border-radius:50%;border:4px solid transparent;background:linear-gradient(var(--deep-space),var(--deep-space)) padding-box,linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta)) border-box;margin-bottom:2rem;animation:float 6s ease-in-out infinite;box-shadow:0 0 60px rgba(0,255,255,.3);transition:all .5s}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;margin-bottom:1rem;background:linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta),var(--neon-yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s ease-in-out infinite}@keyframes glow{0%,100%{filter:drop-shadow(0 0 20px rgba(0,255,255,.5))}50%{filter:drop-shadow(0 0 40px rgba(255,0,255,.7))}}.tagline{font-size:clamp(1.2rem,3vw,2rem);color:rgba(255,255,255,.7);margin-bottom:3rem;font-weight:300}.cta-buttons{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}.btn{padding:1rem 2.5rem;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:2px solid transparent;cursor:pointer}.btn-primary{background:linear-gradient(135deg,var(--neon-cyan),var(--electric-blue));color:var(--deep-space)}.btn-outline{border-color:var(--neon-magenta);color:var(--neon-magenta)}.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}@media(max-width:768px){nav{flex-direction:column;gap:1rem}.nav-links{flex-direction:column;gap:1rem;text-align:center}}
+        *{margin:0;padding:0;box-sizing:border-box}:root{--neon-cyan:#00ffff;--neon-magenta:#ff00ff;--neon-yellow:#ff0;--deep-space:#0a0a0f;--cosmic-purple:#1a0a2e;--electric-blue:#06f;--plasma-pink:#ff0080}html{scroll-behavior:smooth;cursor:none}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:radial-gradient(ellipse at top,var(--cosmic-purple),var(--deep-space));color:#fff;overflow-x:hidden;min-height:100vh;position:relative}a,button,.btn,.stat-card,.repo-card,.avatar,.nav-links a,.logo{cursor:pointer!important}.cursor{width:20px;height:20px;border:2px solid var(--neon-cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:all .1s ease;mix-blend-mode:difference;transform:translateZ(0)}.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;transform:translateZ(0)}.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s infinite}@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 5%;background:rgba(10,10,15,.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,255,255,.1);z-index:1000;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:#fff;text-decoration:none;font-weight:500;transition:all .3s;position:relative}.audio-toggle{background:0 0;border:2px solid var(--neon-cyan);color:var(--neon-cyan);width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:8rem 5% 4rem;position:relative;z-index:1}.avatar{width:200px;height:200px;border-radius:50%;border:4px solid transparent;background:linear-gradient(var(--deep-space),var(--deep-space)) padding-box,linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta)) border-box;margin-bottom:2rem;animation:float 6s ease-in-out infinite;box-shadow:0 0 60px rgba(0,255,255,.3);transition:all .5s}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;margin-bottom:1rem;background:linear-gradient(135deg,var(--neon-cyan),var(--neon-magenta),var(--neon-yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s ease-in-out infinite}@keyframes glow{0%,100%{filter:drop-shadow(0 0 20px rgba(0,255,255,.5))}50%{filter:drop-shadow(0 0 40px rgba(255,0,255,.7))}}.tagline{font-size:clamp(1.2rem,3vw,2rem);color:rgba(255,255,255,.7);margin-bottom:3rem;font-weight:300}.cta-buttons{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}.btn{padding:1rem 2.5rem;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:2px solid transparent;cursor:pointer}.btn-primary{background:linear-gradient(135deg,var(--neon-cyan),var(--electric-blue));color:var(--deep-space)}.btn-outline{border-color:var(--neon-magenta);color:var(--neon-magenta)}.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}@media(max-width:768px){nav{flex-direction:column;gap:1rem}.nav-links{flex-direction:column;gap:1rem;text-align:center}}
     </style>
     
     <!-- Deferred CSS (below-the-fold) -->
@@ -107,8 +107,8 @@ No frameworks, no libraries, pure performance.
     <!-- Stars Background -->
     <div class="stars" id="stars"></div>
 
-    <!-- Gesture Canvas (interactive) -->
-    <canvas id="gestureCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:5;opacity:0;transition:opacity .5s"></canvas>
+    <!-- Gesture Canvas (interactive - pointer events only when drawing) -->
+    <canvas id="gestureCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:5;opacity:0;transition:opacity .5s;pointer-events:none"></canvas>
 
     <!-- Navigation -->
     <nav>
@@ -802,7 +802,7 @@ No frameworks, no libraries, pure performance.
                 }, {passive: true});
             };
 
-            // Gesture Recognition System
+            // Gesture Recognition System (Shift key to activate)
             const initGestures = () => {
                 const canvas = document.getElementById('gestureCanvas');
                 const ctx = canvas.getContext('2d', {alpha: true});
@@ -810,6 +810,7 @@ No frameworks, no libraries, pure performance.
                 canvas.height = window.innerHeight;
 
                 let isDrawing = false;
+                let shiftPressed = false;
                 let points = [];
                 let trails = [];
 
@@ -818,7 +819,43 @@ No frameworks, no libraries, pure performance.
                     if(points.length > 50) points.shift();
                 };
 
+                // Visual indicator for gesture mode
+                let gestureIndicator = null;
+                const showGestureMode = () => {
+                    if(!gestureIndicator) {
+                        gestureIndicator = document.createElement('div');
+                        gestureIndicator.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,255,255,0.9);color:#0a0a0f;padding:10px 20px;border-radius:20px;font-weight:600;font-size:14px;z-index:10001;pointer-events:none;opacity:0;transition:opacity 0.3s';
+                        gestureIndicator.textContent = '✏️ GESTURE MODE (Hold Shift + Drag)';
+                        document.body.appendChild(gestureIndicator);
+                    }
+                    gestureIndicator.style.opacity = '1';
+                };
+
+                const hideGestureMode = () => {
+                    if(gestureIndicator) gestureIndicator.style.opacity = '0';
+                };
+
+                // Enable gesture mode with Shift key
+                document.addEventListener('keydown', e => {
+                    if(e.key === 'Shift' && !shiftPressed) {
+                        shiftPressed = true;
+                        canvas.style.pointerEvents = 'auto';
+                        canvas.style.opacity = '0.1';
+                        showGestureMode();
+                    }
+                });
+
+                document.addEventListener('keyup', e => {
+                    if(e.key === 'Shift') {
+                        shiftPressed = false;
+                        canvas.style.pointerEvents = 'none';
+                        if(!isDrawing) canvas.style.opacity = '0';
+                        hideGestureMode();
+                    }
+                });
+
                 canvas.addEventListener('mousedown', e => {
+                    if(!shiftPressed) return;
                     isDrawing = true;
                     canvas.style.opacity = '0.3';
                     points = [];
@@ -882,29 +919,39 @@ No frameworks, no libraries, pure performance.
                     }
 
                     points = [];
-                    setTimeout(() => canvas.style.opacity = '0', 500);
+                    setTimeout(() => {
+                        if(!shiftPressed) canvas.style.opacity = '0';
+                    }, 500);
                 });
 
-                // Touch support
+                // Touch support (2-finger for gestures)
+                let touchCount = 0;
                 canvas.addEventListener('touchstart', e => {
+                    touchCount = e.touches.length;
+                    if(touchCount !== 2) return;
                     e.preventDefault();
                     const touch = e.touches[0];
                     isDrawing = true;
+                    canvas.style.pointerEvents = 'auto';
                     canvas.style.opacity = '0.3';
                     points = [];
                     addPoint(touch.clientX, touch.clientY);
                 }, {passive: false});
 
                 canvas.addEventListener('touchmove', e => {
+                    if(!isDrawing || e.touches.length !== 2) return;
                     e.preventDefault();
-                    if(!isDrawing) return;
                     const touch = e.touches[0];
                     addPoint(touch.clientX, touch.clientY);
                 }, {passive: false});
 
                 canvas.addEventListener('touchend', e => {
+                    if(!isDrawing) return;
                     e.preventDefault();
                     canvas.dispatchEvent(new Event('mouseup'));
+                    setTimeout(() => {
+                        canvas.style.pointerEvents = 'none';
+                    }, 600);
                 }, {passive: false});
 
                 gesturesActive = true;

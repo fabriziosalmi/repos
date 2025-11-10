@@ -36,14 +36,18 @@
 ### 4. Gesture Recognition
 **Trigger**: Loads 4s after interaction
 **How to use**:
-1. Click and drag to draw on screen
-2. Release to trigger effects based on gesture type:
+1. **Desktop**: Hold **Shift** key, then click and drag to draw
+2. **Mobile/Touch**: Use **2 fingers** to draw gesture
+3. Visual indicator appears: "✏️ GESTURE MODE"
+4. Release to trigger effects based on gesture type:
    - **Straight line** → Particle trail along path
    - **Curved gesture** → Explosion at center
 **Features**:
+- Shift-key activation (prevents click blocking)
 - Touch and mouse support
 - Pattern detection algorithm
 - Physics-based particle trails
+- Visual mode indicator
 
 ## 🎵 Audio System
 
@@ -92,6 +96,11 @@
 **Effect**: Color inversion for 2 seconds
 **Works**: Anywhere on the page
 
+### 3. Gesture Drawing
+**Input**: Hold **Shift** key + drag mouse
+**Effect**: Draw custom patterns that trigger particle effects
+**Works**: Desktop only (use 2-finger touch on mobile)
+
 ## ⚡ Performance Features
 
 ### Automatic Optimizations
@@ -106,6 +115,8 @@
 7. **Passive Listeners**: All scroll/touch events are passive
 8. **Critical CSS**: Above-the-fold CSS is inline
 9. **Deferred Loading**: Below-fold CSS loads async
+10. **Smart Pointer Events**: Canvas layers use `pointer-events:none` to prevent click blocking
+11. **Conditional Activation**: Gesture canvas only intercepts clicks when Shift pressed
 
 ### Performance Metrics
 - **Initial Load**: ~60KB single HTML file
