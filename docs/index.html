@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fabriziosalmi - code & sound</title>
     <meta name="description" content="Developer, sound designer, creative coder. Building the future with code and beats.">
-    <link rel="icon" href="https://github.com/fabriziosalmi.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Performance & Security -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://github.com/fabriziosalmi.png" crossorigin="anonymous">
+    
+    <!-- Icons with defer -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"></noscript>
+    
     <style>
         * {
             margin: 0;
@@ -532,6 +544,124 @@
             font-size: 2rem;
             color: var(--neon-cyan);
         }
+
+        /* Ambient Effects */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .ambient-orb.active {
+            opacity: 0.15;
+        }
+
+        /* Aurora Effect */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(0, 255, 255, 0.05) 25%,
+                transparent 50%,
+                rgba(255, 0, 255, 0.05) 75%,
+                transparent 100%
+            );
+            background-size: 200% 200%;
+            animation: aurora-flow 20s ease infinite;
+            transition: opacity 3s ease;
+        }
+
+        .aurora.active {
+            opacity: 1;
+        }
+
+        @keyframes aurora-flow {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+        }
+
+        /* Meteor Effect */
+        .meteor {
+            position: fixed;
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 255, 255, 0.8));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: meteor-fall 2s linear;
+        }
+
+        @keyframes meteor-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(45deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(50vw) rotate(45deg);
+            }
+        }
+
+        /* Pulse Ring Effect */
+        .pulse-ring {
+            position: fixed;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: pulse-expand 3s ease-out;
+        }
+
+        @keyframes pulse-expand {
+            0% {
+                width: 50px;
+                height: 50px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 400px;
+                height: 400px;
+                opacity: 0;
+            }
+        }
+
+        /* Performance Optimizations */
+        * {
+            will-change: auto;
+        }
+
+        .stat-card, .repo-card, .btn {
+            will-change: transform;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Layer promotion for performance */
+        .cursor, .cursor-trail, .stars, .aurora, .ambient-orb {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -545,6 +675,12 @@
 
     <!-- Stars Background -->
     <div class="stars" id="stars"></div>
+
+    <!-- Aurora Effect -->
+    <div class="aurora" id="aurora"></div>
+
+    <!-- Ambient Orbs Container -->
+    <div id="ambientOrbs"></div>
 
     <!-- Navigation -->
     <nav>
@@ -857,6 +993,7 @@
         const cursor = document.getElementById('cursor');
         let mouseX = 0, mouseY = 0;
         let cursorX = 0, cursorY = 0;
+        let trailCounter = 0;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
@@ -869,14 +1006,16 @@
             cursor.style.left = cursorX + 'px';
             cursor.style.top = cursorY + 'px';
             
-            // Trail effect
-            if (Math.random() > 0.9) {
+            // Trail effect (ridotto per performance)
+            trailCounter++;
+            if (trailCounter > 5 && Math.random() > 0.92) {
                 const trail = document.createElement('div');
                 trail.className = 'cursor-trail';
                 trail.style.left = cursorX + 'px';
                 trail.style.top = cursorY + 'px';
                 document.body.appendChild(trail);
                 setTimeout(() => trail.remove(), 500);
+                trailCounter = 0;
             }
             
             requestAnimationFrame(animateCursor);
@@ -885,7 +1024,9 @@
 
         // ===== STARS BACKGROUND =====
         const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 200; i++) {
+        const starCount = window.innerWidth < 768 ? 100 : 150; // Meno stelle su mobile
+        
+        for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             star.style.left = Math.random() * 100 + '%';
@@ -1022,6 +1163,176 @@
                 }
             });
         });
+
+        // ===== AMBIENT EFFECTS =====
+        
+        // Aurora wave effect (ogni 45-60 secondi)
+        function triggerAurora() {
+            const aurora = document.getElementById('aurora');
+            aurora.classList.add('active');
+            
+            setTimeout(() => {
+                aurora.classList.remove('active');
+            }, 15000); // Dura 15 secondi
+            
+            // Prossima aurora tra 45-60 secondi
+            const nextAurora = 45000 + Math.random() * 15000;
+            setTimeout(triggerAurora, nextAurora);
+        }
+        
+        // Ambient orbs (ogni 30-45 secondi)
+        function createAmbientOrb() {
+            const orb = document.createElement('div');
+            orb.className = 'ambient-orb';
+            
+            const size = 200 + Math.random() * 300;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const colors = ['var(--neon-cyan)', 'var(--neon-magenta)', 'var(--plasma-pink)'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            orb.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}%;
+                top: ${y}%;
+                background: radial-gradient(circle, ${color}, transparent);
+            `;
+            
+            document.getElementById('ambientOrbs').appendChild(orb);
+            
+            // Fade in
+            setTimeout(() => orb.classList.add('active'), 100);
+            
+            // Movimento lento
+            const duration = 20000 + Math.random() * 10000;
+            orb.animate([
+                { transform: 'translate(0, 0) scale(1)' },
+                { transform: `translate(${(Math.random() - 0.5) * 200}px, ${(Math.random() - 0.5) * 200}px) scale(1.2)` }
+            ], {
+                duration: duration,
+                easing: 'ease-in-out',
+                iterations: 1
+            });
+            
+            // Remove dopo animazione
+            setTimeout(() => {
+                orb.classList.remove('active');
+                setTimeout(() => orb.remove(), 2000);
+            }, duration);
+            
+            // Prossimo orb tra 30-45 secondi
+            const nextOrb = 30000 + Math.random() * 15000;
+            setTimeout(createAmbientOrb, nextOrb);
+        }
+        
+        // Meteor shower (ogni 60-90 secondi)
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            
+            const startX = Math.random() * 100;
+            const startY = -10;
+            
+            meteor.style.left = startX + '%';
+            meteor.style.top = startY + '%';
+            
+            document.body.appendChild(meteor);
+            
+            setTimeout(() => meteor.remove(), 2000);
+        }
+        
+        function triggerMeteorShower() {
+            const meteorCount = 3 + Math.floor(Math.random() * 5);
+            
+            for (let i = 0; i < meteorCount; i++) {
+                setTimeout(() => createMeteor(), i * 300);
+            }
+            
+            // Prossima pioggia tra 60-90 secondi
+            const nextShower = 60000 + Math.random() * 30000;
+            setTimeout(triggerMeteorShower, nextShower);
+        }
+        
+        // Pulse rings on scroll milestones
+        let lastScrollTop = 0;
+        let scrollDistance = 0;
+        
+        function createPulseRing(x, y) {
+            const ring = document.createElement('div');
+            ring.className = 'pulse-ring';
+            ring.style.left = x + 'px';
+            ring.style.top = y + 'px';
+            document.body.appendChild(ring);
+            setTimeout(() => ring.remove(), 3000);
+        }
+        
+        window.addEventListener('scroll', () => {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            scrollDistance += Math.abs(st - lastScrollTop);
+            lastScrollTop = st;
+            
+            // Pulse ring ogni 1000px di scroll
+            if (scrollDistance > 1000) {
+                const x = window.innerWidth / 2 + (Math.random() - 0.5) * 200;
+                const y = window.innerHeight / 2 + window.pageYOffset;
+                createPulseRing(x, y);
+                scrollDistance = 0;
+            }
+        }, { passive: true });
+        
+        // Movimento ambientale delle stelle (parallax leggero)
+        const stars = document.querySelectorAll('.star');
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    stars.forEach((star, i) => {
+                        const speed = 0.1 + (i % 5) * 0.02;
+                        const yPos = -(scrolled * speed);
+                        star.style.transform = `translateY(${yPos}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+        
+        // Avvia effetti ambientali dopo il loading
+        setTimeout(() => {
+            // Prima aurora dopo 20 secondi
+            setTimeout(triggerAurora, 20000);
+            
+            // Primo orb dopo 15 secondi
+            setTimeout(createAmbientOrb, 15000);
+            
+            // Prima pioggia di meteore dopo 30 secondi
+            setTimeout(triggerMeteorShower, 30000);
+        }, 2000);
+        
+        // Performance: Riduce cursor trail su dispositivi lenti
+        let fps = 60;
+        let lastFrameTime = performance.now();
+        
+        function measureFPS() {
+            const now = performance.now();
+            fps = Math.round(1000 / (now - lastFrameTime));
+            lastFrameTime = now;
+            
+            // Se FPS < 30, riduci effetti
+            if (fps < 30) {
+                document.querySelectorAll('.cursor-trail').forEach(t => t.remove());
+            }
+            
+            requestAnimationFrame(measureFPS);
+        }
+        measureFPS();
+        
+        // Preload avatar image per performance
+        const avatarImg = new Image();
+        avatarImg.src = 'https://github.com/fabriziosalmi.png';
     </script>
 </body>
 </html>
