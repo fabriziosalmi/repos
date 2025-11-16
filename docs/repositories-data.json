@@ -290,12 +290,12 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 30327,
-        "last_update": "2025-11-16T14:04:09+00:00",
+        "last_update": "2025-11-16T14:20:49+00:00",
         "created_at_api": "2025-06-15T22:14:52+00:00",
         "has_issues": true,
-        "commits": 387,
+        "commits": 388,
         "contributors": 3,
-        "last_update_str": "13 minutes ago",
+        "last_update_str": "3 minutes ago",
         "avg_issue_resolution_time": 1937.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -345,7 +345,7 @@
                 "percentage": 0.01
             }
         },
-        "version": "v0.1.11",
+        "version": "v0.2.0",
         "status": "🔥 ACTIVE"
     },
     {
@@ -1211,23 +1211,23 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1133,
-        "last_update": "2025-11-16T14:15:54+00:00",
+        "last_update": "2025-11-16T14:20:55+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 755,
-        "contributors": 3,
-        "last_update_str": "1 minutes ago",
+        "commits": 757,
+        "contributors": 2,
+        "last_update_str": "2 minutes ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
                 "bytes": 147434,
-                "percentage": 92.1
+                "percentage": 92.12
             },
             "Vue": {
-                "bytes": 9308,
-                "percentage": 5.81
+                "bytes": 9273,
+                "percentage": 5.79
             },
             "CSS": {
                 "bytes": 1611,
@@ -2941,7 +2941,7 @@
         "has_issues": true,
         "commits": 31,
         "contributors": 5,
-        "last_update_str": "38 minutes ago",
+        "last_update_str": "43 minutes ago",
         "avg_issue_resolution_time": 307.0,
         "closed_issues_count": 1,
         "processed_details": true,
