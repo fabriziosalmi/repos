@@ -1,11 +1,22 @@
 {
-  "generated_at": "2025-11-16T15:30:04.382287",
+  "generated_at": "2025-11-16T16:02:34.582925",
   "overview": {
     "total_repositories": 88,
     "total_stars": 3347,
     "total_forks": 230,
     "total_watchers": 3347,
-    "total_issues": 47
+    "total_issues": 47,
+    "total_commits": 16415,
+    "total_contributors": 453,
+    "total_closed_issues": 57,
+    "total_all_issues": 104
+  },
+  "development_activity": {
+    "total_commits": 16415,
+    "average_commits_per_repo": 186.5,
+    "total_contributors": 453,
+    "issues_resolved": 57,
+    "issue_resolution_rate": 54.8
   },
   "languages": {
     "count": 12,
@@ -25,9 +36,19 @@
       "TypeScript": 2
     }
   },
-  "top_repository": {
-    "name": "certmate",
-    "stars": 898
+  "top_performers": {
+    "most_starred": {
+      "name": "certmate",
+      "stars": 898
+    },
+    "most_active": {
+      "name": "bootstrap-w3c-seo",
+      "commits": 3592
+    },
+    "most_collaborative": {
+      "name": "bootstrap-w3c-seo",
+      "contributors": 257
+    }
   },
   "breakdown": {
     "original": 86,
@@ -37,6 +58,8 @@
   },
   "metrics": {
     "average_stars": 38.0,
+    "average_commits": 186.5,
+    "issue_resolution_rate": 54.8,
     "engagement_score": 62.28
   }
 }

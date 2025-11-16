@@ -42,6 +42,16 @@ class BadgeGenerator:
         total_watchers = sum(repo.get('watchers', 0) for repo in self.repositories)
         total_issues = sum(repo.get('open_issues_count', 0) for repo in self.repositories)
         
+        # Advanced metrics
+        total_commits = sum(repo.get('commits', 0) for repo in self.repositories)
+        total_contributors = sum(repo.get('contributors', 0) for repo in self.repositories)
+        total_closed_issues = sum(repo.get('closed_issues_count', 0) for repo in self.repositories)
+        
+        # Calculate resolved issues
+        total_all_issues = total_issues + total_closed_issues
+        issues_resolved = total_closed_issues
+        issue_resolution_rate = (issues_resolved / total_all_issues * 100) if total_all_issues > 0 else 0
+        
         # Language statistics
         languages = {}
         for repo in self.repositories:
@@ -54,10 +64,17 @@ class BadgeGenerator:
         # Activity metrics
         active_repos = [r for r in self.repositories if not r.get('archived', False)]
         avg_stars = total_stars / total_repos if total_repos > 0 else 0
+        avg_commits = total_commits / total_repos if total_repos > 0 else 0
         
         # Fork analysis
         original_repos = [r for r in self.repositories if not r.get('fork', False)]
         forked_repos = [r for r in self.repositories if r.get('fork', False)]
+        
+        # Repository with most commits
+        most_active_repo = max(self.repositories, key=lambda x: x.get('commits', 0), default={})
+        
+        # Repository with most contributors
+        most_collaborative_repo = max(self.repositories, key=lambda x: x.get('contributors', 0), default={})
         
         return {
             'total_repos': total_repos,
@@ -65,6 +82,12 @@ class BadgeGenerator:
             'total_forks': total_forks,
             'total_watchers': total_watchers,
             'total_issues': total_issues,
+            'total_commits': total_commits,
+            'total_contributors': total_contributors,
+            'total_closed_issues': total_closed_issues,
+            'total_all_issues': total_all_issues,
+            'issues_resolved': issues_resolved,
+            'issue_resolution_rate': round(issue_resolution_rate, 1),
             'languages': languages,
             'top_language': max(languages.items(), key=lambda x: x[1])[0] if languages else 'N/A',
             'top_repo': top_repo.get('name', 'N/A'),
@@ -72,8 +95,13 @@ class BadgeGenerator:
             'active_repos': len(active_repos),
             'archived_repos': total_repos - len(active_repos),
             'avg_stars': round(avg_stars, 1),
+            'avg_commits': round(avg_commits, 1),
             'original_repos': len(original_repos),
             'forked_repos': len(forked_repos),
+            'most_active_repo': most_active_repo.get('name', 'N/A'),
+            'most_active_commits': most_active_repo.get('commits', 0),
+            'most_collaborative_repo': most_collaborative_repo.get('name', 'N/A'),
+            'most_collaborative_contributors': most_collaborative_repo.get('contributors', 0),
         }
     
     def _create_svg_badge(self, label: str, value: str, color: str = 'blue') -> str:
@@ -115,11 +143,16 @@ class BadgeGenerator:
             ('total_repos', 'Total Repos', str(self.stats['total_repos']), 'blue'),
             ('total_stars', 'Total Stars', f"⭐ {self.stats['total_stars']}", 'yellow'),
             ('total_forks', 'Total Forks', f"🍴 {self.stats['total_forks']}", 'green'),
+            ('total_commits', 'Total Commits', f"💾 {self.stats['total_commits']:,}", 'purple'),
+            ('total_contributors', 'Contributors', f"👥 {self.stats['total_contributors']}", 'brightgreen'),
+            ('issues_resolved', 'Issues Resolved', f"✅ {self.stats['issues_resolved']}", 'green'),
+            ('issue_resolution_rate', 'Resolution Rate', f"{self.stats['issue_resolution_rate']}%", 'brightgreen'),
             ('languages', 'Languages', str(len(self.stats['languages'])), 'purple'),
             ('top_language', 'Top Language', self.stats['top_language'], 'orange'),
             ('top_repo', 'Top Repo', f"{self.stats['top_repo']} ({self.stats['top_repo_stars']}★)", 'brightgreen'),
             ('active_repos', 'Active', str(self.stats['active_repos']), 'green'),
             ('avg_stars', 'Avg Stars', str(self.stats['avg_stars']), 'yellow'),
+            ('avg_commits', 'Avg Commits', str(self.stats['avg_commits']), 'purple'),
         ]
         
         for filename, label, value, color in badges:
@@ -145,7 +178,10 @@ class BadgeGenerator:
 | ⭐ Total Stars | **{self.stats['total_stars']:,}** |
 | 🍴 Total Forks | **{self.stats['total_forks']:,}** |
 | 👀 Total Watchers | **{self.stats['total_watchers']:,}** |
+| 💾 Total Commits | **{self.stats['total_commits']:,}** |
+| 👥 Total Contributors | **{self.stats['total_contributors']:,}** |
 | ❗ Open Issues | **{self.stats['total_issues']}** |
+| ✅ Closed Issues | **{self.stats['total_closed_issues']}** |
 | 💻 Languages Used | **{len(self.stats['languages'])}** |
 
 ---
@@ -154,6 +190,12 @@ class BadgeGenerator:
 
 ### Most Starred Repository
 **{self.stats['top_repo']}** - ⭐ {self.stats['top_repo_stars']:,} stars
+
+### Most Active Repository (by commits)
+**{self.stats['most_active_repo']}** - 💾 {self.stats['most_active_commits']:,} commits
+
+### Most Collaborative Repository
+**{self.stats['most_collaborative_repo']}** - 👥 {self.stats['most_collaborative_contributors']} contributors
 
 ### Most Used Language
 **{self.stats['top_language']}** - Used in {self.stats['languages'][self.stats['top_language']]} repositories
@@ -168,6 +210,18 @@ class BadgeGenerator:
 | 🍴 Forked Repositories | {self.stats['forked_repos']} | {self.stats['forked_repos']/self.stats['total_repos']*100:.1f}% |
 | ✅ Active Repositories | {self.stats['active_repos']} | {self.stats['active_repos']/self.stats['total_repos']*100:.1f}% |
 | 📦 Archived Repositories | {self.stats['archived_repos']} | {self.stats['archived_repos']/self.stats['total_repos']*100:.1f}% |
+
+---
+
+## 🎯 Development Activity
+
+| Metric | Value |
+|--------|-------|
+| 💾 Average Commits per Repository | **{self.stats['avg_commits']:.1f}** |
+| ⭐ Average Stars per Repository | **{self.stats['avg_stars']:.1f}** |
+| ✅ Issue Resolution Rate | **{self.stats['issue_resolution_rate']:.1f}%** |
+| 📝 Total Issues (Open + Closed) | **{self.stats['total_all_issues']}** |
+| ✅ Issues Resolved | **{self.stats['issues_resolved']}** |
 
 ---
 
@@ -228,15 +282,36 @@ class BadgeGenerator:
                 'total_forks': self.stats['total_forks'],
                 'total_watchers': self.stats['total_watchers'],
                 'total_issues': self.stats['total_issues'],
+                'total_commits': self.stats['total_commits'],
+                'total_contributors': self.stats['total_contributors'],
+                'total_closed_issues': self.stats['total_closed_issues'],
+                'total_all_issues': self.stats['total_all_issues'],
+            },
+            'development_activity': {
+                'total_commits': self.stats['total_commits'],
+                'average_commits_per_repo': self.stats['avg_commits'],
+                'total_contributors': self.stats['total_contributors'],
+                'issues_resolved': self.stats['issues_resolved'],
+                'issue_resolution_rate': self.stats['issue_resolution_rate'],
             },
             'languages': {
                 'count': len(self.stats['languages']),
                 'top_language': self.stats['top_language'],
                 'distribution': self.stats['languages'],
             },
-            'top_repository': {
-                'name': self.stats['top_repo'],
-                'stars': self.stats['top_repo_stars'],
+            'top_performers': {
+                'most_starred': {
+                    'name': self.stats['top_repo'],
+                    'stars': self.stats['top_repo_stars'],
+                },
+                'most_active': {
+                    'name': self.stats['most_active_repo'],
+                    'commits': self.stats['most_active_commits'],
+                },
+                'most_collaborative': {
+                    'name': self.stats['most_collaborative_repo'],
+                    'contributors': self.stats['most_collaborative_contributors'],
+                },
             },
             'breakdown': {
                 'original': self.stats['original_repos'],
@@ -246,6 +321,8 @@ class BadgeGenerator:
             },
             'metrics': {
                 'average_stars': self.stats['avg_stars'],
+                'average_commits': self.stats['avg_commits'],
+                'issue_resolution_rate': self.stats['issue_resolution_rate'],
                 'engagement_score': round((
                     self.stats['total_stars'] * 1.0 +
                     self.stats['total_forks'] * 2.0 +

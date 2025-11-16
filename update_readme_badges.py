@@ -30,12 +30,17 @@ def update_readme_badges(readme_path: str = 'README.md') -> None:
     total_repos = stats['overview']['total_repositories']
     total_stars = f"{stats['overview']['total_stars']:,}"
     total_forks = stats['overview']['total_forks']
+    total_commits = f"{stats['overview']['total_commits']:,}"
+    total_contributors = stats['overview']['total_contributors']
+    issues_resolved = stats['development_activity']['issues_resolved']
+    resolution_rate = stats['development_activity']['issue_resolution_rate']
     languages_count = stats['languages']['count']
     top_language = stats['languages']['top_language']
     active_repos = stats['breakdown']['active']
-    top_repo_name = stats['top_repository']['name']
-    top_repo_stars = stats['top_repository']['stars']
+    top_repo_name = stats['top_performers']['most_starred']['name']
+    top_repo_stars = stats['top_performers']['most_starred']['stars']
     avg_stars = stats['metrics']['average_stars']
+    avg_commits = stats['metrics']['average_commits']
     
     # Find most used language count
     lang_dist = stats['languages']['distribution']
@@ -47,11 +52,12 @@ def update_readme_badges(readme_path: str = 'README.md') -> None:
 ![Total Repos](https://img.shields.io/badge/Total_Repos-{total_repos}-blue?style=flat-square)
 ![Total Stars](https://img.shields.io/badge/Total_Stars-{total_stars}-yellow?style=flat-square)
 ![Total Forks](https://img.shields.io/badge/Total_Forks-{total_forks}-green?style=flat-square)
-![Languages](https://img.shields.io/badge/Languages-{languages_count}-purple?style=flat-square)
-![Top Language](https://img.shields.io/badge/Top_Language-{top_language}-orange?style=flat-square)
-![Active Repos](https://img.shields.io/badge/Active-{active_repos}-brightgreen?style=flat-square)
+![Total Commits](https://img.shields.io/badge/Total_Commits-{total_commits}-purple?style=flat-square)
+![Contributors](https://img.shields.io/badge/Contributors-{total_contributors}-brightgreen?style=flat-square)
+![Issues Resolved](https://img.shields.io/badge/Issues_Resolved-{issues_resolved}-green?style=flat-square)
+![Resolution Rate](https://img.shields.io/badge/Resolution_Rate-{resolution_rate}%25-brightgreen?style=flat-square)
 
-**🏆 Most Starred: {top_repo_name} ({top_repo_stars} ⭐) | 💻 Top Language: {top_language} ({top_lang_count} repos) | 📊 Avg Stars: {avg_stars}**
+**🏆 Most Starred: {top_repo_name} ({top_repo_stars} ⭐) | 💻 Top Language: {top_language} ({top_lang_count} repos) | 📊 Avg: {avg_stars}★ / {avg_commits} commits**
 
 </div>"""
     

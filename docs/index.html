@@ -493,6 +493,26 @@
                 <div class="stat-value" id="totalLanguages">0</div>
                 <div class="stat-change">💻 Tech Stack Diversity</div>
             </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.4s">
+                <div class="stat-label">Total Commits</div>
+                <div class="stat-value" id="totalCommits">0</div>
+                <div class="stat-change">💾 Code Activity</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.5s">
+                <div class="stat-label">Contributors</div>
+                <div class="stat-value" id="totalContributors">0</div>
+                <div class="stat-change">👥 Community Power</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.6s">
+                <div class="stat-label">Issues Resolved</div>
+                <div class="stat-value" id="issuesResolved">0</div>
+                <div class="stat-change">✅ Problem Solving</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.7s">
+                <div class="stat-label">Resolution Rate</div>
+                <div class="stat-value" id="resolutionRate">0%</div>
+                <div class="stat-change">📈 Efficiency</div>
+            </div>
         </div>
 
         <!-- Filters -->
@@ -622,12 +642,33 @@
             const totalRepos = filteredRepositories.length;
             const totalStars = filteredRepositories.reduce((sum, repo) => sum + (repo.stars || 0), 0);
             const totalForks = filteredRepositories.reduce((sum, repo) => sum + (repo.forks || 0), 0);
+            const totalCommits = filteredRepositories.reduce((sum, repo) => sum + (repo.commits || 0), 0);
+            const totalContributors = filteredRepositories.reduce((sum, repo) => sum + (repo.contributors || 0), 0);
+            const closedIssues = filteredRepositories.reduce((sum, repo) => sum + (repo.closed_issues_count || 0), 0);
+            const openIssues = filteredRepositories.reduce((sum, repo) => sum + (repo.open_issues_count || 0), 0);
+            const totalIssues = closedIssues + openIssues;
+            const resolutionRate = totalIssues > 0 ? Math.round((closedIssues / totalIssues) * 100) : 0;
             const languages = new Set(filteredRepositories.map(repo => repo.language).filter(Boolean));
 
             animateValue('totalRepos', 0, totalRepos, 1000);
             animateValue('totalStars', 0, totalStars, 1000);
             animateValue('totalForks', 0, totalForks, 1000);
             animateValue('totalLanguages', 0, languages.size, 1000);
+            animateValue('totalCommits', 0, totalCommits, 1000);
+            animateValue('totalContributors', 0, totalContributors, 1000);
+            animateValue('issuesResolved', 0, closedIssues, 1000);
+            
+            // Handle percentage separately
+            const rateElement = document.getElementById('resolutionRate');
+            let currentRate = 0;
+            const rateTimer = setInterval(() => {
+                currentRate += resolutionRate / 50;
+                if (currentRate >= resolutionRate) {
+                    currentRate = resolutionRate;
+                    clearInterval(rateTimer);
+                }
+                rateElement.textContent = Math.round(currentRate) + '%';
+            }, 20);
         }
 
         function animateValue(id, start, end, duration) {
