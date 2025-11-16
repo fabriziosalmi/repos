@@ -1,11 +1,12 @@
 <!-- components/RepoDetailModal.vue -->
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { X, Star, GitFork, Calendar, TrendingUp, Heart, Bus, AlertCircle } from 'lucide-vue-next';
+import { X, Star, GitFork, Calendar, TrendingUp, Heart, Bus, AlertCircle, Share2 } from 'lucide-vue-next';
 import VueApexCharts from 'vue3-apexcharts';
 import type { ApexOptions } from 'apexcharts';
 import type { Repo, Commit, Contributor } from '../types';
 import { formatDistanceToNow } from 'date-fns';
+import ShowcaseGenerator from './ShowcaseGenerator.vue';
 
 const props = defineProps<{
   repo: Repo;
@@ -19,6 +20,7 @@ const emit = defineEmits<{
 const commits = ref<Commit[]>([]);
 const contributors = ref<Contributor[]>([]);
 const isLoadingDetails = ref(false);
+const showShowcaseGenerator = ref(false);
 
 // Star history chart configuration
 const starHistoryOptions = computed<ApexOptions>(() => ({
@@ -190,6 +192,13 @@ function getHealthColor() {
                 <a :href="repo.url" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 underline">
                   View on GitHub
                 </a>
+                <button
+                  @click="showShowcaseGenerator = true"
+                  class="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
+                >
+                  <Share2 class="h-4 w-4" />
+                  Generate Showcase
+                </button>
               </div>
             </div>
             <button
@@ -334,6 +343,13 @@ function getHealthColor() {
         </div>
       </div>
     </Transition>
+    
+    <!-- Showcase Generator Modal -->
+    <ShowcaseGenerator
+      :repo="repo"
+      :is-open="showShowcaseGenerator"
+      @close="showShowcaseGenerator = false"
+    />
   </Teleport>
 </template>
 

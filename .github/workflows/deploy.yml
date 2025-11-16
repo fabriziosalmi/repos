@@ -46,6 +46,23 @@ jobs:
         run: python stats.py
         env:
           MY_PAT: ${{ secrets.MY_PAT }}
+      
+      - name: Download previous data for comparison
+        continue-on-error: true
+        run: |
+          # Download previous repositories-data.json from main branch
+          git fetch origin main
+          git show origin/main:docs/repositories-data.json > previous-data.json 2>/dev/null || echo "[]" > previous-data.json
+      
+      - name: Run Threshold Monitor
+        continue-on-error: true
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          python threshold_monitor.py \
+            --current docs/repositories-data.json \
+            --previous previous-data.json
 
       - name: Generate badges and statistics
         run: |

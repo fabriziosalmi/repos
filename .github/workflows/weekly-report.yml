@@ -1,0 +1,54 @@
+name: AEGIS Weekly Report
+
+on:
+  schedule:
+    # Run every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate-weekly-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests python-dotenv
+      
+      - name: Generate Weekly Report
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL }}
+        run: |
+          python reporter.py --data docs/repositories-data.json --output weekly-report.md
+      
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-report
+          path: weekly-report.md
+          retention-days: 30
+      
+      - name: Commit Report to Repo (Optional)
+        if: github.event_name == 'schedule'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "AEGIS Reporter"
+          
+          mkdir -p reports
+          cp weekly-report.md reports/weekly-$(date +%Y-%m-%d).md
+          
+          git add reports/
+          git diff --quiet && git diff --staged --quiet || \
+            (git commit -m "📊 AEGIS Weekly Report - $(date +%Y-%m-%d)" && git push)
