@@ -9,6 +9,18 @@ import { formatDistanceToNow } from 'date-fns';
 import ShowcaseGenerator from './ShowcaseGenerator.vue';
 import LabelManager from './LabelManager.vue';
 
+// Safe date formatter to prevent "Invalid time value" errors
+const safeFormatDistance = (dateString: string | null | undefined) => {
+  if (!dateString) return 'Unknown';
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return 'Invalid date';
+    return formatDistanceToNow(date, { addSuffix: true });
+  } catch {
+    return 'Invalid date';
+  }
+};
+
 const props = defineProps<{
   repo: Repo;
   isOpen: boolean;
@@ -289,7 +301,7 @@ function getHealthColor() {
                     <div class="flex items-center gap-3 mt-1 text-xs text-gray-500">
                       <span>{{ commit.author }}</span>
                       <span>•</span>
-                      <span>{{ formatDistanceToNow(new Date(commit.date), { addSuffix: true }) }}</span>
+                      <span>{{ safeFormatDistance(commit.date) }}</span>
                     </div>
                   </div>
                   <a

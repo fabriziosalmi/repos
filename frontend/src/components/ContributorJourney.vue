@@ -121,7 +121,7 @@
 
               <!-- Repository Milestones -->
               <div
-                v-for="(repo, index) in contributor.repositories.slice(0, 10)"
+                v-for="repo in contributor.repositories.slice(0, 10)"
                 :key="repo.name"
                 class="relative pl-20"
               >
@@ -211,7 +211,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { ArrowLeft, Clock, Sparkles, GitBranch, Zap, BarChart } from 'lucide-vue-next'
 import { formatDistanceToNow, format } from 'date-fns'
 
@@ -256,6 +256,7 @@ const getPercentage = (contributions: number) => {
 const formatDate = (dateString: string) => {
   if (!dateString) return 'Unknown'
   const date = new Date(dateString)
+  if (isNaN(date.getTime())) return 'Invalid date'
   return `${format(date, 'MMM d, yyyy')} (${formatDistanceToNow(date, { addSuffix: true })})`
 }
 

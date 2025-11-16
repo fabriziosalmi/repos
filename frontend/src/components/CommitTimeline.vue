@@ -20,7 +20,8 @@ const timelineData = computed(() => {
   const monthlyActivity = new Map<string, number>();
   
   props.repos.forEach(repo => {
-    const date = new Date(repo.last_update);
+    if (!repo.last_update_api) return;
+    const date = new Date(repo.last_update_api);
     const monthKey = format(startOfMonth(date), 'yyyy-MM');
     monthlyActivity.set(monthKey, (monthlyActivity.get(monthKey) || 0) + 1);
   });

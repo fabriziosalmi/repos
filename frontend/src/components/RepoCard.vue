@@ -123,7 +123,7 @@ const getBusFactorColor = (riskLevel: string) => {
         </div>
       </div>
        <div class="text-center text-slate-500 mt-3">
-         Updated {{ formatDistanceToNow(new Date(repo.last_update), { addSuffix: true }) }}
+         Updated {{ repo.last_update_api ? formatDistanceToNow(new Date(repo.last_update_api), { addSuffix: true }) : repo.last_update_str || 'Unknown' }}
        </div>
     </footer>
   </div>

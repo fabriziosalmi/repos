@@ -36,7 +36,10 @@ export function useFilters() {
     // Date range filter
     if (activeDateRange.value?.start || activeDateRange.value?.end) {
       filtered = filtered.filter(repo => {
-        const repoDate = new Date(repo.last_update);
+        const dateString = repo.last_update_api;
+        if (!dateString) return false;
+        const repoDate = new Date(dateString);
+        if (isNaN(repoDate.getTime())) return false;
         const afterStart = !activeDateRange.value?.start || 
           repoDate >= activeDateRange.value.start;
         const beforeEnd = !activeDateRange.value?.end || 

@@ -76,8 +76,8 @@ const processedRepositories = computed(() => {
   return [...filtered].sort((a, b) => {
     let valA, valB;
     if (sortKey.value === 'last_update') {
-      valA = new Date(a.last_update).getTime();
-      valB = new Date(b.last_update).getTime();
+      valA = a.last_update_api ? new Date(a.last_update_api).getTime() : 0;
+      valB = b.last_update_api ? new Date(b.last_update_api).getTime() : 0;
     } else { // 'stars'
       valA = a.stars;
       valB = b.stars;
