@@ -295,7 +295,7 @@
         "has_issues": true,
         "commits": 387,
         "contributors": 3,
-        "last_update_str": "6 minutes ago",
+        "last_update_str": "13 minutes ago",
         "avg_issue_resolution_time": 1937.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1211,11 +1211,11 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1133,
-        "last_update": "2025-11-16T14:08:22+00:00",
+        "last_update": "2025-11-16T14:15:54+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 753,
-        "contributors": 2,
+        "commits": 755,
+        "contributors": 3,
         "last_update_str": "1 minutes ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
@@ -1223,7 +1223,7 @@
         "language_stats": {
             "Python": {
                 "bytes": 147434,
-                "percentage": 92.09
+                "percentage": 92.1
             },
             "Vue": {
                 "bytes": 9308,
@@ -1242,7 +1242,7 @@
                 "percentage": 0.35
             },
             "TypeScript": {
-                "bytes": 564,
+                "bytes": 557,
                 "percentage": 0.35
             }
         },
@@ -2941,7 +2941,7 @@
         "has_issues": true,
         "commits": 31,
         "contributors": 5,
-        "last_update_str": "31 minutes ago",
+        "last_update_str": "38 minutes ago",
         "avg_issue_resolution_time": 307.0,
         "closed_issues_count": 1,
         "processed_details": true,
