@@ -11,7 +11,7 @@ beautifulsoup4>=4.11.0  # For HTML parsing if needed (optional)
 lxml>=4.9.0  # XML processing (optional)
 
 # Development dependencies (optional)
-# pytest>=7.0.0  # For testing
+pytest>=7.0.0  # For testing
 # black>=22.0.0  # Code formatting  
 # flake8>=4.0.0  # Linting
 # mypy>=0.950  # Type checking
