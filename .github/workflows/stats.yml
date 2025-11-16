@@ -2,58 +2,45 @@ name: Update stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Run daily at midnight UTC
+    - cron: '0 1 * * *'  # Run daily at 1 AM UTC
   workflow_dispatch:
 
 jobs:
-  build:
+  build-stats:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.12'
+      
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  
+          pip install -r requirements.txt
+          pip install pytest
 
       - name: Generate stats
         env:
-          MY_PAT: ${{ secrets.PAT }}  # Pass the PAT as an environment variable
-        run: |
-          python stats.py
-          if [ $? -ne 0 ]; then
-            echo "❌ Stats generation failed"
-            exit 1
-          fi
-          
-          # Validate that the output files were created and are not empty
-          if [ ! -f "fabriziosalmi_github_stats.md" ] || [ ! -s "fabriziosalmi_github_stats.md" ]; then
-            echo "❌ Output markdown file is missing or empty"
-            exit 1
-          fi
-          
-          if [ ! -f "docs/index.html" ] || [ ! -s "docs/index.html" ]; then
-            echo "❌ Output HTML file is missing or empty"
-            exit 1
-          fi
-          
-          echo "✅ Stats generation completed successfully"
+          MY_PAT: ${{ secrets.PAT }}
+        run: python stats.py || exit 1
+
+      - name: Run tests to validate data
+        run: pytest test_stats.py
 
       - name: Copy stats to README.md
-        run: |
-          cp fabriziosalmi_github_stats.md README.md
-          if [ $? -ne 0 ]; then
-            echo "❌ Failed to copy stats to README.md"
-            exit 1
-          fi
-          echo "✅ Successfully copied stats to README.md"
+        run: cp fabriziosalmi_github_stats.md README.md
 
       - name: Commit and push changes
         env:
@@ -69,16 +56,9 @@ jobs:
             exit 0
           fi
           
-          git add README.md docs/index.html
-          git commit -m "Update stats [$(date '+%Y-%m-%d %H:%M UTC')]" || {
-            echo "❌ Failed to commit changes"
-            exit 1
-          }
-          
-          git push || {
-            echo "❌ Failed to push changes"
-            exit 1
-          }
+          git add README.md docs/index.html docs/repositories-data.json
+          git commit -m "Update stats [$(date '+%Y-%m-%d %H:%M UTC')]" || exit 1
+          git push || exit 1
           
           echo "✅ Successfully committed and pushed changes"
           

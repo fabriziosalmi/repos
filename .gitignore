@@ -7,3 +7,18 @@ __pycache__/
 *.pyc
 github_stats.log
 completion_report.py
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Dati generati localmente
+public_data/
+
+# Virtual Environment
+.venv/

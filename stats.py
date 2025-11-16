@@ -630,12 +630,12 @@ def get_user_repositories_stats(username, token=None, console=None):
                     'open_issues_count': repo.get('open_issues_count', 0),  # Open issues count
                     'size': repo.get('size', 0),  # Repository size in KB
                     # Use pushed_at for a better sense of recent code activity, fallback to updated_at
-                    'last_update_api': parse_github_datetime(repo.get('pushed_at') or repo.get('updated_at')),
+                    'last_update': parse_github_datetime(repo.get('pushed_at') or repo.get('updated_at')),
                     'created_at_api': parse_github_datetime(repo.get('created_at')),
                     'has_issues': repo.get('has_issues', False), # Store this info from list endpoint
                     # Initialize fields to be fetched later
-                    'commit_count': None, # Use None to indicate not yet fetched or failed
-                    'contributors_count': None,
+                    'commits': None, # Use None to indicate not yet fetched or failed
+                    'contributors': None,
                     'last_update_str': "Fetching...",
                     'avg_issue_resolution_time': None, # None indicates not calculated or error
                     'closed_issues_count': None, # Using closed_issues_count for clarity
@@ -701,7 +701,7 @@ def get_user_repositories_stats(username, token=None, console=None):
                     logging.warning(f"Failed request for commit count link header for {full_name}.")
                     # commit_count remains None
 
-                repo_info['commit_count'] = commit_count
+                repo_info['commits'] = commit_count
 
 
                 # --- Contributors Count ---
@@ -732,11 +732,11 @@ def get_user_repositories_stats(username, token=None, console=None):
                     logging.warning(f"Failed request for contributor count for {full_name}.")
                     # contributors_count remains None
 
-                repo_info['contributors_count'] = contributors_count
+                repo_info['contributors'] = contributors_count
 
                 # --- Last Update String ---
-                if repo_info['last_update_api']:
-                    repo_info['last_update_str'] = get_human_readable_time(repo_info['last_update_api'])
+                if repo_info['last_update']:
+                    repo_info['last_update_str'] = get_human_readable_time(repo_info['last_update'])
                 else:
                     repo_info['last_update_str'] = "Unknown"
 
@@ -800,12 +800,10 @@ def get_user_repositories_stats(username, token=None, console=None):
 
                 # --- Latest Version (release/tag) ---
                 version_info = get_latest_version_info(full_name, headers, console)
-                repo_info['latest_version'] = version_info.get('name')
-                repo_info['latest_version_type'] = version_info.get('type')
-                repo_info['latest_version_url'] = version_info.get('url')
-                repo_info['latest_version_date_api'] = version_info.get('date_api')
-                repo_info['latest_version_date_str'] = version_info.get('date_str')
-                repo_info['latest_version_rationale'] = version_info.get('rationale')
+                repo_info['version'] = version_info.get('name')
+
+                # --- Status ---
+                repo_info['status'] = get_repository_status_indicator(repo_info)
 
                 repo_info['processed_details'] = True
                 # Optional delay between detailed fetches for different repos
@@ -962,29 +960,18 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
                 if language == 'Not specified':
                     language = 'N/A'
 
-                # Get status indicator (convert rich markup to simple text for markdown)
-                status_indicator = get_repository_status_indicator(repo)
-                # Remove rich markup for markdown
-                status_text = status_indicator
-                if '[' in status_text and ']' in status_text:
-                    # Extract just the emoji and text part
-                    import re
-                    match = re.search(r'[^[]*\]([^[]*)\[', status_text)
-                    if match:
-                        status_text = match.group(1)
-                    else:
-                        # Fallback: just remove the markup
-                        status_text = re.sub(r'\[[^\]]*\]', '', status_text)
+                # Get status indicator
+                status_text = get_repository_status_indicator(repo)
 
                 # Format numbers, handle N/A
                 stars_str = f"{repo.get('stars', 0):,}"
                 forks_str = f"{repo.get('forks', 0):,}"
                 watchers_str = f"{repo.get('watchers', 0):,}"
 
-                commits_val = repo.get('commit_count')
+                commits_val = repo.get('commits')
                 commits_str = f"{commits_val:,}" if commits_val is not None else "N/A"
 
-                contrib_val = repo.get('contributors_count')
+                contrib_val = repo.get('contributors')
                 contrib_str = f"{contrib_val:,}" if contrib_val is not None else "N/A"
 
                 issues_val = repo.get('closed_issues_count')
@@ -993,7 +980,7 @@ def create_markdown_table(repositories, total_stars, top_repo_full_names, userna
                 last_update_str = repo.get('last_update_str', "Unknown")
 
                 # Version info
-                ver_name = repo.get('latest_version') or '—'
+                ver_name = repo.get('version') or '—'
                 ver_url = repo.get('latest_version_url') or ''
                 ver_date = repo.get('latest_version_date_str', 'Unknown')
                 note = repo.get('latest_version_rationale') or ''
@@ -1251,6 +1238,17 @@ def main():
                 console.print(f"[error]Failed to write JSON file: {json_filename}[/error]")
                 return False
 
+            # --- Save repository data to docs/ for static API ---
+            static_api_filename = "docs/repositories-data.json"
+
+            def write_static_api():
+                # We only need the list of repositories for this file
+                save_to_json(user_repositories, filename=static_api_filename)
+
+            if not safe_file_write(static_api_filename, write_static_api):
+                console.print(f"[error]Failed to write static API JSON file: {static_api_filename}[/error]")
+                return False
+
             # --- Create Markdown Table with safe file writing ---
             md_filename = f"{output_prefix}_github_stats.md"
             
@@ -1303,41 +1301,41 @@ def get_repository_status_indicator(repo):
     """Generate status indicator for repository based on various criteria."""
     # Check archived status first (highest priority)
     if repo.get('archived', False):
-        return "[yellow]📦 ARCHIVED[/yellow]"
+        return "📦 ARCHIVED"
     
     # Check disabled status
     if repo.get('disabled', False):
-        return "[red]🚫 DISABLED[/red]"
+        return "🚫 DISABLED"
     
     # Check if it's a fork
     if repo.get('fork', False):
-        return "[cyan]🍴 FORK[/cyan]"
+        return "🍴 FORK"
     
     # Check if repository is inactive (no updates in over 1 year)
-    last_update = repo.get('last_update_api')
+    last_update = repo.get('last_update')
     if last_update:
         try:
             now = datetime.datetime.now(datetime.timezone.utc)
             days_since_update = (now - last_update).days
             if days_since_update > 365:
-                return "[dim]⚠️ INACTIVE[/dim]"
+                return "⚠️ INACTIVE"
             elif days_since_update > 180:
-                return "[dim]⏰ STALE[/dim]"
+                return "⏰ STALE"
             elif days_since_update <= 7:
-                return "[bright_green]🔥 ACTIVE[/bright_green]"
+                return "🔥 ACTIVE"
         except Exception:
             pass
     
     # Check if repository has no description
     if not repo.get('description') or repo.get('description') == "No description":
-        return "[dim]📝 NO DESC[/dim]"
+        return "📝 NO DESC"
     
     # Check if it's a private repository
     if repo.get('private', False):
-        return "[magenta]🔒 PRIVATE[/magenta]"
+        return "🔒 PRIVATE"
     
     # Active repository (default)
-    return "[green]✅ ACTIVE[/green]"
+    return "✅ ACTIVE"
 
 def generate_repository_insights(repositories):
     """Generate insights about the repository collection."""
