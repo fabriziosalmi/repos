@@ -10,7 +10,7 @@ export default defineConfig({
       policy: {
         'default-src': ['self'],
         'script-src': ['self'],
-        'style-src': ['self', 'unsafe-inline'],
+        'style-src': ['self', 'unsafe-inline', 'https://fonts.googleapis.com'],
         'img-src': ['self', 'data:', 'https:'],
         'connect-src': ['self'],
         'font-src': ['self', 'data:', 'https://fonts.gstatic.com'],
