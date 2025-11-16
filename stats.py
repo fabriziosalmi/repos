@@ -547,6 +547,286 @@ def get_latest_version_info(repo_full_name, headers, console=None):
         'rationale': ''
     }
 
+# --- Advanced Metrics Calculation (Oracle V2) ---
+
+def calculate_momentum_score(repo_full_name, current_stars, headers, console=None):
+    """
+    Calculate repository momentum based on recent star growth.
+    Returns dict with: score (0-100), stars_7d, stars_30d, trend
+    """
+    try:
+        # Fetch stargazers with timestamps (limited to last 100)
+        stargazers_url = f"{GITHUB_API_BASE_URL}/repos/{repo_full_name}/stargazers"
+        params = {'per_page': 100}
+        headers_with_accept = headers.copy()
+        headers_with_accept['Accept'] = 'application/vnd.github.v3.star+json'
+        
+        response = make_github_request(stargazers_url, headers_with_accept, params=params, console=console)
+        
+        if not response or response.status_code != 200:
+            return {'score': 0, 'stars_7d': 0, 'stars_30d': 0, 'trend': 'stable'}
+        
+        stargazers = response.json()
+        if not isinstance(stargazers, list):
+            return {'score': 0, 'stars_7d': 0, 'stars_30d': 0, 'trend': 'stable'}
+        
+        now = datetime.datetime.now(datetime.timezone.utc)
+        seven_days_ago = now - datetime.timedelta(days=7)
+        thirty_days_ago = now - datetime.timedelta(days=30)
+        
+        stars_7d = 0
+        stars_30d = 0
+        
+        for star in stargazers:
+            starred_at = parse_github_datetime(star.get('starred_at'))
+            if not starred_at:
+                continue
+            
+            if starred_at >= seven_days_ago:
+                stars_7d += 1
+                stars_30d += 1
+            elif starred_at >= thirty_days_ago:
+                stars_30d += 1
+        
+        # Calculate momentum score (0-100)
+        # Factors: recent stars, acceleration, total stars
+        weekly_rate = stars_7d / 7.0
+        monthly_rate = stars_30d / 30.0
+        
+        # Acceleration bonus (if weekly rate > monthly rate)
+        acceleration = max(0, (weekly_rate - monthly_rate) * 10)
+        
+        # Base score from weekly stars
+        base_score = min(50, stars_7d * 2)
+        
+        # Bonus for larger repos with momentum
+        size_factor = min(30, (current_stars / 100) * 0.5)
+        
+        score = min(100, base_score + acceleration + size_factor)
+        
+        # Determine trend
+        if stars_7d > 5:
+            trend = 'rising'
+        elif stars_7d > 0:
+            trend = 'growing'
+        else:
+            trend = 'stable'
+        
+        return {
+            'score': round(score, 1),
+            'stars_7d': stars_7d,
+            'stars_30d': stars_30d,
+            'trend': trend
+        }
+        
+    except Exception as e:
+        logging.warning(f"Error calculating momentum for {repo_full_name}: {e}")
+        return {'score': 0, 'stars_7d': 0, 'stars_30d': 0, 'trend': 'stable'}
+
+
+def calculate_issue_health(repo_full_name, open_issues_count, avg_resolution_time, headers, console=None):
+    """
+    Calculate issue health score based on response time and stale issues.
+    Returns dict with: health_score (0-100), status ('healthy'|'moderate'|'needs_attention'),
+                       avg_response_hours, stale_issues_count
+    """
+    try:
+        if open_issues_count == 0:
+            return {
+                'health_score': 100,
+                'status': 'healthy',
+                'avg_response_hours': 0,
+                'stale_issues_count': 0
+            }
+        
+        # Fetch recent issues to check response times
+        issues_url = f"{GITHUB_API_BASE_URL}/repos/{repo_full_name}/issues"
+        params = {'state': 'open', 'per_page': 30, 'sort': 'created', 'direction': 'desc'}
+        response = make_github_request(issues_url, headers, params=params, console=console)
+        
+        if not response or response.status_code != 200:
+            return {
+                'health_score': 50,
+                'status': 'unknown',
+                'avg_response_hours': 0,
+                'stale_issues_count': 0
+            }
+        
+        issues = response.json()
+        if not isinstance(issues, list):
+            return {
+                'health_score': 50,
+                'status': 'unknown',
+                'avg_response_hours': 0,
+                'stale_issues_count': 0
+            }
+        
+        now = datetime.datetime.now(datetime.timezone.utc)
+        thirty_days_ago = now - datetime.timedelta(days=30)
+        ninety_days_ago = now - datetime.timedelta(days=90)
+        
+        response_times = []
+        stale_count = 0
+        
+        for issue in issues:
+            created_at = parse_github_datetime(issue.get('created_at'))
+            updated_at = parse_github_datetime(issue.get('updated_at'))
+            
+            if not created_at:
+                continue
+            
+            # Check for stale issues (no update in 90 days)
+            if updated_at and updated_at < ninety_days_ago:
+                stale_count += 1
+            
+            # Calculate response time (created vs first update)
+            if created_at and updated_at and created_at != updated_at:
+                response_time = (updated_at - created_at).total_seconds() / 3600  # hours
+                response_times.append(response_time)
+        
+        # Calculate average response time
+        avg_response_hours = sum(response_times) / len(response_times) if response_times else 0
+        
+        # Calculate health score
+        score = 100
+        
+        # Penalty for slow response (>48 hours average)
+        if avg_response_hours > 168:  # 1 week
+            score -= 40
+        elif avg_response_hours > 48:
+            score -= 20
+        
+        # Penalty for stale issues
+        stale_ratio = stale_count / len(issues) if issues else 0
+        score -= stale_ratio * 30
+        
+        # Penalty for many open issues relative to closed
+        if avg_resolution_time and avg_resolution_time > 0:
+            resolution_days = avg_resolution_time / (24 * 3600)
+            if resolution_days > 30:
+                score -= 10
+        
+        score = max(0, min(100, score))
+        
+        # Determine status
+        if score >= 80:
+            status = 'healthy'
+        elif score >= 50:
+            status = 'moderate'
+        else:
+            status = 'needs_attention'
+        
+        return {
+            'health_score': round(score, 1),
+            'status': status,
+            'avg_response_hours': round(avg_response_hours, 1),
+            'stale_issues_count': stale_count
+        }
+        
+    except Exception as e:
+        logging.warning(f"Error calculating issue health for {repo_full_name}: {e}")
+        return {
+            'health_score': 50,
+            'status': 'unknown',
+            'avg_response_hours': 0,
+            'stale_issues_count': 0
+        }
+
+
+def calculate_bus_factor(contributors_count):
+    """
+    Estimate bus factor (risk if key contributors leave).
+    Returns dict with: bus_factor (int), risk_level ('critical'|'moderate'|'healthy')
+    """
+    if contributors_count is None or contributors_count == 0:
+        return {'bus_factor': 0, 'risk_level': 'unknown'}
+    
+    # Simplified bus factor: assume top contributors do 80% of work
+    # Real calculation would need contributor activity distribution
+    bus_factor = max(1, min(5, contributors_count // 2))
+    
+    if bus_factor == 1:
+        risk_level = 'critical'
+    elif bus_factor == 2:
+        risk_level = 'moderate'
+    else:
+        risk_level = 'healthy'
+    
+    return {
+        'bus_factor': bus_factor,
+        'risk_level': risk_level
+    }
+
+
+def fetch_recent_commits(repo_full_name, headers, console=None, count=5):
+    """
+    Fetch recent commits for repository detail modal.
+    Returns list of dicts with: sha, message, author, date, url
+    """
+    try:
+        commits_url = f"{GITHUB_API_BASE_URL}/repos/{repo_full_name}/commits"
+        params = {'per_page': count}
+        response = make_github_request(commits_url, headers, params=params, console=console)
+        
+        if not response or response.status_code != 200:
+            return []
+        
+        commits = response.json()
+        if not isinstance(commits, list):
+            return []
+        
+        result = []
+        for commit in commits:
+            commit_data = commit.get('commit', {})
+            result.append({
+                'sha': commit.get('sha', '')[:7],
+                'message': commit_data.get('message', '').split('\n')[0][:100],
+                'author': commit_data.get('author', {}).get('name', 'Unknown'),
+                'date': get_human_readable_time(parse_github_datetime(
+                    commit_data.get('author', {}).get('date')
+                )),
+                'url': commit.get('html_url', '#')
+            })
+        
+        return result
+        
+    except Exception as e:
+        logging.warning(f"Error fetching recent commits for {repo_full_name}: {e}")
+        return []
+
+
+def fetch_top_contributors(repo_full_name, headers, console=None, count=5):
+    """
+    Fetch top contributors for repository detail modal.
+    Returns list of dicts with: login, avatar_url, contributions, profile_url
+    """
+    try:
+        contributors_url = f"{GITHUB_API_BASE_URL}/repos/{repo_full_name}/contributors"
+        params = {'per_page': count, 'anon': 'false'}
+        response = make_github_request(contributors_url, headers, params=params, console=console)
+        
+        if not response or response.status_code != 200:
+            return []
+        
+        contributors = response.json()
+        if not isinstance(contributors, list):
+            return []
+        
+        result = []
+        for contrib in contributors:
+            result.append({
+                'login': contrib.get('login', 'Unknown'),
+                'avatar_url': contrib.get('avatar_url', ''),
+                'contributions': contrib.get('contributions', 0),
+                'profile_url': contrib.get('html_url', '#')
+            })
+        
+        return result
+        
+    except Exception as e:
+        logging.warning(f"Error fetching top contributors for {repo_full_name}: {e}")
+        return []
+
 # --- Renamed Function for Clarity ---
 def get_user_repositories_stats(username, token=None, console=None):
     """Fetches owned repos for a user, calculates stats, and handles sorting."""
@@ -804,6 +1084,32 @@ def get_user_repositories_stats(username, token=None, console=None):
 
                 # --- Status ---
                 repo_info['status'] = get_repository_status_indicator(repo_info)
+
+                # --- Oracle V2: Advanced Metrics ---
+                # Calculate momentum score
+                momentum = calculate_momentum_score(
+                    full_name, 
+                    repo_info.get('stars', 0), 
+                    headers, 
+                    console
+                )
+                repo_info['momentum'] = momentum
+                
+                # Calculate issue health
+                issue_health = calculate_issue_health(
+                    full_name,
+                    repo_info.get('open_issues_count', 0),
+                    repo_info.get('avg_issue_resolution_time'),
+                    headers,
+                    console
+                )
+                repo_info['issue_health'] = issue_health
+                
+                # Calculate bus factor
+                bus_factor = calculate_bus_factor(repo_info.get('contributors'))
+                repo_info['bus_factor'] = bus_factor
+                
+                logging.info(f"  Metrics for {full_name}: Momentum={momentum['score']}, Health={issue_health['health_score']}, BusFactor={bus_factor['bus_factor']}")
 
                 repo_info['processed_details'] = True
                 # Optional delay between detailed fetches for different repos

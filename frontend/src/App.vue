@@ -3,6 +3,7 @@
 import { ref, computed, onMounted } from 'vue';
 import RepoCard from './components/RepoCard.vue';
 import LanguageChart from './components/LanguageChart.vue';
+import InsightHub from './components/InsightHub.vue';
 import { Search, Star, History } from 'lucide-vue-next';
 import type { Repo } from './types';
 
@@ -96,6 +97,9 @@ const getSortButtonClass = (key: SortKey) => {
         </div>
         <LanguageChart :repos="allRepositories" />
       </div>
+
+      <!-- Smart Insights -->
+      <InsightHub v-if="!isLoading && !error" :repos="allRepositories" />
 
       <!-- Controls -->
       <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
