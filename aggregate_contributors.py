@@ -156,7 +156,10 @@ def aggregate_contributor_stats(repos_data_path: str, output_path: str):
     print(f"✅ Contributor stats saved to {output_path}")
     print(f"📊 Total contributors: {len(contributor_list)}")
     print(f"🆕 Newcomers (last 30 days): {len(newcomers)}")
-    print(f"🏆 Top contributor: {contributor_list[0]['login']} ({contributor_list[0]['total_contributions']} contributions)")
+    if contributor_list:
+        print(f"🏆 Top contributor: {contributor_list[0]['login']} ({contributor_list[0]['total_contributions']} contributions)")
+    else:
+        print("ℹ️  No contributors found in the data")
 
 
 def calculate_impact_score(contributor_data: Dict[str, Any]) -> float:
