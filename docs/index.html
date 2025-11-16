@@ -513,6 +513,16 @@
                 <div class="stat-value" id="resolutionRate">0%</div>
                 <div class="stat-change">📈 Efficiency</div>
             </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.8s">
+                <div class="stat-label">Total Watchers</div>
+                <div class="stat-value" id="totalWatchers">0</div>
+                <div class="stat-change">👀 Active Followers</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.9s">
+                <div class="stat-label">Active Repos</div>
+                <div class="stat-value" id="activeRepos">0</div>
+                <div class="stat-change">🚀 Live Projects</div>
+            </div>
         </div>
 
         <!-- Filters -->
@@ -663,6 +673,8 @@
             const totalIssues = closedIssues + openIssues;
             const resolutionRate = totalIssues > 0 ? Math.round((closedIssues / totalIssues) * 100) : 0;
             const languages = new Set(filteredRepositories.map(repo => repo.language).filter(Boolean));
+            const totalWatchers = filteredRepositories.reduce((sum, repo) => sum + (repo.watchers || 0), 0);
+            const activeRepos = filteredRepositories.filter(repo => !repo.archived).length;
 
             animateValue('totalRepos', 0, totalRepos, 1000);
             animateValue('totalStars', 0, totalStars, 1000);
@@ -671,6 +683,8 @@
             animateValue('totalCommits', 0, totalCommits, 1000);
             animateValue('totalContributors', 0, totalContributors, 1000);
             animateValue('issuesResolved', 0, closedIssues, 1000);
+            animateValue('totalWatchers', 0, totalWatchers, 1000);
+            animateValue('activeRepos', 0, activeRepos, 1000);
             
             // Handle percentage separately
             const rateElement = document.getElementById('resolutionRate');
