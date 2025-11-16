@@ -69,12 +69,6 @@ jobs:
           python generate_badges.py
           python update_readme_badges.py
 
-      - name: Copy generated files to docs
-        run: |
-          cp -r docs/badges docs/
-          cp docs/STATS.md docs/
-          cp docs/stats-summary.json docs/
-
       - name: Upload data artifact
         uses: actions/upload-artifact@v4
         with:
