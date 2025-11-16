@@ -1,0 +1,719 @@
+{
+  "updated_at": "2025-11-16T17:09:50.535611",
+  "total_contributors": 0,
+  "total_repositories": 88,
+  "top_contributors": [],
+  "newcomers": [],
+  "all_contributors": [],
+  "repositories": [
+    {
+      "name": "certmate",
+      "url": "https://github.com/fabriziosalmi/certmate",
+      "stars": 898,
+      "forks": 53,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "caddy-waf",
+      "url": "https://github.com/fabriziosalmi/caddy-waf",
+      "stars": 660,
+      "forks": 22,
+      "language": "Go",
+      "last_update": ""
+    },
+    {
+      "name": "patterns",
+      "url": "https://github.com/fabriziosalmi/patterns",
+      "stars": 296,
+      "forks": 7,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "UglyFeed",
+      "url": "https://github.com/fabriziosalmi/UglyFeed",
+      "stars": 285,
+      "forks": 17,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "proxmox-vm-autoscale",
+      "url": "https://github.com/fabriziosalmi/proxmox-vm-autoscale",
+      "stars": 273,
+      "forks": 22,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "proxmox-lxc-autoscale",
+      "url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale",
+      "stars": 217,
+      "forks": 9,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "wildbox",
+      "url": "https://github.com/fabriziosalmi/wildbox",
+      "stars": 88,
+      "forks": 3,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "DevGPT",
+      "url": "https://github.com/fabriziosalmi/DevGPT",
+      "stars": 70,
+      "forks": 6,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "lws",
+      "url": "https://github.com/fabriziosalmi/lws",
+      "stars": 68,
+      "forks": 7,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "websites-monitor",
+      "url": "https://github.com/fabriziosalmi/websites-monitor",
+      "stars": 56,
+      "forks": 20,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "brandkit",
+      "url": "https://github.com/fabriziosalmi/brandkit",
+      "stars": 40,
+      "forks": 3,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "blacklists",
+      "url": "https://github.com/fabriziosalmi/blacklists",
+      "stars": 39,
+      "forks": 1,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "caddy-mib",
+      "url": "https://github.com/fabriziosalmi/caddy-mib",
+      "stars": 38,
+      "forks": 3,
+      "language": "Go",
+      "last_update": ""
+    },
+    {
+      "name": "iamnotacoder",
+      "url": "https://github.com/fabriziosalmi/iamnotacoder",
+      "stars": 33,
+      "forks": 4,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "cf-box",
+      "url": "https://github.com/fabriziosalmi/cf-box",
+      "stars": 28,
+      "forks": 6,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "zonecontrol",
+      "url": "https://github.com/fabriziosalmi/zonecontrol",
+      "stars": 27,
+      "forks": 3,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "proxmox-lxc-autoscale-ml",
+      "url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml",
+      "stars": 26,
+      "forks": 3,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "secure-proxy-manager",
+      "url": "https://github.com/fabriziosalmi/secure-proxy-manager",
+      "stars": 21,
+      "forks": 3,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "dnscontrol-actions",
+      "url": "https://github.com/fabriziosalmi/dnscontrol-actions",
+      "stars": 19,
+      "forks": 4,
+      "language": "JavaScript",
+      "last_update": ""
+    },
+    {
+      "name": "limits",
+      "url": "https://github.com/fabriziosalmi/limits",
+      "stars": 19,
+      "forks": 3,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "csv-anonymizer",
+      "url": "https://github.com/fabriziosalmi/csv-anonymizer",
+      "stars": 10,
+      "forks": 0,
+      "language": "JavaScript",
+      "last_update": ""
+    },
+    {
+      "name": "pdf-ocr",
+      "url": "https://github.com/fabriziosalmi/pdf-ocr",
+      "stars": 10,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "newsgator",
+      "url": "https://github.com/fabriziosalmi/newsgator",
+      "stars": 9,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "nginx-waf-ai",
+      "url": "https://github.com/fabriziosalmi/nginx-waf-ai",
+      "stars": 9,
+      "forks": 3,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "proxmox-cluster-balancer",
+      "url": "https://github.com/fabriziosalmi/proxmox-cluster-balancer",
+      "stars": 8,
+      "forks": 3,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "webtek",
+      "url": "https://github.com/fabriziosalmi/webtek",
+      "stars": 8,
+      "forks": 4,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "wafcontrol",
+      "url": "https://github.com/fabriziosalmi/wafcontrol",
+      "stars": 7,
+      "forks": 1,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "ethical-ai",
+      "url": "https://github.com/fabriziosalmi/ethical-ai",
+      "stars": 6,
+      "forks": 1,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "repos",
+      "url": "https://github.com/fabriziosalmi/repos",
+      "stars": 6,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "bootstrap-w3c-seo",
+      "url": "https://github.com/fabriziosalmi/bootstrap-w3c-seo",
+      "stars": 5,
+      "forks": 2,
+      "language": "PHP",
+      "last_update": ""
+    },
+    {
+      "name": "caddy-adf",
+      "url": "https://github.com/fabriziosalmi/caddy-adf",
+      "stars": 5,
+      "forks": 0,
+      "language": "Go",
+      "last_update": ""
+    },
+    {
+      "name": "fqdn-model",
+      "url": "https://github.com/fabriziosalmi/fqdn-model",
+      "stars": 5,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "awesomeness",
+      "url": "https://github.com/fabriziosalmi/awesomeness",
+      "stars": 4,
+      "forks": 0,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "linux",
+      "url": "https://github.com/fabriziosalmi/linux",
+      "stars": 4,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "last_update": ""
+    },
+    {
+      "name": "proxima-ui",
+      "url": "https://github.com/fabriziosalmi/proxima-ui",
+      "stars": 4,
+      "forks": 1,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "tubeconv",
+      "url": "https://github.com/fabriziosalmi/tubeconv",
+      "stars": 4,
+      "forks": 0,
+      "language": "JavaScript",
+      "last_update": ""
+    },
+    {
+      "name": "You-Know-What-AI-Mean",
+      "url": "https://github.com/fabriziosalmi/You-Know-What-AI-Mean",
+      "stars": 4,
+      "forks": 1,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "reverse-proxy-manager",
+      "url": "https://github.com/fabriziosalmi/reverse-proxy-manager",
+      "stars": 3,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "shortlist",
+      "url": "https://github.com/fabriziosalmi/shortlist",
+      "stars": 3,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "WP-Search-Blacklist",
+      "url": "https://github.com/fabriziosalmi/WP-Search-Blacklist",
+      "stars": 3,
+      "forks": 3,
+      "language": "PHP",
+      "last_update": ""
+    },
+    {
+      "name": "audiogen",
+      "url": "https://github.com/fabriziosalmi/audiogen",
+      "stars": 2,
+      "forks": 1,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "caddy-feeds",
+      "url": "https://github.com/fabriziosalmi/caddy-feeds",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "cloudflare-backup-actions",
+      "url": "https://github.com/fabriziosalmi/cloudflare-backup-actions",
+      "stars": 2,
+      "forks": 3,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "mtls-cloudflare-aws",
+      "url": "https://github.com/fabriziosalmi/mtls-cloudflare-aws",
+      "stars": 2,
+      "forks": 1,
+      "language": "Shell",
+      "last_update": ""
+    },
+    {
+      "name": "open-video-watermark",
+      "url": "https://github.com/fabriziosalmi/open-video-watermark",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "proximity",
+      "url": "https://github.com/fabriziosalmi/proximity",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "sci-fi",
+      "url": "https://github.com/fabriziosalmi/sci-fi",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "any-to-mp4",
+      "url": "https://github.com/fabriziosalmi/any-to-mp4",
+      "stars": 1,
+      "forks": 1,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "betcracker",
+      "url": "https://github.com/fabriziosalmi/betcracker",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "blockchain-poc",
+      "url": "https://github.com/fabriziosalmi/blockchain-poc",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "dnsmate",
+      "url": "https://github.com/fabriziosalmi/dnsmate",
+      "stars": 1,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "extreme-content-detector",
+      "url": "https://github.com/fabriziosalmi/extreme-content-detector",
+      "stars": 1,
+      "forks": 0,
+      "language": "JavaScript",
+      "last_update": ""
+    },
+    {
+      "name": "freeundergroundtekno",
+      "url": "https://github.com/fabriziosalmi/freeundergroundtekno",
+      "stars": 1,
+      "forks": 0,
+      "language": "JavaScript",
+      "last_update": ""
+    },
+    {
+      "name": "gradios",
+      "url": "https://github.com/fabriziosalmi/gradios",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "llm-benchmarks",
+      "url": "https://github.com/fabriziosalmi/llm-benchmarks",
+      "stars": 1,
+      "forks": 1,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "nexus-mcp-server",
+      "url": "https://github.com/fabriziosalmi/nexus-mcp-server",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "repolizer",
+      "url": "https://github.com/fabriziosalmi/repolizer",
+      "stars": 1,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "rivoluzioneinformatica-website",
+      "url": "https://github.com/fabriziosalmi/rivoluzioneinformatica-website",
+      "stars": 1,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "secbeat",
+      "url": "https://github.com/fabriziosalmi/secbeat",
+      "stars": 1,
+      "forks": 1,
+      "language": "Rust",
+      "last_update": ""
+    },
+    {
+      "name": "test-aws-terraform",
+      "url": "https://github.com/fabriziosalmi/test-aws-terraform",
+      "stars": 1,
+      "forks": 0,
+      "language": "HCL",
+      "last_update": ""
+    },
+    {
+      "name": "uglyfeed-cdn",
+      "url": "https://github.com/fabriziosalmi/uglyfeed-cdn",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "zitto.net",
+      "url": "https://github.com/fabriziosalmi/zitto.net",
+      "stars": 1,
+      "forks": 0,
+      "language": "Elixir",
+      "last_update": ""
+    },
+    {
+      "name": "advanced-trading-framework",
+      "url": "https://github.com/fabriziosalmi/advanced-trading-framework",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "ai-chatbot-encryption",
+      "url": "https://github.com/fabriziosalmi/ai-chatbot-encryption",
+      "stars": 0,
+      "forks": 1,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "audiolibri",
+      "url": "https://github.com/fabriziosalmi/audiolibri",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "audiolibri-editor",
+      "url": "https://github.com/fabriziosalmi/audiolibri-editor",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "certmate-website",
+      "url": "https://github.com/fabriziosalmi/certmate-website",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "crosswords",
+      "url": "https://github.com/fabriziosalmi/crosswords",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "last_update": ""
+    },
+    {
+      "name": "dgrid",
+      "url": "https://github.com/fabriziosalmi/dgrid",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "domainsblacklists",
+      "url": "https://github.com/fabriziosalmi/domainsblacklists",
+      "stars": 0,
+      "forks": 1,
+      "language": "CSS",
+      "last_update": ""
+    },
+    {
+      "name": "fabriziosalmi",
+      "url": "https://github.com/fabriziosalmi/fabriziosalmi",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "github-games",
+      "url": "https://github.com/fabriziosalmi/github-games",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "iGPT",
+      "url": "https://github.com/fabriziosalmi/iGPT",
+      "stars": 0,
+      "forks": 1,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "k8s",
+      "url": "https://github.com/fabriziosalmi/k8s",
+      "stars": 0,
+      "forks": 0,
+      "language": "Shell",
+      "last_update": ""
+    },
+    {
+      "name": "metatoken",
+      "url": "https://github.com/fabriziosalmi/metatoken",
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "last_update": ""
+    },
+    {
+      "name": "nanocoder",
+      "url": "https://github.com/fabriziosalmi/nanocoder",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "navigator",
+      "url": "https://github.com/fabriziosalmi/navigator",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "last_update": ""
+    },
+    {
+      "name": "notransformers",
+      "url": "https://github.com/fabriziosalmi/notransformers",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "rot",
+      "url": "https://github.com/fabriziosalmi/rot",
+      "stars": 0,
+      "forks": 0,
+      "language": "Rust",
+      "last_update": ""
+    },
+    {
+      "name": "shortlist-log",
+      "url": "https://github.com/fabriziosalmi/shortlist-log",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "last_update": ""
+    },
+    {
+      "name": "synapse-ng",
+      "url": "https://github.com/fabriziosalmi/synapse-ng",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "synapse-state",
+      "url": "https://github.com/fabriziosalmi/synapse-state",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "tensorflow-poc",
+      "url": "https://github.com/fabriziosalmi/tensorflow-poc",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "text-boundaries",
+      "url": "https://github.com/fabriziosalmi/text-boundaries",
+      "stars": 0,
+      "forks": 1,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "transversal",
+      "url": "https://github.com/fabriziosalmi/transversal",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "last_update": ""
+    },
+    {
+      "name": "unuseful",
+      "url": "https://github.com/fabriziosalmi/unuseful",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "versiontracker",
+      "url": "https://github.com/fabriziosalmi/versiontracker",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "last_update": ""
+    },
+    {
+      "name": "web-kick",
+      "url": "https://github.com/fabriziosalmi/web-kick",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "last_update": ""
+    }
+  ],
+  "statistics": {
+    "avg_contributions_per_contributor": 0,
+    "avg_repos_per_contributor": 0,
+    "total_contributions": 0
+  }
+}

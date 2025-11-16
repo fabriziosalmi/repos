@@ -1,22 +1,22 @@
 {
-  "generated_at": "2025-11-16T16:20:45.625280",
+  "generated_at": "2025-11-16T17:09:50.918732",
   "overview": {
     "total_repositories": 88,
     "total_stars": 3347,
     "total_forks": 230,
     "total_watchers": 3347,
-    "total_issues": 47,
-    "total_commits": 16415,
-    "total_contributors": 453,
-    "total_closed_issues": 57,
-    "total_all_issues": 104
+    "total_issues": 46,
+    "total_commits": 0,
+    "total_contributors": 0,
+    "total_closed_issues": 4,
+    "total_all_issues": 50
   },
   "development_activity": {
-    "total_commits": 16415,
-    "average_commits_per_repo": 186.5,
-    "total_contributors": 453,
-    "issues_resolved": 57,
-    "issue_resolution_rate": 54.8
+    "total_commits": 0,
+    "average_commits_per_repo": 0.0,
+    "total_contributors": 0,
+    "issues_resolved": 4,
+    "issue_resolution_rate": 8.0
   },
   "languages": {
     "count": 12,
@@ -33,7 +33,7 @@
       "HCL": 1,
       "Elixir": 1,
       "CSS": 1,
-      "TypeScript": 2
+      "TypeScript": 1
     }
   },
   "top_performers": {
@@ -42,12 +42,12 @@
       "stars": 898
     },
     "most_active": {
-      "name": "bootstrap-w3c-seo",
-      "commits": 3592
+      "name": "certmate",
+      "commits": 0
     },
     "most_collaborative": {
-      "name": "bootstrap-w3c-seo",
-      "contributors": 257
+      "name": "certmate",
+      "contributors": 0
     }
   },
   "breakdown": {
@@ -58,8 +58,8 @@
   },
   "metrics": {
     "average_stars": 38.0,
-    "average_commits": 186.5,
-    "issue_resolution_rate": 54.8,
+    "average_commits": 0.0,
+    "issue_resolution_rate": 8.0,
     "engagement_score": 62.28
   }
 }

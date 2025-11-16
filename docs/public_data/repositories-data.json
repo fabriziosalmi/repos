@@ -159,7 +159,7 @@
         "has_issues": true,
         "commits": 265,
         "contributors": 6,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 574756.125,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -269,7 +269,7 @@
         "has_issues": true,
         "commits": 119,
         "contributors": 8,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 1606762.25,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -324,7 +324,7 @@
         "has_issues": true,
         "commits": 638,
         "contributors": 3,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 1605432.6666666667,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -391,7 +391,7 @@
         "has_issues": true,
         "commits": 388,
         "contributors": 3,
-        "last_update_str": "1 hours ago",
+        "last_update_str": "2 hours ago",
         "avg_issue_resolution_time": 1937.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -587,7 +587,7 @@
         "has_issues": true,
         "commits": 876,
         "contributors": 4,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 25762991.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -642,7 +642,7 @@
         "has_issues": true,
         "commits": 48,
         "contributors": 2,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -870,7 +870,7 @@
         "has_issues": true,
         "commits": 318,
         "contributors": 3,
-        "last_update_str": "12 hours ago",
+        "last_update_str": "13 hours ago",
         "avg_issue_resolution_time": 61.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1027,7 +1027,7 @@
         "has_issues": true,
         "commits": 272,
         "contributors": 4,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 3235661.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1149,7 +1149,7 @@
         "has_issues": true,
         "commits": 46,
         "contributors": 2,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1381,7 +1381,7 @@
         "has_issues": true,
         "commits": 58,
         "contributors": 2,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "21 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1658,11 +1658,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 5,
-        "size": 1729,
-        "last_update": "2025-11-16T16:18:09+00:00",
+        "size": 2255,
+        "last_update": "2025-11-16T17:07:03+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 775,
+        "commits": 782,
         "contributors": 3,
         "last_update_str": "1 minutes ago",
         "avg_issue_resolution_time": 73785.0,
@@ -1670,36 +1670,36 @@
         "processed_details": true,
         "language_stats": {
             "Python": {
-                "bytes": 216082,
-                "percentage": 76.78
+                "bytes": 223360,
+                "percentage": 69.02
             },
             "Vue": {
-                "bytes": 49496,
-                "percentage": 17.59
+                "bytes": 84086,
+                "percentage": 25.98
             },
             "TypeScript": {
-                "bytes": 6088,
-                "percentage": 2.16
+                "bytes": 6430,
+                "percentage": 1.99
             },
             "Shell": {
                 "bytes": 4847,
-                "percentage": 1.72
+                "percentage": 1.5
             },
             "Makefile": {
                 "bytes": 2101,
-                "percentage": 0.75
+                "percentage": 0.65
             },
             "CSS": {
                 "bytes": 1611,
-                "percentage": 0.57
+                "percentage": 0.5
             },
             "HTML": {
                 "bytes": 625,
-                "percentage": 0.22
+                "percentage": 0.19
             },
             "JavaScript": {
                 "bytes": 567,
-                "percentage": 0.2
+                "percentage": 0.18
             }
         },
         "version": "v4.0.0",
@@ -2663,7 +2663,7 @@
         "has_issues": true,
         "commits": 37,
         "contributors": 2,
-        "last_update_str": "1 hours ago",
+        "last_update_str": "2 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3107,7 +3107,7 @@
         "has_issues": true,
         "commits": 74,
         "contributors": 3,
-        "last_update_str": "16 hours ago",
+        "last_update_str": "17 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3550,7 +3550,7 @@
         "has_issues": true,
         "commits": 1118,
         "contributors": 2,
-        "last_update_str": "11 hours ago",
+        "last_update_str": "12 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4030,25 +4030,25 @@
         "fork": false,
         "license": "No license",
         "default_branch": "main",
-        "open_issues_count": 1,
-        "size": 140,
-        "last_update": "2025-11-16T16:10:21+00:00",
+        "open_issues_count": 0,
+        "size": 189,
+        "last_update": "2025-11-16T16:59:59+00:00",
         "created_at_api": "2025-10-16T18:32:24+00:00",
         "has_issues": true,
-        "commits": 34,
+        "commits": 47,
         "contributors": 5,
-        "last_update_str": "8 minutes ago",
+        "last_update_str": "7 minutes ago",
         "avg_issue_resolution_time": 307.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
-                "bytes": 43771,
-                "percentage": 97.42
+                "bytes": 87658,
+                "percentage": 98.69
             },
             "Dockerfile": {
                 "bytes": 1160,
-                "percentage": 2.58
+                "percentage": 1.31
             }
         },
         "version": null,
@@ -4062,7 +4062,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.3,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -4151,7 +4151,7 @@
         "has_issues": true,
         "commits": 59,
         "contributors": 3,
-        "last_update_str": "13 hours ago",
+        "last_update_str": "14 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4471,7 +4471,7 @@
         "has_issues": true,
         "commits": 163,
         "contributors": 4,
-        "last_update_str": "6 hours ago",
+        "last_update_str": "7 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
