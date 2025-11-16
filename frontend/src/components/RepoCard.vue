@@ -1,7 +1,7 @@
 <!-- frontend/src/components/RepoCard.vue -->
 <script setup lang="ts">
 import { formatDistanceToNow } from 'date-fns';
-import { it } from 'date-fns/locale'; // Per avere "2 settimane fa" in italiano
+// import { it } from 'date-fns/locale'; // Per avere "2 settimane fa" in italiano
 import { Star, GitFork, Users, GitCommit } from 'lucide-vue-next'; // Import icons
 import type { Repo } from '../types';
 
@@ -10,7 +10,7 @@ defineProps<{
 }>();
 
 const getLanguageColor = (lang: string) => {
-  // Semplice hash per dare un colore unico ma consistente
+  // Simple hash to give a unique but consistent color
   const colors = ['bg-cyan-500', 'bg-fuchsia-500', 'bg-emerald-500', 'bg-amber-500', 'bg-red-500'];
   if (!lang) return 'bg-gray-500';
   let hash = 0;
@@ -38,7 +38,7 @@ const getLanguageColor = (lang: string) => {
       
       <!-- BODY -->
       <p class="text-sm text-slate-400 mb-4 h-10 overflow-hidden">
-        {{ repo.description || 'Nessuna descrizione disponibile.' }}
+        {{ repo.description || 'No description available.' }}
       </p>
     </div>
 
@@ -47,7 +47,7 @@ const getLanguageColor = (lang: string) => {
       <div class="flex justify-between items-center mb-2">
         <div class="flex items-center gap-1">
           <span :class="[getLanguageColor(repo.language), 'w-3 h-3 rounded-full']"></span>
-          <span>{{ repo.language || 'N/D' }}</span>
+          <span>{{ repo.language || 'N/A' }}</span>
         </div>
         <span class="font-mono">{{ repo.version }}</span>
       </div>
@@ -70,7 +70,7 @@ const getLanguageColor = (lang: string) => {
         </div>
       </div>
        <div class="text-center text-slate-500 mt-3">
-         Aggiornato {{ formatDistanceToNow(new Date(repo.last_update), { addSuffix: true, locale: it }) }}
+         Updated {{ formatDistanceToNow(new Date(repo.last_update), { addSuffix: true }) }}
        </div>
     </footer>
   </div>

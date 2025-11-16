@@ -29,7 +29,7 @@ const chartOptions = computed<ApexOptions>(() => ({
   theme: { mode: 'dark', palette: 'palette2' },
   labels: chartData.value.labels,
   legend: { show: true, position: 'bottom', labels: { colors: '#94a3b8' } },
-  plotOptions: { pie: { donut: { labels: { show: true, total: { show: true, label: 'Progetti', color: '#00ffcc' } } } } },
+  plotOptions: { pie: { donut: { labels: { show: true, total: { show: true, label: 'Projects', color: '#00ffcc' } } } } },
   dataLabels: { enabled: false },
   responsive: [{
     breakpoint: 480,
@@ -40,7 +40,7 @@ const chartOptions = computed<ApexOptions>(() => ({
 
 <template>
   <div class="border border-fuchsia-500/20 bg-slate-900/50 p-4 rounded-md backdrop-blur-sm">
-    <h3 class="text-lg font-bold text-fuchsia-300 mb-4">Distribuzione Linguaggi</h3>
+    <h3 class="text-lg font-bold text-fuchsia-300 mb-4">Language Distribution</h3>
     <VueApexCharts
       type="donut"
       :options="chartOptions"

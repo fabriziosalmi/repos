@@ -27,7 +27,7 @@ onMounted(async () => {
     allRepositories.value = data;
   } catch (e: any) {
     console.error("Failed to fetch repositories:", e);
-    error.value = "Impossibile caricare i dati dal terminale centrale. Riprovare.";
+    error.value = "Failed to load data from the central terminal. Please try again.";
   } finally {
     isLoading.value = false;
   }
@@ -87,7 +87,7 @@ const getSortButtonClass = (key: SortKey) => {
     <div class="container mx-auto">
       <header class="text-center mb-12">
         <h1 class="text-4xl lg:text-5xl font-bold text-cyber-primary tracking-widest">fabriziosalmi // Holo-Dashboard</h1>
-        <p class="text-lg mt-2 text-cyber-text/80">Status operativo di tutte le repository.</p>
+        <p class="text-lg mt-2 text-cyber-text/80">Operational status of all repositories.</p>
       </header>
 
       <div v-if="!isLoading && !error" class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
@@ -103,26 +103,26 @@ const getSortButtonClass = (key: SortKey) => {
           <input 
             type="text" 
             v-model="searchTerm" 
-            placeholder="Cerca un repository..."
+            placeholder="Search a repository..."
             class="w-full md:w-72 bg-cyber-bg/70 border-2 border-cyber-primary/50 rounded-full py-2 px-6 text-cyber-text focus:outline-none focus:border-cyber-primary transition-colors"
           />
           <Search class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-cyber-primary/70" />
         </div>
         <div class="flex gap-3">
           <button @click="setSortKey('stars')" :class="getSortButtonClass('stars')">
-            <Star class="h-5 w-5" /> Stelle
+            <Star class="h-5 w-5" /> Stars
           </button>
           <button @click="setSortKey('last_update')" :class="getSortButtonClass('last_update')">
-            <History class="h-5 w-5" /> Attività
+            <History class="h-5 w-5" /> Activity
           </button>
         </div>
       </div>
 
       <div v-if="isLoading" class="text-center">
-        <p class="text-2xl animate-pulse">Caricamento dati dal Cyberspazio...</p>
+        <p class="text-2xl animate-pulse">Loading data from Cyberspace...</p>
       </div>
       <div v-else-if="error" class="text-center bg-red-900/50 border border-red-500 p-4 rounded-lg">
-        <p class="font-bold text-xl text-red-400">[ERRORE DI CONNESSIONE]</p>
+        <p class="font-bold text-xl text-red-400">[CONNECTION ERROR]</p>
         <p class="text-red-300">{{ error }}</p>
       </div>
       <TransitionGroup v-else tag="div" name="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
