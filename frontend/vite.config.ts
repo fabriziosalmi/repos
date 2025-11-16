@@ -13,7 +13,7 @@ export default defineConfig({
         'style-src': ['self', 'unsafe-inline'],
         'img-src': ['self', 'data:', 'https:'],
         'connect-src': ['self'],
-        'font-src': ['self', 'data:'],
+        'font-src': ['self', 'data:', 'https://fonts.gstatic.com'],
         'object-src': ['none'],
         'base-uri': ['self'],
         'form-action': ['self'],
