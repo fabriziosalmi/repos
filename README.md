@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/github/license/fabriziosalmi/repos?style=for-the-badge)](LICENSE)
 [![Last Update](https://img.shields.io/github/last-commit/fabriziosalmi/repos?style=for-the-badge)](https://github.com/fabriziosalmi/repos/commits)
 
-**[🌐 View Live Dashboard](https://fabriziosalmi.github.io/repos/)** • **[📖 Documentation](SETUP.md)** • **[📊 Detailed Stats](docs/STATS.md)** • **[✨ Features](FEATURES.md)**
+**[🌐 View Live Dashboard](https://fabriziosalmi.github.io/repos/)** • **[🚀 Quick Start](TUTORIAL.md)** • **[📖 Documentation](SETUP.md)** • **[📊 Detailed Stats](docs/STATS.md)** • **[✨ Features](FEATURES.md)**
 
 ---
 
