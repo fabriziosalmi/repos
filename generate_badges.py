@@ -37,15 +37,15 @@ class BadgeGenerator:
     def _calculate_stats(self) -> Dict:
         """Calculate comprehensive statistics from repository data"""
         total_repos = len(self.repositories)
-        total_stars = sum(repo.get('stars', 0) for repo in self.repositories)
-        total_forks = sum(repo.get('forks', 0) for repo in self.repositories)
-        total_watchers = sum(repo.get('watchers', 0) for repo in self.repositories)
-        total_issues = sum(repo.get('open_issues_count', 0) for repo in self.repositories)
+        total_stars = sum(repo.get('stars', 0) or 0 for repo in self.repositories)
+        total_forks = sum(repo.get('forks', 0) or 0 for repo in self.repositories)
+        total_watchers = sum(repo.get('watchers', 0) or 0 for repo in self.repositories)
+        total_issues = sum(repo.get('open_issues_count', 0) or 0 for repo in self.repositories)
         
         # Advanced metrics
-        total_commits = sum(repo.get('commits', 0) for repo in self.repositories)
-        total_contributors = sum(repo.get('contributors', 0) for repo in self.repositories)
-        total_closed_issues = sum(repo.get('closed_issues_count', 0) for repo in self.repositories)
+        total_commits = sum(repo.get('commits', 0) or 0 for repo in self.repositories)
+        total_contributors = sum(repo.get('contributors', 0) or 0 for repo in self.repositories)
+        total_closed_issues = sum(repo.get('closed_issues_count', 0) or 0 for repo in self.repositories)
         
         # Calculate resolved issues
         total_all_issues = total_issues + total_closed_issues
