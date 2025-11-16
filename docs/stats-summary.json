@@ -1,0 +1,42 @@
+{
+  "generated_at": "2025-11-16T15:30:04.382287",
+  "overview": {
+    "total_repositories": 88,
+    "total_stars": 3347,
+    "total_forks": 230,
+    "total_watchers": 3347,
+    "total_issues": 47
+  },
+  "languages": {
+    "count": 12,
+    "top_language": "Python",
+    "distribution": {
+      "Python": 43,
+      "Go": 3,
+      "HTML": 14,
+      "JavaScript": 7,
+      "PHP": 2,
+      "Jupyter Notebook": 2,
+      "Shell": 2,
+      "Rust": 2,
+      "HCL": 1,
+      "Elixir": 1,
+      "CSS": 1,
+      "TypeScript": 2
+    }
+  },
+  "top_repository": {
+    "name": "certmate",
+    "stars": 898
+  },
+  "breakdown": {
+    "original": 86,
+    "forked": 2,
+    "active": 83,
+    "archived": 5
+  },
+  "metrics": {
+    "average_stars": 38.0,
+    "engagement_score": 62.28
+  }
+}

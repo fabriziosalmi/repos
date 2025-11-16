@@ -47,11 +47,26 @@ jobs:
         env:
           MY_PAT: ${{ secrets.MY_PAT }}
 
+      - name: Generate badges and statistics
+        run: |
+          python generate_badges.py
+          python update_readme_badges.py
+
+      - name: Copy generated files to docs
+        run: |
+          cp -r docs/badges docs/
+          cp docs/STATS.md docs/
+          cp docs/stats-summary.json docs/
+
       - name: Upload data artifact
         uses: actions/upload-artifact@v4
         with:
           name: stats-data
-          path: public_data/
+          path: |
+            public_data/
+            docs/badges/
+            docs/STATS.md
+            docs/stats-summary.json
           retention-days: 1
 
   build-and-deploy:

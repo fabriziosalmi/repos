@@ -1,24 +1,57 @@
-functions/__pycache__
-*.png
-__pycache__/
-*_github_stats.json
-*_github_stats.md
-.DS_Store
-*.pyc
-github_stats.log
-completion_report.py
-
-# Frontend
-frontend/node_modules
-frontend/dist
-frontend/.DS_Store
-
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
 
-# Dati generati localmente
-public_data/
-
-# Virtual Environment
+# Environment
+.env
 .venv/
+venv/
+ENV/
+
+# Cache files
+github_stats_cache.json
+github_stats.log
+*.log
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Generated data (keep in repo for GitHub Pages)
+# public_data/
+# docs/badges/
+# docs/STATS.md
+# docs/stats-summary.json
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+
+# Old generated files
+functions/__pycache__
+*_github_stats.json
+*_github_stats.md
+completion_report.py

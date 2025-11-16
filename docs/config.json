@@ -1,0 +1,65 @@
+{
+  "dashboard": {
+    "title": "GitHub Repository Analytics",
+    "description": "Advanced analytics dashboard for GitHub repositories",
+    "author": "fabriziosalmi",
+    "repository": "fabriziosalmi/repos",
+    "homepage": "https://fabriziosalmi.github.io/repos/"
+  },
+  "features": {
+    "search": true,
+    "sort": true,
+    "filter": true,
+    "charts": true,
+    "darkMode": true,
+    "responsive": true
+  },
+  "charts": {
+    "languageDistribution": {
+      "enabled": true,
+      "type": "doughnut",
+      "maxItems": 8
+    },
+    "topStars": {
+      "enabled": true,
+      "type": "bar",
+      "maxItems": 10
+    },
+    "activity": {
+      "enabled": true,
+      "type": "line",
+      "monthsToShow": 12
+    },
+    "forkStarCorrelation": {
+      "enabled": true,
+      "type": "scatter",
+      "maxItems": 15
+    }
+  },
+  "filters": {
+    "languages": true,
+    "archived": true,
+    "forks": true
+  },
+  "sorting": {
+    "options": ["stars", "forks", "updated", "name"],
+    "default": "stars"
+  },
+  "theme": {
+    "primary": "#58a6ff",
+    "secondary": "#3fb950",
+    "accent": "#bc8cff",
+    "background": "#0d1117",
+    "surface": "#161b22"
+  },
+  "privacy": {
+    "analytics": false,
+    "cookies": false,
+    "tracking": false
+  },
+  "updates": {
+    "frequency": "daily",
+    "schedule": "0 1 * * *",
+    "autoCommit": true
+  }
+}
