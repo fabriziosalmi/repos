@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Custom theme configuration for Tailwind v4 */
+@theme {
+  --color-cyber-bg: #0a0a1a;
+  --color-cyber-text: #00ffcc;
+  --color-cyber-primary: #00ffff;
+  
+  --font-family-mono: "Fira Code", "Courier", monospace;
+}
 
 /* Vue TransitionGroup styles */
 .list-move,
