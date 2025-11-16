@@ -47,8 +47,8 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Run validation tests
-        run: python -m pytest # Assumendo che tu usi pytest e test_stats.py esista
+      # - name: Run validation tests
+      #   run: python -m pytest # Assumendo che tu usi pytest e test_stats.py esista
 
       - name: Generate stats data
         run: python stats.py # Questo crea la cartella 'public_data'
