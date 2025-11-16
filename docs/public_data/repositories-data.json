@@ -391,7 +391,7 @@
         "has_issues": true,
         "commits": 388,
         "contributors": 3,
-        "last_update_str": "2 hours ago",
+        "last_update_str": "3 hours ago",
         "avg_issue_resolution_time": 1937.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1659,23 +1659,23 @@
         "default_branch": "main",
         "open_issues_count": 5,
         "size": 2255,
-        "last_update": "2025-11-16T17:07:03+00:00",
+        "last_update": "2025-11-16T17:19:47+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 782,
+        "commits": 784,
         "contributors": 3,
-        "last_update_str": "1 minutes ago",
+        "last_update_str": "2 minutes ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
                 "bytes": 223360,
-                "percentage": 69.02
+                "percentage": 68.98
             },
             "Vue": {
                 "bytes": 84086,
-                "percentage": 25.98
+                "percentage": 25.97
             },
             "TypeScript": {
                 "bytes": 6430,
@@ -1690,8 +1690,8 @@
                 "percentage": 0.65
             },
             "CSS": {
-                "bytes": 1611,
-                "percentage": 0.5
+                "bytes": 1790,
+                "percentage": 0.55
             },
             "HTML": {
                 "bytes": 625,
@@ -4032,12 +4032,12 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 189,
-        "last_update": "2025-11-16T16:59:59+00:00",
+        "last_update": "2025-11-16T17:09:38+00:00",
         "created_at_api": "2025-10-16T18:32:24+00:00",
         "has_issues": true,
-        "commits": 47,
-        "contributors": 5,
-        "last_update_str": "7 minutes ago",
+        "commits": 48,
+        "contributors": 6,
+        "last_update_str": "11 minutes ago",
         "avg_issue_resolution_time": 307.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4066,8 +4066,8 @@
             "stale_issues_count": 0
         },
         "bus_factor": {
-            "bus_factor": 2,
-            "risk_level": "moderate"
+            "bus_factor": 3,
+            "risk_level": "healthy"
         }
     },
     {
