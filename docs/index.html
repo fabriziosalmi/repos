@@ -756,17 +756,28 @@
 
         function renderActivityChart() {
             const reposByMonth = {};
+            const monthMap = {};
+            
             filteredRepositories.forEach(repo => {
                 if (repo.last_update) {
                     const date = new Date(repo.last_update);
-                    const month = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-                    reposByMonth[month] = (reposByMonth[month] || 0) + 1;
+                    const year = date.getFullYear();
+                    const month = date.getMonth();
+                    const monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
+                    const monthLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                    
+                    if (!reposByMonth[monthKey]) {
+                        reposByMonth[monthKey] = 0;
+                        monthMap[monthKey] = monthLabel;
+                    }
+                    reposByMonth[monthKey]++;
                 }
             });
 
             const sortedMonths = Object.entries(reposByMonth)
-                .sort((a, b) => new Date(a[0]) - new Date(b[0]))
-                .slice(-12);
+                .sort((a, b) => a[0].localeCompare(b[0]))
+                .slice(-12)
+                .map(([key, count]) => [monthMap[key], count]);
 
             const ctx = document.getElementById('activityChart').getContext('2d');
             
