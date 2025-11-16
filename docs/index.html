@@ -458,7 +458,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header class="no-blur">
         <div class="container">
             <div class="header-content">
                 <h1>📊 GitHub Analytics Dashboard</h1>
@@ -526,7 +526,7 @@
         </div>
 
         <!-- Filters -->
-        <div class="filters">
+        <div class="filters no-blur">
             <div class="filter-group">
                 <label>Sort by:</label>
                 <select id="sortSelect">
@@ -1227,5 +1227,8 @@
         // Initialize
         loadRepositories();
     </script>
+
+    <!-- Advanced Visual Effects Module -->
+    <script src="./effects.js"></script>
 </body>
 </html>
