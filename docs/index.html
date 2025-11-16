@@ -553,15 +553,27 @@
                 </div>
             </div>
             <div class="chart-card fade-in" style="animation-delay: 0.2s">
-                <h3 class="chart-title">📅 Repository Activity</h3>
+                <h3 class="chart-title">📅 Repository Updates</h3>
                 <div class="chart-container">
                     <canvas id="activityChart"></canvas>
                 </div>
             </div>
             <div class="chart-card fade-in" style="animation-delay: 0.3s">
+                <h3 class="chart-title">💾 Commit Activity Timeline</h3>
+                <div class="chart-container">
+                    <canvas id="commitTimelineChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card fade-in" style="animation-delay: 0.4s">
                 <h3 class="chart-title">🍴 Forks vs Stars</h3>
                 <div class="chart-container">
                     <canvas id="forkStarChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card fade-in" style="animation-delay: 0.5s">
+                <h3 class="chart-title">📊 Repository Size Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="sizeChart"></canvas>
                 </div>
             </div>
         </div>
@@ -590,7 +602,9 @@
         let languageChartInstance = null;
         let starsChartInstance = null;
         let activityChartInstance = null;
+        let commitTimelineChartInstance = null;
         let forkStarChartInstance = null;
+        let sizeChartInstance = null;
 
         // Language colors
         const languageColors = {
@@ -703,7 +717,9 @@
             renderLanguageChart();
             renderStarsChart();
             renderActivityChart();
+            renderCommitTimelineChart();
             renderForkStarChart();
+            renderSizeChart();
         }
 
         function renderLanguageChart() {
@@ -859,6 +875,85 @@
             });
         }
 
+        function renderCommitTimelineChart() {
+            // Aggregate commits by month from all repositories
+            const commitsByMonth = {};
+            const monthMap = {};
+            
+            filteredRepositories.forEach(repo => {
+                if (repo.commits && repo.last_update) {
+                    const date = new Date(repo.last_update);
+                    const year = date.getFullYear();
+                    const month = date.getMonth();
+                    const monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
+                    const monthLabel = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                    
+                    if (!commitsByMonth[monthKey]) {
+                        commitsByMonth[monthKey] = 0;
+                        monthMap[monthKey] = monthLabel;
+                    }
+                    // Approximate commit distribution (we don't have per-month data, so we'll show total commits)
+                    commitsByMonth[monthKey] += (repo.commits || 0);
+                }
+            });
+
+            const sortedMonths = Object.entries(commitsByMonth)
+                .sort((a, b) => a[0].localeCompare(b[0]))
+                .slice(-12)
+                .map(([key, count]) => [monthMap[key], count]);
+
+            const ctx = document.getElementById('commitTimelineChart').getContext('2d');
+            
+            if (commitTimelineChartInstance) {
+                commitTimelineChartInstance.destroy();
+            }
+
+            commitTimelineChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: sortedMonths.map(m => m[0]),
+                    datasets: [{
+                        label: 'Total Commits',
+                        data: sortedMonths.map(m => m[1]),
+                        borderColor: '#f78166',
+                        backgroundColor: 'rgba(247, 129, 102, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    return `Commits: ${context.parsed.y.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#30363d' },
+                            ticks: { color: '#8b949e' }
+                        },
+                        y: {
+                            grid: { color: '#30363d' },
+                            ticks: { 
+                                color: '#8b949e',
+                                callback: function(value) {
+                                    return value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         function renderForkStarChart() {
             const topRepos = [...filteredRepositories]
                 .filter(r => r.stars > 0 || r.forks > 0)
@@ -907,6 +1002,80 @@
                             title: { display: true, text: 'Forks', color: '#8b949e' },
                             grid: { color: '#30363d' },
                             ticks: { color: '#8b949e' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderSizeChart() {
+            // Categorize repositories by size (in KB)
+            const sizeCategories = {
+                'Tiny (< 100 KB)': 0,
+                'Small (100 KB - 1 MB)': 0,
+                'Medium (1 MB - 10 MB)': 0,
+                'Large (10 MB - 100 MB)': 0,
+                'Very Large (> 100 MB)': 0
+            };
+            
+            filteredRepositories.forEach(repo => {
+                const sizeKB = repo.size || 0;
+                if (sizeKB < 100) {
+                    sizeCategories['Tiny (< 100 KB)']++;
+                } else if (sizeKB < 1024) {
+                    sizeCategories['Small (100 KB - 1 MB)']++;
+                } else if (sizeKB < 10240) {
+                    sizeCategories['Medium (1 MB - 10 MB)']++;
+                } else if (sizeKB < 102400) {
+                    sizeCategories['Large (10 MB - 100 MB)']++;
+                } else {
+                    sizeCategories['Very Large (> 100 MB)']++;
+                }
+            });
+
+            const ctx = document.getElementById('sizeChart').getContext('2d');
+            
+            if (sizeChartInstance) {
+                sizeChartInstance.destroy();
+            }
+
+            sizeChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(sizeCategories),
+                    datasets: [{
+                        data: Object.values(sizeCategories),
+                        backgroundColor: [
+                            '#58a6ff',
+                            '#3fb950',
+                            '#f78166',
+                            '#bc8cff',
+                            '#ffd43b'
+                        ],
+                        borderColor: '#0d1117',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: '#c9d1d9',
+                                padding: 15,
+                                font: { size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                    return `${context.label}: ${context.parsed} (${percentage}%)`;
+                                }
+                            }
                         }
                     }
                 }
