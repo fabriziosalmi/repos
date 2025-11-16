@@ -1,12 +1,13 @@
 <!-- components/RepoDetailModal.vue -->
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { X, Star, GitFork, Calendar, TrendingUp, Heart, Bus, AlertCircle, Share2 } from 'lucide-vue-next';
+import { X, Star, GitFork, Calendar, TrendingUp, Heart, Bus, AlertCircle, Share2, Tag } from 'lucide-vue-next';
 import VueApexCharts from 'vue3-apexcharts';
 import type { ApexOptions } from 'apexcharts';
 import type { Repo, Commit, Contributor } from '../types';
 import { formatDistanceToNow } from 'date-fns';
 import ShowcaseGenerator from './ShowcaseGenerator.vue';
+import LabelManager from './LabelManager.vue';
 
 const props = defineProps<{
   repo: Repo;
@@ -21,6 +22,8 @@ const commits = ref<Commit[]>([]);
 const contributors = ref<Contributor[]>([]);
 const isLoadingDetails = ref(false);
 const showShowcaseGenerator = ref(false);
+const showLabelManager = ref(false);
+const selectedIssueNumber = ref(1); // Default to issue #1, can be made dynamic
 
 // Star history chart configuration
 const starHistoryOptions = computed<ApexOptions>(() => ({
@@ -199,6 +202,13 @@ function getHealthColor() {
                   <Share2 class="h-4 w-4" />
                   Generate Showcase
                 </button>
+                <button
+                  @click="showLabelManager = true"
+                  class="text-sm text-purple-400 hover:text-purple-300 flex items-center gap-1"
+                >
+                  <Tag class="h-4 w-4" />
+                  Manage Labels
+                </button>
               </div>
             </div>
             <button
@@ -349,6 +359,14 @@ function getHealthColor() {
       :repo="repo"
       :is-open="showShowcaseGenerator"
       @close="showShowcaseGenerator = false"
+    />
+    
+    <!-- Label Manager Modal -->
+    <LabelManager
+      :repo="repo"
+      :issue-number="selectedIssueNumber"
+      :is-open="showLabelManager"
+      @close="showLabelManager = false"
     />
   </Teleport>
 </template>

@@ -47,6 +47,9 @@ jobs:
         env:
           MY_PAT: ${{ secrets.MY_PAT }}
       
+      - name: Aggregate contributor statistics
+        run: python aggregate_contributors.py docs/repositories-data.json docs/contributor-stats.json
+      
       - name: Download previous data for comparison
         continue-on-error: true
         run: |
@@ -78,6 +81,7 @@ jobs:
             docs/badges/
             docs/STATS.md
             docs/stats-summary.json
+            docs/contributor-stats.json
           retention-days: 1
 
   build-and-deploy:
