@@ -19,7 +19,7 @@ const sortOrder = ref<'desc' | 'asc'>('desc');
 // Lifecycle hooks
 onMounted(async () => {
   try {
-    const response = await fetch('/repositories-data.json');
+    const response = await fetch('repositories-data.json');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
