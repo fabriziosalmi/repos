@@ -11,13 +11,16 @@ class DashboardEffects {
         this.canvas = null;
         this.ctx = null;
         this.animationId = null;
+        this.audioContext = null;
+        this.sounds = {};
         this.settings = {
             particlesEnabled: true,
             parallaxEnabled: true,
             glowEnabled: true,
             tooltipsEnabled: true,
             focusModeEnabled: true,
-            soundEnabled: false // Future feature
+            soundEnabled: true,
+            soundVolume: 0.15 // Very subtle
         };
         
         this.init();
@@ -25,6 +28,7 @@ class DashboardEffects {
 
     init() {
         this.createParticleCanvas();
+        this.initAudioSystem();
         this.initEventListeners();
         this.initParallaxEffect();
         this.initCardHoverEffects();
@@ -33,6 +37,81 @@ class DashboardEffects {
         this.initScrollReveal();
         this.initFocusMode();
         this.startParticleAnimation();
+    }
+
+    // ========================================
+    // AUDIO SYSTEM - Procedural Sound Generation
+    // ========================================
+    initAudioSystem() {
+        // Create audio context on first user interaction
+        const initContext = () => {
+            if (!this.audioContext) {
+                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                this.createSounds();
+            }
+            document.removeEventListener('click', initContext);
+            document.removeEventListener('keydown', initContext);
+        };
+        
+        document.addEventListener('click', initContext, { once: true });
+        document.addEventListener('keydown', initContext, { once: true });
+    }
+
+    createSounds() {
+        // Pre-configure sound parameters for instant playback
+        this.sounds = {
+            hover: { frequency: 800, duration: 0.08, type: 'sine', gain: 0.08 },
+            leave: { frequency: 600, duration: 0.06, type: 'sine', gain: 0.05 },
+            click: { frequency: 1200, duration: 0.05, type: 'triangle', gain: 0.12 },
+            success: { frequency: 880, duration: 0.15, type: 'sine', gain: 0.1 },
+            scroll: { frequency: 400, duration: 0.03, type: 'sine', gain: 0.03 }
+        };
+    }
+
+    playSound(soundName) {
+        if (!this.settings.soundEnabled || !this.audioContext || !this.sounds[soundName]) return;
+
+        const sound = this.sounds[soundName];
+        const currentTime = this.audioContext.currentTime;
+
+        // Create oscillator for tone
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        const filter = this.audioContext.createBiquadFilter();
+
+        // Configure oscillator
+        oscillator.type = sound.type;
+        oscillator.frequency.setValueAtTime(sound.frequency, currentTime);
+
+        // Subtle frequency modulation for richness
+        if (soundName === 'hover' || soundName === 'success') {
+            oscillator.frequency.exponentialRampToValueAtTime(
+                sound.frequency * 0.95, 
+                currentTime + sound.duration
+            );
+        }
+
+        // Configure filter for warmth
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(2000, currentTime);
+        filter.Q.setValueAtTime(1, currentTime);
+
+        // Configure gain envelope (ADSR-like)
+        const volume = sound.gain * this.settings.soundVolume;
+        gainNode.gain.setValueAtTime(0, currentTime);
+        gainNode.gain.linearRampToValueAtTime(volume, currentTime + 0.01); // Attack
+        gainNode.gain.linearRampToValueAtTime(volume * 0.7, currentTime + sound.duration * 0.3); // Decay
+        gainNode.gain.linearRampToValueAtTime(volume * 0.5, currentTime + sound.duration * 0.7); // Sustain
+        gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + sound.duration); // Release
+
+        // Connect nodes
+        oscillator.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+
+        // Play
+        oscillator.start(currentTime);
+        oscillator.stop(currentTime + sound.duration);
     }
 
     // ========================================
@@ -344,73 +423,70 @@ class DashboardEffects {
     initFocusMode() {
         // Add global CSS for focus mode
         this.addStyleRule(`
-            /* Focus Mode Transitions */
+            /* Focus Mode Transitions - Subtle & Elegant */
             .focusable-item {
-                transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                           transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                           box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                           z-index 0s;
-                filter: grayscale(0.7) blur(0px) brightness(0.7);
+                transition: filter 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                           transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                           box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+                filter: grayscale(0.4) brightness(0.85);
                 will-change: filter, transform;
             }
 
             .focusable-item.focused {
-                filter: grayscale(0) blur(0px) brightness(1) !important;
-                transform: scale(1.03) translateZ(0);
-                box-shadow: 0 20px 60px rgba(88, 166, 255, 0.3),
-                           0 0 0 1px rgba(88, 166, 255, 0.2) !important;
-                z-index: 100 !important;
+                filter: grayscale(0) brightness(1) saturate(1.05) !important;
+                transform: translateY(-2px) scale(1.008);
+                box-shadow: 0 8px 32px rgba(88, 166, 255, 0.12),
+                           0 2px 8px rgba(88, 166, 255, 0.08),
+                           0 0 0 1px rgba(88, 166, 255, 0.06) !important;
+                z-index: 10 !important;
                 position: relative;
             }
 
             .focusable-item.blurred {
-                filter: grayscale(0.9) blur(3px) brightness(0.5);
-                transform: scale(0.98);
-                opacity: 0.6;
+                filter: grayscale(0.6) brightness(0.75) blur(0.5px);
+                transform: scale(0.995);
+                opacity: 0.8;
             }
 
             /* Keep UI elements always visible */
             .no-blur {
                 filter: none !important;
                 opacity: 1 !important;
+                transform: none !important;
             }
 
-            /* Smooth transitions for charts */
-            .chart-card canvas {
-                transition: filter 0.4s ease;
-            }
-
-            /* Enhanced glow on focus */
-            .focusable-item.focused::before {
+            /* Subtle glow on focus - very refined */
+            .focusable-item.focused::after {
                 content: '';
                 position: absolute;
-                inset: -2px;
-                background: linear-gradient(45deg, #58a6ff, #3fb950, #bc8cff, #f78166);
-                border-radius: 14px;
+                inset: -1px;
+                background: linear-gradient(135deg, 
+                    rgba(88, 166, 255, 0.03), 
+                    rgba(63, 185, 80, 0.03),
+                    rgba(188, 140, 255, 0.03));
+                border-radius: inherit;
                 z-index: -1;
                 opacity: 0;
-                animation: borderGlow 3s ease infinite;
+                transition: opacity 0.6s ease;
+                pointer-events: none;
             }
 
-            @keyframes borderGlow {
-                0%, 100% { opacity: 0.3; }
-                50% { opacity: 0.6; }
+            .focusable-item.focused::after {
+                opacity: 1;
             }
 
-            /* Pulsing effect on focused element */
+            /* Micro-interaction: slight border enhancement */
             .focusable-item.focused {
-                animation: focusPulse 2s ease-in-out infinite;
+                border-color: rgba(88, 166, 255, 0.15) !important;
             }
 
-            @keyframes focusPulse {
-                0%, 100% { 
-                    box-shadow: 0 20px 60px rgba(88, 166, 255, 0.3),
-                               0 0 0 1px rgba(88, 166, 255, 0.2);
-                }
-                50% { 
-                    box-shadow: 0 25px 70px rgba(88, 166, 255, 0.5),
-                               0 0 0 2px rgba(88, 166, 255, 0.4);
-                }
+            /* Smooth chart transitions */
+            .chart-card canvas {
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+
+            .chart-card.blurred canvas {
+                opacity: 0.7;
             }
         `);
 
@@ -449,12 +525,15 @@ class DashboardEffects {
         let currentFocus = null;
         let focusTimeout = null;
 
-        // Mouse enter handler
+        // Mouse enter handler with subtle sound
         const handleMouseEnter = (e) => {
             if (!this.settings.focusModeEnabled) return;
             
             const target = e.currentTarget;
             
+            // Play subtle hover sound
+            this.playSound('hover');
+
             // Clear previous timeout
             if (focusTimeout) clearTimeout(focusTimeout);
 
@@ -463,41 +542,49 @@ class DashboardEffects {
                 currentFocus.classList.remove('focused');
             }
 
-            // Blur all other focusable items
-            document.querySelectorAll('.focusable-item').forEach(item => {
+            // Blur all other focusable items with stagger
+            const items = Array.from(document.querySelectorAll('.focusable-item'));
+            items.forEach((item, index) => {
                 if (item !== target) {
-                    item.classList.add('blurred');
-                    item.classList.remove('focused');
+                    setTimeout(() => {
+                        item.classList.add('blurred');
+                        item.classList.remove('focused');
+                    }, index * 3); // Subtle stagger effect
                 }
             });
 
-            // Focus current item with slight delay for smooth effect
+            // Focus current item with slight delay
             focusTimeout = setTimeout(() => {
                 target.classList.add('focused');
                 target.classList.remove('blurred');
                 currentFocus = target;
-            }, 50);
+            }, 80);
         };
 
-        // Mouse leave handler with delay
+        // Mouse leave handler with gentle transition
         const handleMouseLeave = (e) => {
             if (!this.settings.focusModeEnabled) return;
 
             if (focusTimeout) clearTimeout(focusTimeout);
 
-            // Delay before removing effects to prevent flickering
+            // Delay before removing effects
             focusTimeout = setTimeout(() => {
-                // Check if mouse is not over any focusable item
                 const hoveredElement = document.querySelector('.focusable-item:hover');
                 
                 if (!hoveredElement) {
-                    // Reset all items
-                    document.querySelectorAll('.focusable-item').forEach(item => {
-                        item.classList.remove('focused', 'blurred');
+                    // Play subtle leave sound
+                    this.playSound('leave');
+                    
+                    // Reset all items with stagger
+                    const items = Array.from(document.querySelectorAll('.focusable-item'));
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.remove('focused', 'blurred');
+                        }, index * 2);
                     });
                     currentFocus = null;
                 }
-            }, 100);
+            }, 150);
         };
 
         // Attach event listeners
@@ -506,7 +593,7 @@ class DashboardEffects {
             item.addEventListener('mouseleave', handleMouseLeave);
         });
 
-        // Handle dynamic content (for repo cards loaded later)
+        // Handle dynamic content
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
@@ -523,13 +610,6 @@ class DashboardEffects {
             childList: true,
             subtree: true
         });
-
-        // Initial state - slight grayscale on all
-        if (this.settings.focusModeEnabled) {
-            document.querySelectorAll('.focusable-item').forEach(item => {
-                item.style.filter = 'grayscale(0.7) blur(0px) brightness(0.7)';
-            });
-        }
     }
 
     // ========================================
@@ -542,6 +622,27 @@ class DashboardEffects {
             this.mouse.y = e.clientY;
         });
 
+        // Subtle scroll sound
+        let scrollTimeout;
+        let lastScrollSound = 0;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            
+            // Throttle scroll sound (max once per 200ms)
+            const now = Date.now();
+            if (now - lastScrollSound > 200) {
+                this.playSound('scroll');
+                lastScrollSound = now;
+            }
+        }, { passive: true });
+
+        // Click sounds on interactive elements
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('button, a, select, input[type="checkbox"]')) {
+                this.playSound('click');
+            }
+        });
+
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey || e.metaKey) {
@@ -549,14 +650,21 @@ class DashboardEffects {
                     case 'p':
                         e.preventDefault();
                         this.toggleParticles();
+                        this.playSound('click');
                         break;
                     case 'g':
                         e.preventDefault();
                         this.toggleGlow();
+                        this.playSound('click');
                         break;
                     case 'f':
                         e.preventDefault();
                         this.toggleFocusMode();
+                        this.playSound('click');
+                        break;
+                    case 'm':
+                        e.preventDefault();
+                        this.toggleSound();
                         break;
                 }
             }
@@ -578,48 +686,79 @@ class DashboardEffects {
                 bottom: 20px;
                 right: 20px;
                 background: rgba(13, 17, 23, 0.98);
-                border: 1px solid #30363d;
+                border: 1px solid rgba(88, 166, 255, 0.1);
                 border-radius: 12px;
-                padding: 16px;
+                padding: 16px 18px;
                 z-index: 9999;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 1px rgba(88, 166, 255, 0.2);
                 backdrop-filter: blur(10px);
-                transition: transform 0.3s ease, opacity 0.3s ease;
-            " onmouseenter="this.style.transform='scale(1.02)'" onmouseleave="this.style.transform='scale(1)'">
-                <div style="color: #e6edf3; font-weight: 600; margin-bottom: 12px; font-size: 14px;">
-                    ✨ Visual Effects
+                transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+                font-family: 'Inter', sans-serif;
+            " onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.5), 0 0 2px rgba(88, 166, 255, 0.3)'" 
+               onmouseleave="this.style.transform=''; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.4), 0 0 1px rgba(88, 166, 255, 0.2)'">
+                <div style="
+                    color: #e6edf3; 
+                    font-weight: 600; 
+                    margin-bottom: 14px; 
+                    font-size: 13px;
+                    letter-spacing: 0.3px;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                ">
+                    <span style="font-size: 16px;">✨</span>
+                    <span>Effects</span>
                 </div>
-                <label style="display: flex; align-items: center; gap: 8px; color: #8b949e; font-size: 12px; cursor: pointer; margin-bottom: 8px;">
-                    <input type="checkbox" id="toggle-particles" checked style="cursor: pointer;">
-                    <span>Particle Background</span>
+                <label style="display: flex; align-items: center; gap: 10px; color: #8b949e; font-size: 11px; cursor: pointer; margin-bottom: 10px; transition: color 0.2s ease;">
+                    <input type="checkbox" id="toggle-particles" checked style="cursor: pointer; width: 14px; height: 14px;">
+                    <span>Particles</span>
                 </label>
-                <label style="display: flex; align-items: center; gap: 8px; color: #8b949e; font-size: 12px; cursor: pointer; margin-bottom: 8px;">
-                    <input type="checkbox" id="toggle-parallax" checked style="cursor: pointer;">
-                    <span>Parallax Scroll</span>
+                <label style="display: flex; align-items: center; gap: 10px; color: #8b949e; font-size: 11px; cursor: pointer; margin-bottom: 10px; transition: color 0.2s ease;">
+                    <input type="checkbox" id="toggle-parallax" checked style="cursor: pointer; width: 14px; height: 14px;">
+                    <span>Parallax</span>
                 </label>
-                <label style="display: flex; align-items: center; gap: 8px; color: #8b949e; font-size: 12px; cursor: pointer; margin-bottom: 8px;">
-                    <input type="checkbox" id="toggle-glow" checked style="cursor: pointer;">
-                    <span>Card Glow Effects</span>
+                <label style="display: flex; align-items: center; gap: 10px; color: #8b949e; font-size: 11px; cursor: pointer; margin-bottom: 10px; transition: color 0.2s ease;">
+                    <input type="checkbox" id="toggle-glow" checked style="cursor: pointer; width: 14px; height: 14px;">
+                    <span>Glow</span>
                 </label>
-                <label style="display: flex; align-items: center; gap: 8px; color: #8b949e; font-size: 12px; cursor: pointer; margin-bottom: 8px;">
-                    <input type="checkbox" id="toggle-tooltips" checked style="cursor: pointer;">
-                    <span>Smart Tooltips</span>
+                <label style="display: flex; align-items: center; gap: 10px; color: #8b949e; font-size: 11px; cursor: pointer; margin-bottom: 10px; transition: color 0.2s ease;">
+                    <input type="checkbox" id="toggle-tooltips" checked style="cursor: pointer; width: 14px; height: 14px;">
+                    <span>Tooltips</span>
                 </label>
-                <label style="display: flex; align-items: center; gap: 8px; color: #8b949e; font-size: 12px; cursor: pointer; margin-bottom: 8px;">
-                    <input type="checkbox" id="toggle-focus" checked style="cursor: pointer;">
-                    <span>🎯 Focus Mode</span>
+                <label style="display: flex; align-items: center; gap: 10px; color: #8b949e; font-size: 11px; cursor: pointer; margin-bottom: 10px; transition: color 0.2s ease;">
+                    <input type="checkbox" id="toggle-focus" checked style="cursor: pointer; width: 14px; height: 14px;">
+                    <span>Focus Mode</span>
                 </label>
-                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #30363d; color: #58a6ff; font-size: 10px;">
-                    ⌨️ Shortcuts: Ctrl+P, Ctrl+G, Ctrl+F
+                <label style="display: flex; align-items: center; gap: 10px; color: #8b949e; font-size: 11px; cursor: pointer; margin-bottom: 10px; transition: color 0.2s ease;">
+                    <input type="checkbox" id="toggle-sound" checked style="cursor: pointer; width: 14px; height: 14px;">
+                    <span>🔊 Sound</span>
+                </label>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(48, 54, 61, 0.5);">
+                    <div style="color: #58a6ff; font-size: 9px; margin-bottom: 4px; opacity: 0.8;">Shortcuts</div>
+                    <div style="color: #6e7681; font-size: 9px; font-family: 'JetBrains Mono', monospace; line-height: 1.4;">
+                        Ctrl+P • Ctrl+G • Ctrl+F • Ctrl+M
+                    </div>
                 </div>
             </div>
         `;
         document.body.appendChild(panel);
 
+        // Add hover effects to labels
+        const labels = panel.querySelectorAll('label');
+        labels.forEach(label => {
+            label.addEventListener('mouseenter', () => {
+                label.style.color = '#c9d1d9';
+            });
+            label.addEventListener('mouseleave', () => {
+                label.style.color = '#8b949e';
+            });
+        });
+
         // Wire up toggles
         document.getElementById('toggle-particles').addEventListener('change', (e) => {
             this.settings.particlesEnabled = e.target.checked;
             this.canvas.style.opacity = e.target.checked ? '0.3' : '0';
+            this.playSound('click');
         });
 
         document.getElementById('toggle-parallax').addEventListener('change', (e) => {
@@ -629,18 +768,22 @@ class DashboardEffects {
                     el.style.transform = '';
                 });
             }
+            this.playSound('click');
         });
 
         document.getElementById('toggle-glow').addEventListener('change', (e) => {
             this.settings.glowEnabled = e.target.checked;
+            this.playSound('click');
         });
 
         document.getElementById('toggle-tooltips').addEventListener('change', (e) => {
             this.settings.tooltipsEnabled = e.target.checked;
+            this.playSound('click');
         });
 
         document.getElementById('toggle-focus').addEventListener('change', (e) => {
             this.settings.focusModeEnabled = e.target.checked;
+            this.playSound('click');
             
             if (!e.target.checked) {
                 // Reset all items when disabled
@@ -651,8 +794,15 @@ class DashboardEffects {
             } else {
                 // Apply initial grayscale when enabled
                 document.querySelectorAll('.focusable-item').forEach(item => {
-                    item.style.filter = 'grayscale(0.7) blur(0px) brightness(0.7)';
+                    item.style.filter = 'grayscale(0.4) brightness(0.85)';
                 });
+            }
+        });
+
+        document.getElementById('toggle-sound').addEventListener('change', (e) => {
+            this.settings.soundEnabled = e.target.checked;
+            if (e.target.checked) {
+                this.playSound('success');
             }
         });
     }
@@ -674,6 +824,7 @@ class DashboardEffects {
     toggleFocusMode() {
         this.settings.focusModeEnabled = !this.settings.focusModeEnabled;
         document.getElementById('toggle-focus').checked = this.settings.focusModeEnabled;
+        this.playSound('click');
         
         if (!this.settings.focusModeEnabled) {
             document.querySelectorAll('.focusable-item').forEach(item => {
@@ -682,8 +833,16 @@ class DashboardEffects {
             });
         } else {
             document.querySelectorAll('.focusable-item').forEach(item => {
-                item.style.filter = 'grayscale(0.7) blur(0px) brightness(0.7)';
+                item.style.filter = 'grayscale(0.4) brightness(0.85)';
             });
+        }
+    }
+
+    toggleSound() {
+        this.settings.soundEnabled = !this.settings.soundEnabled;
+        document.getElementById('toggle-sound').checked = this.settings.soundEnabled;
+        if (this.settings.soundEnabled) {
+            this.playSound('success');
         }
     }
 
