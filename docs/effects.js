@@ -13,6 +13,9 @@ class DashboardEffects {
         this.animationId = null;
         this.audioContext = null;
         this.sounds = {};
+        this.lastFrameTime = 0;
+        this.fps = 60;
+        this.frameInterval = 1000 / this.fps;
         this.settings = {
             particlesEnabled: true,
             parallaxEnabled: true,
@@ -24,6 +27,31 @@ class DashboardEffects {
         };
         
         this.init();
+    }
+
+    // Utility: Debounce function
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Utility: Throttle function
+    throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
     }
 
     init() {
@@ -166,17 +194,22 @@ class DashboardEffects {
     }
 
     updateParticles() {
-        this.particles.forEach(particle => {
+        const mouseInteractionRadius = 100;
+        const mouseInteractionRadiusSq = mouseInteractionRadius * mouseInteractionRadius;
+        
+        for (let i = 0; i < this.particles.length; i++) {
+            const particle = this.particles[i];
             particle.x += particle.speedX;
             particle.y += particle.speedY;
 
-            // Mouse interaction
+            // Mouse interaction - using squared distance to avoid sqrt
             const dx = this.mouse.x - particle.x;
             const dy = this.mouse.y - particle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const distanceSq = dx * dx + dy * dy;
             
-            if (distance < 100) {
-                const force = (100 - distance) / 100;
+            if (distanceSq < mouseInteractionRadiusSq) {
+                const distance = Math.sqrt(distanceSq);
+                const force = (mouseInteractionRadius - distance) / mouseInteractionRadius;
                 particle.x -= dx * force * 0.02;
                 particle.y -= dy * force * 0.02;
             }
@@ -188,50 +221,65 @@ class DashboardEffects {
             // Keep in bounds
             particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
             particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
-        });
+        }
     }
 
     drawParticles() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Draw connections
-        this.particles.forEach((p1, i) => {
-            this.particles.slice(i + 1).forEach(p2 => {
+        const maxConnectionDistance = 120;
+        const maxConnectionDistanceSq = maxConnectionDistance * maxConnectionDistance;
+        
+        // Draw connections - optimized with squared distance
+        for (let i = 0; i < this.particles.length; i++) {
+            const p1 = this.particles[i];
+            for (let j = i + 1; j < this.particles.length; j++) {
+                const p2 = this.particles[j];
                 const dx = p1.x - p2.x;
                 const dy = p1.y - p2.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                const distanceSq = dx * dx + dy * dy;
                 
-                if (distance < 120) {
+                if (distanceSq < maxConnectionDistanceSq) {
+                    const distance = Math.sqrt(distanceSq);
                     this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(88, 166, 255, ${(1 - distance / 120) * 0.2})`;
+                    this.ctx.strokeStyle = `rgba(88, 166, 255, ${(1 - distance / maxConnectionDistance) * 0.2})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.moveTo(p1.x, p1.y);
                     this.ctx.lineTo(p2.x, p2.y);
                     this.ctx.stroke();
                 }
-            });
-        });
+            }
+        }
 
-        // Draw particles
-        this.particles.forEach(particle => {
+        // Draw particles - batch operations
+        this.ctx.globalAlpha = 1;
+        for (let i = 0; i < this.particles.length; i++) {
+            const particle = this.particles[i];
             this.ctx.beginPath();
             this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
             this.ctx.fillStyle = particle.color;
             this.ctx.globalAlpha = particle.opacity;
             this.ctx.fill();
-            this.ctx.globalAlpha = 1;
-        });
+        }
+        this.ctx.globalAlpha = 1;
     }
 
     startParticleAnimation() {
-        const animate = () => {
-            if (this.settings.particlesEnabled) {
-                this.updateParticles();
-                this.drawParticles();
-            }
+        const animate = (currentTime) => {
             this.animationId = requestAnimationFrame(animate);
+            
+            if (!this.settings.particlesEnabled) return;
+            
+            // Frame rate limiting for better performance
+            const elapsed = currentTime - this.lastFrameTime;
+            if (elapsed < this.frameInterval) return;
+            
+            this.lastFrameTime = currentTime - (elapsed % this.frameInterval);
+            
+            this.updateParticles();
+            this.drawParticles();
         };
-        animate();
+        this.animationId = requestAnimationFrame(animate);
     }
 
     // ========================================
@@ -239,17 +287,30 @@ class DashboardEffects {
     // ========================================
     initParallaxEffect() {
         const layers = document.querySelectorAll('.stat-card, .chart-card, .repo-card');
+        let ticking = false;
         
-        window.addEventListener('scroll', () => {
-            if (!this.settings.parallaxEnabled) return;
+        const updateParallax = () => {
+            if (!this.settings.parallaxEnabled) {
+                ticking = false;
+                return;
+            }
             
             const scrolled = window.pageYOffset;
-            layers.forEach((layer, index) => {
-                const speed = (index % 3 + 1) * 0.05;
+            for (let i = 0; i < layers.length; i++) {
+                const layer = layers[i];
+                const speed = (i % 3 + 1) * 0.05;
                 const yPos = -(scrolled * speed);
                 layer.style.transform = `translateY(${yPos}px)`;
-            });
-        });
+            }
+            ticking = false;
+        };
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }, { passive: true });
     }
 
     // ========================================
@@ -398,16 +459,30 @@ class DashboardEffects {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
+                    // Stop observing once revealed for better performance
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.repo-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        }, { 
+            threshold: 0.1,
+            rootMargin: '50px' // Start animation slightly before entering viewport
         });
+
+        // Use requestIdleCallback for non-critical setup
+        const setupCards = () => {
+            document.querySelectorAll('.repo-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        };
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(setupCards);
+        } else {
+            setTimeout(setupCards, 1);
+        }
 
         this.addStyleRule(`
             .repo-card.revealed {
@@ -616,18 +691,17 @@ class DashboardEffects {
     // EVENT LISTENERS
     // ========================================
     initEventListeners() {
-        // Track mouse position
-        document.addEventListener('mousemove', (e) => {
+        // Track mouse position - throttled for performance
+        const updateMousePosition = this.throttle((e) => {
             this.mouse.x = e.clientX;
             this.mouse.y = e.clientY;
-        });
+        }, 16); // ~60fps
+        
+        document.addEventListener('mousemove', updateMousePosition, { passive: true });
 
         // Subtle scroll sound
-        let scrollTimeout;
         let lastScrollSound = 0;
         window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            
             // Throttle scroll sound (max once per 200ms)
             const now = Date.now();
             if (now - lastScrollSound > 200) {
