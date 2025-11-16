@@ -1,30 +1,22 @@
 name: Build and Deploy Dashboard
 
 on:
-  # Esegue al push sul branch main
   push:
     branches: [ main ]
-  # Esegue ogni giorno all'1:00 UTC
   schedule:
     - cron: '0 1 * * *'
-  # Permette l'esecuzione manuale dalla tab Actions
   workflow_dispatch:
 
-# Imposta i permessi per il GITHUB_TOKEN per permettere il deployment
 permissions:
-  contents: read
+  contents: write # Needed to push to the repository
   pages: write
   id-token: write
 
-# Permette un solo deployment concorrente, annullando quelli in coda
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  # ==================================
-  # JOB 1: Costruire i Dati Statistici
-  # ==================================
   build-data:
     runs-on: ubuntu-latest
     steps:
@@ -47,24 +39,21 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # - name: Run validation tests
-      #   run: python -m pytest # Assumendo che tu usi pytest e test_stats.py esista
+      - name: Run validation tests
+        run: python -m pytest
 
       - name: Generate stats data
-        run: python stats.py # Questo crea la cartella 'public_data'
+        run: python stats.py
 
       - name: Upload data artifact
         uses: actions/upload-artifact@v4
         with:
           name: stats-data
           path: public_data/
-          retention-days: 1 # L'artefatto serve solo per il prossimo job
+          retention-days: 1
 
-  # =========================================
-  # JOB 2: Costruire e Deployare l'UI Frontend
-  # =========================================
   build-and-deploy:
-    needs: build-data # Questo job parte solo se 'build-data' ha successo
+    needs: build-data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -74,7 +63,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: stats-data
-          # Scarica i dati nella cartella 'public' di Vite. Magia!
           path: frontend/public/ 
 
       - name: Set up Node.js
@@ -88,17 +76,19 @@ jobs:
         run: npm --prefix frontend ci
 
       - name: Build Vite application
-        run: npm --prefix frontend run build # Questo crea 'frontend/dist'
+        run: npm --prefix frontend run build
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
+      - name: Prepare for deployment to docs/
+        run: |
+          rm -rf docs
+          mkdir docs
+          cp -r frontend/dist/* docs/
+          touch docs/.nojekyll
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Carica il contenuto della cartella di build di Vite
-          path: 'frontend/dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit and push to docs/
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs
+          git diff --staged --quiet || git commit -m "Deploy: Update GitHub Pages"
+          git push
