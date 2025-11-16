@@ -44,6 +44,8 @@ jobs:
 
       - name: Generate stats data
         run: python stats.py
+        env:
+          MY_PAT: ${{ secrets.MY_PAT }}
 
       - name: Upload data artifact
         uses: actions/upload-artifact@v4
