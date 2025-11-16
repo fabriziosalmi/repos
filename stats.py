@@ -1033,31 +1033,11 @@ def main():
     start_time = time.time()
     
     try:
-        # For simplicity, keeping hardcoded username and env var token:
         target_username = 'fabriziosalmi'
         github_token = os.environ.get('MY_PAT')
-        output_prefix = target_username
+        output_dir = 'public_data'
 
-        # Configure Rich Console
-        custom_theme = Theme({
-            # FIX APPLIED: Removed 'link' from repo_name style
-            "repo_name": "bold cyan",
-            "description": "dim",
-            "stars": "yellow",
-            "forks": "blue",
-            "commits": "magenta",
-            "contributors": "green",
-            "issues": "purple",
-            "last_update": "default",
-            "header": "bold white on blue",
-            "total_stars": "bold yellow",
-            "avg_resolution": "bold green",
-            "info": "dim cyan",
-            "warning": "yellow",
-            "error": "bold red",
-            "na": "dim" # Style for N/A values
-        })
-        console = Console(theme=custom_theme, record=False)
+        console = Console()
 
         console.print(f"[info]Fetching repository statistics for user: [bold]{target_username}[/bold]...[/]")
         if not github_token:
@@ -1065,221 +1045,37 @@ def main():
         else:
             console.print("[info]Using GitHub token from MY_PAT environment variable.[/info]")
 
-        # Check if we can use cached data
         cached_data = load_cache()
         if cached_data:
             console.print("[info]Using cached data to avoid API rate limits.[/info]")
             user_repositories = cached_data.get('repositories', [])
-            total_stars = cached_data.get('total_stars', 0)
-            top_10_repo_full_names = cached_data.get('top_10_repo_full_names', [])
         else:
-            # Call the main data fetching function
-            user_repositories, total_stars, top_10_repo_full_names = get_user_repositories_stats(
+            user_repositories, _, _ = get_user_repositories_stats(
                 target_username,
                 github_token,
                 console
             )
             
-            # Save fetched data to cache
             if user_repositories is not None:
-                cache_data = {
-                    'repositories': user_repositories,
-                    'total_stars': total_stars,
-                    'top_10_repo_full_names': top_10_repo_full_names
-                }
+                cache_data = {'repositories': user_repositories}
                 save_cache(cache_data)
 
         if user_repositories is not None:
-            # Validate data completeness before proceeding
-            is_valid, validation_message = validate_data_completeness(user_repositories, total_stars)
-            if not is_valid:
-                console.print(f"[error]Data validation failed: {validation_message}[/error]")
-                logging.error(f"Data validation failed: {validation_message}")
-                return False
-
-            repo_count = len(user_repositories)
-            console.print(f"[info]Successfully retrieved data for {repo_count} repositories.[/]")
-
-            # --- Display Table (Rich) ---
-            if repo_count > 0:
-                table = Table(
-                    title=f"GitHub Repository Statistics for {target_username}",
-                    show_header=True,
-                    header_style="header",
-                    expand=False,
-                    show_lines=False,
-                    padding=(0, 1)
-                )
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
                 
-                # Add columns with enhanced information
-                table.add_column("Repository", style="repo_name", min_width=18, max_width=25, overflow="ellipsis", justify="left", no_wrap=True)
-                table.add_column("Description", style="description", max_width=35, overflow="ellipsis", justify="left", no_wrap=True)
-                table.add_column("Language", style="info", min_width=8, max_width=12, overflow="ellipsis", justify="center", no_wrap=True)
-                table.add_column("Ver", style="info", justify="center", min_width=6, no_wrap=True)
-                table.add_column("Rel.", style="last_update", justify="right", min_width=8, no_wrap=True)
-                table.add_column("⭐", style="stars", justify="right", min_width=4)
-                table.add_column("🍴", style="forks", justify="right", min_width=4)
-                table.add_column("👀", style="info", justify="right", min_width=4, no_wrap=True)  # Watchers
-                table.add_column("💾", style="commits", justify="right", min_width=5)
-                table.add_column("👥", style="contributors", justify="right", min_width=4)
-                table.add_column("✅", style="issues", justify="right", min_width=4)  # Closed issues
-                table.add_column("Updated", style="last_update", justify="right", min_width=10, no_wrap=True)
-                table.add_column("Status", style="info", justify="center", min_width=8, no_wrap=True)
-
-                for repo in user_repositories:
-                    # Handle repository status (archived, inactive, etc.)
-                    status_indicator = get_repository_status_indicator(repo)
-                    
-                    # Format numbers with commas for table
-                    stars_str = f"{repo.get('stars', 0):,}"
-                    forks_str = f"{repo.get('forks', 0):,}"
-                    watchers_str = f"{repo.get('watchers', 0):,}"
-
-                    # Get primary language with fallback
-                    language = repo.get('language', 'N/A')
-                    if language == 'Not specified' or language == 'N/A':
-                        language = "[dim]N/A[/]"
-                    elif language:
-                        if len(language) > 10:
-                            language = language[:8] + ".."
-
-                    commits_val = repo.get('commit_count')
-                    commits_str = f"{commits_val:,}" if commits_val is not None else "[na]N/A[/]"
-
-                    contrib_val = repo.get('contributors_count')
-                    contrib_str = f"{contrib_val:,}" if contrib_val is not None else "[na]N/A[/]"
-
-                    issues_val = repo.get('closed_issues_count')
-                    issues_str = f"{issues_val:,}" if issues_val is not None else "[na]N/A[/]"
-
-                    # Simplified last update
-                    last_update_str = repo.get('last_update_str', '[na]Unknown[/]')
-                    if last_update_str.endswith(' ago'):
-                        last_update_str = last_update_str[:-4]
-
-                    # Latest version compact display
-                    ver_name = repo.get('latest_version') or '—'
-                    if ver_name and len(ver_name) > 10:
-                        ver_name = ver_name[:9] + '…'
-                    ver_date = repo.get('latest_version_date_str', 'Unknown')
-
-                    # Create repository link
-                    repo_name_display = repo.get('name', 'N/A')
-                    repo_url = repo.get('url')
-                    if repo_url and repo_url != '#':
-                        repo_link_markup = f"[{repo_name_display}]({repo_url})"
-                    else:
-                        repo_link_markup = repo_name_display
-
-                    # Ensure description is never None and truncate if too long
-                    description = repo.get('description') or "No description provided"
-                    if len(description) > 35:
-                        description = description[:32] + "..."
-
-                    table.add_row(
-                        repo_link_markup,
-                        description,
-                        language,
-                        ver_name,
-                        ver_date,
-                        stars_str,
-                        forks_str,
-                        watchers_str,
-                        commits_str,
-                        contrib_str,
-                        issues_str,
-                        last_update_str,
-                        status_indicator,
-                    )
-                console.print(table)
-            else:
-                console.print(f"[info]No repositories found for user {target_username} to display in table.[/info]")
-
-            console.print(f"\n[total_stars]Total Stars Across All Repositories: {total_stars:,}[/]")
-
-            # --- Generate and Display Insights ---
-            insights = generate_repository_insights(user_repositories)
-            console.print(f"\n[header]📊 Repository Insights[/header]")
-            
-            # Language distribution
-            if insights['top_languages']:
-                console.print(f"[info]🔤 Top Languages:[/info]")
-                for lang, count in insights['top_languages']:
-                    percentage = (count / insights['total_repositories']) * 100
-                    console.print(f"  • {lang}: {count} repos ({percentage:.1f}%)")
-            
-            # Activity insights
-            console.print(f"\n[info]📈 Activity Status:[/info]")
-            console.print(f"  • Active (≤30 days): {insights['activity_distribution']['active']} repos")
-            console.print(f"  • Stale (30-180 days): {insights['activity_distribution']['stale']} repos")
-            console.print(f"  • Inactive (>180 days): {insights['activity_distribution']['inactive']} repos")
-            
-            # Repository health
-            console.print(f"\n[info]🏥 Repository Health:[/info]")
-            console.print(f"  • Archived: {insights['archived_count']} repos")
-            console.print(f"  • Forks: {insights['fork_count']} repos")
-            console.print(f"  • Total Watchers: {insights['total_watchers']:,}")
-            console.print(f"  • Open Issues: {insights['total_open_issues']:,}")
-
-            # --- Save to JSON with safe file writing ---
-            json_filename = f"{output_prefix}_github_stats.json"
-            json_data = {
-                'username': target_username,
-                'fetch_time_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                'total_stars': total_stars,
-                'repository_count': repo_count,
-                'repositories': user_repositories,
-            }
-            
-            def write_json():
-                save_to_json(json_data, filename=json_filename)
-            
-            if not safe_file_write(json_filename, write_json):
-                console.print(f"[error]Failed to write JSON file: {json_filename}[/error]")
-                return False
-
-            # --- Save repository data to docs/ for static API ---
-            static_api_filename = "docs/repositories-data.json"
+            static_api_filename = os.path.join(output_dir, "repositories-data.json")
 
             def write_static_api():
-                # We only need the list of repositories for this file
                 save_to_json(user_repositories, filename=static_api_filename)
 
             if not safe_file_write(static_api_filename, write_static_api):
                 console.print(f"[error]Failed to write static API JSON file: {static_api_filename}[/error]")
                 return False
 
-            # --- Create Markdown Table with safe file writing ---
-            md_filename = f"{output_prefix}_github_stats.md"
-            
-            def write_markdown():
-                create_markdown_table(user_repositories, total_stars, top_10_repo_full_names, target_username, filename=md_filename)
-            
-            if not safe_file_write(md_filename, write_markdown):
-                console.print(f"[error]Failed to write Markdown file: {md_filename}[/error]")
-                return False
-
-            # --- Create HTML Report with safe file writing ---
-            html_filename = "docs/index.html"
-            
-            def write_html():
-                stats2html.create_html_report(
-                    user_repositories, 
-                    total_stars, 
-                    top_10_repo_full_names, 
-                    target_username,
-                    format_resolution_time
-                )
-            
-            if not safe_file_write(html_filename, write_html):
-                console.print(f"[error]Failed to write HTML file: {html_filename}[/error]")
-                return False
-
             console.print("[info]All files generated successfully.[/info]")
             return True
-
         else:
-            # Handle case where get_user_repositories_stats returned None
             console.print(f"[error]Could not retrieve repository data for {target_username}. Please check logs or username/token.[/error]")
             logging.error(f"Failed to retrieve repository data for {target_username}")
             return False
