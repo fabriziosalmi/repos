@@ -2,6 +2,8 @@
 
 # 📊 GitHub Repository Analytics Dashboard
 
+![screenshot](https://github.com/fabriziosalmi/repos/blob/main/screenshot.png?raw=true)
+
 ### Advanced Analytics & Insights for GitHub Repositories
 
 [![Live Dashboard](https://img.shields.io/badge/🚀_Live-Dashboard-blue?style=for-the-badge)](https://fabriziosalmi.github.io/repos/)
