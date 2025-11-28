@@ -58,6 +58,10 @@ def aggregate_contributor_stats(repos_data_path: str, output_path: str):
         # Process contributors for this repo
         repo_contributors = repo.get('contributors', [])
         
+        # Skip if contributors is not a list (e.g., just a count)
+        if not isinstance(repo_contributors, list):
+            continue
+            
         for contributor in repo_contributors:
             login = contributor.get('login', 'unknown')
             
