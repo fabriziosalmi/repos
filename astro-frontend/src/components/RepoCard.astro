@@ -1,0 +1,93 @@
+---
+import { Star, GitFork, Eye, Clock } from 'lucide-react';
+
+interface Props {
+  repo: any;
+  index: number;
+}
+
+const { repo, index } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  '✅ ACTIVE': 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+  '⚠️ INACTIVE': 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+  '⏰ STALE': 'text-orange-400 bg-orange-400/10 border-orange-400/20',
+  '📦 ARCHIVED': 'text-zinc-400 bg-zinc-400/10 border-zinc-400/20',
+  '🚫 DISABLED': 'text-red-400 bg-red-400/10 border-red-400/20',
+  '🍴 FORK': 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  '📝 NO DESC': 'text-zinc-500 bg-zinc-500/10 border-zinc-500/20',
+  '🔒 PRIVATE': 'text-purple-400 bg-purple-400/10 border-purple-400/20',
+};
+
+const statusColor = statusColors[repo.status] || 'text-zinc-400 bg-zinc-400/10 border-zinc-400/20';
+
+const languageColors: Record<string, string> = {
+    Python: '#3572A5',
+    TypeScript: '#3178c6',
+    JavaScript: '#f1e05a',
+    Vue: '#41b883',
+    HTML: '#e34c26',
+    CSS: '#563d7c',
+    Shell: '#89e051',
+    Dockerfile: '#384d54',
+    Go: '#00ADD8',
+    Rust: '#dea584',
+    Java: '#b07219',
+    C: '#555555',
+    'C++': '#f34b7d',
+    PHP: '#4F5D95',
+    Ruby: '#701516',
+};
+
+const langColor = languageColors[repo.language] || '#8b949e';
+---
+
+<div 
+    class="group relative bg-surface border border-white/5 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 flex flex-col h-full animate-slide-up"
+    style={`animation-delay: ${index * 50}ms; animation-fill-mode: backwards;`}
+>
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none"></div>
+
+    <div class="flex justify-between items-start mb-4 relative z-10">
+        <div class="flex-1 min-w-0 mr-4">
+            <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors truncate" title={repo.name}>
+                <a href={repo.url} target="_blank" rel="noopener noreferrer">
+                    {repo.name}
+                </a>
+            </h3>
+            <p class="text-sm text-textMuted mt-1 line-clamp-2 h-10" title={repo.description}>
+                {repo.description}
+            </p>
+        </div>
+        <div class={`px-2 py-1 rounded-full text-xs font-medium border ${statusColor} whitespace-nowrap flex items-center gap-1`}>
+            {repo.status.replace(/[^a-zA-Z ]/g, "")}
+        </div>
+    </div>
+
+    <div class="flex items-center gap-4 mb-6 text-sm text-textMuted relative z-10">
+        <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full shadow-sm" style={`background-color: ${langColor}`}></span>
+            <span>{repo.language}</span>
+        </div>
+        <div class="flex items-center gap-1">
+            <Star size={14} class="text-yellow-500" />
+            <span>{repo.stars}</span>
+        </div>
+        <div class="flex items-center gap-1">
+            <GitFork size={14} />
+            <span>{repo.forks}</span>
+        </div>
+    </div>
+
+    <div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-xs text-textMuted relative z-10">
+        <div class="flex items-center gap-1" title="Last Updated">
+            <Clock size={12} />
+            <span>{repo.last_update_str}</span>
+        </div>
+        {repo.version && repo.version !== '—' && (
+            <div class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white/70 font-mono">
+                {repo.version}
+            </div>
+        )}
+    </div>
+</div>

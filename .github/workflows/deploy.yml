@@ -48,14 +48,14 @@ jobs:
           MY_PAT: ${{ secrets.MY_PAT }}
       
       - name: Aggregate contributor statistics
-        run: python aggregate_contributors.py docs/repositories-data.json docs/contributor-stats.json
+        run: python aggregate_contributors.py public_data/repositories-data.json public_data/contributor-stats.json
       
       - name: Download previous data for comparison
         continue-on-error: true
         run: |
           # Download previous repositories-data.json from main branch
           git fetch origin main
-          git show origin/main:docs/repositories-data.json > previous-data.json 2>/dev/null || echo "[]" > previous-data.json
+          git show origin/main:public_data/repositories-data.json > previous-data.json 2>/dev/null || echo "[]" > previous-data.json
       
       - name: Run Threshold Monitor
         continue-on-error: true
@@ -64,7 +64,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           python threshold_monitor.py \
-            --current docs/repositories-data.json \
+            --current public_data/repositories-data.json \
             --previous previous-data.json
 
       - name: Generate badges and statistics
@@ -81,7 +81,6 @@ jobs:
             docs/badges/
             docs/STATS.md
             docs/stats-summary.json
-            docs/contributor-stats.json
           retention-days: 1
 
   build-and-deploy:
@@ -95,26 +94,34 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: stats-data
-          path: frontend/public/ 
+          path: temp_data/
+
+      - name: Copy data to Astro project
+        run: |
+          mkdir -p astro-frontend/src/data
+          cp temp_data/public_data/repositories-data.json astro-frontend/src/data/repositories.json
+          # Also copy to public if needed
+          mkdir -p astro-frontend/public
+          cp temp_data/public_data/repositories-data.json astro-frontend/public/repositories-data.json
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: astro-frontend/package-lock.json
 
       - name: Install Frontend dependencies
-        run: npm --prefix frontend ci
+        run: npm --prefix astro-frontend install
 
-      - name: Build Vite application
-        run: npm --prefix frontend run build
+      - name: Build Astro application
+        run: npm --prefix astro-frontend run build
 
       - name: Prepare for deployment to docs/
         run: |
           rm -rf docs
           mkdir docs
-          cp -r frontend/dist/* docs/
+          cp -r astro-frontend/dist/* docs/
           touch docs/.nojekyll
 
       - name: Commit and push to docs/
@@ -124,3 +131,4 @@ jobs:
           git add docs
           git diff --staged --quiet || git commit -m "Deploy: Update GitHub Pages"
           git push
+

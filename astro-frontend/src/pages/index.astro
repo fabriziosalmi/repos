@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RepoCard from '../components/RepoCard.astro';
+import repositories from '../data/repositories.json';
+import { Github, Code2, Star, GitFork, Activity } from 'lucide-react';
+
+// Calculate stats
+const totalRepos = repositories.length;
+const totalStars = repositories.reduce((acc, repo) => acc + (repo.stars || 0), 0);
+const totalForks = repositories.reduce((acc, repo) => acc + (repo.forks || 0), 0);
+const activeRepos = repositories.filter(repo => repo.status.includes('ACTIVE')).length;
+
+// Sort repositories by stars
+const sortedRepos = [...repositories].sort((a, b) => (b.stars || 0) - (a.stars || 0));
+---
+
+<Layout title="Fabrizio Salmi | GitHub Repositories">
+	<main class="min-h-screen bg-background relative overflow-hidden">
+        {/* Background Elements */}
+        <div class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -left-24 w-64 h-64 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
+
+		<div class="container mx-auto px-4 py-16 relative z-10">
+            {/* Header */}
+			<header class="mb-16 text-center animate-fade-in">
+                <div class="inline-flex items-center justify-center p-2 mb-6 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <Github className="w-6 h-6 mr-2 text-white" />
+                    <span class="text-sm font-medium text-white/80">github.com/fabriziosalmi</span>
+                </div>
+				<h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+					Open Source <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Portfolio</span>
+				</h1>
+				<p class="text-xl text-textMuted max-w-2xl mx-auto leading-relaxed">
+					A collection of my open source projects, tools, and experiments. 
+                    Updated daily with real-time statistics.
+				</p>
+			</header>
+
+            {/* Stats Grid */}
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 animate-slide-up" style="animation-delay: 100ms;">
+                <div class="bg-surface border border-white/5 rounded-xl p-6 text-center hover:border-primary/30 transition-colors">
+                    <div class="flex justify-center mb-2 text-primary"><Code2 size={24} /></div>
+                    <div class="text-3xl font-bold text-white mb-1">{totalRepos}</div>
+                    <div class="text-sm text-textMuted">Repositories</div>
+                </div>
+                <div class="bg-surface border border-white/5 rounded-xl p-6 text-center hover:border-primary/30 transition-colors">
+                    <div class="flex justify-center mb-2 text-yellow-500"><Star size={24} /></div>
+                    <div class="text-3xl font-bold text-white mb-1">{totalStars}</div>
+                    <div class="text-sm text-textMuted">Total Stars</div>
+                </div>
+                <div class="bg-surface border border-white/5 rounded-xl p-6 text-center hover:border-primary/30 transition-colors">
+                    <div class="flex justify-center mb-2 text-blue-500"><GitFork size={24} /></div>
+                    <div class="text-3xl font-bold text-white mb-1">{totalForks}</div>
+                    <div class="text-sm text-textMuted">Total Forks</div>
+                </div>
+                <div class="bg-surface border border-white/5 rounded-xl p-6 text-center hover:border-primary/30 transition-colors">
+                    <div class="flex justify-center mb-2 text-emerald-500"><Activity size={24} /></div>
+                    <div class="text-3xl font-bold text-white mb-1">{activeRepos}</div>
+                    <div class="text-sm text-textMuted">Active Projects</div>
+                </div>
+            </div>
+
+            {/* Repositories Grid */}
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{sortedRepos.map((repo, index) => (
+					<RepoCard repo={repo} index={index} />
+				))}
+			</div>
+            
+            <footer class="mt-20 text-center text-textMuted text-sm pb-8">
+                <p>Generated automatically by GitHub Actions. Last update: {new Date().toLocaleDateString()}</p>
+            </footer>
+		</div>
+	</main>
+</Layout>
