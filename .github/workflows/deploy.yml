@@ -105,7 +105,7 @@ jobs:
           cp temp_data/public_data/repositories-data.json astro-frontend/public/repositories-data.json
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20'
 
