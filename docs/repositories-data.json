@@ -71,9 +71,9 @@
         "name": "caddy-waf",
         "full_name": "fabriziosalmi/caddy-waf",
         "description": "Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)",
-        "stars": 696,
+        "stars": 697,
         "forks": 24,
-        "watchers": 696,
+        "watchers": 697,
         "language": "Go",
         "archived": false,
         "disabled": false,
@@ -88,7 +88,7 @@
         "has_issues": true,
         "commits": 646,
         "contributors": 7,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 1553273.4642857143,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -154,7 +154,7 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1360,
-        "last_update": "2025-12-25T00:32:11+00:00",
+        "last_update": "2025-12-26T00:32:32+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 268,
@@ -391,7 +391,7 @@
         "has_issues": true,
         "commits": 475,
         "contributors": 3,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 154923.66666666666,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -636,11 +636,11 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 3,
-        "size": 978,
-        "last_update": "2025-12-24T01:37:10+00:00",
+        "size": 1010,
+        "last_update": "2025-12-25T01:37:59+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 83,
+        "commits": 84,
         "contributors": 5,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2795065.375,
@@ -764,7 +764,7 @@
         "has_issues": true,
         "commits": 79,
         "contributors": 3,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 12707778.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -864,11 +864,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 1885,
-        "last_update": "2025-12-24T03:34:37+00:00",
+        "size": 1927,
+        "last_update": "2025-12-25T03:34:50+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 349,
+        "commits": 350,
         "contributors": 4,
         "last_update_str": "22 hours ago",
         "avg_issue_resolution_time": 61.0,
@@ -919,13 +919,13 @@
         "license": "MIT License",
         "default_branch": "main",
         "open_issues_count": 3,
-        "size": 334,
-        "last_update": "2025-12-24T22:14:33+00:00",
+        "size": 338,
+        "last_update": "2025-12-25T21:22:25+00:00",
         "created_at_api": "2024-09-03T21:55:27+00:00",
         "has_issues": true,
-        "commits": 104,
-        "contributors": 3,
-        "last_update_str": "3 hours ago",
+        "commits": 107,
+        "contributors": 4,
+        "last_update_str": "4 hours ago",
         "avg_issue_resolution_time": 23757185.666666668,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -954,8 +954,8 @@
             "stale_issues_count": 0
         },
         "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
+            "bus_factor": 2,
+            "risk_level": "moderate"
         }
     },
     {
@@ -1014,9 +1014,9 @@
         "name": "secure-proxy-manager",
         "full_name": "fabriziosalmi/secure-proxy-manager",
         "description": "Secure proxy solution with filtering, real-time monitoring and a modern web UI.",
-        "stars": 22,
+        "stars": 23,
         "forks": 3,
-        "watchers": 22,
+        "watchers": 23,
         "language": "HTML",
         "archived": false,
         "disabled": false,
@@ -1064,10 +1064,10 @@
         "version": "v0.13.0",
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 0.1,
-            "stars_7d": 0,
-            "stars_30d": 1,
-            "trend": "stable"
+            "score": 2.9,
+            "stars_7d": 1,
+            "stars_30d": 2,
+            "trend": "growing"
         },
         "issue_health": {
             "health_score": 90.0,
@@ -1221,9 +1221,9 @@
         "version": null,
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 2.1,
+            "score": 2.2,
             "stars_7d": 1,
-            "stars_30d": 5,
+            "stars_30d": 4,
             "trend": "growing"
         },
         "issue_health": {
@@ -1242,9 +1242,9 @@
         "name": "pdf-ocr",
         "full_name": "fabriziosalmi/pdf-ocr",
         "description": "Converts scanned PDF documents to multiple formats using Optical Character Recognition",
-        "stars": 12,
+        "stars": 13,
         "forks": 0,
-        "watchers": 12,
+        "watchers": 13,
         "language": "HTML",
         "archived": false,
         "disabled": false,
@@ -1284,10 +1284,10 @@
         "version": "v0.2.0",
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 0.1,
-            "stars_7d": 0,
-            "stars_30d": 1,
-            "trend": "stable"
+            "score": 2.8,
+            "stars_7d": 1,
+            "stars_30d": 2,
+            "trend": "growing"
         },
         "issue_health": {
             "health_score": 100,
@@ -1402,8 +1402,8 @@
         "version": "v1.4.0",
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 4.0,
-            "stars_7d": 2,
+            "score": 2.0,
+            "stars_7d": 1,
             "stars_30d": 9,
             "trend": "growing"
         },
@@ -1776,11 +1776,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 6,
-        "size": 2538,
-        "last_update": "2025-12-24T01:40:34+00:00",
+        "size": 2539,
+        "last_update": "2025-12-25T01:41:18+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 857,
+        "commits": 858,
         "contributors": 5,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 73785.0,
@@ -2651,6 +2651,73 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/claude-code-brutal-edition",
+        "name": "claude-code-brutal-edition",
+        "full_name": "fabriziosalmi/claude-code-brutal-edition",
+        "description": "Brutalize the codebase from the beginning.",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": true,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 26819,
+        "last_update": "2025-11-24T20:29:32+00:00",
+        "created_at_api": "2025-11-24T19:26:21+00:00",
+        "has_issues": false,
+        "commits": 362,
+        "contributors": 42,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 59809,
+                "percentage": 41.89
+            },
+            "Shell": {
+                "bytes": 59675,
+                "percentage": 41.8
+            },
+            "TypeScript": {
+                "bytes": 15463,
+                "percentage": 10.83
+            },
+            "PowerShell": {
+                "bytes": 5319,
+                "percentage": 3.73
+            },
+            "Dockerfile": {
+                "bytes": 2507,
+                "percentage": 1.76
+            }
+        },
+        "version": null,
+        "status": "🍴 FORK",
+        "momentum": {
+            "score": 2.8,
+            "stars_7d": 1,
+            "stars_30d": 2,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 5,
+            "risk_level": "healthy"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/cloudflare-backup-actions",
         "name": "cloudflare-backup-actions",
         "full_name": "fabriziosalmi/cloudflare-backup-actions",
@@ -2718,7 +2785,7 @@
         "has_issues": true,
         "commits": 25,
         "contributors": 2,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3389,73 +3456,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/claude-code-brutal-edition",
-        "name": "claude-code-brutal-edition",
-        "full_name": "fabriziosalmi/claude-code-brutal-edition",
-        "description": "Brutalize the codebase from the beginning.",
-        "stars": 1,
-        "forks": 0,
-        "watchers": 1,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": true,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 26819,
-        "last_update": "2025-11-24T20:29:32+00:00",
-        "created_at_api": "2025-11-24T19:26:21+00:00",
-        "has_issues": false,
-        "commits": 362,
-        "contributors": 42,
-        "last_update_str": "1 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 59809,
-                "percentage": 41.89
-            },
-            "Shell": {
-                "bytes": 59675,
-                "percentage": 41.8
-            },
-            "TypeScript": {
-                "bytes": 15463,
-                "percentage": 10.83
-            },
-            "PowerShell": {
-                "bytes": 5319,
-                "percentage": 3.73
-            },
-            "Dockerfile": {
-                "bytes": 2507,
-                "percentage": 1.76
-            }
-        },
-        "version": null,
-        "status": "🍴 FORK",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 1,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 5,
-            "risk_level": "healthy"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/extreme-content-detector",
         "name": "extreme-content-detector",
         "full_name": "fabriziosalmi/extreme-content-detector",
@@ -3966,11 +3966,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 4668,
-        "last_update": "2025-12-24T05:06:24+00:00",
+        "size": 4682,
+        "last_update": "2025-12-25T05:06:13+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1192,
+        "commits": 1194,
         "contributors": 2,
         "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
@@ -4266,7 +4266,7 @@
         "has_issues": true,
         "commits": 10,
         "contributors": 2,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4516,11 +4516,11 @@
         "license": "No license",
         "default_branch": "main",
         "open_issues_count": 1,
-        "size": 1179,
-        "last_update": "2025-12-25T00:10:06+00:00",
+        "size": 1180,
+        "last_update": "2025-12-26T00:10:03+00:00",
         "created_at_api": "2025-10-16T18:32:24+00:00",
         "has_issues": true,
-        "commits": 2906,
+        "commits": 2907,
         "contributors": 6,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 307.0,
