@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/github/license/fabriziosalmi/repos?style=for-the-badge)](LICENSE)
 [![Last Update](https://img.shields.io/github/last-commit/fabriziosalmi/repos?style=for-the-badge)](https://github.com/fabriziosalmi/repos/commits)
 
-**[🌐 View Live Dashboard](https://fabriziosalmi.github.io/repos/)** • **[🚀 Quick Start](TUTORIAL.md)** • **[📖 Documentation](SETUP.md)** • **[📊 Detailed Stats](docs/STATS.md)** • **[✨ Features](FEATURES.md)**
+**[🌐 View Live Dashboard](https://fabriziosalmi.github.io/repos/)** • **[🚀 Quick Start](TUTORIAL.md)** • **[📖 Documentation](SETUP.md)** • **[✨ Features](FEATURES.md)**
 
 ---
 
@@ -27,8 +27,6 @@
 ![Issues Resolved](https://img.shields.io/badge/Issues_Resolved-57-green?style=flat-square)
 ![Resolution Rate](https://img.shields.io/badge/Resolution_Rate-54.8%25-brightgreen?style=flat-square)
 
-**🏆 Most Starred: certmate (898 ⭐) | 💻 Top Language: Python (43 repos) | 📊 Avg: 38.0★ / 186.5 commits**
-
 </div>
 
 </div>
@@ -38,15 +36,6 @@
 ## 🎯 Overview
 
 A powerful, privacy-focused analytics dashboard that transforms GitHub repository data into beautiful, interactive visualizations. Built with modern web technologies and automated through GitHub Actions for real-time insights.
-
-### 🌟 Key Highlights
-
-```
-📦 Total Repositories      🏆 Community Stars      🍴 Total Forks      💻 Languages
-Auto-discovered            Tracked in real-time    Live counting       Full analysis
-```
-
----
 
 ## ✨ Features
 
@@ -365,7 +354,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Built with ❤️ and ☕**
+**Built with ❤️ and GitHub Action☕**
 
 [![GitHub followers](https://img.shields.io/github/followers/fabriziosalmi?style=social)](https://github.com/fabriziosalmi)
 [![Twitter Follow](https://img.shields.io/twitter/follow/fabriziosalmi?style=social)](https://twitter.com/fabriziosalmi)
