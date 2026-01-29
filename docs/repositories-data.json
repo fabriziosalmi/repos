@@ -4,9 +4,9 @@
         "name": "certmate",
         "full_name": "fabriziosalmi/certmate",
         "description": "SSL Certificate Management System (API + UI)",
-        "stars": 1122,
+        "stars": 1123,
         "forks": 73,
-        "watchers": 1122,
+        "watchers": 1123,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -81,7 +81,7 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 1,
+        "open_issues_count": 0,
         "size": 8650,
         "last_update": "2026-01-17T23:15:54+00:00",
         "created_at_api": "2025-01-02T12:13:56+00:00",
@@ -89,7 +89,7 @@
         "commits": 668,
         "contributors": 8,
         "last_update_str": "1 weeks ago",
-        "avg_issue_resolution_time": 1499277.0,
+        "avg_issue_resolution_time": 1457489.375,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
@@ -129,7 +129,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 5.2,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -154,7 +154,7 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1387,
-        "last_update": "2026-01-28T00:33:36+00:00",
+        "last_update": "2026-01-29T00:38:03+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 270,
@@ -636,11 +636,11 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 2,
-        "size": 2438,
-        "last_update": "2026-01-27T01:38:28+00:00",
+        "size": 2492,
+        "last_update": "2026-01-28T01:38:22+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 132,
+        "commits": 133,
         "contributors": 6,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2540399.888888889,
@@ -864,11 +864,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 1757,
-        "last_update": "2026-01-28T00:22:49+00:00",
+        "size": 1759,
+        "last_update": "2026-01-29T00:25:41+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 409,
+        "commits": 411,
         "contributors": 4,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 61.0,
@@ -890,6 +890,77 @@
             "score": 3.2,
             "stars_7d": 1,
             "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/secure-proxy-manager",
+        "name": "secure-proxy-manager",
+        "full_name": "fabriziosalmi/secure-proxy-manager",
+        "description": "Secure proxy solution with filtering, real-time monitoring and a modern web UI.",
+        "stars": 29,
+        "forks": 3,
+        "watchers": 29,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 5,
+        "size": 25553,
+        "last_update": "2026-01-11T17:14:52+00:00",
+        "created_at_api": "2024-12-30T10:05:07+00:00",
+        "has_issues": true,
+        "commits": 293,
+        "contributors": 4,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 2235246.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 224004,
+                "percentage": 49.53
+            },
+            "Python": {
+                "bytes": 194792,
+                "percentage": 43.07
+            },
+            "Shell": {
+                "bytes": 26746,
+                "percentage": 5.91
+            },
+            "Dockerfile": {
+                "bytes": 3392,
+                "percentage": 0.75
+            },
+            "JavaScript": {
+                "bytes": 2487,
+                "percentage": 0.55
+            },
+            "CSS": {
+                "bytes": 825,
+                "percentage": 0.18
+            }
+        },
+        "version": "v0.13.2",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 2.1,
+            "stars_7d": 1,
+            "stars_30d": 5,
             "trend": "growing"
         },
         "issue_health": {
@@ -945,77 +1016,6 @@
             "score": 0.1,
             "stars_7d": 0,
             "stars_30d": 1,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 2,
-            "risk_level": "moderate"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/secure-proxy-manager",
-        "name": "secure-proxy-manager",
-        "full_name": "fabriziosalmi/secure-proxy-manager",
-        "description": "Secure proxy solution with filtering, real-time monitoring and a modern web UI.",
-        "stars": 28,
-        "forks": 3,
-        "watchers": 28,
-        "language": "HTML",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 5,
-        "size": 25553,
-        "last_update": "2026-01-11T17:14:52+00:00",
-        "created_at_api": "2024-12-30T10:05:07+00:00",
-        "has_issues": true,
-        "commits": 293,
-        "contributors": 4,
-        "last_update_str": "2 weeks ago",
-        "avg_issue_resolution_time": 2235246.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "HTML": {
-                "bytes": 224004,
-                "percentage": 49.53
-            },
-            "Python": {
-                "bytes": 194792,
-                "percentage": 43.07
-            },
-            "Shell": {
-                "bytes": 26746,
-                "percentage": 5.91
-            },
-            "Dockerfile": {
-                "bytes": 3392,
-                "percentage": 0.75
-            },
-            "JavaScript": {
-                "bytes": 2487,
-                "percentage": 0.55
-            },
-            "CSS": {
-                "bytes": 825,
-                "percentage": 0.18
-            }
-        },
-        "version": "v0.13.2",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.1,
-            "stars_7d": 0,
-            "stars_30d": 4,
             "trend": "stable"
         },
         "issue_health": {
@@ -1250,9 +1250,9 @@
         "name": "brutal-coding-tool",
         "full_name": "fabriziosalmi/brutal-coding-tool",
         "description": "Audit your vibecode and make it brutally solid :)",
-        "stars": 14,
+        "stars": 15,
         "forks": 2,
-        "watchers": 14,
+        "watchers": 15,
         "language": "TypeScript",
         "archived": false,
         "disabled": false,
@@ -1284,10 +1284,69 @@
         "version": null,
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 0.1,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
+            "score": 3.2,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/vibe-check",
+        "name": "vibe-check",
+        "full_name": "fabriziosalmi/vibe-check",
+        "description": "Anti-slop CI/CD gatekeeper (GitHub action)",
+        "stars": 11,
+        "forks": 0,
+        "watchers": 11,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 128,
+        "last_update": "2025-11-24T21:58:57+00:00",
+        "created_at_api": "2025-11-24T20:35:45+00:00",
+        "has_issues": true,
+        "commits": 20,
+        "contributors": 1,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 1883358.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 101505,
+                "percentage": 98.71
+            },
+            "JavaScript": {
+                "bytes": 975,
+                "percentage": 0.95
+            },
+            "Dockerfile": {
+                "bytes": 356,
+                "percentage": 0.35
+            }
+        },
+        "version": "v1.4.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 2.8,
+            "stars_7d": 1,
+            "stars_30d": 2,
+            "trend": "growing"
         },
         "issue_health": {
             "health_score": 100,
@@ -1346,65 +1405,6 @@
             "score": 0.1,
             "stars_7d": 0,
             "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/vibe-check",
-        "name": "vibe-check",
-        "full_name": "fabriziosalmi/vibe-check",
-        "description": "Anti-slop CI/CD gatekeeper (GitHub action)",
-        "stars": 10,
-        "forks": 0,
-        "watchers": 10,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 128,
-        "last_update": "2025-11-24T21:58:57+00:00",
-        "created_at_api": "2025-11-24T20:35:45+00:00",
-        "has_issues": true,
-        "commits": 20,
-        "contributors": 1,
-        "last_update_str": "2 months ago",
-        "avg_issue_resolution_time": 1883358.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 101505,
-                "percentage": 98.71
-            },
-            "JavaScript": {
-                "bytes": 975,
-                "percentage": 0.95
-            },
-            "Dockerfile": {
-                "bytes": 356,
-                "percentage": 0.35
-            }
-        },
-        "version": "v1.4.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.1,
-            "stars_7d": 0,
-            "stars_30d": 1,
             "trend": "stable"
         },
         "issue_health": {
@@ -1499,7 +1499,7 @@
         "has_issues": true,
         "commits": 58,
         "contributors": 2,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1562,7 +1562,7 @@
         "has_issues": true,
         "commits": 507,
         "contributors": 6,
-        "last_update_str": "5 days ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 22987383.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1717,13 +1717,13 @@
         "license": "Other",
         "default_branch": "main",
         "open_issues_count": 7,
-        "size": 9316,
-        "last_update": "2026-01-28T01:35:25+00:00",
+        "size": 9360,
+        "last_update": "2026-01-29T00:56:29+00:00",
         "created_at_api": "2026-01-18T01:26:38+00:00",
         "has_issues": true,
-        "commits": 1327,
+        "commits": 1437,
         "contributors": 8,
-        "last_update_str": "2 minutes ago",
+        "last_update_str": "42 minutes ago",
         "avg_issue_resolution_time": 76.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1756,7 +1756,7 @@
         "issue_health": {
             "health_score": 80.0,
             "status": "healthy",
-            "avg_response_hours": 95.5,
+            "avg_response_hours": 102.2,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1847,13 +1847,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 3,
-        "size": 2680,
-        "last_update": "2026-01-27T01:40:49+00:00",
+        "size": 2684,
+        "last_update": "2026-01-28T01:40:20+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 911,
+        "commits": 912,
         "contributors": 5,
-        "last_update_str": "23 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2041,7 +2041,7 @@
         "has_issues": true,
         "commits": 108,
         "contributors": 2,
-        "last_update_str": "8 months ago",
+        "last_update_str": "9 months ago",
         "avg_issue_resolution_time": 34520422.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2990,7 +2990,7 @@
         "has_issues": true,
         "commits": 35,
         "contributors": 2,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3632,7 +3632,7 @@
         "has_issues": true,
         "commits": 117,
         "contributors": 3,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 9314.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3868,7 +3868,7 @@
             }
         },
         "version": "v0.9.6",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -3908,7 +3908,7 @@
         "has_issues": true,
         "commits": 66,
         "contributors": 2,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 11870.25925925926,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4026,7 +4026,7 @@
         "has_issues": true,
         "commits": 90,
         "contributors": 1,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4683,11 +4683,11 @@
         "license": "No license",
         "default_branch": "main",
         "open_issues_count": 1,
-        "size": 1193,
-        "last_update": "2026-01-28T00:10:59+00:00",
+        "size": 1194,
+        "last_update": "2026-01-29T00:12:08+00:00",
         "created_at_api": "2025-10-16T18:32:24+00:00",
         "has_issues": true,
-        "commits": 2940,
+        "commits": 2941,
         "contributors": 6,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 307.0,
@@ -5935,11 +5935,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 5023,
-        "last_update": "2026-01-27T05:09:05+00:00",
+        "size": 5040,
+        "last_update": "2026-01-28T05:08:40+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1257,
+        "commits": 1259,
         "contributors": 2,
         "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
@@ -6043,7 +6043,7 @@
         "has_issues": true,
         "commits": 11,
         "contributors": 3,
-        "last_update_str": "2 months ago",
+        "last_update_str": "3 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
