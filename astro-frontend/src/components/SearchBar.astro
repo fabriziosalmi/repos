@@ -1,0 +1,128 @@
+---
+import { Github, Search, Code2, Star, GitFork } from 'lucide-react';
+
+interface Props {
+    totalRepos: number;
+    totalStars: number;
+    totalForks: number;
+}
+
+const { totalRepos, totalStars, totalForks } = Astro.props;
+---
+
+<div id="search-bar" class="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+    <div class="max-w-[1800px] mx-auto px-6 md:px-12 py-3 flex items-center justify-between gap-4">
+        <!-- Left: Brand -->
+        <div class="flex items-center gap-2.5 flex-shrink-0">
+            <Github className="w-5 h-5 text-primary" />
+            <span class="text-sm font-bold text-white hidden sm:inline">fabriziosalmi</span>
+        </div>
+
+        <!-- Center: Search -->
+        <div class="relative flex-1 max-w-lg">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search repositories..."
+                class="w-full bg-white/5 border border-white/10 rounded-lg py-2 px-4 pl-9 text-sm text-white placeholder-textMuted focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+            />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-textMuted pointer-events-none" />
+            <kbd class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-textMuted bg-white/5 border border-white/10 px-1.5 py-0.5 rounded hidden md:inline font-mono">/</kbd>
+        </div>
+
+        <!-- Right: Stats summary -->
+        <div class="hidden lg:flex items-center gap-4 text-xs text-textMuted flex-shrink-0">
+            <span class="flex items-center gap-1"><Code2 size={12} /> {totalRepos} repos</span>
+            <span class="flex items-center gap-1"><Star size={12} className="text-yellow-500" /> {totalStars.toLocaleString()}</span>
+            <span class="flex items-center gap-1"><GitFork size={12} /> {totalForks.toLocaleString()}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Search no-results message (hidden by default) -->
+<div id="search-no-results" class="hidden text-center py-20 px-8">
+    <Search className="w-12 h-12 text-textMuted mx-auto mb-4 opacity-50" />
+    <p class="text-lg text-textMuted">No repositories found</p>
+    <p class="text-sm text-textMuted/60 mt-1">Try a different search term</p>
+</div>
+
+<script>
+    const searchInput = document.getElementById('search-input');
+    const rowsContainer = document.getElementById('rows-container');
+    const heroSection = document.getElementById('hero-section');
+    const statsBar = document.getElementById('stats-bar');
+    const noResults = document.getElementById('search-no-results');
+    const searchBar = document.getElementById('search-bar');
+
+    // Keyboard shortcut: "/" to focus search
+    document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+            e.preventDefault();
+            searchInput?.focus();
+        }
+        if (e.key === 'Escape' && document.activeElement === searchInput) {
+            searchInput.value = '';
+            searchInput.blur();
+            filterRepos('');
+        }
+    });
+
+    let debounceTimer;
+    searchInput?.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => filterRepos(e.target.value), 150);
+    });
+
+    function filterRepos(query) {
+        const q = query.toLowerCase().trim();
+
+        if (!q) {
+            // Show everything
+            document.querySelectorAll('.row-card').forEach(card => {
+                card.style.display = '';
+            });
+            document.querySelectorAll('[id^="row-"]').forEach(section => {
+                section.style.display = '';
+            });
+            if (heroSection) heroSection.style.display = '';
+            if (statsBar) statsBar.style.display = '';
+            if (noResults) noResults.classList.add('hidden');
+            return;
+        }
+
+        // Hide hero and stats when searching
+        if (heroSection) heroSection.style.display = 'none';
+        if (statsBar) statsBar.style.display = 'none';
+
+        // Filter cards
+        let totalVisible = 0;
+        document.querySelectorAll('.row-card').forEach(card => {
+            const name = (card.getAttribute('data-repo-name') || '').toLowerCase();
+            const lang = (card.getAttribute('data-repo-lang') || '').toLowerCase();
+            const desc = (card.getAttribute('data-repo-desc') || '').toLowerCase();
+            const match = name.includes(q) || lang.includes(q) || desc.includes(q);
+            card.style.display = match ? '' : 'none';
+            if (match) totalVisible++;
+        });
+
+        // Hide empty rows
+        document.querySelectorAll('[id^="row-"]').forEach(section => {
+            const visibleCards = section.querySelectorAll('.row-card:not([style*="display: none"])');
+            section.style.display = visibleCards.length === 0 ? 'none' : '';
+        });
+
+        // Show/hide no-results message
+        if (noResults) {
+            noResults.classList.toggle('hidden', totalVisible > 0);
+        }
+    }
+
+    // Sticky nav scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            searchBar?.classList.add('shadow-lg', 'shadow-black/20');
+        } else {
+            searchBar?.classList.remove('shadow-lg', 'shadow-black/20');
+        }
+    }, { passive: true });
+</script>

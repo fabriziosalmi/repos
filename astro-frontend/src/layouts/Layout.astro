@@ -30,13 +30,78 @@ const { title } = Astro.props;
         width: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #09090b; 
+        background: #09090b;
     }
     ::-webkit-scrollbar-thumb {
-        background: #27272a; 
+        background: #27272a;
         border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: #3f3f46; 
+        background: #3f3f46;
+    }
+
+    /* Hide scrollbar on horizontal scroll rows */
+    .scroll-row {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .scroll-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Row card hover transitions */
+    .row-card {
+        transform-origin: center bottom;
+        transition: transform 0.3s ease, z-index 0s;
+    }
+    .row-card:first-child {
+        transform-origin: left bottom;
+    }
+    .row-card:last-child {
+        transform-origin: right bottom;
+    }
+
+    /* Expanded detail panel */
+    .row-card .card-detail {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s;
+    }
+    .row-card:hover .card-detail,
+    .row-card:focus-within .card-detail {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Touch devices: disable hover expand */
+    @media (hover: none) {
+        .row-card:hover {
+            transform: none !important;
+            z-index: auto !important;
+        }
+        .row-card .card-detail {
+            display: none !important;
+        }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .row-card {
+            transition: none !important;
+        }
+        .row-card:hover {
+            transform: none !important;
+        }
+        .scroll-row {
+            scroll-behavior: auto !important;
+        }
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 </style>

@@ -1,0 +1,107 @@
+---
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import RowCard from './RowCard.astro';
+
+interface Props {
+    title: string;
+    repos: any[];
+    id: string;
+}
+
+const { title, repos, id } = Astro.props;
+---
+
+<section class="mb-4 relative group/row" id={`row-${id}`}>
+    <!-- Row title -->
+    <h2 class="text-lg md:text-xl font-bold text-white mb-3 px-6 md:px-12 flex items-center gap-2">
+        {title}
+        <span class="text-xs font-normal text-textMuted">({repos.length})</span>
+    </h2>
+
+    <!-- Scroll container wrapper -->
+    <div class="relative">
+        <!-- Left arrow -->
+        <button
+            class="scroll-arrow absolute left-0 top-0 bottom-16 w-10 md:w-12 z-30
+                   bg-gradient-to-r from-background/90 to-transparent
+                   opacity-0 group-hover/row:opacity-100 transition-opacity duration-200
+                   flex items-center justify-center cursor-pointer
+                   hover:from-background"
+            data-direction="left"
+            data-target={`scroll-${id}`}
+            aria-label="Scroll left"
+            style="display: none;"
+        >
+            <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
+
+        <!-- Scrollable row -->
+        <div
+            class="scroll-row flex gap-2 md:gap-3 px-6 md:px-12 pb-14 pt-1 scroll-smooth"
+            id={`scroll-${id}`}
+        >
+            {repos.map((repo, i) => (
+                <RowCard repo={repo} index={i} />
+            ))}
+        </div>
+
+        <!-- Right arrow -->
+        <button
+            class="scroll-arrow absolute right-0 top-0 bottom-16 w-10 md:w-12 z-30
+                   bg-gradient-to-l from-background/90 to-transparent
+                   opacity-0 group-hover/row:opacity-100 transition-opacity duration-200
+                   flex items-center justify-center cursor-pointer
+                   hover:from-background"
+            data-direction="right"
+            data-target={`scroll-${id}`}
+            aria-label="Scroll right"
+        >
+            <ChevronRight className="w-6 h-6 text-white" />
+        </button>
+    </div>
+</section>
+
+<script>
+    // Initialize scroll arrows for all rows
+    function initScrollArrows() {
+        document.querySelectorAll('.scroll-arrow').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const direction = btn.getAttribute('data-direction');
+                const container = document.getElementById(targetId);
+                if (!container) return;
+
+                const scrollAmount = container.clientWidth * 0.75;
+                container.scrollBy({
+                    left: direction === 'right' ? scrollAmount : -scrollAmount,
+                    behavior: 'smooth',
+                });
+            });
+        });
+
+        document.querySelectorAll('.scroll-row').forEach(row => {
+            const id = row.id;
+            const leftBtn = document.querySelector(`[data-target="${id}"][data-direction="left"]`);
+            const rightBtn = document.querySelector(`[data-target="${id}"][data-direction="right"]`);
+
+            const updateArrows = () => {
+                if (leftBtn) {
+                    (leftBtn as HTMLElement).style.display = row.scrollLeft <= 10 ? 'none' : '';
+                }
+                if (rightBtn) {
+                    (rightBtn as HTMLElement).style.display =
+                        row.scrollLeft >= row.scrollWidth - row.clientWidth - 10 ? 'none' : '';
+                }
+            };
+
+            row.addEventListener('scroll', updateArrows, { passive: true });
+            // Initial check
+            updateArrows();
+            // Re-check after a moment (images/fonts may shift layout)
+            setTimeout(updateArrows, 500);
+        });
+    }
+
+    // Run on page load
+    initScrollArrows();
+</script>

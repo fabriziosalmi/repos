@@ -1,0 +1,38 @@
+---
+import { Code2, Star, GitFork, Activity } from 'lucide-react';
+
+interface Props {
+    totalRepos: number;
+    totalStars: number;
+    totalForks: number;
+    activeRepos: number;
+}
+
+const { totalRepos, totalStars, totalForks, activeRepos } = Astro.props;
+---
+
+<div class="flex items-center justify-center gap-6 md:gap-10 py-4 px-6 bg-surface/40 border-y border-white/5 backdrop-blur-sm">
+    <div class="flex items-center gap-2">
+        <Code2 size={16} className="text-primary" />
+        <span class="text-xl md:text-2xl font-bold text-white">{totalRepos}</span>
+        <span class="text-[10px] md:text-xs text-textMuted uppercase tracking-wider">Repos</span>
+    </div>
+    <div class="w-px h-6 bg-white/10"></div>
+    <div class="flex items-center gap-2">
+        <Star size={16} className="text-yellow-500" />
+        <span class="text-xl md:text-2xl font-bold text-white">{totalStars.toLocaleString()}</span>
+        <span class="text-[10px] md:text-xs text-textMuted uppercase tracking-wider">Stars</span>
+    </div>
+    <div class="w-px h-6 bg-white/10"></div>
+    <div class="flex items-center gap-2">
+        <GitFork size={16} className="text-blue-400" />
+        <span class="text-xl md:text-2xl font-bold text-white">{totalForks.toLocaleString()}</span>
+        <span class="text-[10px] md:text-xs text-textMuted uppercase tracking-wider">Forks</span>
+    </div>
+    <div class="w-px h-6 bg-white/10 hidden md:block"></div>
+    <div class="hidden md:flex items-center gap-2">
+        <Activity size={16} className="text-emerald-400" />
+        <span class="text-xl md:text-2xl font-bold text-white">{activeRepos}</span>
+        <span class="text-[10px] md:text-xs text-textMuted uppercase tracking-wider">Active</span>
+    </div>
+</div>

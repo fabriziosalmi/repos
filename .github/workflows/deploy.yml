@@ -67,6 +67,11 @@ jobs:
             --current public_data/repositories-data.json \
             --previous previous-data.json
 
+      - name: Copy data for badge generation
+        run: |
+          mkdir -p docs
+          cp public_data/repositories-data.json docs/repositories-data.json
+
       - name: Generate badges and statistics
         run: |
           python generate_badges.py
@@ -81,6 +86,7 @@ jobs:
             docs/badges/
             docs/STATS.md
             docs/stats-summary.json
+            README.md
           retention-days: 1
 
   build-and-deploy:
@@ -104,6 +110,12 @@ jobs:
           mkdir -p astro-frontend/public
           cp temp_data/public_data/repositories-data.json astro-frontend/public/repositories-data.json
 
+      - name: Update README with latest badges
+        run: |
+          if [ -f temp_data/README.md ]; then
+            cp temp_data/README.md README.md
+          fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
@@ -126,7 +138,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add docs
+          git add docs README.md
           git diff --staged --quiet || git commit -m "Deploy: Update GitHub Pages"
           git push
 

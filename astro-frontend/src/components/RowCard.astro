@@ -1,0 +1,124 @@
+---
+import { Star, GitFork, Clock, ExternalLink } from 'lucide-react';
+
+interface Props {
+    repo: any;
+    index: number;
+}
+
+const { repo, index } = Astro.props;
+
+const languageColors: Record<string, string> = {
+    Python: '#3572A5',
+    TypeScript: '#3178c6',
+    JavaScript: '#f1e05a',
+    Vue: '#41b883',
+    HTML: '#e34c26',
+    CSS: '#563d7c',
+    Shell: '#89e051',
+    Dockerfile: '#384d54',
+    Go: '#00ADD8',
+    Rust: '#dea584',
+    Java: '#b07219',
+    C: '#555555',
+    'C++': '#f34b7d',
+    PHP: '#4F5D95',
+    Ruby: '#701516',
+};
+
+const statusColors: Record<string, string> = {
+    'ACTIVE': 'text-emerald-400',
+    'INACTIVE': 'text-amber-400',
+    'STALE': 'text-orange-400',
+    'ARCHIVED': 'text-zinc-400',
+    'DISABLED': 'text-red-400',
+    'FORK': 'text-blue-400',
+};
+
+const langColor = languageColors[repo.language] || '#8b949e';
+const statusText = (repo.status || '').replace(/[^a-zA-Z ]/g, '').trim();
+const statusColorClass = Object.entries(statusColors).find(([k]) => statusText.includes(k))?.[1] || 'text-zinc-400';
+const lastUpdate = repo.last_update_str || repo.last_update || '';
+---
+
+<a
+    href={repo.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="row-card group/card flex-shrink-0 w-[160px] md:w-[220px] lg:w-[240px] relative rounded-lg overflow-visible
+           hover:scale-[1.3] hover:z-40 hover:shadow-2xl hover:shadow-black/80
+           focus-visible:scale-[1.3] focus-visible:z-40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+    data-repo-name={repo.name}
+    data-repo-lang={repo.language || ''}
+    data-repo-desc={repo.description || ''}
+>
+    <!-- Card face -->
+    <div class="relative h-[110px] md:h-[130px] lg:h-[140px] bg-surface rounded-lg overflow-hidden border border-white/5 group-hover/card:border-primary/30 transition-colors duration-300">
+        <!-- Language color accent bar -->
+        <div class="absolute top-0 left-0 right-0 h-[3px]" style={`background-color: ${langColor}`}></div>
+
+        <!-- Hover gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+        <!-- Content -->
+        <div class="p-3 md:p-4 h-full flex flex-col justify-between relative z-10">
+            <div>
+                <h3 class="text-xs md:text-sm font-bold text-white truncate group-hover/card:text-primary transition-colors">
+                    {repo.name}
+                </h3>
+                <p class="text-[10px] md:text-xs text-textMuted mt-1 line-clamp-2 leading-relaxed">
+                    {repo.description || 'No description'}
+                </p>
+            </div>
+            <div class="flex items-center gap-2.5 text-[10px] md:text-xs text-textMuted">
+                <span class="flex items-center gap-1">
+                    <Star size={10} className="text-yellow-500" />
+                    {repo.stars || 0}
+                </span>
+                <span class="flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full flex-shrink-0" style={`background-color: ${langColor}`}></span>
+                    <span class="truncate">{repo.language || 'N/A'}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expanded detail panel (hover only) -->
+    <div class="card-detail absolute top-full left-0 right-0 bg-surface rounded-b-lg border border-t-0 border-white/10 shadow-2xl shadow-black/60 p-3 z-50">
+        <!-- Action indicators -->
+        <div class="flex items-center gap-2 mb-2">
+            <span class="w-6 h-6 rounded-full bg-white text-background flex items-center justify-center">
+                <ExternalLink size={11} />
+            </span>
+            <span class={`text-[10px] font-medium ${statusColorClass}`}>{statusText}</span>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex items-center gap-2 text-[10px] text-textMuted flex-wrap">
+            <span class="text-yellow-400 font-medium">{repo.stars || 0} stars</span>
+            <span class="text-white/20">|</span>
+            <span>{repo.forks || 0} forks</span>
+            {lastUpdate && (
+                <>
+                    <span class="text-white/20">|</span>
+                    <span class="flex items-center gap-0.5">
+                        <Clock size={8} />
+                        {lastUpdate}
+                    </span>
+                </>
+            )}
+        </div>
+
+        <!-- Version -->
+        {repo.version && repo.version !== '—' && repo.version !== 'Unknown' && (
+            <div class="mt-1.5 text-[10px] font-mono text-primary/80">{repo.version}</div>
+        )}
+
+        <!-- Trending indicator -->
+        {repo.momentum?.trend === 'growing' && (
+            <span class="inline-block mt-1.5 text-[9px] px-1.5 py-0.5 bg-emerald-500/15 text-emerald-400 rounded font-medium">
+                Trending
+            </span>
+        )}
+    </div>
+</a>
