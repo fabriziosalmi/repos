@@ -45,9 +45,10 @@ const lastUpdate = repo.last_update_str || repo.last_update || '';
     href={repo.url}
     target="_blank"
     rel="noopener noreferrer"
-    class="row-card group/card flex-shrink-0 w-[160px] md:w-[220px] lg:w-[240px] relative rounded-lg overflow-visible
-           hover:scale-[1.3] hover:z-40 hover:shadow-2xl hover:shadow-black/80
-           focus-visible:scale-[1.3] focus-visible:z-40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+    class="row-card group/card flex-shrink-0 w-[160px] md:w-[220px] lg:w-[240px] relative rounded-lg
+           hover:scale-[1.15] hover:z-40 hover:shadow-2xl hover:shadow-black/80
+           focus-visible:scale-[1.15] focus-visible:z-40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
+           transition-transform duration-300"
     data-repo-name={repo.name}
     data-repo-lang={repo.language || ''}
     data-repo-desc={repo.description || ''}

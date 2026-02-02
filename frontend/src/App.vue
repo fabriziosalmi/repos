@@ -205,14 +205,14 @@ watch([searchTerm, sortKey, sortOrder, activeLanguage, activeDateRange], () => {
         </div>
       </div>
 
-      <div v-if="isLoading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div v-if="isLoading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-4">
         <SkeletonRepoCard v-for="i in 9" :key="`skeleton-${i}`" />
       </div>
       <div v-else-if="error" class="text-center bg-red-900/50 border border-red-500 p-4 rounded-lg">
         <p class="font-bold text-xl text-red-400">[CONNECTION ERROR]</p>
         <p class="text-red-300">{{ error }}</p>
       </div>
-      <TransitionGroup v-else tag="div" name="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+      <TransitionGroup v-else tag="div" name="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-4 relative">
         <RepoCard 
           v-for="repo in processedRepositories" 
           :key="repo.name" 
