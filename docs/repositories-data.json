@@ -1717,13 +1717,13 @@
         "license": "Other",
         "default_branch": "main",
         "open_issues_count": 7,
-        "size": 9495,
+        "size": 9504,
         "last_update": "2026-02-02T13:33:03+00:00",
         "created_at_api": "2026-01-18T01:26:38+00:00",
         "has_issues": true,
         "commits": 1923,
         "contributors": 8,
-        "last_update_str": "11 minutes ago",
+        "last_update_str": "20 minutes ago",
         "avg_issue_resolution_time": 76.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1848,26 +1848,26 @@
         "default_branch": "main",
         "open_issues_count": 4,
         "size": 2337,
-        "last_update": "2026-02-02T13:43:10+00:00",
+        "last_update": "2026-02-02T13:51:44+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 921,
+        "commits": 923,
         "contributors": 5,
-        "last_update_str": "2 minutes ago",
+        "last_update_str": "3 minutes ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
                 "bytes": 223512,
-                "percentage": 62.63
+                "percentage": 62.64
             },
             "Vue": {
-                "bytes": 84098,
-                "percentage": 23.57
+                "bytes": 84084,
+                "percentage": 23.56
             },
             "Astro": {
-                "bytes": 31179,
+                "bytes": 31177,
                 "percentage": 8.74
             },
             "TypeScript": {

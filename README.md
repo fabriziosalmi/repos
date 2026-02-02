@@ -22,7 +22,7 @@
 ![Total Repos](https://img.shields.io/badge/Total_Repos-104-blue?style=flat-square)
 ![Total Stars](https://img.shields.io/badge/Total_Stars-3,797-yellow?style=flat-square)
 ![Total Forks](https://img.shields.io/badge/Total_Forks-283-green?style=flat-square)
-![Total Commits](https://img.shields.io/badge/Total_Commits-23,132-purple?style=flat-square)
+![Total Commits](https://img.shields.io/badge/Total_Commits-23,134-purple?style=flat-square)
 ![Contributors](https://img.shields.io/badge/Contributors-548-brightgreen?style=flat-square)
 ![Issues Resolved](https://img.shields.io/badge/Issues_Resolved-72-green?style=flat-square)
 ![Resolution Rate](https://img.shields.io/badge/Resolution_Rate-44.7%25-brightgreen?style=flat-square)
