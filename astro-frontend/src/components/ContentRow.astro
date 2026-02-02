@@ -37,7 +37,7 @@ const { title, repos, id } = Astro.props;
 
         <!-- Scrollable row -->
         <div
-            class="scroll-row flex gap-2 md:gap-3 px-6 md:px-12 pb-14 pt-6 scroll-smooth overflow-visible"
+            class="scroll-row flex gap-2 md:gap-3 px-6 md:px-12 pb-14 pt-3 scroll-smooth overflow-x-auto overflow-y-visible"
             id={`scroll-${id}`}
         >
             {repos.map((repo, i) => (

@@ -44,8 +44,8 @@ const getBusFactorColor = (riskLevel: string) => {
 <template>
   <div 
     class="repo-card group flex flex-col border border-cyan-400/20 bg-slate-900/50 p-4 rounded-md
-           backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/80 hover:-translate-y-1 
-           hover:shadow-2xl hover:shadow-cyan-500/10 cursor-pointer"
+           backdrop-blur-sm transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] 
+           hover:shadow-2xl cursor-pointer"
     role="button"
     tabindex="0"
     @keydown.enter="$emit('click')"

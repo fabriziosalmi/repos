@@ -46,15 +46,15 @@ const lastUpdate = repo.last_update_str || repo.last_update || '';
     target="_blank"
     rel="noopener noreferrer"
     class="row-card group/card flex-shrink-0 w-[160px] md:w-[220px] lg:w-[240px] relative rounded-lg
-           hover:scale-[1.15] hover:z-40 hover:shadow-2xl hover:shadow-black/80
-           focus-visible:scale-[1.15] focus-visible:z-40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
-           transition-transform duration-300"
+           hover:z-40 hover:shadow-xl hover:shadow-primary/20
+           focus-visible:z-40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
+           transition-all duration-300"
     data-repo-name={repo.name}
     data-repo-lang={repo.language || ''}
     data-repo-desc={repo.description || ''}
 >
     <!-- Card face -->
-    <div class="relative h-[110px] md:h-[130px] lg:h-[140px] bg-surface rounded-lg overflow-hidden border border-white/5 group-hover/card:border-primary/30 transition-colors duration-300">
+    <div class="relative h-[110px] md:h-[130px] lg:h-[140px] bg-surface rounded-lg overflow-hidden border border-white/5 group-hover/card:border-primary/60 group-hover/card:shadow-[0_0_15px_rgba(0,255,255,0.3)] transition-all duration-300">
         <!-- Language color accent bar -->
         <div class="absolute top-0 left-0 right-0 h-[3px]" style={`background-color: ${langColor}`}></div>
 
