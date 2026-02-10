@@ -4,9 +4,9 @@
         "name": "certmate",
         "full_name": "fabriziosalmi/certmate",
         "description": "SSL Certificate Management System (API + UI)",
-        "stars": 1134,
+        "stars": 1136,
         "forks": 77,
-        "watchers": 1134,
+        "watchers": 1136,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -88,7 +88,7 @@
         "has_issues": true,
         "commits": 668,
         "contributors": 8,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 1457489.375,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -143,7 +143,7 @@
         "full_name": "fabriziosalmi/patterns",
         "description": "Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy",
         "stars": 302,
-        "forks": 7,
+        "forks": 6,
         "watchers": 302,
         "language": "Python",
         "archived": false,
@@ -154,12 +154,12 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1387,
-        "last_update": "2026-02-09T00:42:14+00:00",
+        "last_update": "2026-02-10T00:46:46+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 270,
         "contributors": 7,
-        "last_update_str": "1 hours ago",
+        "last_update_str": "56 minutes ago",
         "avg_issue_resolution_time": 579885.3333333334,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -252,9 +252,9 @@
         "name": "proxmox-vm-autoscale",
         "full_name": "fabriziosalmi/proxmox-vm-autoscale",
         "description": "Automatically scale virtual machines resources on Proxmox hosts",
-        "stars": 287,
+        "stars": 288,
         "forks": 23,
-        "watchers": 287,
+        "watchers": 288,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -636,11 +636,11 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 2,
-        "size": 3118,
-        "last_update": "2026-02-08T01:41:20+00:00",
+        "size": 3174,
+        "last_update": "2026-02-09T01:41:13+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 144,
+        "commits": 145,
         "contributors": 6,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2540399.888888889,
@@ -701,7 +701,7 @@
         "has_issues": true,
         "commits": 59,
         "contributors": 4,
-        "last_update_str": "3 days ago",
+        "last_update_str": "4 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -764,7 +764,7 @@
         "has_issues": true,
         "commits": 79,
         "contributors": 3,
-        "last_update_str": "1 months ago",
+        "last_update_str": "2 months ago",
         "avg_issue_resolution_time": 12707778.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -864,11 +864,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 2072,
-        "last_update": "2026-02-09T00:28:19+00:00",
+        "size": 2097,
+        "last_update": "2026-02-10T00:32:54+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 433,
+        "commits": 435,
         "contributors": 4,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 61.0,
@@ -1499,7 +1499,7 @@
         "has_issues": true,
         "commits": 58,
         "contributors": 2,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1651,6 +1651,69 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/enjoy",
+        "name": "enjoy",
+        "full_name": "fabriziosalmi/enjoy",
+        "description": "🎮 A GitHub-based game",
+        "stars": 7,
+        "forks": 6,
+        "watchers": 7,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Other",
+        "default_branch": "main",
+        "open_issues_count": 8,
+        "size": 9811,
+        "last_update": "2026-02-10T01:38:23+00:00",
+        "created_at_api": "2026-01-18T01:26:38+00:00",
+        "has_issues": true,
+        "commits": 2722,
+        "contributors": 9,
+        "last_update_str": "3 minutes ago",
+        "avg_issue_resolution_time": 742983.5,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 234502,
+                "percentage": 48.76
+            },
+            "TypeScript": {
+                "bytes": 215620,
+                "percentage": 44.83
+            },
+            "Python": {
+                "bytes": 16289,
+                "percentage": 3.39
+            },
+            "JavaScript": {
+                "bytes": 14564,
+                "percentage": 3.03
+            }
+        },
+        "version": "v4.1.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 2.0,
+            "stars_7d": 1,
+            "stars_30d": 7,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 80.0,
+            "status": "healthy",
+            "avg_response_hours": 140.9,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 4,
+            "risk_level": "healthy"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/wafcontrol",
         "name": "wafcontrol",
         "full_name": "fabriziosalmi/wafcontrol",
@@ -1702,66 +1765,62 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/enjoy",
-        "name": "enjoy",
-        "full_name": "fabriziosalmi/enjoy",
-        "description": "🎮 A GitHub-based game",
+        "url": "https://github.com/fabriziosalmi/caddy-adf",
+        "name": "caddy-adf",
+        "full_name": "fabriziosalmi/caddy-adf",
+        "description": "Yet another caddy WAF exploration",
         "stars": 6,
-        "forks": 6,
+        "forks": 0,
         "watchers": 6,
-        "language": "HTML",
+        "language": "Go",
         "archived": false,
         "disabled": false,
         "private": false,
         "fork": false,
-        "license": "Other",
+        "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 8,
-        "size": 9824,
-        "last_update": "2026-02-09T01:37:31+00:00",
-        "created_at_api": "2026-01-18T01:26:38+00:00",
+        "open_issues_count": 0,
+        "size": 31075,
+        "last_update": "2025-09-04T19:26:35+00:00",
+        "created_at_api": "2025-01-09T18:04:39+00:00",
         "has_issues": true,
-        "commits": 2625,
-        "contributors": 9,
-        "last_update_str": "3 minutes ago",
-        "avg_issue_resolution_time": 742983.5,
+        "commits": 100,
+        "contributors": 1,
+        "last_update_str": "5 months ago",
+        "avg_issue_resolution_time": 5609489.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
-            "HTML": {
-                "bytes": 234502,
-                "percentage": 48.76
+            "Go": {
+                "bytes": 58458,
+                "percentage": 72.91
             },
-            "TypeScript": {
-                "bytes": 215620,
-                "percentage": 44.83
+            "Shell": {
+                "bytes": 15662,
+                "percentage": 19.53
             },
             "Python": {
-                "bytes": 16289,
-                "percentage": 3.39
-            },
-            "JavaScript": {
-                "bytes": 14564,
-                "percentage": 3.03
+                "bytes": 6055,
+                "percentage": 7.55
             }
         },
-        "version": "v4.1.0",
-        "status": "🔥 ACTIVE",
+        "version": "v1.0.0",
+        "status": "✅ ACTIVE",
         "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 6,
-            "trend": "stable"
+            "score": 3.1,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
         },
         "issue_health": {
-            "health_score": 80.0,
+            "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 134.9,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
-            "bus_factor": 4,
-            "risk_level": "healthy"
+            "bus_factor": 1,
+            "risk_level": "critical"
         }
     },
     {
@@ -1847,13 +1906,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 4,
-        "size": 2567,
-        "last_update": "2026-02-08T01:44:05+00:00",
+        "size": 2634,
+        "last_update": "2026-02-09T09:55:14+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 930,
+        "commits": 932,
         "contributors": 5,
-        "last_update_str": "23 hours ago",
+        "last_update_str": "15 hours ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1904,9 +1963,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 100,
+            "health_score": 80.0,
             "status": "healthy",
-            "avg_response_hours": 42.0,
+            "avg_response_hours": 84.0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1958,65 +2017,6 @@
         "bus_factor": {
             "bus_factor": 5,
             "risk_level": "healthy"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/caddy-adf",
-        "name": "caddy-adf",
-        "full_name": "fabriziosalmi/caddy-adf",
-        "description": "Yet another caddy WAF exploration",
-        "stars": 5,
-        "forks": 0,
-        "watchers": 5,
-        "language": "Go",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "GNU Affero General Public License v3.0",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 31075,
-        "last_update": "2025-09-04T19:26:35+00:00",
-        "created_at_api": "2025-01-09T18:04:39+00:00",
-        "has_issues": true,
-        "commits": 100,
-        "contributors": 1,
-        "last_update_str": "5 months ago",
-        "avg_issue_resolution_time": 5609489.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Go": {
-                "bytes": 58458,
-                "percentage": 72.91
-            },
-            "Shell": {
-                "bytes": 15662,
-                "percentage": 19.53
-            },
-            "Python": {
-                "bytes": 6055,
-                "percentage": 7.55
-            }
-        },
-        "version": "v1.0.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
         }
     },
     {
@@ -2857,7 +2857,7 @@
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
-            "stars_30d": 2,
+            "stars_30d": 0,
             "trend": "stable"
         },
         "issue_health": {
@@ -2893,7 +2893,7 @@
         "has_issues": true,
         "commits": 61,
         "contributors": 2,
-        "last_update_str": "12 months ago",
+        "last_update_str": "1 years ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2990,7 +2990,7 @@
         "has_issues": true,
         "commits": 35,
         "contributors": 2,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3230,7 +3230,7 @@
         "has_issues": true,
         "commits": 117,
         "contributors": 3,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 9314.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3691,7 +3691,7 @@
         "has_issues": true,
         "commits": 56,
         "contributors": 3,
-        "last_update_str": "4 days ago",
+        "last_update_str": "5 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3908,7 +3908,7 @@
         "has_issues": true,
         "commits": 66,
         "contributors": 2,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 11870.25925925926,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4315,7 +4315,7 @@
         "has_issues": true,
         "commits": 22,
         "contributors": 2,
-        "last_update_str": "4 days ago",
+        "last_update_str": "5 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4683,11 +4683,11 @@
         "license": "No license",
         "default_branch": "main",
         "open_issues_count": 1,
-        "size": 1205,
-        "last_update": "2026-02-09T00:14:21+00:00",
+        "size": 1206,
+        "last_update": "2026-02-10T00:17:50+00:00",
         "created_at_api": "2025-10-16T18:32:24+00:00",
         "has_issues": true,
-        "commits": 2952,
+        "commits": 2953,
         "contributors": 6,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 307.0,
@@ -5444,7 +5444,7 @@
         "has_issues": true,
         "commits": 8,
         "contributors": 2,
-        "last_update_str": "5 days ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -5935,11 +5935,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 4978,
-        "last_update": "2026-02-08T05:29:43+00:00",
+        "size": 4996,
+        "last_update": "2026-02-09T05:31:57+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1281,
+        "commits": 1283,
         "contributors": 2,
         "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
