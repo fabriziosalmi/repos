@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg: #09090b;
-  --text: #e4e4e7;
+  --color-background-primary: #09090b;
+  --color-text-primary: #e4e4e7;
 }
 
 html {
-  background-color: var(--bg);
+  background-color: var(--color-background-primary);
 }
 
 body {
   min-height: 100vh;
-  color: var(--text);
-  background-color: var(--bg);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-primary);
 }
