@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #09090b;
+  --text: #e4e4e7;
+}
+
+html {
+  background-color: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  background-color: var(--bg);
+}
