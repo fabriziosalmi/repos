@@ -359,7 +359,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **Built with ❤️ and GitHub Action☕**
 
 [![GitHub followers](https://img.shields.io/github/followers/fabriziosalmi?style=social)](https://github.com/fabriziosalmi)
-[![Twitter Follow](https://img.shields.io/twitter/follow/fabriziosalmi?style=social)](https://twitter.com/fabriziosalmi)
+
 
 **⭐ Star this repo if you find it useful!**
 
