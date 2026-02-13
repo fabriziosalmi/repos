@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Fabrizio Salmi's GitHub Repositories Stats" />
@@ -19,91 +19,98 @@ const { title } = Astro.props;
 		<title>{title}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-background text-text font-sans antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+	<body class="bg-background text-text font-sans antialiased selection:bg-primary/30 selection:text-primary-foreground min-h-screen relative">
+        <!-- Background decorative elements -->
+        <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px]"></div>
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #09090b;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #27272a;
-        border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #3f3f46;
+    :root {
+        --primary-glow: conic-gradient(
+            from 180deg at 50% 50%,
+            #16abff33 0deg,
+            #0885ff33 55deg,
+            #54d6ff33 120deg,
+            #0071ff33 160deg,
+            transparent 360deg
+        );
     }
 
-    /* Hide scrollbar on horizontal scroll rows */
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #020617;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Horizontal scroll rows */
     .scroll-row {
         overflow-x: auto;
         overflow-y: visible;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 0 3rem;
     }
     .scroll-row::-webkit-scrollbar {
         display: none;
     }
 
-    /* Row card hover transitions */
+    /* Row card snap */
     .row-card {
-        transform-origin: center bottom;
-        transition: transform 0.3s ease, z-index 0s;
-    }
-    .row-card:first-child {
-        transform-origin: left bottom;
-    }
-    .row-card:last-child {
-        transform-origin: right bottom;
+        scroll-snap-align: start;
+        transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
     }
 
     /* Expanded detail panel */
     .row-card .card-detail {
         opacity: 0;
+        transform: translateY(-10px);
         visibility: hidden;
-        transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .row-card:hover .card-detail,
     .row-card:focus-within .card-detail {
         opacity: 1;
+        transform: translateY(0);
         visibility: visible;
     }
 
-    /* Touch devices: disable hover expand */
-    @media (hover: none) {
-        .row-card:hover {
-            transform: none !important;
-            z-index: auto !important;
-        }
-        .row-card .card-detail {
-            display: none !important;
-        }
+    /* Smooth focus states */
+    *:focus-visible {
+        outline: 2px solid theme('colors.primary');
+        outline-offset: 2px;
     }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
-        .row-card {
-            transition: none !important;
-        }
-        .row-card:hover {
-            transform: none !important;
-        }
-        .scroll-row {
-            scroll-behavior: auto !important;
-        }
         *, *::before, *::after {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
         }
     }
 </style>
+

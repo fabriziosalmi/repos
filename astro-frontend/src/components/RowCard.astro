@@ -1,5 +1,5 @@
 ---
-import { Star, GitFork, Clock, ExternalLink } from 'lucide-react';
+import { Star, GitFork, Clock, ExternalLink } from "lucide-react";
 
 interface Props {
     repo: any;
@@ -9,117 +9,173 @@ interface Props {
 const { repo, index } = Astro.props;
 
 const languageColors: Record<string, string> = {
-    Python: '#3572A5',
-    TypeScript: '#3178c6',
-    JavaScript: '#f1e05a',
-    Vue: '#41b883',
-    HTML: '#e34c26',
-    CSS: '#563d7c',
-    Shell: '#89e051',
-    Dockerfile: '#384d54',
-    Go: '#00ADD8',
-    Rust: '#dea584',
-    Java: '#b07219',
-    C: '#555555',
-    'C++': '#f34b7d',
-    PHP: '#4F5D95',
-    Ruby: '#701516',
+    Python: "#38bdf8", // primary
+    TypeScript: "#3178c6",
+    JavaScript: "#f1e05a",
+    Vue: "#41b883",
+    HTML: "#e34c26",
+    CSS: "#563d7c",
+    Shell: "#89e051",
+    Dockerfile: "#384d54",
+    Go: "#00ADD8",
+    Rust: "#dea584",
+    Java: "#b07219",
+    C: "#555555",
+    "C++": "#f34b7d",
+    PHP: "#4F5D95",
+    Ruby: "#701516",
 };
 
 const statusColors: Record<string, string> = {
-    'ACTIVE': 'text-emerald-400',
-    'INACTIVE': 'text-amber-400',
-    'STALE': 'text-orange-400',
-    'ARCHIVED': 'text-zinc-400',
-    'DISABLED': 'text-red-400',
-    'FORK': 'text-blue-400',
+    ACTIVE: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+    INACTIVE: "text-amber-400 bg-amber-400/10 border-amber-400/20",
+    STALE: "text-orange-400 bg-orange-400/10 border-orange-400/20",
+    ARCHIVED: "text-zinc-400 bg-zinc-400/10 border-zinc-400/20",
+    DISABLED: "text-red-400 bg-red-400/10 border-red-400/20",
+    FORK: "text-blue-400 bg-blue-400/10 border-blue-400/20",
 };
 
-const langColor = languageColors[repo.language] || '#8b949e';
-const statusText = (repo.status || '').replace(/[^a-zA-Z ]/g, '').trim();
-const statusColorClass = Object.entries(statusColors).find(([k]) => statusText.includes(k))?.[1] || 'text-zinc-400';
-const lastUpdate = repo.last_update_str || repo.last_update || '';
+const langColor = languageColors[repo.language] || "#94a3b8";
+const statusText = (repo.status || "").replace(/[^a-zA-Z ]/g, "").trim();
+const statusStyles =
+    Object.entries(statusColors).find(([k]) => statusText.includes(k))?.[1] ||
+    "text-zinc-400 bg-zinc-400/10 border-zinc-400/20";
+const lastUpdate = repo.last_update_str || repo.last_update || "";
 ---
 
 <a
     href={repo.url}
     target="_blank"
     rel="noopener noreferrer"
-    class="row-card group/card flex-shrink-0 w-[160px] md:w-[220px] lg:w-[240px] relative rounded-lg
-           hover:z-40 hover:shadow-xl hover:shadow-primary/20
-           focus-visible:z-40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
-           transition-all duration-300"
+    class="row-card group/card flex-shrink-0 w-[200px] md:w-[280px] lg:w-[320px] relative rounded-xl
+           transition-all duration-300 ease-out hover:-translate-y-2"
     data-repo-name={repo.name}
-    data-repo-lang={repo.language || ''}
-    data-repo-desc={repo.description || ''}
+    data-repo-lang={repo.language || ""}
+    data-repo-desc={repo.description || ""}
 >
     <!-- Card face -->
-    <div class="relative h-[110px] md:h-[130px] lg:h-[140px] bg-surface rounded-lg overflow-hidden border border-white/5 group-hover/card:border-primary/60 group-hover/card:shadow-[0_0_15px_rgba(0,255,255,0.3)] transition-all duration-300">
+    <div
+        class="relative h-[140px] md:h-[180px] bg-surface/40 backdrop-blur-md rounded-xl overflow-hidden border border-white/10 group-hover/card:border-primary/50 group-hover/card:shadow-[0_0_30px_-10px_rgba(56,189,248,0.3)] transition-all duration-500"
+    >
         <!-- Language color accent bar -->
-        <div class="absolute top-0 left-0 right-0 h-[3px]" style={`background-color: ${langColor}`}></div>
+        <div
+            class="absolute top-0 left-0 right-0 h-[4px] opacity-80"
+            style={`background-color: ${langColor}`}
+        >
+        </div>
 
         <!-- Hover gradient -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
+        >
+        </div>
 
         <!-- Content -->
-        <div class="p-3 md:p-4 h-full flex flex-col justify-between relative z-10">
+        <div
+            class="p-5 md:p-8 h-full flex flex-col justify-between relative z-10"
+        >
             <div>
-                <h3 class="text-xs md:text-sm font-bold text-white truncate group-hover/card:text-primary transition-colors">
-                    {repo.name}
-                </h3>
-                <p class="text-[10px] md:text-xs text-textMuted mt-1 line-clamp-2 leading-relaxed">
-                    {repo.description || 'No description'}
+                <div class="flex items-start justify-between gap-3 mb-3">
+                    <h3
+                        class="text-base md:text-xl font-black text-white truncate group-hover/card:text-primary transition-colors font-display tracking-tight"
+                    >
+                        {repo.name}
+                    </h3>
+                    {
+                        repo.stars > 100 && (
+                            <span class="flex-shrink-0 px-2.5 py-1 rounded-lg bg-primary/10 border border-primary/20 text-[10px] text-primary font-black uppercase tracking-widest">
+                                Top
+                            </span>
+                        )
+                    }
+                </div>
+                <p
+                    class="text-xs md:text-base text-textMuted mt-1 line-clamp-2 md:line-clamp-3 leading-relaxed font-medium"
+                >
+                    {
+                        repo.description ||
+                            "No description provided for this repository."
+                    }
                 </p>
             </div>
-            <div class="flex items-center gap-2.5 text-[10px] md:text-xs text-textMuted">
-                <span class="flex items-center gap-1">
-                    <Star size={10} className="text-yellow-500" />
-                    {repo.stars || 0}
-                </span>
-                <span class="flex items-center gap-1">
-                    <span class="w-2 h-2 rounded-full flex-shrink-0" style={`background-color: ${langColor}`}></span>
-                    <span class="truncate">{repo.language || 'N/A'}</span>
-                </span>
+
+            <div class="flex items-center justify-between mt-6">
+                <div
+                    class="flex items-center gap-4 text-xs md:text-sm text-textMuted font-bold"
+                >
+                    <span
+                        class="flex items-center gap-1.5 bg-white/5 pr-3 pl-2 py-1.5 rounded-xl border border-white/5 group-hover/card:border-primary/30 transition-colors"
+                    >
+                        <Star
+                            size={16}
+                            className="text-yellow-500 fill-yellow-500"
+                        />
+                        <span class="text-white">{repo.stars || 0}</span>
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <span
+                            class="w-3 h-3 rounded-full shadow-[0_0_12px_var(--lang-color)]"
+                            style={`background-color: ${langColor}; --lang-color: ${langColor}`}
+                        ></span>
+                        <span class="truncate">{repo.language || "N/A"}</span>
+                    </span>
+                </div>
+
+                <div
+                    class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-300"
+                >
+                    <ExternalLink size={18} className="text-primary" />
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Expanded detail panel (hover only) -->
-    <div class="card-detail absolute top-full left-0 right-0 bg-surface rounded-b-lg border border-t-0 border-white/10 shadow-2xl shadow-black/60 p-3 z-50">
-        <!-- Action indicators -->
-        <div class="flex items-center gap-2 mb-2">
-            <span class="w-6 h-6 rounded-full bg-white text-background flex items-center justify-center">
-                <ExternalLink size={11} />
+    <!-- Expanded detail panel -->
+    <div
+        class="card-detail absolute top-[calc(100%+8px)] left-0 right-0 bg-surfaceHighlight/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl p-4 z-50 pointer-events-none"
+    >
+        <div class="flex items-center justify-between mb-3">
+            <span
+                class={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider ${statusStyles}`}
+            >
+                {statusText}
             </span>
-            <span class={`text-[10px] font-medium ${statusColorClass}`}>{statusText}</span>
-        </div>
-
-        <!-- Stats -->
-        <div class="flex items-center gap-2 text-[10px] text-textMuted flex-wrap">
-            <span class="text-yellow-400 font-medium">{repo.stars || 0} stars</span>
-            <span class="text-white/20">|</span>
-            <span>{repo.forks || 0} forks</span>
-            {lastUpdate && (
-                <>
-                    <span class="text-white/20">|</span>
-                    <span class="flex items-center gap-0.5">
-                        <Clock size={8} />
-                        {lastUpdate}
+            {
+                repo.version && (
+                    <span class="text-[10px] font-mono text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
+                        {repo.version}
                     </span>
-                </>
-            )}
+                )
+            }
         </div>
 
-        <!-- Version -->
-        {repo.version && repo.version !== '—' && repo.version !== 'Unknown' && (
-            <div class="mt-1.5 text-[10px] font-mono text-primary/80">{repo.version}</div>
-        )}
+        <div class="space-y-2">
+            <div
+                class="flex items-center justify-between text-[11px] text-textMuted"
+            >
+                <span class="flex items-center gap-1.5">
+                    <GitFork size={12} />
+                    <span>{repo.forks || 0} forks</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <Clock size={12} />
+                    <span>{lastUpdate}</span>
+                </span>
+            </div>
 
-        <!-- Trending indicator -->
-        {repo.momentum?.trend === 'growing' && (
-            <span class="inline-block mt-1.5 text-[9px] px-1.5 py-0.5 bg-emerald-500/15 text-emerald-400 rounded font-medium">
-                Trending
-            </span>
-        )}
+            {
+                repo.momentum?.trend === "growing" && (
+                    <div class="pt-2 border-t border-white/5">
+                        <span class="flex items-center gap-1.5 text-[10px] font-bold text-accent">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                            </span>
+                            TRENDING NOW
+                        </span>
+                    </div>
+                )
+            }
+        </div>
     </div>
 </a>

@@ -1,20 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeroSection from '../components/HeroSection.astro';
-import ContentRow from '../components/ContentRow.astro';
-import SearchBar from '../components/SearchBar.astro';
-import StatsBar from '../components/StatsBar.astro';
-import repositories from '../data/repositories.json';
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ContentRow from "../components/ContentRow.astro";
+import SearchBar from "../components/SearchBar.astro";
+import StatsBar from "../components/StatsBar.astro";
+import { Github } from "lucide-react";
+import repositories from "../data/repositories.json";
 
 // Type helper
-interface Repo { [key: string]: any; }
+interface Repo {
+    [key: string]: any;
+}
 const repos: Repo[] = repositories as Repo[];
 
 // Calculate stats
 const totalRepos = repos.length;
 const totalStars = repos.reduce((acc, r) => acc + (r.stars || 0), 0);
 const totalForks = repos.reduce((acc, r) => acc + (r.forks || 0), 0);
-const activeRepos = repos.filter(r => (r.status || '').includes('ACTIVE')).length;
+const activeRepos = repos.filter((r) =>
+    (r.status || "").includes("ACTIVE"),
+).length;
 
 // Sort helpers
 const byStars = (a: Repo, b: Repo) => (b.stars || 0) - (a.stars || 0);
@@ -27,22 +32,24 @@ const byDate = (field: string) => (a: Repo, b: Repo) => {
 
 // Hero: top repo by stars
 const heroRepo = [...repos].sort(byStars)[0];
-const allExceptHero = repos.filter(r => r.name !== heroRepo?.name);
+const allExceptHero = repos.filter((r) => r.name !== heroRepo?.name);
 
 // Trending: repos with growing momentum or fire status
-const trending = repos.filter(r =>
-    (r.status || '').includes('🔥') ||
-    r.momentum?.trend === 'growing'
-).sort(byStars);
+const trending = repos
+    .filter(
+        (r) =>
+            (r.status || "").includes("🔥") || r.momentum?.trend === "growing",
+    )
+    .sort(byStars);
 
 // Most starred (excluding hero)
 const mostStarred = [...allExceptHero].sort(byStars).slice(0, 15);
 
 // Recently updated
-const recentlyUpdated = [...repos].sort(byDate('last_update_api')).slice(0, 15);
+const recentlyUpdated = [...repos].sort(byDate("last_update_api")).slice(0, 15);
 
 // New arrivals
-const newArrivals = [...repos].sort(byDate('created_at_api')).slice(0, 15);
+const newArrivals = [...repos].sort(byDate("created_at_api")).slice(0, 15);
 
 // Community favorites (by forks)
 const communityFavorites = [...repos].sort(byForks).slice(0, 15);
@@ -60,32 +67,48 @@ const languageRows = Object.entries(langGroups)
     .sort((a, b) => b[1].length - a[1].length)
     .map(([lang, arr]) => ({
         title: `${lang} Projects`,
-        id: `lang-${lang.toLowerCase().replace(/[^a-z0-9]/g, '')}`,
+        id: `lang-${lang.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
         repos: arr.sort(byStars).slice(0, 20),
     }));
 
 // All content rows
 const rows = [
-    ...(trending.length >= 2 ? [{ title: 'Trending', id: 'trending', repos: trending }] : []),
-    { title: 'Most Starred', id: 'most-starred', repos: mostStarred },
-    { title: 'Recently Updated', id: 'recently-updated', repos: recentlyUpdated },
-    { title: 'New Arrivals', id: 'new-arrivals', repos: newArrivals },
-    { title: 'Community Favorites', id: 'community', repos: communityFavorites },
+    ...(trending.length >= 2
+        ? [{ title: "Trending", id: "trending", repos: trending }]
+        : []),
+    { title: "Most Starred", id: "most-starred", repos: mostStarred },
+    {
+        title: "Recently Updated",
+        id: "recently-updated",
+        repos: recentlyUpdated,
+    },
+    { title: "New Arrivals", id: "new-arrivals", repos: newArrivals },
+    {
+        title: "Community Favorites",
+        id: "community",
+        repos: communityFavorites,
+    },
     ...languageRows,
-].filter(row => row.repos.length >= 2);
+].filter((row) => row.repos.length >= 2);
 ---
 
 <Layout title="Fabrizio Salmi | GitHub Repositories">
     <main class="min-h-screen bg-background relative">
         <!-- Sticky search/nav bar -->
-        <SearchBar totalRepos={totalRepos} totalStars={totalStars} totalForks={totalForks} />
+        <SearchBar
+            totalRepos={totalRepos}
+            totalStars={totalStars}
+            totalForks={totalForks}
+        />
 
         <!-- Hero section -->
-        {heroRepo && (
-            <div id="hero-section">
-                <HeroSection repo={heroRepo} />
-            </div>
-        )}
+        {
+            heroRepo && (
+                <div id="hero-section">
+                    <HeroSection repo={heroRepo} />
+                </div>
+            )
+        }
 
         <!-- Stats bar -->
         <div id="stats-bar">
@@ -98,15 +121,85 @@ const rows = [
         </div>
 
         <!-- Content rows -->
-        <div id="rows-container" class="py-6">
-            {rows.map(row => (
-                <ContentRow title={row.title} repos={row.repos} id={row.id} />
-            ))}
+        <div id="rows-container" class="py-12 space-y-12">
+            {
+                rows.map((row) => (
+                    <ContentRow
+                        title={row.title}
+                        repos={row.repos}
+                        id={row.id}
+                    />
+                ))
+            }
         </div>
 
         <!-- Footer -->
-        <footer class="text-center text-textMuted text-sm py-10 border-t border-white/5">
-            <p>Updated daily via GitHub Actions &middot; {new Date().toLocaleDateString()}</p>
+        <footer class="relative mt-20 pb-20 px-6 md:px-12 overflow-hidden">
+            <div
+                class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"
+            >
+            </div>
+            <div
+                class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
+            >
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <div class="flex items-center gap-2 group cursor-pointer">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors"
+                        >
+                            <Github size={18} className="text-white" />
+                        </div>
+                        <span
+                            class="text-lg font-black text-white uppercase tracking-tighter"
+                            >fabriziosalmi</span
+                        >
+                    </div>
+                    <p
+                        class="text-sm text-textMuted max-w-xs text-center md:text-left"
+                    >
+                        A curated collection of open-source projects,
+                        experiments, and tools built with passion and precision.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end gap-2">
+                    <div class="flex items-center gap-6 mb-4">
+                        <a
+                            href="https://github.com/fabriziosalmi"
+                            target="_blank"
+                            class="text-textMuted hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+                            >GitHub</a
+                        >
+                        <a
+                            href="#"
+                            class="text-textMuted hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+                            >Twitter</a
+                        >
+                        <a
+                            href="#"
+                            class="text-textMuted hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+                            >LinkedIn</a
+                        >
+                    </div>
+                    <p
+                        class="text-[10px] text-textMuted uppercase tracking-[0.3em]"
+                    >
+                        &copy; {new Date().getFullYear()} &middot; Built with Astro
+                        & Tailwind
+                    </p>
+                    <p
+                        class="text-[10px] text-primary/50 uppercase tracking-[0.3em] font-bold mt-1"
+                    >
+                        Updated daily via GitHub Actions
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom decorative glow -->
+            <div
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-primary/5 blur-[100px] rounded-full pointer-events-none"
+            >
+            </div>
         </footer>
     </main>
 </Layout>
