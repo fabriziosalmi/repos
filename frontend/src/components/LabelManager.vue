@@ -1,13 +1,12 @@
 <template>
   <Teleport to="body">
     <Transition name="modal">
-      <div v-if="isOpen" class="fixed inset-0 z-50 overflow-y-auto">
-        <div class="flex min-h-screen items-center justify-center p-4">
-          <!-- Backdrop -->
-          <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" @click="$emit('close')"></div>
+      <div v-if="isOpen" class="fixed inset-0 z-60 flex min-h-screen items-center justify-center p-4 sm:p-6">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm -z-10" @click="$emit('close')"></div>
 
-          <!-- Modal -->
-          <div class="relative w-full max-w-2xl rounded-xl bg-white shadow-2xl dark:bg-gray-800">
+        <!-- Modal -->
+        <div class="relative w-full max-w-2xl rounded-xl bg-white shadow-2xl dark:bg-gray-800 max-h-[90vh] overflow-y-auto">
             <!-- Header -->
             <div class="flex items-center justify-between border-b border-gray-200 p-6 dark:border-gray-700">
               <div class="flex items-center gap-3">

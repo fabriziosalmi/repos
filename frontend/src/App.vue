@@ -191,9 +191,9 @@ watch([searchTerm, sortKey, sortOrder, activeLanguage, activeDateRange], () => {
             type="text" 
             v-model="searchTerm" 
             placeholder="Search a repository..."
-            class="w-full md:w-72 bg-cyber-bg/70 border-2 border-cyber-primary/50 rounded-full py-2 px-6 text-cyber-text focus:outline-none focus:border-cyber-primary transition-colors"
+            class="w-full md:w-72 bg-cyber-bg/70 border-2 border-cyber-primary/50 rounded-full py-2 pl-6 pr-12 text-cyber-text focus:outline-none focus:border-cyber-primary transition-colors"
           />
-          <Search class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-cyber-primary/70" />
+          <Search class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-cyber-primary/70 pointer-events-none" />
         </div>
         <div class="flex gap-3">
           <button @click="setSortKey('stars')" :class="getSortButtonClass('stars')">

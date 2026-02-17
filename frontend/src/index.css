@@ -23,5 +23,5 @@
 }
 
 .list-leave-active {
-  position: absolute;
+  position: fixed;
 }
