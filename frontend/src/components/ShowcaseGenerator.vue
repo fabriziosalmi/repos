@@ -109,12 +109,13 @@ const getCharCount = computed(() => {
     <Transition name="modal">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        class="fixed inset-0 z-60 flex items-center justify-center p-4 sm:p-6"
         @click.self="handleClose"
       >
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm -z-10"></div>
         <div class="bg-slate-900 border-2 border-cyber-primary rounded-lg max-w-2xl w-full shadow-cyber-glow">
           <!-- Header -->
-          <div class="sticky top-0 bg-slate-900 border-b border-cyber-primary/30 p-6 flex justify-between items-center">
+          <div class="sticky top-0 bg-slate-900 border-b border-cyber-primary/30 p-6 flex justify-between items-center z-20">
             <div class="flex items-center gap-3">
               <Share2 class="h-6 w-6 text-cyber-primary" />
               <h2 class="text-xl font-bold text-cyber-primary">Generate Showcase</h2>

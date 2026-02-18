@@ -194,12 +194,13 @@ function getHealthColor() {
     <Transition name="modal">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
         @click="handleBackdropClick"
       >
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm -z-10"></div>
         <div class="bg-slate-900 border-2 border-cyber-primary rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-cyber-glow">
           <!-- Header -->
-          <div class="sticky top-0 bg-slate-900 border-b border-cyber-primary/30 p-6 flex justify-between items-start z-10">
+          <div class="sticky top-0 bg-slate-900 border-b border-cyber-primary/30 p-6 flex justify-between items-start z-20">
             <div>
               <h2 class="text-2xl font-bold text-cyber-primary">{{ repo.name }}</h2>
               <p class="text-gray-400 mt-1">{{ repo.description || 'No description available' }}</p>
