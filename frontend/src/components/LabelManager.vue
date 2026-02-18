@@ -148,7 +148,6 @@
               </p>
             </div>
           </div>
-        </div>
       </div>
     </Transition>
   </Teleport>
