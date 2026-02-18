@@ -21,7 +21,7 @@
         "has_issues": true,
         "commits": 151,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 1484415.1290322582,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -154,12 +154,12 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1387,
-        "last_update": "2026-02-17T00:40:29+00:00",
+        "last_update": "2026-02-18T00:41:03+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 270,
         "contributors": 7,
-        "last_update_str": "23 hours ago",
+        "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 579885.3333333334,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -642,7 +642,7 @@
         "has_issues": true,
         "commits": 153,
         "contributors": 6,
-        "last_update_str": "22 hours ago",
+        "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2540399.888888889,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -864,13 +864,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 2328,
-        "last_update": "2026-02-17T03:51:45+00:00",
+        "size": 2331,
+        "last_update": "2026-02-18T00:28:06+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 450,
+        "commits": 451,
         "contributors": 4,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 61.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1666,11 +1666,11 @@
         "license": "Other",
         "default_branch": "main",
         "open_issues_count": 7,
-        "size": 10014,
-        "last_update": "2026-02-18T00:07:15+00:00",
+        "size": 10026,
+        "last_update": "2026-02-18T01:37:17+00:00",
         "created_at_api": "2026-01-18T01:26:38+00:00",
         "has_issues": true,
-        "commits": 3548,
+        "commits": 3555,
         "contributors": 10,
         "last_update_str": "3 minutes ago",
         "avg_issue_resolution_time": 742983.5,
@@ -1705,7 +1705,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 298.1,
+            "avg_response_hours": 299.3,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1933,10 +1933,10 @@
         "version": "v1.2.0",
         "status": "⏰ STALE",
         "momentum": {
-            "score": 3.1,
-            "stars_7d": 1,
+            "score": 0.0,
+            "stars_7d": 0,
             "stars_30d": 1,
-            "trend": "growing"
+            "trend": "stable"
         },
         "issue_health": {
             "health_score": 100,
@@ -1965,13 +1965,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 4,
-        "size": 3032,
-        "last_update": "2026-02-18T00:09:06+00:00",
+        "size": 2200,
+        "last_update": "2026-02-18T00:13:08+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 953,
+        "commits": 954,
         "contributors": 5,
-        "last_update_str": "2 minutes ago",
+        "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2197,7 +2197,7 @@
         "forks": 0,
         "watchers": 5,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -2214,34 +2214,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 1070435,
-                "percentage": 60.17
-            },
-            "HTML": {
-                "bytes": 698039,
-                "percentage": 39.24
-            },
-            "CSS": {
-                "bytes": 7901,
-                "percentage": 0.44
-            },
-            "Shell": {
-                "bytes": 1147,
-                "percentage": 0.06
-            },
-            "Dockerfile": {
-                "bytes": 1004,
-                "percentage": 0.06
-            },
-            "Mako": {
-                "bytes": 494,
-                "percentage": 0.03
-            }
-        },
+        "language_stats": {},
         "version": "v0.1.3",
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -2268,7 +2243,7 @@
         "forks": 0,
         "watchers": 5,
         "language": "JavaScript",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -2285,30 +2260,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "JavaScript": {
-                "bytes": 162083,
-                "percentage": 49.96
-            },
-            "CSS": {
-                "bytes": 89317,
-                "percentage": 27.53
-            },
-            "HTML": {
-                "bytes": 70783,
-                "percentage": 21.82
-            },
-            "Shell": {
-                "bytes": 1419,
-                "percentage": 0.44
-            },
-            "Dockerfile": {
-                "bytes": 816,
-                "percentage": 0.25
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.4",
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 3.1,
             "stars_7d": 1,
@@ -2977,7 +2931,7 @@
         "forks": 0,
         "watchers": 2,
         "language": "HTML",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -2994,46 +2948,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "HTML": {
-                "bytes": 466617,
-                "percentage": 38.63
-            },
-            "TypeScript": {
-                "bytes": 383542,
-                "percentage": 31.75
-            },
-            "Python": {
-                "bytes": 313225,
-                "percentage": 25.93
-            },
-            "Shell": {
-                "bytes": 19413,
-                "percentage": 1.61
-            },
-            "Makefile": {
-                "bytes": 8902,
-                "percentage": 0.74
-            },
-            "CSS": {
-                "bytes": 7468,
-                "percentage": 0.62
-            },
-            "JavaScript": {
-                "bytes": 5277,
-                "percentage": 0.44
-            },
-            "Dockerfile": {
-                "bytes": 2969,
-                "percentage": 0.25
-            },
-            "Mako": {
-                "bytes": 510,
-                "percentage": 0.04
-            }
-        },
+        "language_stats": {},
         "version": "v0.0.9",
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -3217,7 +3134,7 @@
         "forks": 0,
         "watchers": 2,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -3234,22 +3151,9 @@
         "avg_issue_resolution_time": 9314.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 1837279,
-                "percentage": 99.33
-            },
-            "Shell": {
-                "bytes": 10946,
-                "percentage": 0.59
-            },
-            "Dockerfile": {
-                "bytes": 1488,
-                "percentage": 0.08
-            }
-        },
+        "language_stats": {},
         "version": "v0.9.1",
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -3351,7 +3255,7 @@
         "forks": 0,
         "watchers": 2,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -3368,26 +3272,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 59357,
-                "percentage": 66.31
-            },
-            "CSS": {
-                "bytes": 15708,
-                "percentage": 17.55
-            },
-            "HTML": {
-                "bytes": 13749,
-                "percentage": 15.36
-            },
-            "Dockerfile": {
-                "bytes": 694,
-                "percentage": 0.78
-            }
-        },
+        "language_stats": {},
         "version": "v1.1.7",
-        "status": "✅ ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -3497,7 +3384,7 @@
         "forks": 0,
         "watchers": 1,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -3514,14 +3401,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 411758,
-                "percentage": 100.0
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -3611,7 +3493,7 @@
         "forks": 0,
         "watchers": 1,
         "language": "JavaScript",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -3628,30 +3510,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "JavaScript": {
-                "bytes": 87912,
-                "percentage": 69.84
-            },
-            "Python": {
-                "bytes": 34246,
-                "percentage": 27.21
-            },
-            "Shell": {
-                "bytes": 2469,
-                "percentage": 1.96
-            },
-            "HTML": {
-                "bytes": 756,
-                "percentage": 0.6
-            },
-            "CSS": {
-                "bytes": 498,
-                "percentage": 0.4
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.1",
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -3993,65 +3854,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/test-aws-terraform",
-        "name": "test-aws-terraform",
-        "full_name": "fabriziosalmi/test-aws-terraform",
-        "description": "Terraform WordPress Deployment on AWS",
-        "stars": 1,
-        "forks": 0,
-        "watchers": 1,
-        "language": "HCL",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 69,
-        "last_update": "2025-09-06T08:20:20+00:00",
-        "created_at_api": "2025-03-03T19:51:43+00:00",
-        "has_issues": true,
-        "commits": 8,
-        "contributors": 1,
-        "last_update_str": "5 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {
-            "HCL": {
-                "bytes": 31381,
-                "percentage": 67.53
-            },
-            "Shell": {
-                "bytes": 14260,
-                "percentage": 30.69
-            },
-            "Smarty": {
-                "bytes": 830,
-                "percentage": 1.79
-            }
-        },
-        "version": "v0.1.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/trinity",
         "name": "trinity",
         "full_name": "fabriziosalmi/trinity",
@@ -4140,7 +3942,7 @@
         "has_issues": true,
         "commits": 1299,
         "contributors": 2,
-        "last_update_str": "18 hours ago",
+        "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4222,111 +4024,6 @@
             }
         },
         "version": "v0.1.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/advanced-trading-framework",
-        "name": "advanced-trading-framework",
-        "full_name": "fabriziosalmi/advanced-trading-framework",
-        "description": "A trading framework with machine learning capabilities, real-time portfolio management, and a comprehensive Streamlit UI.",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "HTML",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 5197,
-        "last_update": "2025-10-05T14:36:46+00:00",
-        "created_at_api": "2025-09-22T23:59:31+00:00",
-        "has_issues": true,
-        "commits": 17,
-        "contributors": 2,
-        "last_update_str": "4 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "HTML": {
-                "bytes": 14430182,
-                "percentage": 92.43
-            },
-            "Python": {
-                "bytes": 1049390,
-                "percentage": 6.72
-            },
-            "JavaScript": {
-                "bytes": 131807,
-                "percentage": 0.84
-            }
-        },
-        "version": null,
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/ai-chatbot-encryption",
-        "name": "ai-chatbot-encryption",
-        "full_name": "fabriziosalmi/ai-chatbot-encryption",
-        "description": "Encrypt your AI powered chatbot sessions",
-        "stars": 0,
-        "forks": 1,
-        "watchers": 0,
-        "language": null,
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "Creative Commons Zero v1.0 Universal",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 16,
-        "last_update": "2025-09-06T08:20:56+00:00",
-        "created_at_api": "2023-11-04T17:30:14+00:00",
-        "has_issues": true,
-        "commits": 7,
-        "contributors": 1,
-        "last_update_str": "5 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {},
-        "version": "v1.0.0",
         "status": "✅ ACTIVE",
         "momentum": {
             "score": 0.0,
@@ -4518,69 +4215,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/audiolibri-editor",
-        "name": "audiolibri-editor",
-        "full_name": "fabriziosalmi/audiolibri-editor",
-        "description": "audiolibri.org data editor",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "HTML",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 3,
-        "size": 1170,
-        "last_update": "2026-02-14T13:01:24+00:00",
-        "created_at_api": "2025-06-11T15:55:45+00:00",
-        "has_issues": true,
-        "commits": 12,
-        "contributors": 2,
-        "last_update_str": "3 days ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "HTML": {
-                "bytes": 129348,
-                "percentage": 44.35
-            },
-            "JavaScript": {
-                "bytes": 125246,
-                "percentage": 42.94
-            },
-            "CSS": {
-                "bytes": 36786,
-                "percentage": 12.61
-            },
-            "Dockerfile": {
-                "bytes": 285,
-                "percentage": 0.1
-            }
-        },
-        "version": "v0.0.2",
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 60.0,
-            "status": "moderate",
-            "avg_response_hours": 302.8,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/blockchain-poc",
         "name": "blockchain-poc",
         "full_name": "fabriziosalmi/blockchain-poc",
@@ -4695,77 +4329,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/crosswords",
-        "name": "crosswords",
-        "full_name": "fabriziosalmi/crosswords",
-        "description": "Interactive Crossword Puzzle Generator",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "JavaScript",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 842,
-        "last_update": "2025-10-05T14:39:00+00:00",
-        "created_at_api": "2025-03-10T20:51:52+00:00",
-        "has_issues": true,
-        "commits": 50,
-        "contributors": 2,
-        "last_update_str": "4 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "JavaScript": {
-                "bytes": 79766,
-                "percentage": 52.79
-            },
-            "Python": {
-                "bytes": 38734,
-                "percentage": 25.63
-            },
-            "CSS": {
-                "bytes": 19059,
-                "percentage": 12.61
-            },
-            "HTML": {
-                "bytes": 8110,
-                "percentage": 5.37
-            },
-            "Makefile": {
-                "bytes": 4854,
-                "percentage": 3.21
-            },
-            "Dockerfile": {
-                "bytes": 587,
-                "percentage": 0.39
-            }
-        },
-        "version": "v0.1.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/dgrid",
         "name": "dgrid",
         "full_name": "fabriziosalmi/dgrid",
@@ -4774,35 +4337,26 @@
         "forks": 0,
         "watchers": 0,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
         "license": "No license",
         "default_branch": "main",
         "open_issues_count": 1,
-        "size": 1213,
-        "last_update": "2026-02-17T00:13:58+00:00",
+        "size": 1214,
+        "last_update": "2026-02-18T00:14:25+00:00",
         "created_at_api": "2025-10-16T18:32:24+00:00",
         "has_issues": true,
-        "commits": 2960,
+        "commits": 2961,
         "contributors": 6,
-        "last_update_str": "23 hours ago",
+        "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 307.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 87387,
-                "percentage": 98.69
-            },
-            "Dockerfile": {
-                "bytes": 1156,
-                "percentage": 1.31
-            }
-        },
+        "language_stats": {},
         "version": null,
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -4947,18 +4501,18 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 110,
-        "last_update": "2025-12-05T02:59:32+00:00",
+        "last_update": "2026-02-18T01:19:07+00:00",
         "created_at_api": "2025-05-05T12:38:18+00:00",
         "has_issues": true,
-        "commits": 76,
+        "commits": 78,
         "contributors": 3,
-        "last_update_str": "2 months ago",
+        "last_update_str": "21 minutes ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {},
         "version": "v0.1.1",
-        "status": "✅ ACTIVE",
+        "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -5082,7 +4636,7 @@
         "forks": 1,
         "watchers": 0,
         "language": "HTML",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -5099,18 +4653,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
-        "language_stats": {
-            "HTML": {
-                "bytes": 7349,
-                "percentage": 64.58
-            },
-            "JavaScript": {
-                "bytes": 4030,
-                "percentage": 35.42
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -5162,112 +4707,6 @@
         },
         "version": "v0.1.2",
         "status": "⏰ STALE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/metatoken",
-        "name": "metatoken",
-        "full_name": "fabriziosalmi/metatoken",
-        "description": "LLM reasearch",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Jupyter Notebook",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 102,
-        "last_update": "2025-10-05T14:38:03+00:00",
-        "created_at_api": "2025-09-08T12:21:15+00:00",
-        "has_issues": true,
-        "commits": 10,
-        "contributors": 2,
-        "last_update_str": "4 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Jupyter Notebook": {
-                "bytes": 156740,
-                "percentage": 53.44
-            },
-            "Python": {
-                "bytes": 136534,
-                "percentage": 46.56
-            }
-        },
-        "version": "v1.0.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/metatoken-from-scratch",
-        "name": "metatoken-from-scratch",
-        "full_name": "fabriziosalmi/metatoken-from-scratch",
-        "description": "No description",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 50,
-        "last_update": "2025-10-05T14:33:11+00:00",
-        "created_at_api": "2025-09-08T21:39:46+00:00",
-        "has_issues": true,
-        "commits": 5,
-        "contributors": 2,
-        "last_update_str": "4 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 61412,
-                "percentage": 100.0
-            }
-        },
-        "version": null,
-        "status": "📝 NO DESC",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -5361,7 +4800,7 @@
         "forks": 0,
         "watchers": 0,
         "language": "Rust",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -5374,30 +4813,13 @@
         "has_issues": true,
         "commits": 4,
         "contributors": 1,
-        "last_update_str": "33 minutes ago",
+        "last_update_str": "2 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
-        "language_stats": {
-            "Rust": {
-                "bytes": 1132686,
-                "percentage": 96.38
-            },
-            "Python": {
-                "bytes": 34823,
-                "percentage": 2.96
-            },
-            "Shell": {
-                "bytes": 7277,
-                "percentage": 0.62
-            },
-            "Dockerfile": {
-                "bytes": 439,
-                "percentage": 0.04
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.0",
-        "status": "🔥 ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -5487,57 +4909,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/notransformers",
-        "name": "notransformers",
-        "full_name": "fabriziosalmi/notransformers",
-        "description": "Can we automatically discover architectures without relying on Transformers?",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 124,
-        "last_update": "2025-10-16T06:59:37+00:00",
-        "created_at_api": "2025-09-18T22:36:23+00:00",
-        "has_issues": true,
-        "commits": 20,
-        "contributors": 2,
-        "last_update_str": "4 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 105055,
-                "percentage": 100.0
-            }
-        },
-        "version": "v1.0.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/rivoluzioneinformatica-website",
         "name": "rivoluzioneinformatica-website",
         "full_name": "fabriziosalmi/rivoluzioneinformatica-website",
@@ -5592,7 +4963,7 @@
         "forks": 0,
         "watchers": 0,
         "language": "Rust",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -5609,18 +4980,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Rust": {
-                "bytes": 10198,
-                "percentage": 92.24
-            },
-            "Shell": {
-                "bytes": 858,
-                "percentage": 7.76
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -5819,7 +5181,7 @@
         "forks": 0,
         "watchers": 0,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -5836,30 +5198,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 29621,
-                "percentage": 69.51
-            },
-            "JavaScript": {
-                "bytes": 10389,
-                "percentage": 24.38
-            },
-            "HTML": {
-                "bytes": 1438,
-                "percentage": 3.37
-            },
-            "Dockerfile": {
-                "bytes": 1027,
-                "percentage": 2.41
-            },
-            "CSS": {
-                "bytes": 136,
-                "percentage": 0.32
-            }
-        },
+        "language_stats": {},
         "version": null,
-        "status": "✅ ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -5894,27 +5235,27 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 345,
-        "last_update": "2026-02-17T23:50:43+00:00",
+        "last_update": "2026-02-18T00:45:25+00:00",
         "created_at_api": "2026-02-12T01:07:25+00:00",
         "has_issues": true,
-        "commits": 3,
+        "commits": 5,
         "contributors": 1,
-        "last_update_str": "21 minutes ago",
+        "last_update_str": "57 minutes ago",
         "avg_issue_resolution_time": 42324.47777777778,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Rust": {
-                "bytes": 1270112,
-                "percentage": 76.09
+                "bytes": 1285087,
+                "percentage": 76.3
             },
             "Python": {
                 "bytes": 198586,
-                "percentage": 11.9
+                "percentage": 11.79
             },
             "TypeScript": {
-                "bytes": 192718,
-                "percentage": 11.55
+                "bytes": 192847,
+                "percentage": 11.45
             },
             "TeX": {
                 "bytes": 4488,
@@ -5929,7 +5270,7 @@
                 "percentage": 0.07
             }
         },
-        "version": "v1.0.0",
+        "version": "v4.30.0",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0.0,
@@ -6058,7 +5399,7 @@
         "forks": 1,
         "watchers": 0,
         "language": "Python",
-        "archived": false,
+        "archived": true,
         "disabled": false,
         "private": false,
         "fork": false,
@@ -6075,14 +5416,9 @@
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 2408,
-                "percentage": 100.0
-            }
-        },
+        "language_stats": {},
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "📦 ARCHIVED",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
@@ -6134,116 +5470,6 @@
         },
         "version": null,
         "status": "⏰ STALE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/unuseful",
-        "name": "unuseful",
-        "full_name": "fabriziosalmi/unuseful",
-        "description": "Un archivio cognitivo di pattern digitali.",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 32,
-        "last_update": "2025-09-18T22:46:03+00:00",
-        "created_at_api": "2025-09-05T15:16:49+00:00",
-        "has_issues": true,
-        "commits": 7,
-        "contributors": 2,
-        "last_update_str": "5 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 23183,
-                "percentage": 100.0
-            }
-        },
-        "version": "v0.1.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/versiontracker",
-        "name": "versiontracker",
-        "full_name": "fabriziosalmi/versiontracker",
-        "description": "generate reports of your latest published versions across GitHub repositories",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 75,
-        "last_update": "2025-10-30T19:20:58+00:00",
-        "created_at_api": "2025-06-16T22:32:42+00:00",
-        "has_issues": true,
-        "commits": 11,
-        "contributors": 3,
-        "last_update_str": "3 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 68429,
-                "percentage": 60.88
-            },
-            "HTML": {
-                "bytes": 40168,
-                "percentage": 35.74
-            },
-            "CSS": {
-                "bytes": 3802,
-                "percentage": 3.38
-            }
-        },
-        "version": "v1.0.0",
-        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0.0,
             "stars_7d": 0,
