@@ -45,7 +45,7 @@ const getBusFactorColor = (riskLevel: string) => {
   <div 
     class="repo-card group flex flex-col border border-cyan-400/20 bg-slate-900/50 p-4 rounded-md
            backdrop-blur-sm transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] 
-           hover:shadow-2xl cursor-pointer"
+           hover:shadow-2xl cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:border-cyan-400"
     role="button"
     tabindex="0"
     @keydown.enter="$emit('click')"
@@ -72,7 +72,7 @@ const getBusFactorColor = (riskLevel: string) => {
       </header>
       
       <!-- BODY -->
-      <p class="text-sm text-slate-400 mb-4 h-10 overflow-hidden">
+      <p class="text-sm text-slate-400 mb-4 line-clamp-2 group-hover:line-clamp-none group-focus-within:line-clamp-none">
         {{ repo.description || 'No description available.' }}
       </p>
     </div>
