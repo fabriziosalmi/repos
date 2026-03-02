@@ -78,7 +78,7 @@ jobs:
           python update_readme_badges.py
 
       - name: Upload data artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: stats-data
           path: |
