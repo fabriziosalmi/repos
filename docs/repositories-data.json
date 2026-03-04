@@ -4,9 +4,9 @@
         "name": "certmate",
         "full_name": "fabriziosalmi/certmate",
         "description": "SSL Certificate Management System (API + UI)",
-        "stars": 1156,
+        "stars": 1157,
         "forks": 79,
-        "watchers": 1156,
+        "watchers": 1157,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -56,7 +56,7 @@
             }
         },
         "version": "v2.0.4",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 5.8,
             "stars_7d": 0,
@@ -79,9 +79,9 @@
         "name": "caddy-waf",
         "full_name": "fabriziosalmi/caddy-waf",
         "description": "Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)",
-        "stars": 735,
+        "stars": 736,
         "forks": 28,
-        "watchers": 735,
+        "watchers": 736,
         "language": "Go",
         "archived": false,
         "disabled": false,
@@ -162,7 +162,7 @@
         "default_branch": "main",
         "open_issues_count": 1,
         "size": 1411,
-        "last_update": "2026-03-03T00:40:55+00:00",
+        "last_update": "2026-03-04T00:39:05+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 270,
@@ -399,7 +399,7 @@
         "has_issues": true,
         "commits": 491,
         "contributors": 3,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 154923.66666666666,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -703,11 +703,11 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 2,
-        "size": 4429,
-        "last_update": "2026-03-02T01:41:05+00:00",
+        "size": 4489,
+        "last_update": "2026-03-03T01:40:54+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 169,
+        "commits": 170,
         "contributors": 6,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2540399.888888889,
@@ -791,10 +791,10 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 38.0,
+            "health_score": 32.0,
             "status": "needs_attention",
             "avg_response_hours": 307.3,
-            "stale_issues_count": 2
+            "stale_issues_count": 3
         },
         "bus_factor": {
             "bus_factor": 1,
@@ -868,11 +868,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 1995,
-        "last_update": "2026-03-03T00:28:00+00:00",
+        "size": 2029,
+        "last_update": "2026-03-04T00:26:28+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 476,
+        "commits": 478,
         "contributors": 4,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 61.0,
@@ -1000,7 +1000,7 @@
         "has_issues": true,
         "commits": 115,
         "contributors": 5,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 23757185.666666668,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1055,7 +1055,7 @@
         "has_issues": true,
         "commits": 90,
         "contributors": 2,
-        "last_update_str": "5 months ago",
+        "last_update_str": "6 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1072,6 +1072,61 @@
             "stars_7d": 0,
             "stars_30d": 0,
             "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/brutal-coding-tool",
+        "name": "brutal-coding-tool",
+        "full_name": "fabriziosalmi/brutal-coding-tool",
+        "description": "Audit your vibecode and make it brutally solid :)",
+        "stars": 21,
+        "forks": 3,
+        "watchers": 21,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 863,
+        "last_update": "2025-12-08T08:01:29+00:00",
+        "created_at_api": "2025-11-23T11:02:13+00:00",
+        "has_issues": true,
+        "commits": 25,
+        "contributors": 1,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 50422,
+                "percentage": 94.62
+            },
+            "HTML": {
+                "bytes": 2868,
+                "percentage": 5.38
+            }
+        },
+        "version": null,
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 15.2,
+            "stars_7d": 5,
+            "stars_30d": 6,
+            "trend": "growing"
         },
         "issue_health": {
             "health_score": 100,
@@ -1187,14 +1242,14 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/brutal-coding-tool",
-        "name": "brutal-coding-tool",
-        "full_name": "fabriziosalmi/brutal-coding-tool",
-        "description": "Audit your vibecode and make it brutally solid :)",
+        "url": "https://github.com/fabriziosalmi/vibe-check",
+        "name": "vibe-check",
+        "full_name": "fabriziosalmi/vibe-check",
+        "description": "Anti-slop CI/CD gatekeeper (GitHub action)",
         "stars": 17,
-        "forks": 2,
+        "forks": 0,
         "watchers": 17,
-        "language": "TypeScript",
+        "language": "Python",
         "archived": false,
         "disabled": false,
         "private": false,
@@ -1202,32 +1257,36 @@
         "license": "No license",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 863,
-        "last_update": "2025-12-08T08:01:29+00:00",
-        "created_at_api": "2025-11-23T11:02:13+00:00",
+        "size": 128,
+        "last_update": "2025-11-24T21:58:57+00:00",
+        "created_at_api": "2025-11-24T20:35:45+00:00",
         "has_issues": true,
-        "commits": 25,
+        "commits": 20,
         "contributors": 1,
-        "last_update_str": "2 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
+        "last_update_str": "3 months ago",
+        "avg_issue_resolution_time": 1883358.0,
+        "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
-            "TypeScript": {
-                "bytes": 50422,
-                "percentage": 94.62
+            "Python": {
+                "bytes": 101505,
+                "percentage": 98.71
             },
-            "HTML": {
-                "bytes": 2868,
-                "percentage": 5.38
+            "JavaScript": {
+                "bytes": 975,
+                "percentage": 0.95
+            },
+            "Dockerfile": {
+                "bytes": 356,
+                "percentage": 0.35
             }
         },
-        "version": null,
+        "version": "v1.4.0",
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 2.8,
-            "stars_7d": 1,
-            "stars_30d": 2,
+            "score": 11.8,
+            "stars_7d": 4,
+            "stars_30d": 6,
             "trend": "growing"
         },
         "issue_health": {
@@ -1292,65 +1351,6 @@
             "stars_7d": 0,
             "stars_30d": 1,
             "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/vibe-check",
-        "name": "vibe-check",
-        "full_name": "fabriziosalmi/vibe-check",
-        "description": "Anti-slop CI/CD gatekeeper (GitHub action)",
-        "stars": 14,
-        "forks": 0,
-        "watchers": 14,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 128,
-        "last_update": "2025-11-24T21:58:57+00:00",
-        "created_at_api": "2025-11-24T20:35:45+00:00",
-        "has_issues": true,
-        "commits": 20,
-        "contributors": 1,
-        "last_update_str": "3 months ago",
-        "avg_issue_resolution_time": 1883358.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 101505,
-                "percentage": 98.71
-            },
-            "JavaScript": {
-                "bytes": 975,
-                "percentage": 0.95
-            },
-            "Dockerfile": {
-                "bytes": 356,
-                "percentage": 0.35
-            }
-        },
-        "version": "v1.4.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 2.5,
-            "stars_7d": 1,
-            "stars_30d": 3,
-            "trend": "growing"
         },
         "issue_health": {
             "health_score": 100,
@@ -1566,7 +1566,7 @@
         "has_issues": true,
         "commits": 509,
         "contributors": 6,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 22987383.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1625,7 +1625,7 @@
         "has_issues": true,
         "commits": 21,
         "contributors": 1,
-        "last_update_str": "5 months ago",
+        "last_update_str": "6 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -1655,6 +1655,73 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/claude-code-brutal-edition",
+        "name": "claude-code-brutal-edition",
+        "full_name": "fabriziosalmi/claude-code-brutal-edition",
+        "description": "Brutalize the codebase from the beginning.",
+        "stars": 7,
+        "forks": 1,
+        "watchers": 7,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": true,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 26819,
+        "last_update": "2025-11-24T20:29:32+00:00",
+        "created_at_api": "2025-11-24T19:26:21+00:00",
+        "has_issues": false,
+        "commits": 362,
+        "contributors": 42,
+        "last_update_str": "3 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 59809,
+                "percentage": 41.89
+            },
+            "Shell": {
+                "bytes": 59675,
+                "percentage": 41.8
+            },
+            "TypeScript": {
+                "bytes": 15463,
+                "percentage": 10.83
+            },
+            "PowerShell": {
+                "bytes": 5319,
+                "percentage": 3.73
+            },
+            "Dockerfile": {
+                "bytes": 2507,
+                "percentage": 1.76
+            }
+        },
+        "version": null,
+        "status": "🍴 FORK",
+        "momentum": {
+            "score": 12.4,
+            "stars_7d": 4,
+            "stars_30d": 4,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 5,
+            "risk_level": "healthy"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/enjoy",
         "name": "enjoy",
         "full_name": "fabriziosalmi/enjoy",
@@ -1670,11 +1737,11 @@
         "license": "Other",
         "default_branch": "main",
         "open_issues_count": 10,
-        "size": 10553,
-        "last_update": "2026-03-03T01:37:15+00:00",
+        "size": 10710,
+        "last_update": "2026-03-04T01:36:35+00:00",
         "created_at_api": "2026-01-18T01:26:38+00:00",
         "has_issues": true,
-        "commits": 4933,
+        "commits": 5038,
         "contributors": 10,
         "last_update_str": "3 minutes ago",
         "avg_issue_resolution_time": 742983.5,
@@ -1709,7 +1776,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 485.6,
+            "avg_response_hours": 490.4,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1857,7 +1924,7 @@
         "has_issues": true,
         "commits": 103,
         "contributors": 2,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 5609489.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1969,13 +2036,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 8,
-        "size": 3027,
-        "last_update": "2026-03-02T09:35:03+00:00",
+        "size": 3096,
+        "last_update": "2026-03-03T01:43:01+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 978,
+        "commits": 979,
         "contributors": 5,
-        "last_update_str": "16 hours ago",
+        "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2058,7 +2125,7 @@
         "has_issues": true,
         "commits": 71,
         "contributors": 2,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2117,7 +2184,7 @@
         "has_issues": true,
         "commits": 71,
         "contributors": 3,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 574311.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2239,73 +2306,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/claude-code-brutal-edition",
-        "name": "claude-code-brutal-edition",
-        "full_name": "fabriziosalmi/claude-code-brutal-edition",
-        "description": "Brutalize the codebase from the beginning.",
-        "stars": 4,
-        "forks": 1,
-        "watchers": 4,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": true,
-        "license": "No license",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 26819,
-        "last_update": "2025-11-24T20:29:32+00:00",
-        "created_at_api": "2025-11-24T19:26:21+00:00",
-        "has_issues": false,
-        "commits": 362,
-        "contributors": 42,
-        "last_update_str": "3 months ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 59809,
-                "percentage": 41.89
-            },
-            "Shell": {
-                "bytes": 59675,
-                "percentage": 41.8
-            },
-            "TypeScript": {
-                "bytes": 15463,
-                "percentage": 10.83
-            },
-            "PowerShell": {
-                "bytes": 5319,
-                "percentage": 3.73
-            },
-            "Dockerfile": {
-                "bytes": 2507,
-                "percentage": 1.76
-            }
-        },
-        "version": null,
-        "status": "🍴 FORK",
-        "momentum": {
-            "score": 3.1,
-            "stars_7d": 1,
-            "stars_30d": 1,
-            "trend": "growing"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 5,
-            "risk_level": "healthy"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/linux",
         "name": "linux",
         "full_name": "fabriziosalmi/linux",
@@ -2402,7 +2402,7 @@
         "has_issues": true,
         "commits": 28,
         "contributors": 2,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2599,7 +2599,7 @@
         "has_issues": true,
         "commits": 13,
         "contributors": 1,
-        "last_update_str": "5 months ago",
+        "last_update_str": "6 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -2696,7 +2696,7 @@
         "has_issues": true,
         "commits": 10,
         "contributors": 3,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2810,7 +2810,7 @@
         "has_issues": true,
         "commits": 13,
         "contributors": 1,
-        "last_update_str": "5 months ago",
+        "last_update_str": "6 months ago",
         "avg_issue_resolution_time": 46501571.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2856,7 +2856,7 @@
         "has_issues": true,
         "commits": 78,
         "contributors": 3,
-        "last_update_str": "5 days ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2911,7 +2911,7 @@
         "has_issues": true,
         "commits": 24,
         "contributors": 1,
-        "last_update_str": "5 months ago",
+        "last_update_str": "6 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -3008,7 +3008,7 @@
         "has_issues": true,
         "commits": 19,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3062,6 +3062,77 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/synapseed",
+        "name": "synapseed",
+        "full_name": "fabriziosalmi/synapseed",
+        "description": "Pure Rust Semantic AI Middleware",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Apache License 2.0",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 480,
+        "last_update": "2026-03-01T04:43:02+00:00",
+        "created_at_api": "2026-02-12T01:07:25+00:00",
+        "has_issues": true,
+        "commits": 13,
+        "contributors": 2,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 42324.47777777778,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 1285087,
+                "percentage": 76.31
+            },
+            "Python": {
+                "bytes": 198469,
+                "percentage": 11.78
+            },
+            "TypeScript": {
+                "bytes": 192847,
+                "percentage": 11.45
+            },
+            "TeX": {
+                "bytes": 4488,
+                "percentage": 0.27
+            },
+            "Shell": {
+                "bytes": 2020,
+                "percentage": 0.12
+            },
+            "Makefile": {
+                "bytes": 1216,
+                "percentage": 0.07
+            }
+        },
+        "version": "v4.30.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 6.2,
+            "stars_7d": 2,
+            "stars_30d": 2,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/alma",
         "name": "alma",
         "full_name": "fabriziosalmi/alma",
@@ -3083,7 +3154,7 @@
         "has_issues": true,
         "commits": 132,
         "contributors": 3,
-        "last_update_str": "16 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3229,7 +3300,7 @@
         "has_issues": false,
         "commits": 44,
         "contributors": 1,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -3347,7 +3418,7 @@
         "has_issues": true,
         "commits": 66,
         "contributors": 2,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 11870.25925925926,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3385,77 +3456,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/synapseed",
-        "name": "synapseed",
-        "full_name": "fabriziosalmi/synapseed",
-        "description": "Pure Rust Semantic AI Middleware",
-        "stars": 1,
-        "forks": 0,
-        "watchers": 1,
-        "language": "Rust",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "Apache License 2.0",
-        "default_branch": "main",
-        "open_issues_count": 1,
-        "size": 480,
-        "last_update": "2026-03-01T04:43:02+00:00",
-        "created_at_api": "2026-02-12T01:07:25+00:00",
-        "has_issues": true,
-        "commits": 13,
-        "contributors": 2,
-        "last_update_str": "yesterday",
-        "avg_issue_resolution_time": 42324.47777777778,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Rust": {
-                "bytes": 1285087,
-                "percentage": 76.31
-            },
-            "Python": {
-                "bytes": 198469,
-                "percentage": 11.78
-            },
-            "TypeScript": {
-                "bytes": 192847,
-                "percentage": 11.45
-            },
-            "TeX": {
-                "bytes": 4488,
-                "percentage": 0.27
-            },
-            "Shell": {
-                "bytes": 2020,
-                "percentage": 0.12
-            },
-            "Makefile": {
-                "bytes": 1216,
-                "percentage": 0.07
-            }
-        },
-        "version": "v4.30.0",
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 3.1,
-            "stars_7d": 1,
-            "stars_30d": 1,
-            "trend": "growing"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/trinity",
         "name": "trinity",
         "full_name": "fabriziosalmi/trinity",
@@ -3477,7 +3477,7 @@
         "has_issues": true,
         "commits": 94,
         "contributors": 2,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3538,11 +3538,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 5312,
-        "last_update": "2026-03-02T05:24:05+00:00",
+        "size": 5329,
+        "last_update": "2026-03-03T05:23:06+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1324,
+        "commits": 1326,
         "contributors": 2,
         "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
@@ -3666,7 +3666,7 @@
         "has_issues": true,
         "commits": 25,
         "contributors": 2,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4073,7 +4073,7 @@
         "has_issues": true,
         "commits": 37,
         "contributors": 1,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4189,43 +4189,43 @@
         "license": "MIT License",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 9107,
-        "last_update": "2026-03-02T13:12:02+00:00",
+        "size": 9371,
+        "last_update": "2026-03-03T23:48:25+00:00",
         "created_at_api": "2026-02-28T14:52:25+00:00",
         "has_issues": false,
-        "commits": 103,
+        "commits": 112,
         "contributors": 4,
-        "last_update_str": "12 hours ago",
+        "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
         "language_stats": {
             "TypeScript": {
-                "bytes": 559952,
-                "percentage": 59.46
+                "bytes": 642107,
+                "percentage": 59.94
             },
             "Python": {
-                "bytes": 375463,
-                "percentage": 39.87
+                "bytes": 422811,
+                "percentage": 39.47
             },
             "CSS": {
                 "bytes": 3518,
-                "percentage": 0.37
+                "percentage": 0.33
             },
             "Makefile": {
                 "bytes": 1290,
-                "percentage": 0.14
+                "percentage": 0.12
             },
             "JavaScript": {
                 "bytes": 1160,
-                "percentage": 0.12
+                "percentage": 0.11
             },
             "HTML": {
                 "bytes": 359,
-                "percentage": 0.04
+                "percentage": 0.03
             }
         },
-        "version": "v0.5.6",
+        "version": "v0.6.0",
         "status": "🍴 FORK",
         "momentum": {
             "score": 0.0,
@@ -4259,44 +4259,44 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 1,
-        "size": 8735,
-        "last_update": "2026-03-02T22:10:37+00:00",
+        "open_issues_count": 0,
+        "size": 8906,
+        "last_update": "2026-03-03T23:48:22+00:00",
         "created_at_api": "2026-03-01T14:07:51+00:00",
         "has_issues": true,
-        "commits": 106,
+        "commits": 112,
         "contributors": 4,
-        "last_update_str": "3 hours ago",
+        "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "TypeScript": {
-                "bytes": 584244,
-                "percentage": 58.89
+                "bytes": 642107,
+                "percentage": 59.94
             },
             "Python": {
-                "bytes": 401581,
-                "percentage": 40.48
+                "bytes": 422811,
+                "percentage": 39.47
             },
             "CSS": {
                 "bytes": 3518,
-                "percentage": 0.35
+                "percentage": 0.33
             },
             "Makefile": {
                 "bytes": 1290,
-                "percentage": 0.13
+                "percentage": 0.12
             },
             "JavaScript": {
                 "bytes": 1160,
-                "percentage": 0.12
+                "percentage": 0.11
             },
             "HTML": {
                 "bytes": 359,
-                "percentage": 0.04
+                "percentage": 0.03
             }
         },
-        "version": "v0.5.8",
+        "version": "v0.6.0",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0.0,
@@ -4408,7 +4408,7 @@
         "has_issues": true,
         "commits": 34,
         "contributors": 2,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
