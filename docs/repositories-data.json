@@ -21,7 +21,7 @@
         "has_issues": true,
         "commits": 226,
         "contributors": 3,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 1015402.775862069,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -96,7 +96,7 @@
         "has_issues": true,
         "commits": 669,
         "contributors": 8,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 1440068.121212121,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -162,7 +162,7 @@
         "default_branch": "main",
         "open_issues_count": 1,
         "size": 1409,
-        "last_update": "2026-03-22T00:43:32+00:00",
+        "last_update": "2026-03-23T00:44:22+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 270,
@@ -218,7 +218,7 @@
         "has_issues": true,
         "commits": 849,
         "contributors": 3,
-        "last_update_str": "3 days ago",
+        "last_update_str": "4 days ago",
         "avg_issue_resolution_time": 4366923.228571429,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -260,9 +260,9 @@
         "name": "proxmox-vm-autoscale",
         "full_name": "fabriziosalmi/proxmox-vm-autoscale",
         "description": "Automatically scale virtual machines resources on Proxmox hosts",
-        "stars": 290,
-        "forks": 22,
-        "watchers": 290,
+        "stars": 291,
+        "forks": 24,
+        "watchers": 291,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -277,7 +277,7 @@
         "has_issues": true,
         "commits": 123,
         "contributors": 8,
-        "last_update_str": "4 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 2702595.3333333335,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -294,7 +294,7 @@
         "version": "v1.2.0",
         "status": "✅ ACTIVE",
         "momentum": {
-            "score": 1.4,
+            "score": 1.5,
             "stars_7d": 0,
             "stars_30d": 0,
             "trend": "stable"
@@ -332,7 +332,7 @@
         "has_issues": true,
         "commits": 646,
         "contributors": 3,
-        "last_update_str": "13 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 1686935.5294117648,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -399,7 +399,7 @@
         "has_issues": true,
         "commits": 492,
         "contributors": 3,
-        "last_update_str": "5 days ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 154923.66666666666,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -640,11 +640,11 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 2,
-        "size": 5462,
-        "last_update": "2026-03-21T01:39:39+00:00",
+        "size": 5527,
+        "last_update": "2026-03-22T01:40:01+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 188,
+        "commits": 189,
         "contributors": 6,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2540399.888888889,
@@ -868,11 +868,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 2035,
-        "last_update": "2026-03-22T00:29:15+00:00",
+        "size": 2063,
+        "last_update": "2026-03-23T00:31:06+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 514,
+        "commits": 516,
         "contributors": 4,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 61.0,
@@ -1275,7 +1275,7 @@
         "has_issues": true,
         "commits": 49,
         "contributors": 2,
-        "last_update_str": "4 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1654,10 +1654,10 @@
         "version": null,
         "status": "🍴 FORK",
         "momentum": {
-            "score": 2.0,
-            "stars_7d": 1,
+            "score": 0.0,
+            "stars_7d": 0,
             "stars_30d": 5,
-            "trend": "growing"
+            "trend": "stable"
         },
         "issue_health": {
             "health_score": 100,
@@ -1737,11 +1737,11 @@
         "license": "Other",
         "default_branch": "main",
         "open_issues_count": 5,
-        "size": 11025,
-        "last_update": "2026-03-22T00:49:01+00:00",
+        "size": 11096,
+        "last_update": "2026-03-23T00:49:36+00:00",
         "created_at_api": "2026-01-18T01:26:38+00:00",
         "has_issues": true,
-        "commits": 6231,
+        "commits": 6293,
         "contributors": 10,
         "last_update_str": "50 minutes ago",
         "avg_issue_resolution_time": 1806406.3333333333,
@@ -1776,7 +1776,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 1167.7,
+            "avg_response_hours": 1173.7,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1873,7 +1873,7 @@
         "has_issues": true,
         "commits": 62,
         "contributors": 2,
-        "last_update_str": "4 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2036,13 +2036,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 8,
-        "size": 2857,
-        "last_update": "2026-03-21T01:40:33+00:00",
+        "size": 2859,
+        "last_update": "2026-03-22T01:41:17+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 999,
+        "commits": 1000,
         "contributors": 5,
-        "last_update_str": "23 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2941,6 +2941,97 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/llmproxy",
+        "name": "llmproxy",
+        "full_name": "fabriziosalmi/llmproxy",
+        "description": "Security-first proxy for Large Language Models",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 27569,
+        "last_update": "2026-03-21T15:25:43+00:00",
+        "created_at_api": "2026-03-19T21:42:44+00:00",
+        "has_issues": true,
+        "commits": 24,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 604312,
+                "percentage": 61.0
+            },
+            "Makefile": {
+                "bytes": 204729,
+                "percentage": 20.67
+            },
+            "JavaScript": {
+                "bytes": 109115,
+                "percentage": 11.01
+            },
+            "HTML": {
+                "bytes": 46433,
+                "percentage": 4.69
+            },
+            "CSS": {
+                "bytes": 9196,
+                "percentage": 0.93
+            },
+            "Shell": {
+                "bytes": 9159,
+                "percentage": 0.92
+            },
+            "DTrace": {
+                "bytes": 4796,
+                "percentage": 0.48
+            },
+            "C++": {
+                "bytes": 991,
+                "percentage": 0.1
+            },
+            "Mako": {
+                "bytes": 704,
+                "percentage": 0.07
+            },
+            "Rust": {
+                "bytes": 700,
+                "percentage": 0.07
+            },
+            "Dockerfile": {
+                "bytes": 524,
+                "percentage": 0.05
+            }
+        },
+        "version": "v1.2.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 6.2,
+            "stars_7d": 2,
+            "stars_30d": 2,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.4,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/nexus-mcp-server",
         "name": "nexus-mcp-server",
         "full_name": "fabriziosalmi/nexus-mcp-server",
@@ -3083,7 +3174,7 @@
         "has_issues": true,
         "commits": 66,
         "contributors": 2,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 11870.25925925926,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3142,7 +3233,7 @@
         "has_issues": true,
         "commits": 13,
         "contributors": 2,
-        "last_update_str": "5 days ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 42324.47777777778,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3213,7 +3304,7 @@
         "has_issues": true,
         "commits": 132,
         "contributors": 3,
-        "last_update_str": "7 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3296,7 +3387,7 @@
         "has_issues": true,
         "commits": 28,
         "contributors": 2,
-        "last_update_str": "4 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3338,97 +3429,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/llmproxy",
-        "name": "llmproxy",
-        "full_name": "fabriziosalmi/llmproxy",
-        "description": "Security-first proxy for Large Language Models",
-        "stars": 1,
-        "forks": 0,
-        "watchers": 1,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 1,
-        "size": 27569,
-        "last_update": "2026-03-21T15:25:43+00:00",
-        "created_at_api": "2026-03-19T21:42:44+00:00",
-        "has_issues": true,
-        "commits": 24,
-        "contributors": 1,
-        "last_update_str": "10 hours ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 604312,
-                "percentage": 61.0
-            },
-            "Makefile": {
-                "bytes": 204729,
-                "percentage": 20.67
-            },
-            "JavaScript": {
-                "bytes": 109115,
-                "percentage": 11.01
-            },
-            "HTML": {
-                "bytes": 46433,
-                "percentage": 4.69
-            },
-            "CSS": {
-                "bytes": 9196,
-                "percentage": 0.93
-            },
-            "Shell": {
-                "bytes": 9159,
-                "percentage": 0.92
-            },
-            "DTrace": {
-                "bytes": 4796,
-                "percentage": 0.48
-            },
-            "C++": {
-                "bytes": 991,
-                "percentage": 0.1
-            },
-            "Mako": {
-                "bytes": 704,
-                "percentage": 0.07
-            },
-            "Rust": {
-                "bytes": 700,
-                "percentage": 0.07
-            },
-            "Dockerfile": {
-                "bytes": 524,
-                "percentage": 0.05
-            }
-        },
-        "version": "v1.2.0",
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 3.1,
-            "stars_7d": 1,
-            "stars_30d": 1,
-            "trend": "growing"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0.4,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/netfence",
         "name": "netfence",
         "full_name": "fabriziosalmi/netfence",
@@ -3450,7 +3450,7 @@
         "has_issues": false,
         "commits": 44,
         "contributors": 1,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -3629,11 +3629,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 5538,
-        "last_update": "2026-03-21T05:18:44+00:00",
+        "size": 5553,
+        "last_update": "2026-03-22T05:26:02+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1360,
+        "commits": 1362,
         "contributors": 2,
         "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
@@ -3757,7 +3757,7 @@
         "has_issues": true,
         "commits": 15,
         "contributors": 2,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3803,7 +3803,7 @@
         "has_issues": true,
         "commits": 25,
         "contributors": 2,
-        "last_update_str": "12 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3929,7 +3929,7 @@
         "has_issues": true,
         "commits": 10,
         "contributors": 1,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4332,7 +4332,7 @@
         "has_issues": true,
         "commits": 194,
         "contributors": 4,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4407,7 +4407,7 @@
         "has_issues": true,
         "commits": 5,
         "contributors": 1,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
