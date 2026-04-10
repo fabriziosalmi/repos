@@ -14,14 +14,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 2,
+        "open_issues_count": 4,
         "size": 7781,
         "last_update": "2026-04-08T00:23:13+00:00",
         "created_at_api": "2025-06-24T07:16:05+00:00",
         "has_issues": true,
         "commits": 238,
         "contributors": 3,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 930881.8769230769,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -162,12 +162,12 @@
         "default_branch": "main",
         "open_issues_count": 1,
         "size": 1409,
-        "last_update": "2026-04-09T00:38:44+00:00",
+        "last_update": "2026-04-10T00:46:28+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 270,
         "contributors": 7,
-        "last_update_str": "1 hours ago",
+        "last_update_str": "55 minutes ago",
         "avg_issue_resolution_time": 579885.3333333334,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -359,7 +359,7 @@
             }
         },
         "version": "v2.0.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 1.2,
             "stars_7d": 0,
@@ -399,7 +399,7 @@
         "has_issues": true,
         "commits": 492,
         "contributors": 3,
-        "last_update_str": "3 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 154923.66666666666,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -591,7 +591,7 @@
         "has_issues": true,
         "commits": 59,
         "contributors": 4,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -648,11 +648,11 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 3,
-        "size": 6706,
-        "last_update": "2026-04-08T01:41:37+00:00",
+        "size": 6783,
+        "last_update": "2026-04-09T01:41:48+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 208,
+        "commits": 209,
         "contributors": 6,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 2540399.888888889,
@@ -868,11 +868,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 2656,
-        "last_update": "2026-04-09T00:27:02+00:00",
+        "size": 2707,
+        "last_update": "2026-04-10T00:31:58+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 550,
+        "commits": 552,
         "contributors": 4,
         "last_update_str": "1 hours ago",
         "avg_issue_resolution_time": 61.0,
@@ -929,7 +929,7 @@
         "has_issues": true,
         "commits": 574,
         "contributors": 4,
-        "last_update_str": "5 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 3306795.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1008,7 +1008,7 @@
         "has_issues": true,
         "commits": 115,
         "contributors": 5,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 23757185.666666668,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1317,9 +1317,9 @@
         "name": "vibe-check",
         "full_name": "fabriziosalmi/vibe-check",
         "description": "Anti-slop CI/CD gatekeeper (GitHub action)",
-        "stars": 18,
+        "stars": 17,
         "forks": 0,
-        "watchers": 18,
+        "watchers": 17,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -1511,7 +1511,7 @@
         "has_issues": true,
         "commits": 61,
         "contributors": 2,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1745,13 +1745,13 @@
         "license": "Other",
         "default_branch": "main",
         "open_issues_count": 6,
-        "size": 11391,
-        "last_update": "2026-04-09T00:43:17+00:00",
+        "size": 11417,
+        "last_update": "2026-04-10T00:51:43+00:00",
         "created_at_api": "2026-01-18T01:26:38+00:00",
         "has_issues": true,
-        "commits": 7110,
+        "commits": 7159,
         "contributors": 10,
-        "last_update_str": "58 minutes ago",
+        "last_update_str": "49 minutes ago",
         "avg_issue_resolution_time": 1806406.3333333333,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1784,7 +1784,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 1455.5,
+            "avg_response_hours": 1460.3,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1853,7 +1853,7 @@
             }
         },
         "version": "v2.1.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 2.5,
             "stars_7d": 1,
@@ -1893,7 +1893,7 @@
         "has_issues": true,
         "commits": 93,
         "contributors": 2,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 2159.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2123,11 +2123,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 10,
-        "size": 2430,
-        "last_update": "2026-04-08T01:43:58+00:00",
+        "size": 2433,
+        "last_update": "2026-04-09T01:44:42+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 1020,
+        "commits": 1021,
         "contributors": 5,
         "last_update_str": "23 hours ago",
         "avg_issue_resolution_time": 73785.0,
@@ -2678,7 +2678,7 @@
         "has_issues": true,
         "commits": 45,
         "contributors": 1,
-        "last_update_str": "4 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3516,6 +3516,140 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/mixi",
+        "name": "mixi",
+        "full_name": "fabriziosalmi/mixi",
+        "description": "Deterministic Audio Workstation",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Other",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 27430,
+        "last_update": "2026-04-08T21:53:28+00:00",
+        "created_at_api": "2026-04-03T07:46:32+00:00",
+        "has_issues": true,
+        "commits": 288,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 1910117,
+                "percentage": 78.8
+            },
+            "Rust": {
+                "bytes": 292866,
+                "percentage": 12.08
+            },
+            "CSS": {
+                "bytes": 125454,
+                "percentage": 5.18
+            },
+            "JavaScript": {
+                "bytes": 42111,
+                "percentage": 1.74
+            },
+            "Python": {
+                "bytes": 32295,
+                "percentage": 1.33
+            },
+            "WGSL": {
+                "bytes": 15573,
+                "percentage": 0.64
+            },
+            "Shell": {
+                "bytes": 2465,
+                "percentage": 0.1
+            },
+            "HTML": {
+                "bytes": 1783,
+                "percentage": 0.07
+            },
+            "Dockerfile": {
+                "bytes": 1255,
+                "percentage": 0.05
+            }
+        },
+        "version": "v0.4.5",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 3.1,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/mixi-cut",
+        "name": "mixi-cut",
+        "full_name": "fabriziosalmi/mixi-cut",
+        "description": "Open-source timecode vinyl signal generator for DVS lathe cutting (MIXI-CUT protocol)",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 120,
+        "last_update": "2026-04-09T04:27:40+00:00",
+        "created_at_api": "2026-04-08T21:02:41+00:00",
+        "has_issues": true,
+        "commits": 2,
+        "contributors": 1,
+        "last_update_str": "21 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 77516,
+                "percentage": 100.0
+            }
+        },
+        "version": "v0.1.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 3.1,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/netfence",
         "name": "netfence",
         "full_name": "fabriziosalmi/netfence",
@@ -3537,7 +3671,7 @@
         "has_issues": false,
         "commits": 44,
         "contributors": 1,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -3567,6 +3701,65 @@
             "health_score": 100,
             "status": "healthy",
             "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/open-bpm",
+        "name": "open-bpm",
+        "full_name": "fabriziosalmi/open-bpm",
+        "description": "High-accuracy BPM detection",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1134,
+        "last_update": "2026-04-09T15:01:05+00:00",
+        "created_at_api": "2026-04-07T16:09:27+00:00",
+        "has_issues": true,
+        "commits": 28,
+        "contributors": 1,
+        "last_update_str": "10 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 222424,
+                "percentage": 77.68
+            },
+            "Python": {
+                "bytes": 50136,
+                "percentage": 17.51
+            },
+            "Shell": {
+                "bytes": 13775,
+                "percentage": 4.81
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 3.1,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -3655,7 +3848,7 @@
         "has_issues": true,
         "commits": 94,
         "contributors": 2,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3716,11 +3909,11 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 5430,
-        "last_update": "2026-04-08T05:34:35+00:00",
+        "size": 5446,
+        "last_update": "2026-04-09T05:35:14+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1395,
+        "commits": 1397,
         "contributors": 2,
         "last_update_str": "20 hours ago",
         "avg_issue_resolution_time": 0.0,
@@ -3999,6 +4192,61 @@
         }
     },
     {
+        "url": "https://github.com/fabriziosalmi/bgc",
+        "name": "bgc",
+        "full_name": "fabriziosalmi/bgc",
+        "description": "No description",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 30153,
+        "last_update": "2026-04-09T13:31:31+00:00",
+        "created_at_api": "2026-04-09T13:23:25+00:00",
+        "has_issues": true,
+        "commits": 4,
+        "contributors": 1,
+        "last_update_str": "12 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 59859,
+                "percentage": 82.22
+            },
+            "JavaScript": {
+                "bytes": 12941,
+                "percentage": 17.78
+            }
+        },
+        "version": "v1.0.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
         "url": "https://github.com/fabriziosalmi/certmate-website",
         "name": "certmate-website",
         "full_name": "fabriziosalmi/certmate-website",
@@ -4230,7 +4478,7 @@
         "has_issues": true,
         "commits": 5,
         "contributors": 1,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4280,140 +4528,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/mixi",
-        "name": "mixi",
-        "full_name": "fabriziosalmi/mixi",
-        "description": "Deterministic Audio Workstation",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "TypeScript",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "Other",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 27430,
-        "last_update": "2026-04-08T21:53:28+00:00",
-        "created_at_api": "2026-04-03T07:46:32+00:00",
-        "has_issues": true,
-        "commits": 288,
-        "contributors": 1,
-        "last_update_str": "3 hours ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "TypeScript": {
-                "bytes": 1910117,
-                "percentage": 78.8
-            },
-            "Rust": {
-                "bytes": 292866,
-                "percentage": 12.08
-            },
-            "CSS": {
-                "bytes": 125454,
-                "percentage": 5.18
-            },
-            "JavaScript": {
-                "bytes": 42111,
-                "percentage": 1.74
-            },
-            "Python": {
-                "bytes": 32295,
-                "percentage": 1.33
-            },
-            "WGSL": {
-                "bytes": 15573,
-                "percentage": 0.64
-            },
-            "Shell": {
-                "bytes": 2465,
-                "percentage": 0.1
-            },
-            "HTML": {
-                "bytes": 1783,
-                "percentage": 0.07
-            },
-            "Dockerfile": {
-                "bytes": 1255,
-                "percentage": 0.05
-            }
-        },
-        "version": "v0.4.5",
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/mixi-cut",
-        "name": "mixi-cut",
-        "full_name": "fabriziosalmi/mixi-cut",
-        "description": "Open-source timecode vinyl signal generator for DVS lathe cutting (MIXI-CUT protocol)",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 90,
-        "last_update": "2026-04-08T21:34:24+00:00",
-        "created_at_api": "2026-04-08T21:02:41+00:00",
-        "has_issues": true,
-        "commits": 2,
-        "contributors": 1,
-        "last_update_str": "4 hours ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 57805,
-                "percentage": 100.0
-            }
-        },
-        "version": "v2.0.0",
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/mixi-decks",
         "name": "mixi-decks",
         "full_name": "fabriziosalmi/mixi-decks",
@@ -4435,7 +4549,7 @@
         "has_issues": true,
         "commits": 30,
         "contributors": 2,
-        "last_update_str": "3 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4494,7 +4608,7 @@
         "has_issues": true,
         "commits": 2,
         "contributors": 1,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4553,7 +4667,7 @@
         "has_issues": true,
         "commits": 168,
         "contributors": 4,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4603,65 +4717,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/open-bpm",
-        "name": "open-bpm",
-        "full_name": "fabriziosalmi/open-bpm",
-        "description": "High-accuracy BPM detection",
-        "stars": 0,
-        "forks": 0,
-        "watchers": 0,
-        "language": "Rust",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 98,
-        "last_update": "2026-04-07T22:07:42+00:00",
-        "created_at_api": "2026-04-07T16:09:27+00:00",
-        "has_issues": true,
-        "commits": 25,
-        "contributors": 1,
-        "last_update_str": "yesterday",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
-        "processed_details": true,
-        "language_stats": {
-            "Rust": {
-                "bytes": 186559,
-                "percentage": 93.52
-            },
-            "Python": {
-                "bytes": 7267,
-                "percentage": 3.64
-            },
-            "Shell": {
-                "bytes": 5656,
-                "percentage": 2.84
-            }
-        },
-        "version": null,
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 0.0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/rainlogs",
         "name": "rainlogs",
         "full_name": "fabriziosalmi/rainlogs",
@@ -4683,7 +4738,7 @@
         "has_issues": true,
         "commits": 37,
         "contributors": 1,
-        "last_update_str": "22 hours ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4805,7 +4860,7 @@
         "has_issues": true,
         "commits": 212,
         "contributors": 4,
-        "last_update_str": "2 days ago",
+        "last_update_str": "3 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
