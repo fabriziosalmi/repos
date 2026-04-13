@@ -19,15 +19,15 @@
 
 <div align="center">
 
-![Total Repos](https://img.shields.io/badge/Total_Repos-83-blue?style=flat-square)
-![Total Stars](https://img.shields.io/badge/Total_Stars-3,958-yellow?style=flat-square)
-![Total Forks](https://img.shields.io/badge/Total_Forks-286-green?style=flat-square)
-![Total Commits](https://img.shields.io/badge/Total_Commits-21,966-purple?style=flat-square)
-![Contributors](https://img.shields.io/badge/Contributors-246-brightgreen?style=flat-square)
-![Issues Resolved](https://img.shields.io/badge/Issues_Resolved-63-green?style=flat-square)
-![Resolution Rate](https://img.shields.io/badge/Resolution_Rate-35.8%25-brightgreen?style=flat-square)
+![Total Repos](https://img.shields.io/badge/Total_Repos-84-blue?style=flat-square)
+![Total Stars](https://img.shields.io/badge/Total_Stars-3,962-yellow?style=flat-square)
+![Total Forks](https://img.shields.io/badge/Total_Forks-288-green?style=flat-square)
+![Total Commits](https://img.shields.io/badge/Total_Commits-22,096-purple?style=flat-square)
+![Contributors](https://img.shields.io/badge/Contributors-247-brightgreen?style=flat-square)
+![Issues Resolved](https://img.shields.io/badge/Issues_Resolved-64-green?style=flat-square)
+![Resolution Rate](https://img.shields.io/badge/Resolution_Rate-36.2%25-brightgreen?style=flat-square)
 
-**🏆 Most Starred: certmate (1169 ⭐) | 💻 Top Language: Python (43 repos) | 📊 Avg: 47.7★ / 264.7 commits**
+**🏆 Most Starred: certmate (1171 ⭐) | 💻 Top Language: Python (43 repos) | 📊 Avg: 47.2★ / 263.0 commits**
 
 </div>
 
