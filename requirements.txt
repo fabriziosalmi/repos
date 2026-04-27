@@ -1,17 +1,21 @@
 # GitHub Repository Stats Generator Requirements
-
-# Core dependencies
-requests>=2.28.0  # For making HTTP requests to GitHub API
-rich>=12.0.0      # For rich text formatting, tables, progress bars, etc.
-python-dateutil>=2.8.0  # For date parsing and manipulation
-
-# Optional dependencies for enhanced functionality
-python-dotenv>=0.19.0  # For .env file support (optional)
-beautifulsoup4>=4.11.0  # For HTML parsing if needed (optional)
-lxml>=4.9.0  # XML processing (optional)
-
-# Development dependencies (optional)
-pytest>=7.0.0  # For testing
-# black>=22.0.0  # Code formatting  
-# flake8>=4.0.0  # Linting
-# mypy>=0.950  # Type checking
+beautifulsoup4==4.14.3
+certifi==2026.4.22
+charset-normalizer==3.4.7
+idna==3.13
+iniconfig==2.3.0
+lxml==6.1.0
+markdown-it-py==4.0.0
+mdurl==0.1.2
+packaging==26.2
+pluggy==1.6.0
+pygments==2.20.0
+pytest==9.0.3
+python-dateutil==2.9.0.post0
+python-dotenv==1.2.2
+requests==2.33.1
+rich==15.0.0
+six==1.17.0
+soupsieve==2.8.3
+typing-extensions==4.15.0
+urllib3==2.6.3
