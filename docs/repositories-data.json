@@ -89,25 +89,25 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 1,
+        "open_issues_count": 2,
         "size": 8789,
-        "last_update": "2026-04-27T07:38:54+00:00",
+        "last_update": "2026-04-29T08:21:51+00:00",
         "created_at_api": "2025-01-02T12:13:56+00:00",
         "has_issues": true,
-        "commits": 672,
+        "commits": 673,
         "contributors": 8,
-        "last_update_str": "2 days ago",
+        "last_update_str": "16 minutes ago",
         "avg_issue_resolution_time": 1440068.121212121,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Go": {
-                "bytes": 256954,
-                "percentage": 48.19
+                "bytes": 257169,
+                "percentage": 48.21
             },
             "Python": {
                 "bytes": 226285,
-                "percentage": 42.43
+                "percentage": 42.42
             },
             "HTML": {
                 "bytes": 34185,
@@ -126,7 +126,7 @@
                 "percentage": 0.08
             }
         },
-        "version": "v0.3.2",
+        "version": "v0.3.3",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 3.8,
@@ -167,7 +167,7 @@
         "has_issues": true,
         "commits": 275,
         "contributors": 7,
-        "last_update_str": "6 hours ago",
+        "last_update_str": "7 hours ago",
         "avg_issue_resolution_time": 579885.3333333334,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -332,7 +332,7 @@
         "has_issues": true,
         "commits": 668,
         "contributors": 4,
-        "last_update_str": "yesterday",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 6322261.571428572,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -953,7 +953,7 @@
         "has_issues": true,
         "commits": 592,
         "contributors": 4,
-        "last_update_str": "3 hours ago",
+        "last_update_str": "4 hours ago",
         "avg_issue_resolution_time": 61.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1506,50 +1506,50 @@
         "default_branch": "main",
         "open_issues_count": 0,
         "size": 1154,
-        "last_update": "2026-04-29T07:48:40+00:00",
+        "last_update": "2026-04-29T08:24:55+00:00",
         "created_at_api": "2025-12-08T11:58:07+00:00",
         "has_issues": true,
-        "commits": 34,
+        "commits": 35,
         "contributors": 1,
-        "last_update_str": "7 minutes ago",
+        "last_update_str": "15 minutes ago",
         "avg_issue_resolution_time": 7264491.0,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
                 "bytes": 638397,
-                "percentage": 64.0
+                "percentage": 62.64
             },
             "TypeScript": {
-                "bytes": 304849,
-                "percentage": 30.56
+                "bytes": 326511,
+                "percentage": 32.04
             },
             "HTML": {
                 "bytes": 25427,
-                "percentage": 2.55
+                "percentage": 2.49
             },
             "JavaScript": {
                 "bytes": 11953,
-                "percentage": 1.2
+                "percentage": 1.17
             },
             "CSS": {
                 "bytes": 9593,
-                "percentage": 0.96
+                "percentage": 0.94
             },
             "Makefile": {
                 "bytes": 3460,
-                "percentage": 0.35
+                "percentage": 0.34
             },
             "Dockerfile": {
                 "bytes": 3248,
-                "percentage": 0.33
+                "percentage": 0.32
             },
             "Mako": {
                 "bytes": 635,
                 "percentage": 0.06
             }
         },
-        "version": "v2.4.16",
+        "version": "v2.4.17",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 5.6,
@@ -2070,7 +2070,7 @@
         "has_issues": true,
         "commits": 27,
         "contributors": 1,
-        "last_update_str": "13 hours ago",
+        "last_update_str": "14 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2264,12 +2264,12 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 17,
+        "open_issues_count": 19,
         "size": 3354,
-        "last_update": "2026-04-29T07:52:36+00:00",
+        "last_update": "2026-04-29T08:37:27+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 1045,
+        "commits": 1049,
         "contributors": 5,
         "last_update_str": "3 minutes ago",
         "avg_issue_resolution_time": 73785.0,
@@ -2277,40 +2277,32 @@
         "processed_details": true,
         "language_stats": {
             "Python": {
-                "bytes": 224784,
-                "percentage": 61.01
-            },
-            "Vue": {
-                "bytes": 84380,
-                "percentage": 22.9
+                "bytes": 126178,
+                "percentage": 71.75
             },
             "Astro": {
                 "bytes": 35449,
-                "percentage": 9.62
-            },
-            "TypeScript": {
-                "bytes": 6430,
-                "percentage": 1.75
+                "percentage": 20.16
             },
             "HTML": {
-                "bytes": 5565,
-                "percentage": 1.51
+                "bytes": 4940,
+                "percentage": 2.81
             },
             "Shell": {
-                "bytes": 4847,
-                "percentage": 1.32
-            },
-            "CSS": {
-                "bytes": 2563,
-                "percentage": 0.7
-            },
-            "JavaScript": {
-                "bytes": 2310,
-                "percentage": 0.63
+                "bytes": 4777,
+                "percentage": 2.72
             },
             "Makefile": {
-                "bytes": 2101,
-                "percentage": 0.57
+                "bytes": 2010,
+                "percentage": 1.14
+            },
+            "JavaScript": {
+                "bytes": 1698,
+                "percentage": 0.97
+            },
+            "CSS": {
+                "bytes": 813,
+                "percentage": 0.46
             }
         },
         "version": "v6.0.0",
@@ -2324,7 +2316,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 181.5,
+            "avg_response_hours": 569.8,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -4072,7 +4064,7 @@
         "has_issues": true,
         "commits": 1434,
         "contributors": 2,
-        "last_update_str": "1 hours ago",
+        "last_update_str": "2 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4606,7 +4598,7 @@
         "has_issues": true,
         "commits": 3,
         "contributors": 1,
-        "last_update_str": "10 hours ago",
+        "last_update_str": "11 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4657,7 +4649,7 @@
         "has_issues": true,
         "commits": 1,
         "contributors": 1,
-        "last_update_str": "13 hours ago",
+        "last_update_str": "14 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4934,7 +4926,7 @@
         "has_issues": true,
         "commits": 2,
         "contributors": 1,
-        "last_update_str": "8 hours ago",
+        "last_update_str": "9 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
