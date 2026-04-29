@@ -2,12 +2,10 @@
 
 # Default target
 help:
-	@echo "🚀 GitHub Repository Analytics Dashboard - Commands"
-	@echo ""
 	@echo "Available commands:"
 	@echo "  make install    - Install Python dependencies"
 	@echo "  make update     - Update repository data and badges"
-	@echo "  make serve      - Start local development server"
+	@echo "  make serve      - Start Astro dev server"
 	@echo "  make badges     - Generate badges and statistics"
 	@echo "  make stats      - Fetch latest GitHub statistics"
 	@echo "  make clean      - Clean generated files and cache"
@@ -25,10 +23,9 @@ install:
 update: stats badges
 	@echo "✅ All data updated successfully!"
 
-# Start development server
+# Start development server (Astro)
 serve:
-	@echo "🌐 Starting development server..."
-	python dev_server.py
+	cd astro-frontend && npm install && npm run dev
 
 # Generate badges and statistics
 badges:
