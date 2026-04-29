@@ -4,48 +4,35 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#020617', // Deeper blue-black
-                surface: '#0f172a',    // Deep slate blue
-                surfaceHighlight: '#1e293b',
-                surfaceAccent: '#334155',
-                text: '#f8fafc',
-                textMuted: '#94a3b8',
-                primary: '#38bdf8',    // Sky blue
-                secondary: '#818cf8',  // Indigo
-                accent: '#2dd4bf',     // Teal
-                glow: 'rgba(56, 189, 248, 0.4)',
+                background: '#09090b',
+                surface: '#141418',
+                surfaceBorder: 'rgba(255,255,255,0.06)',
+                text: '#fafafa',
+                textMuted: '#71717a',
+                textSubtle: '#52525b',
+                accent: '#b8964e',
+                accentMuted: 'rgba(184,150,78,0.15)',
+                link: '#93a3b8',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                display: ['Outfit', 'Inter', 'sans-serif'],
-                mono: ['JetBrains Mono', 'monospace'],
-            },
-            boxShadow: {
-                'premium': '0 0 50px -12px rgba(0, 0, 0, 0.5)',
-                'glow': '0 0 20px -5px var(--tw-shadow-color)',
+                sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
             },
             animation: {
-                'fade-in': 'fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                'slide-up': 'slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                'float': 'float 6s ease-in-out infinite',
-                'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'fade-in': 'fadeIn 0.6s ease-out',
+                'fade-in-up': 'fadeInUp 0.6s ease-out',
             },
             keyframes: {
                 fadeIn: {
                     '0%': { opacity: '0' },
                     '100%': { opacity: '1' },
                 },
-                slideUp: {
-                    '0%': { transform: 'translateY(30px)', opacity: '0' },
-                    '100%': { transform: 'translateY(0)', opacity: '1' },
+                fadeInUp: {
+                    '0%': { opacity: '0', transform: 'translateY(12px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
-                float: {
-                    '0%, 100%': { transform: 'translateY(0)' },
-                    '50%': { transform: 'translateY(-20px)' },
-                }
-            }
+            },
         },
     },
     plugins: [],
 }
-

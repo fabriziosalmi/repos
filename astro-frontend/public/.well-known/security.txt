@@ -1,0 +1,4 @@
+Contact: mailto:fabrizio.salmi@gmail.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en, it
+Canonical: https://fabriziosalmi.github.io/.well-known/security.txt

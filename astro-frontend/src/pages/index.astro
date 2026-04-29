@@ -1,205 +1,441 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeroSection from "../components/HeroSection.astro";
-import ContentRow from "../components/ContentRow.astro";
-import SearchBar from "../components/SearchBar.astro";
-import StatsBar from "../components/StatsBar.astro";
-import { Github } from "lucide-react";
+import ProjectCard from "../components/ProjectCard.astro";
+import DomainSection from "../components/DomainSection.astro";
 import repositories from "../data/repositories.json";
 
 // Type helper
-interface Repo {
-    [key: string]: any;
-}
-const repos: Repo[] = repositories as Repo[];
+interface Repo { [key: string]: any; }
+const allRepos: Repo[] = repositories as Repo[];
 
-// Calculate stats
+// ─── Curation ───────────────────────────────────────────────────
+// Repos excluded from the portfolio: internal scaffolds, profile repos,
+// games, utility forks, supporting/CDN repos, archived items.
+const EXCLUDED = new Set([
+  // Bench scaffolds
+  'gitoma-bench-blast', 'gitoma-bench-generation', 'gitoma-bench-ladder',
+  'gitoma-bench-quality', 'gitoma-bench-scaffold-django', 'gitoma-bench-scaffold-mern',
+  'gitoma-bench-triggers',
+  // Meta / profile / self-referential
+  'fabriziosalmi', 'repos',
+  // Utility / internal / taps
+  'gitignore', 'uglyfeed-cdn', 'homebrew-proxymate', 'shortlist-log',
+  // Games
+  'enjoy', 'github-games', 'crosswords',
+  // Archived / legacy / old sites
+  'iGPT', 'audiolibri.org_static', 'rivoluzioneinformatica-website',
+  'transversal', 'audiolibri', 'audiolibri-editor',
+  // Supporting / companion sites
+  'certmate-website', 'domainsblacklists',
+  // Old / low-signal / no-description
+  'bootstrap-w3c-seo', 'WP-Search-Blacklist', 'gradios',
+  'silence', 'tad', 'metatoken', 'metatoken-from-scratch',
+  'rot', 'unuseful', 'web-kick', 'synapse-state', 'synapse-ng',
+  // Italian-only or unclear purpose
+  'extreme-content-detector',
+  // Low-signal 0-star experiments
+  'blockchain-poc', 'expire-api', 'dgrid', 'notransformers',
+  'text-boundaries', 'zitto.net', 'ai-chatbot-encryption',
+  'advanced-trading-framework',
+  // Draconian V2 Curation - Privatize/Archive
+  'betcracker', 'brutal-coding-tool', 'claude-code-brutal-edition',
+  'freeundergroundtekno', 'b2v', 'drumate', 'linux', 'tubeconv',
+  'awesomeness', 'synapseed', 'versiontracker', 'speedgate', 'repolizer',
+  'secbeat', 'edge99', // NEVER MENTION THESE
+  // Trim Other Projects
+  'sci-fi', 'trinity', 'dnsmate'
+]);
+
+const repos = allRepos.filter(r => !EXCLUDED.has(r.name) && !r.archived);
+
+// ─── Featured Projects ─────────────────────────────────────────
+const FEATURED_NAMES = new Set(['certmate', 'caddy-waf', 'zion', 'llmproxy']);
+const featured = Array.from(FEATURED_NAMES)
+  .map(name => repos.find(r => r.name === name))
+  .filter(Boolean) as Repo[];
+
+// ─── Domain Assignments ─────────────────────────────────────────
+const DOMAIN_SECURITY = new Set([
+  'caddy-waf', 'certmate', 'patterns', 'wildbox', 'caddy-mib',
+  'secure-proxy-manager', 'zion', 'caddy-adf', 'nginx-waf-ai',
+  'limits', 'proxymate', 'netfence', 'caddy-feeds',
+  'fqdn-model', 'domainmate', 'reverse-proxy-manager'
+]);
+
+const DOMAIN_INFRA = new Set([
+  'proxmox-vm-autoscale', 'proxmox-lxc-autoscale', 'lws',
+  'proxmox-lxc-autoscale-ml', 'proxmox-cluster-balancer',
+  'zonecontrol', 'cf-box', 'wafcontrol',
+  'dnscontrol-actions', 'cloudflare-backup-actions', 'websites-monitor',
+  'rainlogs', 'proximity', 'proxima-ui', 'project-pegaprox',
+  'mtls-cloudflare-aws', 'asn-api', 'k8s', 'test-aws-terraform'
+]);
+
+const DOMAIN_COMPLIANCE = new Set([
+  'nis2-public', 'blacklists', 'aidlp'
+]);
+
+const DOMAIN_AI_DATA = new Set([
+  'UglyFeed', 'vibe-check', 'csv-anonymizer', 'silicondev', 'alma', 'newsgator', 'DevGPT',
+  'iamnotacoder', 'llm-benchmarks', 'navigator', 'gitoma', 'audiogen', 'ethical-ai'
+]);
+
+function domainRepos(domainSet: Set<string>) {
+  // Filter out featured projects to avoid duplication
+  return repos.filter(r => domainSet.has(r.name) && !FEATURED_NAMES.has(r.name)).sort((a, b) => (b.stars || 0) - (a.stars || 0));
+}
+
+const securityRepos = domainRepos(DOMAIN_SECURITY);
+const infraRepos = domainRepos(DOMAIN_INFRA);
+const complianceRepos = domainRepos(DOMAIN_COMPLIANCE);
+const aiDataRepos = domainRepos(DOMAIN_AI_DATA);
+
+// Catch repos not assigned to any domain (for "Other" section)
+const assignedNames = new Set([...DOMAIN_SECURITY, ...DOMAIN_INFRA, ...DOMAIN_COMPLIANCE, ...DOMAIN_AI_DATA, ...FEATURED_NAMES]);
+const otherRepos = repos
+  .filter(r => !assignedNames.has(r.name))
+  .sort((a, b) => (b.stars || 0) - (a.stars || 0));
+
+// ─── Aggregate Stats ────────────────────────────────────────────
+const totalStars = repos.reduce((s, r) => s + (r.stars || 0), 0);
+const totalForks = repos.reduce((s, r) => s + (r.forks || 0), 0);
 const totalRepos = repos.length;
-const totalStars = repos.reduce((acc, r) => acc + (r.stars || 0), 0);
-const totalForks = repos.reduce((acc, r) => acc + (r.forks || 0), 0);
-const activeRepos = repos.filter((r) =>
-    (r.status || "").includes("ACTIVE"),
-).length;
 
-// Sort helpers
-const byStars = (a: Repo, b: Repo) => (b.stars || 0) - (a.stars || 0);
-const byForks = (a: Repo, b: Repo) => (b.forks || 0) - (a.forks || 0);
-const byDate = (field: string) => (a: Repo, b: Repo) => {
-    const da = a[field] ? new Date(a[field]).getTime() : 0;
-    const db = b[field] ? new Date(b[field]).getTime() : 0;
-    return db - da;
-};
-
-// Hero: top repo by stars
-const heroRepo = [...repos].sort(byStars)[0];
-const allExceptHero = repos.filter((r) => r.name !== heroRepo?.name);
-
-// Trending: repos with growing momentum or fire status
-const trending = repos
-    .filter(
-        (r) =>
-            (r.status || "").includes("🔥") || r.momentum?.trend === "growing",
-    )
-    .sort(byStars);
-
-// Most starred (excluding hero)
-const mostStarred = [...allExceptHero].sort(byStars).slice(0, 15);
-
-// Recently updated
-const recentlyUpdated = [...repos].sort(byDate("last_update_api")).slice(0, 15);
-
-// New arrivals
-const newArrivals = [...repos].sort(byDate("created_at_api")).slice(0, 15);
-
-// Community favorites (by forks)
-const communityFavorites = [...repos].sort(byForks).slice(0, 15);
-
-// Language rows: only languages with 3+ repos
-const langGroups: Record<string, Repo[]> = {};
-for (const r of repos) {
-    const lang = r.language || null;
-    if (!lang) continue;
-    if (!langGroups[lang]) langGroups[lang] = [];
-    langGroups[lang].push(r);
-}
-const languageRows = Object.entries(langGroups)
-    .filter(([_, arr]) => arr.length >= 3)
-    .sort((a, b) => b[1].length - a[1].length)
-    .map(([lang, arr]) => ({
-        title: `${lang} Projects`,
-        id: `lang-${lang.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
-        repos: arr.sort(byStars).slice(0, 20),
-    }));
-
-// All content rows
-const rows = [
-    ...(trending.length >= 2
-        ? [{ title: "Trending", id: "trending", repos: trending }]
-        : []),
-    { title: "Most Starred", id: "most-starred", repos: mostStarred },
-    {
-        title: "Recently Updated",
-        id: "recently-updated",
-        repos: recentlyUpdated,
-    },
-    { title: "New Arrivals", id: "new-arrivals", repos: newArrivals },
-    {
-        title: "Community Favorites",
-        id: "community",
-        repos: communityFavorites,
-    },
-    ...languageRows,
-].filter((row) => row.repos.length >= 2);
+// Language distribution
+const langCount: Record<string, number> = {};
+repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1; });
+const topLangs = Object.entries(langCount).sort((a, b) => b[1] - a[1]).slice(0, 5);
+const otherLangsCount = totalRepos - Object.values(langCount).reduce((a, b) => a + b, 0);
 ---
 
-<Layout title="Fabrizio Salmi | GitHub Repositories">
-    <main class="min-h-screen bg-background relative">
-        <!-- Sticky search/nav bar -->
-        <SearchBar
-            totalRepos={totalRepos}
-            totalStars={totalStars}
-            totalForks={totalForks}
+<Layout title="Fabrizio Salmi -- Cybersecurity, Edge Infrastructure & Protocol Research">
+  <main class="max-w-4xl mx-auto px-5 md:px-8 py-12 md:py-20">
+
+    <!-- ─── Identity ─────────────────────────────────────────── -->
+    <header class="mb-16 md:mb-20 animate-fade-in">
+      <p class="text-sm text-textMuted uppercase tracking-widest font-medium mb-3">Cybersecurity & Edge Infrastructure — Independent Engineer</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-4">Fabrizio Salmi</h1>
+      <p class="text-base md:text-lg text-textMuted leading-relaxed max-w-2xl">
+        Working at the intersection of Enterprise Reliability and Creative Innovation. Open-source tools for autonomous infrastructure, AI security, and sovereign tech.
+      </p>
+      <!-- Credibility badges -->
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mt-5">
+        <span class="inline-flex items-center gap-1.5 text-xs text-textSubtle border border-surfaceBorder rounded px-2 py-1">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" class="text-accent/70"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          {totalStars.toLocaleString()} stars
+        </span>
+        <a href="#research" class="inline-flex items-center gap-1.5 text-xs text-textSubtle border border-surfaceBorder rounded px-2 py-1 hover:border-accent/50 hover:text-text transition-colors">
+          Published research
+        </a>
+        <a href="https://github.com/fabriziosalmi/aimp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-textSubtle border border-surfaceBorder rounded px-2 py-1 hover:border-accent/50 hover:text-text transition-colors">
+          TLA+ verified protocol
+        </a>
+      </div>
+      <div class="flex items-center gap-4 mt-5">
+        <a
+          href="https://github.com/fabriziosalmi"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm text-link hover:text-text transition-colors"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/fabriziosalmi"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm text-link hover:text-text transition-colors"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a
+          href="https://www.researchgate.net/profile/Fabrizio-Salmi/publications"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm text-link hover:text-text transition-colors"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.046.438c-.01.137-.015.218-.015.24 0 .191.015.399.046.623a5.285 5.285 0 0 0 .19.856c.093.285.215.566.365.84.153.277.328.51.526.698a6.077 6.077 0 0 0-.184.483 5.4 5.4 0 0 0-.155.564c-.046.233-.067.45-.067.65 0 .493.09.96.272 1.394.18.435.44.82.77 1.156a3.74 3.74 0 0 0 1.183.81c.457.198.966.297 1.53.297.594 0 1.12-.107 1.578-.32a3.6 3.6 0 0 0 1.155-.878 3.75 3.75 0 0 0 .73-1.292c.17-.475.254-.976.254-1.502 0-.51-.087-.986-.26-1.426a3.89 3.89 0 0 0-.72-1.194 3.63 3.63 0 0 0-1.08-.826 2.92 2.92 0 0 0-1.347-.31c-.1 0-.298.028-.596.084a3.01 3.01 0 0 0-.325.08c.17-.463.267-.88.29-1.252.025-.37-.02-.69-.133-.963a1.552 1.552 0 0 0-.49-.685 1.593 1.593 0 0 0-.764-.337c-.278-.053-.588-.073-.93-.06-.344.014-.73.05-1.16.106l-.59.08v.288l.292-.024c.316-.026.56.02.73.14.173.118.27.38.29.787.022.405-.04.97-.183 1.694a27.33 27.33 0 0 1-.493 2.127c.117-.035.27-.075.46-.12.19-.044.345-.063.466-.063.328 0 .628.07.898.21.27.138.5.33.69.575.19.246.337.538.442.876.104.339.157.705.157 1.098 0 .37-.062.72-.185 1.052a2.733 2.733 0 0 1-.497.86c-.21.249-.454.446-.735.593a1.906 1.906 0 0 1-.89.22c-.333 0-.6-.06-.8-.185a1.463 1.463 0 0 1-.472-.45 1.765 1.765 0 0 1-.238-.57 2.397 2.397 0 0 1-.057-.633h-.262l-.07.38a6.16 6.16 0 0 0-.067.555c-.005.165 0 .317.016.458.015.142.042.26.078.358.154.405.398.698.73.878.332.18.7.27 1.107.27.482 0 .92-.112 1.313-.335a3.18 3.18 0 0 0 1.018-.913c.282-.387.5-.84.652-1.358.153-.518.23-1.08.23-1.682 0-.49-.072-.95-.218-1.378a3.67 3.67 0 0 0-.626-1.15 2.96 2.96 0 0 0-1.003-.806 2.788 2.788 0 0 0-1.282-.3c-.157 0-.365.03-.625.087a5.78 5.78 0 0 0-.408.117c.095-.295.17-.568.222-.817a4.12 4.12 0 0 0 .055-1.366M4.946 7.226v1.56H3.092V7.226h1.854zm0 2.573v8.97H3.092v-8.97h1.854zm2.45 0h3.742c2.058 0 3.163 1.134 3.163 2.842 0 1.48-.946 2.59-2.51 2.87l2.856 3.258h-2.17l-2.613-3.105h-1.123v3.105H7.395V9.8zm1.345 1.182v3.283h2.197c1.26 0 1.998-.588 1.998-1.634 0-1.06-.73-1.65-1.998-1.65H8.74z"/></svg>
+          ResearchGate
+        </a>
+      </div>
+    </header>
+
+    <!-- ─── Experience ───────────────────────────────────────── -->
+    <section class="mb-16 md:mb-20">
+      <p class="text-xs text-textMuted uppercase tracking-widest font-medium mb-3">Previously</p>
+      <p class="text-base text-textMuted leading-relaxed mb-2">
+        <span class="text-text font-medium">MainStreaming</span> &middot; <span class="text-text font-medium">Borsa Italiana / LSEG / Euronext</span> &middot; <span class="text-text font-medium">SORINT.lab</span> &middot; Userfarm &middot; Clouditalia
+      </p>
+      <p class="text-sm text-textSubtle leading-relaxed max-w-2xl mb-3">
+        20+ years across streaming infrastructure, financial markets, and edge networks.
+      </p>
+      <a href="https://linkedin.com/in/fabriziosalmi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs text-link hover:text-text transition-colors">
+        14 recommendations on LinkedIn &rarr;
+      </a>
+    </section>
+
+    <!-- ─── Featured Projects ────────────────────────────────── -->
+    <section class="mb-16 md:mb-20">
+      <div class="flex items-baseline gap-3 mb-6">
+        <h2 class="text-lg font-semibold text-text tracking-tight">Featured</h2>
+        <span class="text-xs text-textSubtle font-mono">{totalStars.toLocaleString()} total stars across {totalRepos} repositories</span>
+      </div>
+      <div class="grid gap-3 md:grid-cols-2">
+        {featured.map(repo => (
+          <ProjectCard repo={repo} />
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── Available For ────────────────────────────────────── -->
+    <section class="mb-16 md:mb-20">
+      <h2 class="text-lg font-semibold text-text tracking-tight mb-6">Currently available for</h2>
+
+      <div class="space-y-6">
+        <!-- NIS2 highlight -->
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <h3 class="text-base font-semibold text-text">NIS2 Gap Assessment</h3>
+          </div>
+          <p class="text-sm text-textMuted leading-relaxed pl-7">Automated compliance mapping (D.Lgs 138/2024, Art. 21-23). Risk scoring by domain, prioritized remediation roadmap. Fixed price, delivered in 5 working days.</p>
+        </div>
+
+        <!-- Edge Security -->
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <h3 class="text-base font-semibold text-text">Edge Security & WAF Architecture</h3>
+          </div>
+          <p class="text-sm text-textMuted leading-relaxed pl-7">Caddy/Envoy/custom edge deployment, WAF tuning, multi-tenant certificate infrastructure.</p>
+        </div>
+
+        <!-- AI Security -->
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <h3 class="text-base font-semibold text-text">AI Security & LLM Gateway Hardening</h3>
+          </div>
+          <p class="text-sm text-textMuted leading-relaxed pl-7">LLM proxy hardening, DLP for AI endpoints, prompt injection defense, audit/compliance for AI workloads.</p>
+        </div>
+
+        <!-- OSS Consulting -->
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <h3 class="text-base font-semibold text-text">Open-source consulting for European organizations</h3>
+          </div>
+          <p class="text-sm text-textMuted leading-relaxed pl-7">Sovereignty-aligned, code-first, NIS2-ready.</p>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex flex-wrap items-center gap-4 pl-7">
+        <a href="mailto:fabrizio.salmi@gmail.com?subject=Inquiry%20from%20cybersec.cyberapi.io" class="inline-flex items-center justify-center h-9 px-4 rounded-md bg-accent text-accent-foreground text-sm font-medium hover:bg-accent/90 transition-colors">
+          Email me
+        </a>
+        <a href="https://linkedin.com/in/fabriziosalmi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center h-9 px-4 rounded-md border border-surfaceBorder bg-surface text-text text-sm font-medium hover:border-accent/30 transition-colors">
+          LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- ─── Research ──────────────────────────────────────────── -->
+    <section id="research" class="mb-16 md:mb-20 scroll-mt-24">
+      <div class="mb-6">
+        <h2 class="text-lg font-semibold text-text tracking-tight">Research</h2>
+        <p class="text-sm text-textMuted mt-1">Decentralized protocol design with formal verification. Published research on ResearchGate.</p>
+      </div>
+
+      <!-- AIMP Protocol Card -->
+      <a
+        href="https://github.com/fabriziosalmi/aimp"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block bg-surface border border-surfaceBorder rounded-lg p-5 md:p-6 hover:border-accent/30 transition-colors duration-200 mb-4"
+      >
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div class="min-w-0 flex-1">
+            <h3 class="text-base md:text-lg font-semibold text-text group-hover:text-accent transition-colors font-mono tracking-tight">
+              AIMP -- AI Mesh Protocol
+            </h3>
+          </div>
+          <span class="text-xs text-accent/80 font-mono flex-shrink-0 border border-accent/20 rounded px-2 py-0.5">v0.4.0</span>
+        </div>
+        <p class="text-sm text-textMuted leading-relaxed mb-4">
+          Serverless networking protocol for resilient state synchronization between autonomous agents. Merkle-CRDTs, Ed25519 identity, integer log-odds epistemic layer. Formally verified via TLA+ (46,063 states, 199,902 configurations). 98-142x faster than Subjective Logic / Dempster-Shafer.
+        </p>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-textSubtle">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background-color: #dea584"></span>
+            Rust
+          </span>
+          <span>TLA+ formal verification</span>
+          <span>Noise Protocol XX</span>
+          <span>MIT</span>
+        </div>
+      </a>
+
+      <!-- Papers -->
+      <div class="border-t border-surfaceBorder pt-3">
+        <p class="text-xs text-textSubtle uppercase tracking-wider mb-3">Published Papers</p>
+        <div class="space-y-2">
+          <a href="https://www.researchgate.net/publication/403127328" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 py-2 px-1 -mx-1 rounded hover:bg-surface/60 transition-colors">
+            <span class="text-xs text-accent/60 font-mono flex-shrink-0 mt-0.5">I</span>
+            <span class="text-sm text-textMuted group-hover:text-text transition-colors">
+              AIMP: Design and Evaluation of a Serverless Merkle-CRDT Protocol for Edge Agent Synchronization
+            </span>
+          </a>
+          <a href="https://www.researchgate.net/publication/403247988" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 py-2 px-1 -mx-1 rounded hover:bg-surface/60 transition-colors">
+            <span class="text-xs text-accent/60 font-mono flex-shrink-0 mt-0.5">II</span>
+            <span class="text-sm text-textMuted group-hover:text-text transition-colors">
+              Epistemic Layer: Integer Log-Odds Belief Aggregation and Trust Propagation
+            </span>
+          </a>
+          <a href="https://www.researchgate.net/publication/403250288" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 py-2 px-1 -mx-1 rounded hover:bg-surface/60 transition-colors">
+            <span class="text-xs text-accent/60 font-mono flex-shrink-0 mt-0.5">III</span>
+            <span class="text-sm text-textMuted group-hover:text-text transition-colors">
+              Correlation-Aware Aggregation: Grid-Cell Discounting for Correlated Evidence Sources
+            </span>
+          </a>
+          <a href="https://www.researchgate.net/publication/403251653" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 py-2 px-1 -mx-1 rounded hover:bg-surface/60 transition-colors">
+            <span class="text-xs text-accent/60 font-mono flex-shrink-0 mt-0.5">IV</span>
+            <span class="text-sm text-textMuted group-hover:text-text transition-colors">
+              Deterministic Semantic Topologies: SimHash Embeddings and Autonomous Edge Generation
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Domain: Web Security & Edge ──────────── -->
+    {securityRepos.length > 0 && (
+      <div class="mb-14 md:mb-18">
+        <DomainSection
+          title="Web Security & Edge"
+          description="WAF platforms, certificate lifecycle management, threat detection, and edge security tooling."
+          repos={securityRepos}
+          flagshipCount={3}
         />
+      </div>
+    )}
 
-        <!-- Hero section -->
-        {
-            heroRepo && (
-                <div id="hero-section">
-                    <HeroSection repo={heroRepo} />
-                </div>
-            )
-        }
+    <!-- ─── Domain: Autonomous Infrastructure ──────── -->
+    {infraRepos.length > 0 && (
+      <div class="mb-14 md:mb-18">
+        <DomainSection
+          title="Autonomous Infrastructure"
+          description="Proxmox autoscaling, Cloudflare automation, DNS management, and network monitoring."
+          repos={infraRepos}
+          flagshipCount={2}
+        />
+      </div>
+    )}
 
-        <!-- Stats bar -->
-        <div id="stats-bar">
-            <StatsBar
-                totalRepos={totalRepos}
-                totalStars={totalStars}
-                totalForks={totalForks}
-                activeRepos={activeRepos}
-            />
+    <!-- ─── Domain: Compliance, AI Security & Sovereign Tech ─── -->
+    {complianceRepos.length > 0 && (
+      <div class="mb-14 md:mb-18">
+        <DomainSection
+          title="Compliance, AI Security & Sovereign Tech"
+          description="Tools aligned with European data sovereignty, AI safety, and NIS2 readiness."
+          repos={complianceRepos}
+          flagshipCount={3}
+        />
+      </div>
+    )}
+
+    <!-- ─── Domain: AI & Data Tooling ───────────────────────── -->
+    {aiDataRepos.length > 0 && (
+      <div class="mb-14 md:mb-18">
+        <DomainSection
+          title="AI & Data Tooling"
+          description="Experiments and utilities."
+          repos={aiDataRepos}
+          flagshipCount={0}
+        />
+      </div>
+    )}
+
+    <!-- ─── Other Projects ───────────────────────────────────── -->
+    {otherRepos.length > 0 && (
+      <div class="mb-14 md:mb-18">
+        <DomainSection
+          title="Other Projects"
+          description="Utilities, experiments, and cross-domain tooling."
+          repos={otherRepos}
+          flagshipCount={0}
+        />
+      </div>
+    )}
+
+    <!-- ─── Competency ───────────────────────────────────────── -->
+    <section class="mb-14 md:mb-18 py-8 border-t border-b border-surfaceBorder">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-2xl font-bold text-text tabular-nums">{totalStars.toLocaleString()}</div>
+          <div class="text-xs text-textMuted uppercase tracking-wider mt-1">Stars</div>
         </div>
-
-        <!-- Content rows -->
-        <div id="rows-container" class="py-12 space-y-12">
-            {
-                rows.map((row) => (
-                    <ContentRow
-                        title={row.title}
-                        repos={row.repos}
-                        id={row.id}
-                    />
-                ))
-            }
+        <div>
+          <div class="text-2xl font-bold text-text tabular-nums">{totalRepos}</div>
+          <div class="text-xs text-textMuted uppercase tracking-wider mt-1">Repositories</div>
         </div>
+        <div>
+          <div class="text-2xl font-bold text-text tabular-nums">{totalForks.toLocaleString()}</div>
+          <div class="text-xs text-textMuted uppercase tracking-wider mt-1">Forks</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-text tabular-nums">{topLangs.length}</div>
+          <div class="text-xs text-textMuted uppercase tracking-wider mt-1">Languages</div>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-6">
+        {topLangs.map(([lang, count]) => (
+          <span class="text-xs text-textSubtle">
+            {lang} <span class="text-textMuted font-mono">({count})</span>
+          </span>
+        ))}
+        {otherLangsCount > 0 && (
+          <span class="text-xs text-textSubtle">
+            Other <span class="text-textMuted font-mono">({otherLangsCount})</span>
+          </span>
+        )}
+      </div>
+      {!topLangs.some(([lang]) => lang === 'Rust') && (
+        <div class="text-center mt-4">
+          <p class="text-xs text-textMuted italic">
+            Rust used in flagship projects (ZION, AIMP). Go used for production tooling. Python for ML and automation.
+          </p>
+        </div>
+      )}
+    </section>
 
-        <!-- Footer -->
-        <footer class="relative mt-20 pb-20 px-6 md:px-12 overflow-hidden">
-            <div
-                class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"
-            >
-            </div>
-            <div
-                class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
-            >
-                <div class="flex flex-col items-center md:items-start gap-4">
-                    <div class="flex items-center gap-2 group cursor-pointer">
-                        <div
-                            class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors"
-                        >
-                            <Github size={18} className="text-white" />
-                        </div>
-                        <span
-                            class="text-lg font-black text-white uppercase tracking-tighter"
-                            >fabriziosalmi</span
-                        >
-                    </div>
-                    <p
-                        class="text-sm text-textMuted max-w-xs text-center md:text-left"
-                    >
-                        A curated collection of open-source projects,
-                        experiments, and tools built with passion and precision.
-                    </p>
-                </div>
+    <!-- ─── Footer ───────────────────────────────────────────── -->
+    <footer class="pt-8 border-t border-surfaceBorder">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+        <div class="flex items-center gap-5">
+          <a href="https://github.com/fabriziosalmi" target="_blank" rel="noopener noreferrer" class="text-xs text-textSubtle hover:text-textMuted transition-colors uppercase tracking-wider">GitHub</a>
+          <a href="https://linkedin.com/in/fabriziosalmi" target="_blank" rel="noopener noreferrer" class="text-xs text-textSubtle hover:text-textMuted transition-colors uppercase tracking-wider">LinkedIn</a>
+          <a href="https://www.researchgate.net/profile/Fabrizio-Salmi/publications" target="_blank" rel="noopener noreferrer" class="text-xs text-textSubtle hover:text-textMuted transition-colors uppercase tracking-wider">ResearchGate</a>
+        </div>
+        <p class="text-xs text-textSubtle">
+          European open-source cybersecurity. Data refreshed daily.
+        </p>
+      </div>
+      
+      <div class="flex flex-col items-start gap-2 border-t border-surfaceBorder/30 pt-6">
+        <p class="text-[11px] text-textSubtle/80 max-w-2xl leading-relaxed">
+          Hosted on GitHub Pages (Microsoft Corp., USA) with Fastly as edge CDN. Migration to EU hosting is on the roadmap. Documented for transparency.
+        </p>
+        <div class="flex flex-wrap items-center gap-2 text-[11px] text-textSubtle/80 mt-1">
+          <span class="font-medium text-textSubtle">Fabrizio Salmi</span> &middot; Sole Proprietorship &middot; P.IVA 03072120995 &middot; Genova, Italy
+        </div>
+        <div class="flex items-center gap-4 mt-2">
+          <a href="/privacy-policy.html" class="text-[10px] text-link hover:text-text transition-colors uppercase tracking-wider">Privacy Policy</a>
+          <a href="/.well-known/security.txt" class="text-[10px] text-link hover:text-text transition-colors uppercase tracking-wider">security.txt</a>
+        </div>
+      </div>
+    </footer>
 
-                <div class="flex flex-col items-center md:items-end gap-2">
-                    <div class="flex items-center gap-6 mb-4">
-                        <a
-                            href="https://github.com/fabriziosalmi"
-                            target="_blank"
-                            class="text-textMuted hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
-                            >GitHub</a
-                        >
-                        <a
-                            href="#"
-                            class="text-textMuted hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
-                            >Twitter</a
-                        >
-                        <a
-                            href="#"
-                            class="text-textMuted hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
-                            >LinkedIn</a
-                        >
-                    </div>
-                    <p
-                        class="text-[10px] text-textMuted uppercase tracking-[0.3em]"
-                    >
-                        &copy; {new Date().getFullYear()} &middot; Built with Astro
-                        & Tailwind
-                    </p>
-                    <p
-                        class="text-[10px] text-primary/50 uppercase tracking-[0.3em] font-bold mt-1"
-                    >
-                        Updated daily via GitHub Actions
-                    </p>
-                </div>
-            </div>
-
-            <!-- Bottom decorative glow -->
-            <div
-                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-primary/5 blur-[100px] rounded-full pointer-events-none"
-            >
-            </div>
-        </footer>
-    </main>
+  </main>
 </Layout>

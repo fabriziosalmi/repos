@@ -1,60 +1,101 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-.pytest_cache/
+# ==============================================================================
+# OS Generated Files
+# ==============================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+Thumbs.db
+ehthumbs.db
 
-# Environment
+# ==============================================================================
+# Node.js & Astro (astro-frontend/)
+# ==============================================================================
+node_modules/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Astro & Build output
+astro-frontend/dist/
+astro-frontend/.astro/
+astro-frontend/node_modules/
+astro-frontend/.vercel/
+docs/
+public_data/
+
+# ==============================================================================
+# Python (Scripts & Stats)
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments
 .env
-.venv/
+.env.*
+.venv
 venv/
 ENV/
+env/
 
-# Cache files
+# Data & Cache files
 github_stats_cache.json
 github_stats.log
 *.log
 
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Generated data (keep in repo for GitHub Pages)
-# public_data/
-# docs/badges/
-# docs/STATS.md
-# docs/stats-summary.json
-
-# Temporary files
-*.tmp
-*.bak
-*.swp
-*~
-
-# IDE
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# Frontend
-frontend/node_modules/
-frontend/dist/
-frontend/.DS_Store
-astro-frontend/node_modules/
-astro-frontend/.astro/
-astro-frontend/dist/
-
 # Old generated files
-functions/__pycache__
+functions/__pycache__/
 *_github_stats.json
 *_github_stats.md
 completion_report.py
+
+# ==============================================================================
+# Temporary / Editor / IDE Files
+# ==============================================================================
+*.bak
+*.swp
+*.swo
+*~
+*.tmp
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.fleet/
+
+# ==============================================================================
+# Frontend Legacy
+# ==============================================================================
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store

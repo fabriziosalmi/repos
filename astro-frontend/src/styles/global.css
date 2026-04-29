@@ -4,15 +4,41 @@
 
 :root {
   --bg: #09090b;
-  --text: #e4e4e7;
+  --text: #fafafa;
 }
 
 html {
   background-color: var(--bg);
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   color: var(--text);
   background-color: var(--bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+/* Focus */
+*:focus-visible {
+  outline: 1px solid rgba(184,150,78,0.5);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

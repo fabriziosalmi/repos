@@ -1,0 +1,48 @@
+---
+/**
+ * DomainSection.astro
+ * A thematic grouping of repositories: title, context line,
+ * flagship cards, and a supporting project list.
+ */
+import ProjectCard from './ProjectCard.astro';
+import CompactRepo from './CompactRepo.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  repos: Record<string, any>[];
+  flagshipCount?: number;
+}
+
+const { title, description, repos, flagshipCount = 2 } = Astro.props;
+
+// Sort by stars descending
+const sorted = [...repos].sort((a, b) => (b.stars || 0) - (a.stars || 0));
+const flagships = sorted.slice(0, flagshipCount);
+const supporting = sorted.slice(flagshipCount);
+---
+
+<section class="animate-fade-in-up">
+  <div class="mb-5">
+    <h2 class="text-lg font-semibold text-text tracking-tight">{title}</h2>
+    <p class="text-sm text-textMuted mt-1">{description}</p>
+  </div>
+
+  <!-- Flagship cards -->
+  {flagships.length > 0 && (
+    <div class={`grid gap-3 mb-3 ${flagships.length >= 2 ? 'md:grid-cols-2' : ''}`}>
+      {flagships.map(repo => (
+        <ProjectCard repo={repo} />
+      ))}
+    </div>
+  )}
+
+  <!-- Supporting repos -->
+  {supporting.length > 0 && (
+    <div class="border-t border-surfaceBorder pt-2">
+      {supporting.map(repo => (
+        <CompactRepo repo={repo} />
+      ))}
+    </div>
+  )}
+</section>
