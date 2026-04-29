@@ -1,0 +1,5863 @@
+[
+    {
+        "url": "https://github.com/fabriziosalmi/certmate",
+        "name": "certmate",
+        "full_name": "fabriziosalmi/certmate",
+        "description": "SSL Certificate Management System (API + UI)",
+        "stars": 1179,
+        "forks": 82,
+        "watchers": 1179,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 7,
+        "size": 7712,
+        "last_update": "2026-04-27T09:55:24+00:00",
+        "created_at_api": "2025-06-24T07:16:05+00:00",
+        "has_issues": true,
+        "commits": 258,
+        "contributors": 3,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 899130.9710144928,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 639491,
+                "percentage": 47.13
+            },
+            "HTML": {
+                "bytes": 372903,
+                "percentage": 27.48
+            },
+            "JavaScript": {
+                "bytes": 269952,
+                "percentage": 19.9
+            },
+            "Shell": {
+                "bytes": 69137,
+                "percentage": 5.1
+            },
+            "Dockerfile": {
+                "bytes": 2825,
+                "percentage": 0.21
+            },
+            "Makefile": {
+                "bytes": 2142,
+                "percentage": 0.16
+            },
+            "CSS": {
+                "bytes": 386,
+                "percentage": 0.03
+            }
+        },
+        "version": "v2.3.7",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 5.9,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.2,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/caddy-waf",
+        "name": "caddy-waf",
+        "full_name": "fabriziosalmi/caddy-waf",
+        "description": "Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)",
+        "stars": 761,
+        "forks": 29,
+        "watchers": 761,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 8789,
+        "last_update": "2026-04-27T07:38:54+00:00",
+        "created_at_api": "2025-01-02T12:13:56+00:00",
+        "has_issues": true,
+        "commits": 672,
+        "contributors": 8,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 1440068.121212121,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 256954,
+                "percentage": 48.19
+            },
+            "Python": {
+                "bytes": 226285,
+                "percentage": 42.43
+            },
+            "HTML": {
+                "bytes": 34185,
+                "percentage": 6.41
+            },
+            "Shell": {
+                "bytes": 13707,
+                "percentage": 2.57
+            },
+            "Dockerfile": {
+                "bytes": 1671,
+                "percentage": 0.31
+            },
+            "Makefile": {
+                "bytes": 451,
+                "percentage": 0.08
+            }
+        },
+        "version": "v0.3.2",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 3.8,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 60.0,
+            "status": "moderate",
+            "avg_response_hours": 1897.8,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 4,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/patterns",
+        "name": "patterns",
+        "full_name": "fabriziosalmi/patterns",
+        "description": "Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy",
+        "stars": 307,
+        "forks": 7,
+        "watchers": 307,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1419,
+        "last_update": "2026-04-29T00:56:46+00:00",
+        "created_at_api": "2024-12-21T00:00:15+00:00",
+        "has_issues": true,
+        "commits": 275,
+        "contributors": 7,
+        "last_update_str": "6 hours ago",
+        "avg_issue_resolution_time": 579885.3333333334,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 76874,
+                "percentage": 100.0
+            }
+        },
+        "version": "latest",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 1.5,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 3,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/UglyFeed",
+        "name": "UglyFeed",
+        "full_name": "fabriziosalmi/UglyFeed",
+        "description": "Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes",
+        "stars": 306,
+        "forks": 18,
+        "watchers": 306,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 5842,
+        "last_update": "2026-04-26T21:38:40+00:00",
+        "created_at_api": "2024-05-16T05:06:54+00:00",
+        "has_issues": true,
+        "commits": 852,
+        "contributors": 3,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 4855369.027777778,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 240218,
+                "percentage": 99.11
+            },
+            "Dockerfile": {
+                "bytes": 1363,
+                "percentage": 0.56
+            },
+            "Shell": {
+                "bytes": 784,
+                "percentage": 0.32
+            }
+        },
+        "version": "v0.0.51",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 1.5,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 50.0,
+            "status": "moderate",
+            "avg_response_hours": 934.8,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proxmox-vm-autoscale",
+        "name": "proxmox-vm-autoscale",
+        "full_name": "fabriziosalmi/proxmox-vm-autoscale",
+        "description": "Automatically scale virtual machines resources on Proxmox hosts",
+        "stars": 294,
+        "forks": 24,
+        "watchers": 294,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 185,
+        "last_update": "2026-04-27T07:37:35+00:00",
+        "created_at_api": "2024-09-28T11:30:27+00:00",
+        "has_issues": true,
+        "commits": 125,
+        "contributors": 8,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 3002686.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 115474,
+                "percentage": 96.88
+            },
+            "Shell": {
+                "bytes": 3719,
+                "percentage": 3.12
+            }
+        },
+        "version": "v0.1.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 1.5,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 4,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale",
+        "name": "proxmox-lxc-autoscale",
+        "full_name": "fabriziosalmi/proxmox-lxc-autoscale",
+        "description": "Automatically scale LXC containers resources on Proxmox hosts",
+        "stars": 240,
+        "forks": 11,
+        "watchers": 240,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1259,
+        "last_update": "2026-04-27T07:58:19+00:00",
+        "created_at_api": "2024-08-13T21:49:22+00:00",
+        "has_issues": true,
+        "commits": 668,
+        "contributors": 4,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 6322261.571428572,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 314030,
+                "percentage": 89.95
+            },
+            "Shell": {
+                "bytes": 24495,
+                "percentage": 7.02
+            },
+            "HTML": {
+                "bytes": 5595,
+                "percentage": 1.6
+            },
+            "CSS": {
+                "bytes": 3619,
+                "percentage": 1.04
+            },
+            "Dockerfile": {
+                "bytes": 1361,
+                "percentage": 0.39
+            }
+        },
+        "version": "v2.0.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 1.2,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/wildbox",
+        "name": "wildbox",
+        "full_name": "fabriziosalmi/wildbox",
+        "description": "An open-source security platform for the community. Unified SIEM, SOAR, WAF, and more in a single, self-hosted solution.",
+        "stars": 127,
+        "forks": 8,
+        "watchers": 127,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 5,
+        "size": 31443,
+        "last_update": "2026-04-14T00:17:04+00:00",
+        "created_at_api": "2025-06-15T22:14:52+00:00",
+        "has_issues": true,
+        "commits": 492,
+        "contributors": 3,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 154923.66666666666,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 3780956,
+                "percentage": 68.73
+            },
+            "HTML": {
+                "bytes": 641874,
+                "percentage": 11.67
+            },
+            "TypeScript": {
+                "bytes": 634861,
+                "percentage": 11.54
+            },
+            "Shell": {
+                "bytes": 268880,
+                "percentage": 4.89
+            },
+            "JavaScript": {
+                "bytes": 68357,
+                "percentage": 1.24
+            },
+            "CSS": {
+                "bytes": 41126,
+                "percentage": 0.75
+            },
+            "Makefile": {
+                "bytes": 26890,
+                "percentage": 0.49
+            },
+            "Lua": {
+                "bytes": 24817,
+                "percentage": 0.45
+            },
+            "Dockerfile": {
+                "bytes": 12777,
+                "percentage": 0.23
+            },
+            "Mako": {
+                "bytes": 689,
+                "percentage": 0.01
+            }
+        },
+        "version": "v0.6.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.6,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/DevGPT",
+        "name": "DevGPT",
+        "full_name": "fabriziosalmi/DevGPT",
+        "description": "Code togheter, right now! GPT powered code assistant to build project in minutes",
+        "stars": 71,
+        "forks": 6,
+        "watchers": 71,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 638,
+        "last_update": "2026-04-27T06:14:21+00:00",
+        "created_at_api": "2023-11-11T19:50:17+00:00",
+        "has_issues": true,
+        "commits": 38,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.4,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/lws",
+        "name": "lws",
+        "full_name": "fabriziosalmi/lws",
+        "description": "Unified command line interface for Proxmox, LXC and Docker.",
+        "stars": 70,
+        "forks": 6,
+        "watchers": 70,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 379,
+        "last_update": "2026-03-13T09:17:27+00:00",
+        "created_at_api": "2024-08-24T22:01:54+00:00",
+        "has_issues": true,
+        "commits": 143,
+        "contributors": 4,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 18749597.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 318788,
+                "percentage": 96.92
+            },
+            "HTML": {
+                "bytes": 9886,
+                "percentage": 3.01
+            },
+            "Dockerfile": {
+                "bytes": 249,
+                "percentage": 0.08
+            }
+        },
+        "version": "v1.4.1",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.3,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/brandkit",
+        "name": "brandkit",
+        "full_name": "fabriziosalmi/brandkit",
+        "description": "Yet another brand assets generator",
+        "stars": 59,
+        "forks": 8,
+        "watchers": 59,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 1508,
+        "last_update": "2026-03-26T17:49:20+00:00",
+        "created_at_api": "2025-04-18T07:50:58+00:00",
+        "has_issues": true,
+        "commits": 59,
+        "contributors": 4,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 99362,
+                "percentage": 58.94
+            },
+            "Python": {
+                "bytes": 66953,
+                "percentage": 39.71
+            },
+            "Shell": {
+                "bytes": 1367,
+                "percentage": 0.81
+            },
+            "Dockerfile": {
+                "bytes": 912,
+                "percentage": 0.54
+            }
+        },
+        "version": "v1.1.2",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 5.8,
+            "stars_7d": 2,
+            "stars_30d": 4,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 85.0,
+            "status": "healthy",
+            "avg_response_hours": 32.2,
+            "stale_issues_count": 1
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/blacklists",
+        "name": "blacklists",
+        "full_name": "fabriziosalmi/blacklists",
+        "description": "Daily updated domains blacklist 🚫",
+        "stars": 57,
+        "forks": 1,
+        "watchers": 57,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 3,
+        "size": 8141,
+        "last_update": "2026-04-29T01:43:14+00:00",
+        "created_at_api": "2025-03-22T11:49:27+00:00",
+        "has_issues": true,
+        "commits": 230,
+        "contributors": 6,
+        "last_update_str": "6 hours ago",
+        "avg_issue_resolution_time": 2540399.888888889,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 48892,
+                "percentage": 81.65
+            },
+            "Shell": {
+                "bytes": 10309,
+                "percentage": 17.22
+            },
+            "Dockerfile": {
+                "bytes": 681,
+                "percentage": 1.14
+            }
+        },
+        "version": "latest",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.3,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 60.0,
+            "status": "moderate",
+            "avg_response_hours": 1864.1,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 3,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/websites-monitor",
+        "name": "websites-monitor",
+        "full_name": "fabriziosalmi/websites-monitor",
+        "description": "Websites monitoring via GitHub Actions/API (expiration, security, performances, privacy, SEO)",
+        "stars": 55,
+        "forks": 17,
+        "watchers": 55,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 1973,
+        "last_update": "2025-11-15T19:49:43+00:00",
+        "created_at_api": "2023-09-03T20:50:17+00:00",
+        "has_issues": true,
+        "commits": 876,
+        "contributors": 4,
+        "last_update_str": "5 months ago",
+        "avg_issue_resolution_time": 25762991.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 284487,
+                "percentage": 99.67
+            },
+            "Dockerfile": {
+                "bytes": 948,
+                "percentage": 0.33
+            }
+        },
+        "version": "v1.3.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.3,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 60.0,
+            "status": "moderate",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 2
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/caddy-mib",
+        "name": "caddy-mib",
+        "full_name": "fabriziosalmi/caddy-mib",
+        "description": "Track and ban client IPs generating repetitive errors on Caddy",
+        "stars": 45,
+        "forks": 4,
+        "watchers": 45,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 5,
+        "size": 471,
+        "last_update": "2025-12-11T16:51:31+00:00",
+        "created_at_api": "2025-01-05T21:26:57+00:00",
+        "has_issues": true,
+        "commits": 79,
+        "contributors": 3,
+        "last_update_str": "4 months ago",
+        "avg_issue_resolution_time": 12707778.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 42326,
+                "percentage": 62.92
+            },
+            "Python": {
+                "bytes": 24944,
+                "percentage": 37.08
+            }
+        },
+        "version": "v1.0.1",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.2,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 26.0,
+            "status": "needs_attention",
+            "avg_response_hours": 307.3,
+            "stale_issues_count": 4
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/iamnotacoder",
+        "name": "iamnotacoder",
+        "full_name": "fabriziosalmi/iamnotacoder",
+        "description": "AI code generation and improvement",
+        "stars": 34,
+        "forks": 5,
+        "watchers": 34,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 423,
+        "last_update": "2025-08-29T22:50:46+00:00",
+        "created_at_api": "2025-02-17T16:07:31+00:00",
+        "has_issues": true,
+        "commits": 111,
+        "contributors": 1,
+        "last_update_str": "8 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 147225,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.1.0",
+        "status": "⏰ STALE",
+        "momentum": {
+            "score": 0.2,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/secure-proxy-manager",
+        "name": "secure-proxy-manager",
+        "full_name": "fabriziosalmi/secure-proxy-manager",
+        "description": "Secure proxy solution with filtering, real-time monitoring and a modern web UI.",
+        "stars": 33,
+        "forks": 3,
+        "watchers": 33,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 3,
+        "size": 37098,
+        "last_update": "2026-04-20T19:55:52+00:00",
+        "created_at_api": "2024-12-30T10:05:07+00:00",
+        "has_issues": true,
+        "commits": 581,
+        "contributors": 4,
+        "last_update_str": "1 weeks ago",
+        "avg_issue_resolution_time": 3211555.4444444445,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 374136,
+                "percentage": 46.81
+            },
+            "TypeScript": {
+                "bytes": 309680,
+                "percentage": 38.75
+            },
+            "Shell": {
+                "bytes": 99106,
+                "percentage": 12.4
+            },
+            "CSS": {
+                "bytes": 8406,
+                "percentage": 1.05
+            },
+            "Dockerfile": {
+                "bytes": 4279,
+                "percentage": 0.54
+            },
+            "JavaScript": {
+                "bytes": 2444,
+                "percentage": 0.31
+            },
+            "Makefile": {
+                "bytes": 815,
+                "percentage": 0.1
+            },
+            "HTML": {
+                "bytes": 372,
+                "percentage": 0.05
+            }
+        },
+        "version": "v3.4.2",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.2,
+            "stars_7d": 0,
+            "stars_30d": 2,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 50.0,
+            "status": "moderate",
+            "avg_response_hours": 215.8,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/cf-box",
+        "name": "cf-box",
+        "full_name": "fabriziosalmi/cf-box",
+        "description": "cf-box is a set of Python tools to play with API and multiple Cloudflare accounts.",
+        "stars": 32,
+        "forks": 6,
+        "watchers": 32,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 2649,
+        "last_update": "2026-04-29T04:16:59+00:00",
+        "created_at_api": "2025-01-30T23:05:43+00:00",
+        "has_issues": true,
+        "commits": 592,
+        "contributors": 4,
+        "last_update_str": "3 hours ago",
+        "avg_issue_resolution_time": 61.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 80799,
+                "percentage": 98.47
+            },
+            "Dockerfile": {
+                "bytes": 1253,
+                "percentage": 1.53
+            }
+        },
+        "version": "v1.1.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.2,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml",
+        "name": "proxmox-lxc-autoscale-ml",
+        "full_name": "fabriziosalmi/proxmox-lxc-autoscale-ml",
+        "description": "Automatically scale the LXC containers resources on Proxmox hosts with AI",
+        "stars": 27,
+        "forks": 5,
+        "watchers": 27,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 4,
+        "size": 399,
+        "last_update": "2026-04-27T08:56:45+00:00",
+        "created_at_api": "2024-09-03T21:55:27+00:00",
+        "has_issues": true,
+        "commits": 116,
+        "contributors": 5,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 23757185.666666668,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 107203,
+                "percentage": 91.09
+            },
+            "Shell": {
+                "bytes": 10489,
+                "percentage": 8.91
+            }
+        },
+        "version": "v1.2.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 90.0,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/zonecontrol",
+        "name": "zonecontrol",
+        "full_name": "fabriziosalmi/zonecontrol",
+        "description": "Cloudflare Zones Settings Automation using GitHub Actions",
+        "stars": 27,
+        "forks": 2,
+        "watchers": 27,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 182,
+        "last_update": "2026-04-27T06:32:37+00:00",
+        "created_at_api": "2024-06-20T20:49:05+00:00",
+        "has_issues": true,
+        "commits": 91,
+        "contributors": 2,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 8538,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 3.2,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/brutal-coding-tool",
+        "name": "brutal-coding-tool",
+        "full_name": "fabriziosalmi/brutal-coding-tool",
+        "description": "Audit your vibecode and make it brutally solid :)",
+        "stars": 24,
+        "forks": 3,
+        "watchers": 24,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 863,
+        "last_update": "2025-12-08T08:01:29+00:00",
+        "created_at_api": "2025-11-23T11:02:13+00:00",
+        "has_issues": true,
+        "commits": 25,
+        "contributors": 1,
+        "last_update_str": "4 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 50422,
+                "percentage": 94.62
+            },
+            "HTML": {
+                "bytes": 2868,
+                "percentage": 5.38
+            }
+        },
+        "version": null,
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 2,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/pdf-ocr",
+        "name": "pdf-ocr",
+        "full_name": "fabriziosalmi/pdf-ocr",
+        "description": "Converts scanned PDF documents to multiple formats using Optical Character Recognition",
+        "stars": 20,
+        "forks": 0,
+        "watchers": 20,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 30236,
+        "last_update": "2026-02-19T21:02:48+00:00",
+        "created_at_api": "2025-04-14T15:49:03+00:00",
+        "has_issues": true,
+        "commits": 46,
+        "contributors": 1,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 108119,
+                "percentage": 56.72
+            },
+            "Python": {
+                "bytes": 81253,
+                "percentage": 42.63
+            },
+            "Dockerfile": {
+                "bytes": 1085,
+                "percentage": 0.57
+            },
+            "Shell": {
+                "bytes": 160,
+                "percentage": 0.08
+            }
+        },
+        "version": "v0.2.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/dnscontrol-actions",
+        "name": "dnscontrol-actions",
+        "full_name": "fabriziosalmi/dnscontrol-actions",
+        "description": "Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions",
+        "stars": 18,
+        "forks": 4,
+        "watchers": 18,
+        "language": "JavaScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 49,
+        "last_update": "2026-04-27T06:43:51+00:00",
+        "created_at_api": "2023-09-08T09:38:50+00:00",
+        "has_issues": true,
+        "commits": 34,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 8412306.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "JavaScript": {
+                "bytes": 3078,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/limits",
+        "name": "limits",
+        "full_name": "fabriziosalmi/limits",
+        "description": "Automated rate limits implementation for web servers",
+        "stars": 18,
+        "forks": 3,
+        "watchers": 18,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 113,
+        "last_update": "2026-04-27T06:11:59+00:00",
+        "created_at_api": "2024-12-21T09:34:35+00:00",
+        "has_issues": true,
+        "commits": 50,
+        "contributors": 2,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 51668,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/vibe-check",
+        "name": "vibe-check",
+        "full_name": "fabriziosalmi/vibe-check",
+        "description": "Anti-slop CI/CD gatekeeper (GitHub action)",
+        "stars": 18,
+        "forks": 0,
+        "watchers": 18,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 129,
+        "last_update": "2026-04-27T06:13:47+00:00",
+        "created_at_api": "2025-11-24T20:35:45+00:00",
+        "has_issues": true,
+        "commits": 21,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 1883358.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 101505,
+                "percentage": 98.71
+            },
+            "JavaScript": {
+                "bytes": 975,
+                "percentage": 0.95
+            },
+            "Dockerfile": {
+                "bytes": 356,
+                "percentage": 0.35
+            }
+        },
+        "version": "v1.4.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/csv-anonymizer",
+        "name": "csv-anonymizer",
+        "full_name": "fabriziosalmi/csv-anonymizer",
+        "description": "CSV fuzzer/anonymizer",
+        "stars": 10,
+        "forks": 0,
+        "watchers": 10,
+        "language": "JavaScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 325,
+        "last_update": "2026-04-17T12:20:47+00:00",
+        "created_at_api": "2025-01-23T00:42:44+00:00",
+        "has_issues": true,
+        "commits": 34,
+        "contributors": 2,
+        "last_update_str": "1 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "JavaScript": {
+                "bytes": 49312,
+                "percentage": 67.76
+            },
+            "CSS": {
+                "bytes": 12615,
+                "percentage": 17.33
+            },
+            "HTML": {
+                "bytes": 10851,
+                "percentage": 14.91
+            }
+        },
+        "version": "v1.1.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/newsgator",
+        "name": "newsgator",
+        "full_name": "fabriziosalmi/newsgator",
+        "description": "Yet another RSS feed aggregator with LLM powers.",
+        "stars": 10,
+        "forks": 0,
+        "watchers": 10,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 165,
+        "last_update": "2026-03-06T02:08:52+00:00",
+        "created_at_api": "2025-04-30T12:24:35+00:00",
+        "has_issues": true,
+        "commits": 21,
+        "contributors": 3,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 177215,
+                "percentage": 92.89
+            },
+            "HTML": {
+                "bytes": 12914,
+                "percentage": 6.77
+            },
+            "Dockerfile": {
+                "bytes": 657,
+                "percentage": 0.34
+            }
+        },
+        "version": "v0.0.2",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.1,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/nis2-public",
+        "name": "nis2-public",
+        "full_name": "fabriziosalmi/nis2-public",
+        "description": "NIS2 Continuous Posture Management and Remediation Platform",
+        "stars": 10,
+        "forks": 1,
+        "watchers": 10,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1154,
+        "last_update": "2026-04-29T07:48:40+00:00",
+        "created_at_api": "2025-12-08T11:58:07+00:00",
+        "has_issues": true,
+        "commits": 34,
+        "contributors": 1,
+        "last_update_str": "7 minutes ago",
+        "avg_issue_resolution_time": 7264491.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 638397,
+                "percentage": 64.0
+            },
+            "TypeScript": {
+                "bytes": 304849,
+                "percentage": 30.56
+            },
+            "HTML": {
+                "bytes": 25427,
+                "percentage": 2.55
+            },
+            "JavaScript": {
+                "bytes": 11953,
+                "percentage": 1.2
+            },
+            "CSS": {
+                "bytes": 9593,
+                "percentage": 0.96
+            },
+            "Makefile": {
+                "bytes": 3460,
+                "percentage": 0.35
+            },
+            "Dockerfile": {
+                "bytes": 3248,
+                "percentage": 0.33
+            },
+            "Mako": {
+                "bytes": 635,
+                "percentage": 0.06
+            }
+        },
+        "version": "v2.4.16",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 5.6,
+            "stars_7d": 2,
+            "stars_30d": 4,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/nginx-waf-ai",
+        "name": "nginx-waf-ai",
+        "full_name": "fabriziosalmi/nginx-waf-ai",
+        "description": "Automatically detect threats and deploy WAF rules using machine learning",
+        "stars": 9,
+        "forks": 3,
+        "watchers": 9,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 4415,
+        "last_update": "2026-03-12T19:40:16+00:00",
+        "created_at_api": "2025-07-20T10:21:29+00:00",
+        "has_issues": true,
+        "commits": 61,
+        "contributors": 2,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 526742,
+                "percentage": 53.56
+            },
+            "HTML": {
+                "bytes": 445964,
+                "percentage": 45.34
+            },
+            "Shell": {
+                "bytes": 9604,
+                "percentage": 0.98
+            },
+            "Dockerfile": {
+                "bytes": 1240,
+                "percentage": 0.13
+            }
+        },
+        "version": "v0.1.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/webtek",
+        "name": "webtek",
+        "full_name": "fabriziosalmi/webtek",
+        "description": "WebTeK: the worldwide streaming teknival ꩜ https://webtek.live",
+        "stars": 9,
+        "forks": 4,
+        "watchers": 9,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Apache License 2.0",
+        "default_branch": "master",
+        "open_issues_count": 1,
+        "size": 29840,
+        "last_update": "2026-03-06T21:02:59+00:00",
+        "created_at_api": "2017-10-07T10:43:02+00:00",
+        "has_issues": true,
+        "commits": 509,
+        "contributors": 6,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 22987383.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 72310,
+                "percentage": 87.77
+            },
+            "CSS": {
+                "bytes": 8319,
+                "percentage": 10.1
+            },
+            "JavaScript": {
+                "bytes": 1756,
+                "percentage": 2.13
+            }
+        },
+        "version": "23",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 90,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 3,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/aidlp",
+        "name": "aidlp",
+        "full_name": "fabriziosalmi/aidlp",
+        "description": "Data Loss Prevention (DLP) for LLM endpoints.",
+        "stars": 8,
+        "forks": 1,
+        "watchers": 8,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 17,
+        "size": 255,
+        "last_update": "2026-04-28T15:50:17+00:00",
+        "created_at_api": "2025-12-01T09:04:27+00:00",
+        "has_issues": true,
+        "commits": 85,
+        "contributors": 2,
+        "last_update_str": "16 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 39507,
+                "percentage": 93.08
+            },
+            "Dockerfile": {
+                "bytes": 1529,
+                "percentage": 3.6
+            },
+            "Shell": {
+                "bytes": 1406,
+                "percentage": 3.31
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 2.5,
+            "stars_7d": 1,
+            "stars_30d": 3,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.2,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/claude-code-brutal-edition",
+        "name": "claude-code-brutal-edition",
+        "full_name": "fabriziosalmi/claude-code-brutal-edition",
+        "description": "Brutalize the codebase from the beginning.",
+        "stars": 8,
+        "forks": 1,
+        "watchers": 8,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": true,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 26819,
+        "last_update": "2025-11-24T20:29:32+00:00",
+        "created_at_api": "2025-11-24T19:26:21+00:00",
+        "has_issues": false,
+        "commits": 362,
+        "contributors": 42,
+        "last_update_str": "5 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 59809,
+                "percentage": 41.89
+            },
+            "Shell": {
+                "bytes": 59675,
+                "percentage": 41.8
+            },
+            "TypeScript": {
+                "bytes": 15463,
+                "percentage": 10.83
+            },
+            "PowerShell": {
+                "bytes": 5319,
+                "percentage": 3.73
+            },
+            "Dockerfile": {
+                "bytes": 2507,
+                "percentage": 1.76
+            }
+        },
+        "version": null,
+        "status": "🍴 FORK",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 5,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/enjoy",
+        "name": "enjoy",
+        "full_name": "fabriziosalmi/enjoy",
+        "description": "🎮 A GitHub-based game",
+        "stars": 7,
+        "forks": 9,
+        "watchers": 7,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Other",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 11619,
+        "last_update": "2026-04-29T05:53:32+00:00",
+        "created_at_api": "2026-01-18T01:26:38+00:00",
+        "has_issues": true,
+        "commits": 7994,
+        "contributors": 10,
+        "last_update_str": "2 hours ago",
+        "avg_issue_resolution_time": 4744417.166666667,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 215635,
+                "percentage": 54.91
+            },
+            "HTML": {
+                "bytes": 146208,
+                "percentage": 37.23
+            },
+            "Python": {
+                "bytes": 16289,
+                "percentage": 4.15
+            },
+            "JavaScript": {
+                "bytes": 14564,
+                "percentage": 3.71
+            }
+        },
+        "version": "v4.1.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 50.0,
+            "status": "moderate",
+            "avg_response_hours": 2410.9,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 5,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proxima-ui",
+        "name": "proxima-ui",
+        "full_name": "fabriziosalmi/proxima-ui",
+        "description": "A simple web interface to manage Proxmox hosts, vm and containers",
+        "stars": 7,
+        "forks": 2,
+        "watchers": 7,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 14,
+        "size": 8303,
+        "last_update": "2026-03-26T14:12:31+00:00",
+        "created_at_api": "2025-04-28T20:31:59+00:00",
+        "has_issues": true,
+        "commits": 93,
+        "contributors": 2,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 2159.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 720244,
+                "percentage": 64.81
+            },
+            "Python": {
+                "bytes": 293193,
+                "percentage": 26.38
+            },
+            "JavaScript": {
+                "bytes": 76049,
+                "percentage": 6.84
+            },
+            "CSS": {
+                "bytes": 21684,
+                "percentage": 1.95
+            },
+            "Dockerfile": {
+                "bytes": 163,
+                "percentage": 0.01
+            }
+        },
+        "version": "v0.1.1",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 72.1,
+            "status": "moderate",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 13
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proxmox-cluster-balancer",
+        "name": "proxmox-cluster-balancer",
+        "full_name": "fabriziosalmi/proxmox-cluster-balancer",
+        "description": "Balance, scale, migrate your LXC fleet across your Proxmox nodes",
+        "stars": 7,
+        "forks": 2,
+        "watchers": 7,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 54,
+        "last_update": "2026-04-27T06:30:46+00:00",
+        "created_at_api": "2024-08-23T08:25:16+00:00",
+        "has_issues": true,
+        "commits": 22,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 36355,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/wafcontrol",
+        "name": "wafcontrol",
+        "full_name": "fabriziosalmi/wafcontrol",
+        "description": "Cloudflare WAF Settings Automation using GitHub Actions",
+        "stars": 7,
+        "forks": 1,
+        "watchers": 7,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 113,
+        "last_update": "2026-04-27T06:12:36+00:00",
+        "created_at_api": "2024-10-03T10:32:51+00:00",
+        "has_issues": true,
+        "commits": 63,
+        "contributors": 2,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 15560,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/zion",
+        "name": "zion",
+        "full_name": "fabriziosalmi/zion",
+        "description": "High-performance TLS reverse proxy with built-in WAF, written in Rust.",
+        "stars": 7,
+        "forks": 0,
+        "watchers": 7,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "master",
+        "open_issues_count": 4,
+        "size": 27444,
+        "last_update": "2026-04-28T18:10:29+00:00",
+        "created_at_api": "2026-04-12T14:40:19+00:00",
+        "has_issues": true,
+        "commits": 27,
+        "contributors": 1,
+        "last_update_str": "13 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 539696,
+                "percentage": 72.1
+            },
+            "Shell": {
+                "bytes": 136156,
+                "percentage": 18.19
+            },
+            "Python": {
+                "bytes": 49408,
+                "percentage": 6.6
+            },
+            "Go": {
+                "bytes": 11079,
+                "percentage": 1.48
+            },
+            "HTML": {
+                "bytes": 7102,
+                "percentage": 0.95
+            },
+            "Dockerfile": {
+                "bytes": 1814,
+                "percentage": 0.24
+            },
+            "Go Template": {
+                "bytes": 1282,
+                "percentage": 0.17
+            },
+            "JavaScript": {
+                "bytes": 1007,
+                "percentage": 0.13
+            },
+            "VCL": {
+                "bytes": 993,
+                "percentage": 0.13
+            }
+        },
+        "version": "v0.1.6",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 4.6,
+            "stars_7d": 2,
+            "stars_30d": 7,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 80.0,
+            "status": "healthy",
+            "avg_response_hours": 63.5,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/caddy-adf",
+        "name": "caddy-adf",
+        "full_name": "fabriziosalmi/caddy-adf",
+        "description": "Yet another caddy WAF exploration",
+        "stars": 6,
+        "forks": 0,
+        "watchers": 6,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 31104,
+        "last_update": "2026-02-24T22:51:43+00:00",
+        "created_at_api": "2025-01-09T18:04:39+00:00",
+        "has_issues": true,
+        "commits": 103,
+        "contributors": 2,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 5609489.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 58458,
+                "percentage": 72.91
+            },
+            "Shell": {
+                "bytes": 15662,
+                "percentage": 19.53
+            },
+            "Python": {
+                "bytes": 6055,
+                "percentage": 7.55
+            }
+        },
+        "version": "v1.0.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 90.0,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/ethical-ai",
+        "name": "ethical-ai",
+        "full_name": "fabriziosalmi/ethical-ai",
+        "description": "Automate LLM ethical self-assessments",
+        "stars": 6,
+        "forks": 1,
+        "watchers": 6,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 32208,
+        "last_update": "2025-05-03T14:43:08+00:00",
+        "created_at_api": "2023-11-12T18:19:08+00:00",
+        "has_issues": true,
+        "commits": 108,
+        "contributors": 2,
+        "last_update_str": "12 months ago",
+        "avg_issue_resolution_time": 34520422.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 164100,
+                "percentage": 98.6
+            },
+            "Shell": {
+                "bytes": 1348,
+                "percentage": 0.81
+            },
+            "Dockerfile": {
+                "bytes": 987,
+                "percentage": 0.59
+            }
+        },
+        "version": "v1.2.0",
+        "status": "⏰ STALE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/repos",
+        "name": "repos",
+        "full_name": "fabriziosalmi/repos",
+        "description": "My repositories",
+        "stars": 6,
+        "forks": 0,
+        "watchers": 6,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 17,
+        "size": 3354,
+        "last_update": "2026-04-29T07:52:36+00:00",
+        "created_at_api": "2024-07-06T14:59:07+00:00",
+        "has_issues": true,
+        "commits": 1045,
+        "contributors": 5,
+        "last_update_str": "3 minutes ago",
+        "avg_issue_resolution_time": 73785.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 224784,
+                "percentage": 61.01
+            },
+            "Vue": {
+                "bytes": 84380,
+                "percentage": 22.9
+            },
+            "Astro": {
+                "bytes": 35449,
+                "percentage": 9.62
+            },
+            "TypeScript": {
+                "bytes": 6430,
+                "percentage": 1.75
+            },
+            "HTML": {
+                "bytes": 5565,
+                "percentage": 1.51
+            },
+            "Shell": {
+                "bytes": 4847,
+                "percentage": 1.32
+            },
+            "CSS": {
+                "bytes": 2563,
+                "percentage": 0.7
+            },
+            "JavaScript": {
+                "bytes": 2310,
+                "percentage": 0.63
+            },
+            "Makefile": {
+                "bytes": 2101,
+                "percentage": 0.57
+            }
+        },
+        "version": "v6.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 60.0,
+            "status": "moderate",
+            "avg_response_hours": 181.5,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/fqdn-model",
+        "name": "fqdn-model",
+        "full_name": "fabriziosalmi/fqdn-model",
+        "description": "Tiny and fast FQDN classifier to detect malicious domains",
+        "stars": 5,
+        "forks": 0,
+        "watchers": 5,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 67839,
+        "last_update": "2026-04-10T03:52:50+00:00",
+        "created_at_api": "2025-03-05T10:00:03+00:00",
+        "has_issues": true,
+        "commits": 71,
+        "contributors": 3,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 574311.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 67087,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.4.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/tubeconv",
+        "name": "tubeconv",
+        "full_name": "fabriziosalmi/tubeconv",
+        "description": "Convert social videos to high-quality MP3 files",
+        "stars": 5,
+        "forks": 0,
+        "watchers": 5,
+        "language": "JavaScript",
+        "archived": true,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 859,
+        "last_update": "2026-02-14T08:50:45+00:00",
+        "created_at_api": "2025-06-14T04:36:44+00:00",
+        "has_issues": true,
+        "commits": 15,
+        "contributors": 2,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v1.0.4",
+        "status": "📦 ARCHIVED",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 85.0,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 1
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/awesomeness",
+        "name": "awesomeness",
+        "full_name": "fabriziosalmi/awesomeness",
+        "description": "List of awesome open source projects",
+        "stars": 4,
+        "forks": 0,
+        "watchers": 4,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 74,
+        "last_update": "2026-04-27T06:17:14+00:00",
+        "created_at_api": "2024-12-19T11:00:12+00:00",
+        "has_issues": true,
+        "commits": 29,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v0.1.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/linux",
+        "name": "linux",
+        "full_name": "fabriziosalmi/linux",
+        "description": "Linux Scripts & Snippets Collection",
+        "stars": 4,
+        "forks": 0,
+        "watchers": 4,
+        "language": "Jupyter Notebook",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "master",
+        "open_issues_count": 0,
+        "size": 21677,
+        "last_update": "2026-04-27T06:16:39+00:00",
+        "created_at_api": "2017-10-23T15:42:37+00:00",
+        "has_issues": true,
+        "commits": 87,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Jupyter Notebook": {
+                "bytes": 208795,
+                "percentage": 89.78
+            },
+            "Python": {
+                "bytes": 12806,
+                "percentage": 5.51
+            },
+            "Shell": {
+                "bytes": 6839,
+                "percentage": 2.94
+            },
+            "PowerShell": {
+                "bytes": 1992,
+                "percentage": 0.86
+            },
+            "PHP": {
+                "bytes": 1010,
+                "percentage": 0.43
+            },
+            "JavaScript": {
+                "bytes": 1001,
+                "percentage": 0.43
+            },
+            "HTML": {
+                "bytes": 111,
+                "percentage": 0.05
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/llmproxy",
+        "name": "llmproxy",
+        "full_name": "fabriziosalmi/llmproxy",
+        "description": "Security-first proxy for Large Language Models",
+        "stars": 4,
+        "forks": 2,
+        "watchers": 4,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 9,
+        "size": 30501,
+        "last_update": "2026-04-28T02:14:54+00:00",
+        "created_at_api": "2026-03-19T21:42:44+00:00",
+        "has_issues": true,
+        "commits": 180,
+        "contributors": 2,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 16297.285714285714,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 1323269,
+                "percentage": 56.15
+            },
+            "TypeScript": {
+                "bytes": 677610,
+                "percentage": 28.75
+            },
+            "JavaScript": {
+                "bytes": 224849,
+                "percentage": 9.54
+            },
+            "HTML": {
+                "bytes": 78466,
+                "percentage": 3.33
+            },
+            "Shell": {
+                "bytes": 24059,
+                "percentage": 1.02
+            },
+            "CSS": {
+                "bytes": 21680,
+                "percentage": 0.92
+            },
+            "Makefile": {
+                "bytes": 5023,
+                "percentage": 0.21
+            },
+            "Dockerfile": {
+                "bytes": 1808,
+                "percentage": 0.08
+            }
+        },
+        "version": "v1.21.48",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 2,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.1,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proximity",
+        "name": "proximity",
+        "full_name": "fabriziosalmi/proximity",
+        "description": "An immersive management layer for Proxmox based personal infrastructure.",
+        "stars": 4,
+        "forks": 1,
+        "watchers": 4,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 3,
+        "size": 4861,
+        "last_update": "2026-03-25T01:36:42+00:00",
+        "created_at_api": "2025-10-03T19:53:44+00:00",
+        "has_issues": true,
+        "commits": 49,
+        "contributors": 3,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 577630,
+                "percentage": 30.56
+            },
+            "HTML": {
+                "bytes": 532915,
+                "percentage": 28.19
+            },
+            "Svelte": {
+                "bytes": 335854,
+                "percentage": 17.77
+            },
+            "JavaScript": {
+                "bytes": 173819,
+                "percentage": 9.2
+            },
+            "CSS": {
+                "bytes": 156635,
+                "percentage": 8.29
+            },
+            "TypeScript": {
+                "bytes": 80040,
+                "percentage": 4.23
+            },
+            "Shell": {
+                "bytes": 31905,
+                "percentage": 1.69
+            },
+            "Dockerfile": {
+                "bytes": 1401,
+                "percentage": 0.07
+            }
+        },
+        "version": "v0.9.4",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 90.0,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 1
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/You-Know-What-AI-Mean",
+        "name": "You-Know-What-AI-Mean",
+        "full_name": "fabriziosalmi/You-Know-What-AI-Mean",
+        "description": "A comprehensive hallucination through the multifaceted landscape of artificial intelligence ethics and responsibility",
+        "stars": 4,
+        "forks": 1,
+        "watchers": 4,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Creative Commons Zero v1.0 Universal",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1669,
+        "last_update": "2026-04-27T06:16:05+00:00",
+        "created_at_api": "2023-10-04T20:50:44+00:00",
+        "has_issues": false,
+        "commits": 136,
+        "contributors": 2,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 167879,
+                "percentage": 97.15
+            },
+            "Python": {
+                "bytes": 4714,
+                "percentage": 2.73
+            },
+            "JavaScript": {
+                "bytes": 212,
+                "percentage": 0.12
+            }
+        },
+        "version": "v0.0.9",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/aimp",
+        "name": "aimp",
+        "full_name": "fabriziosalmi/aimp",
+        "description": "A serverless networking protocol designed for resilient state synchronization between autonomous agents in fragmented, low-bandwidth networks",
+        "stars": 3,
+        "forks": 0,
+        "watchers": 3,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 1427,
+        "last_update": "2026-04-14T03:33:21+00:00",
+        "created_at_api": "2026-03-15T00:45:12+00:00",
+        "has_issues": true,
+        "commits": 18,
+        "contributors": 1,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 481024,
+                "percentage": 73.53
+            },
+            "Typst": {
+                "bytes": 120779,
+                "percentage": 18.46
+            },
+            "Python": {
+                "bytes": 21253,
+                "percentage": 3.25
+            },
+            "TLA": {
+                "bytes": 13558,
+                "percentage": 2.07
+            },
+            "Shell": {
+                "bytes": 12833,
+                "percentage": 1.96
+            },
+            "Makefile": {
+                "bytes": 4158,
+                "percentage": 0.64
+            },
+            "Dockerfile": {
+                "bytes": 550,
+                "percentage": 0.08
+            }
+        },
+        "version": "v0.4.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 3.1,
+            "stars_7d": 1,
+            "stars_30d": 1,
+            "trend": "growing"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.1,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/audiogen",
+        "name": "audiogen",
+        "full_name": "fabriziosalmi/audiogen",
+        "description": "AI-Powered Sound Generation & Classification.",
+        "stars": 3,
+        "forks": 1,
+        "watchers": 3,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 50,
+        "last_update": "2025-09-04T19:38:13+00:00",
+        "created_at_api": "2023-11-28T17:12:35+00:00",
+        "has_issues": true,
+        "commits": 13,
+        "contributors": 1,
+        "last_update_str": "7 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 8190,
+                "percentage": 100.0
+            }
+        },
+        "version": "v0.1.0",
+        "status": "⏰ STALE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/shortlist",
+        "name": "shortlist",
+        "full_name": "fabriziosalmi/shortlist",
+        "description": "Decentralized broadcasting system that uses Git as a coordination backend",
+        "stars": 3,
+        "forks": 0,
+        "watchers": 3,
+        "language": "Python",
+        "archived": true,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 800,
+        "last_update": "2025-12-09T20:51:06+00:00",
+        "created_at_api": "2025-09-27T18:51:00+00:00",
+        "has_issues": true,
+        "commits": 1742,
+        "contributors": 2,
+        "last_update_str": "4 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": null,
+        "status": "📦 ARCHIVED",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/speedmate",
+        "name": "speedmate",
+        "full_name": "fabriziosalmi/speedmate",
+        "description": "A lightweight, zero-configuration WordPress performance plugin",
+        "stars": 3,
+        "forks": 1,
+        "watchers": 3,
+        "language": "PHP",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 293,
+        "last_update": "2026-04-10T04:23:19+00:00",
+        "created_at_api": "2026-01-22T19:16:06+00:00",
+        "has_issues": true,
+        "commits": 66,
+        "contributors": 2,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 11870.25925925926,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "PHP": {
+                "bytes": 282504,
+                "percentage": 93.79
+            },
+            "JavaScript": {
+                "bytes": 14407,
+                "percentage": 4.78
+            },
+            "Shell": {
+                "bytes": 4313,
+                "percentage": 1.43
+            }
+        },
+        "version": "v0.4.2",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/b2v",
+        "name": "b2v",
+        "full_name": "fabriziosalmi/b2v",
+        "description": "Store large files as video streams",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Other",
+        "default_branch": "main",
+        "open_issues_count": 14,
+        "size": 34255,
+        "last_update": "2026-04-26T10:02:46+00:00",
+        "created_at_api": "2025-12-12T12:51:37+00:00",
+        "has_issues": true,
+        "commits": 51,
+        "contributors": 4,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 953703,
+                "percentage": 74.06
+            },
+            "Makefile": {
+                "bytes": 323385,
+                "percentage": 25.11
+            },
+            "DTrace": {
+                "bytes": 4754,
+                "percentage": 0.37
+            },
+            "Shell": {
+                "bytes": 3117,
+                "percentage": 0.24
+            },
+            "TypeScript": {
+                "bytes": 2676,
+                "percentage": 0.21
+            },
+            "JavaScript": {
+                "bytes": 126,
+                "percentage": 0.01
+            }
+        },
+        "version": "v0.1.2",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.7,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/caddy-feeds",
+        "name": "caddy-feeds",
+        "full_name": "fabriziosalmi/caddy-feeds",
+        "description": "IP blacklist, DNS blacklist and OWASP rules daily updated for caddy-waf",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 8542,
+        "last_update": "2025-02-09T20:35:51+00:00",
+        "created_at_api": "2025-01-18T08:55:42+00:00",
+        "has_issues": true,
+        "commits": 61,
+        "contributors": 2,
+        "last_update_str": "1 years ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 53559,
+                "percentage": 100.0
+            }
+        },
+        "version": "latest",
+        "status": "⚠️ INACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/cloudflare-backup-actions",
+        "name": "cloudflare-backup-actions",
+        "full_name": "fabriziosalmi/cloudflare-backup-actions",
+        "description": "Cloudflare zones and records backup via Github Actions",
+        "stars": 2,
+        "forks": 3,
+        "watchers": 2,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 33,
+        "last_update": "2026-04-27T06:30:04+00:00",
+        "created_at_api": "2023-09-07T14:02:54+00:00",
+        "has_issues": true,
+        "commits": 14,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 46501571.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/freeundergroundtekno",
+        "name": "freeundergroundtekno",
+        "full_name": "fabriziosalmi/freeundergroundtekno",
+        "description": "Free Underground Tekno Radio since 2008.",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "JavaScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Creative Commons Zero v1.0 Universal",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 75720,
+        "last_update": "2026-04-10T20:34:58+00:00",
+        "created_at_api": "2024-03-19T10:40:18+00:00",
+        "has_issues": true,
+        "commits": 78,
+        "contributors": 3,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "JavaScript": {
+                "bytes": 10610,
+                "percentage": 55.14
+            },
+            "Shell": {
+                "bytes": 8631,
+                "percentage": 44.86
+            }
+        },
+        "version": "v1.0.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/llm-benchmarks",
+        "name": "llm-benchmarks",
+        "full_name": "fabriziosalmi/llm-benchmarks",
+        "description": "benchmarking large language models (LLMs) with a focus on their mathematical capabilities",
+        "stars": 2,
+        "forks": 1,
+        "watchers": 2,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 52,
+        "last_update": "2026-04-27T06:43:16+00:00",
+        "created_at_api": "2024-04-27T10:49:50+00:00",
+        "has_issues": true,
+        "commits": 25,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 5126,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/nexus-mcp-server",
+        "name": "nexus-mcp-server",
+        "full_name": "fabriziosalmi/nexus-mcp-server",
+        "description": "Yet another MCP server with custom tools support.",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Python",
+        "archived": true,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 4,
+        "size": 1104,
+        "last_update": "2026-02-11T16:03:04+00:00",
+        "created_at_api": "2025-09-06T23:27:49+00:00",
+        "has_issues": true,
+        "commits": 117,
+        "contributors": 3,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 9314.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v0.9.1",
+        "status": "📦 ARCHIVED",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 40.0,
+            "status": "needs_attention",
+            "avg_response_hours": 421.0,
+            "stale_issues_count": 2
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/open-video-watermark",
+        "name": "open-video-watermark",
+        "full_name": "fabriziosalmi/open-video-watermark",
+        "description": "A video watermarking web application",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 3,
+        "size": 128,
+        "last_update": "2026-02-24T10:30:34+00:00",
+        "created_at_api": "2025-06-13T16:45:40+00:00",
+        "has_issues": true,
+        "commits": 19,
+        "contributors": 3,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 110829,
+                "percentage": 51.77
+            },
+            "CSS": {
+                "bytes": 38761,
+                "percentage": 18.11
+            },
+            "JavaScript": {
+                "bytes": 37615,
+                "percentage": 17.57
+            },
+            "HTML": {
+                "bytes": 19178,
+                "percentage": 8.96
+            },
+            "Shell": {
+                "bytes": 4817,
+                "percentage": 2.25
+            },
+            "Makefile": {
+                "bytes": 1495,
+                "percentage": 0.7
+            },
+            "Dockerfile": {
+                "bytes": 1377,
+                "percentage": 0.64
+            }
+        },
+        "version": "v1.0.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 90.0,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 1
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/synapseed",
+        "name": "synapseed",
+        "full_name": "fabriziosalmi/synapseed",
+        "description": "Pure Rust Semantic AI Middleware",
+        "stars": 2,
+        "forks": 0,
+        "watchers": 2,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Apache License 2.0",
+        "default_branch": "main",
+        "open_issues_count": 3,
+        "size": 558,
+        "last_update": "2026-03-28T11:58:37+00:00",
+        "created_at_api": "2026-02-12T01:07:25+00:00",
+        "has_issues": true,
+        "commits": 13,
+        "contributors": 2,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 42324.47777777778,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 1285087,
+                "percentage": 76.31
+            },
+            "Python": {
+                "bytes": 198469,
+                "percentage": 11.78
+            },
+            "TypeScript": {
+                "bytes": 192847,
+                "percentage": 11.45
+            },
+            "TeX": {
+                "bytes": 4488,
+                "percentage": 0.27
+            },
+            "Shell": {
+                "bytes": 2020,
+                "percentage": 0.12
+            },
+            "Makefile": {
+                "bytes": 1216,
+                "percentage": 0.07
+            }
+        },
+        "version": "v4.30.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/alma",
+        "name": "alma",
+        "full_name": "fabriziosalmi/alma",
+        "description": "Autonomous Language Model Architecture",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 754,
+        "last_update": "2026-04-26T21:14:09+00:00",
+        "created_at_api": "2025-11-16T19:06:41+00:00",
+        "has_issues": true,
+        "commits": 133,
+        "contributors": 3,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 691217,
+                "percentage": 95.96
+            },
+            "JavaScript": {
+                "bytes": 19270,
+                "percentage": 2.68
+            },
+            "Dockerfile": {
+                "bytes": 3010,
+                "percentage": 0.42
+            },
+            "Shell": {
+                "bytes": 2796,
+                "percentage": 0.39
+            },
+            "Makefile": {
+                "bytes": 1156,
+                "percentage": 0.16
+            },
+            "Jinja": {
+                "bytes": 1062,
+                "percentage": 0.15
+            },
+            "CSS": {
+                "bytes": 709,
+                "percentage": 0.1
+            },
+            "Mako": {
+                "bytes": 707,
+                "percentage": 0.1
+            },
+            "HTML": {
+                "bytes": 357,
+                "percentage": 0.05
+            }
+        },
+        "version": "v0.8.9",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/domainmate",
+        "name": "domainmate",
+        "full_name": "fabriziosalmi/domainmate",
+        "description": "Domain and security monitoring system",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1041,
+        "last_update": "2026-02-20T07:13:47+00:00",
+        "created_at_api": "2025-12-09T22:33:46+00:00",
+        "has_issues": true,
+        "commits": 28,
+        "contributors": 2,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 72352,
+                "percentage": 79.14
+            },
+            "HTML": {
+                "bytes": 17154,
+                "percentage": 18.76
+            },
+            "Makefile": {
+                "bytes": 1074,
+                "percentage": 1.17
+            },
+            "Dockerfile": {
+                "bytes": 841,
+                "percentage": 0.92
+            }
+        },
+        "version": "v0.4.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/fabriziosalmi",
+        "name": "fabriziosalmi",
+        "full_name": "fabriziosalmi/fabriziosalmi",
+        "description": "my own github profile",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 114,
+        "last_update": "2026-04-27T06:13:09+00:00",
+        "created_at_api": "2025-05-05T12:38:18+00:00",
+        "has_issues": true,
+        "commits": 80,
+        "contributors": 3,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v0.1.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/mixi",
+        "name": "mixi",
+        "full_name": "fabriziosalmi/mixi",
+        "description": "Deterministic audio workstation. Browser-native. Zero install. Dual decks, Rust/Wasm DSP, WebGPU visuals, 19 instruments, automixer, beatmatching, 17 skins, MIDI, headphone cue.",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Other",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 39556,
+        "last_update": "2026-04-23T05:42:11+00:00",
+        "created_at_api": "2026-04-03T07:46:32+00:00",
+        "has_issues": true,
+        "commits": 348,
+        "contributors": 1,
+        "last_update_str": "6 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 2200816,
+                "percentage": 80.34
+            },
+            "Rust": {
+                "bytes": 295888,
+                "percentage": 10.8
+            },
+            "CSS": {
+                "bytes": 125454,
+                "percentage": 4.58
+            },
+            "JavaScript": {
+                "bytes": 63024,
+                "percentage": 2.3
+            },
+            "Python": {
+                "bytes": 32968,
+                "percentage": 1.2
+            },
+            "WGSL": {
+                "bytes": 15573,
+                "percentage": 0.57
+            },
+            "Shell": {
+                "bytes": 2465,
+                "percentage": 0.09
+            },
+            "HTML": {
+                "bytes": 1783,
+                "percentage": 0.07
+            },
+            "Dockerfile": {
+                "bytes": 1255,
+                "percentage": 0.05
+            }
+        },
+        "version": "v0.5.5",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/mixi-cut",
+        "name": "mixi-cut",
+        "full_name": "fabriziosalmi/mixi-cut",
+        "description": "Open-source timecode vinyl signal generator for DVS lathe cutting (MIXI-CUT protocol)",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 397,
+        "last_update": "2026-04-23T18:57:09+00:00",
+        "created_at_api": "2026-04-08T21:02:41+00:00",
+        "has_issues": true,
+        "commits": 14,
+        "contributors": 1,
+        "last_update_str": "5 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 185656,
+                "percentage": 81.82
+            },
+            "C": {
+                "bytes": 21376,
+                "percentage": 9.42
+            },
+            "Rust": {
+                "bytes": 16441,
+                "percentage": 7.25
+            },
+            "Makefile": {
+                "bytes": 2812,
+                "percentage": 1.24
+            },
+            "CMake": {
+                "bytes": 610,
+                "percentage": 0.27
+            }
+        },
+        "version": "v0.3.2",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/netfence",
+        "name": "netfence",
+        "full_name": "fabriziosalmi/netfence",
+        "description": "Like Envoy xDS, but for eBPF filters",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": true,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 220,
+        "last_update": "2026-03-19T02:46:08+00:00",
+        "created_at_api": "2026-02-10T22:09:26+00:00",
+        "has_issues": false,
+        "commits": 44,
+        "contributors": 1,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 131402,
+                "percentage": 89.7
+            },
+            "C": {
+                "bytes": 12955,
+                "percentage": 8.84
+            },
+            "Makefile": {
+                "bytes": 2138,
+                "percentage": 1.46
+            }
+        },
+        "version": null,
+        "status": "🍴 FORK",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/open-bpm",
+        "name": "open-bpm",
+        "full_name": "fabriziosalmi/open-bpm",
+        "description": "High-accuracy BPM detection",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Rust",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1348,
+        "last_update": "2026-04-11T07:31:51+00:00",
+        "created_at_api": "2026-04-07T16:09:27+00:00",
+        "has_issues": true,
+        "commits": 32,
+        "contributors": 1,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Rust": {
+                "bytes": 235713,
+                "percentage": 77.12
+            },
+            "Python": {
+                "bytes": 56169,
+                "percentage": 18.38
+            },
+            "Shell": {
+                "bytes": 13775,
+                "percentage": 4.51
+            }
+        },
+        "version": null,
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 1,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/repolizer",
+        "name": "repolizer",
+        "full_name": "fabriziosalmi/repolizer",
+        "description": "GitHub Repository Health Analyzer",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 8456,
+        "last_update": "2025-08-29T22:58:43+00:00",
+        "created_at_api": "2025-04-12T21:04:32+00:00",
+        "has_issues": true,
+        "commits": 266,
+        "contributors": 1,
+        "last_update_str": "8 months ago",
+        "avg_issue_resolution_time": 2735419.5,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 7546732,
+                "percentage": 72.26
+            },
+            "Python": {
+                "bytes": 2879063,
+                "percentage": 27.57
+            },
+            "JavaScript": {
+                "bytes": 18426,
+                "percentage": 0.18
+            }
+        },
+        "version": "v1.0.0",
+        "status": "⏰ STALE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/trinity",
+        "name": "trinity",
+        "full_name": "fabriziosalmi/trinity",
+        "description": "A self-healing static site generator",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 3,
+        "size": 6354,
+        "last_update": "2026-03-12T20:21:11+00:00",
+        "created_at_api": "2025-11-26T14:58:22+00:00",
+        "has_issues": true,
+        "commits": 94,
+        "contributors": 2,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 515961,
+                "percentage": 87.18
+            },
+            "Shell": {
+                "bytes": 46002,
+                "percentage": 7.77
+            },
+            "HTML": {
+                "bytes": 13779,
+                "percentage": 2.33
+            },
+            "Makefile": {
+                "bytes": 11990,
+                "percentage": 2.03
+            },
+            "Batchfile": {
+                "bytes": 4125,
+                "percentage": 0.7
+            }
+        },
+        "version": "v0.8.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 90.0,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 1
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/uglyfeed-cdn",
+        "name": "uglyfeed-cdn",
+        "full_name": "fabriziosalmi/uglyfeed-cdn",
+        "description": "🌍 UglyFeed RSS feeds",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 5628,
+        "last_update": "2026-04-29T05:59:31+00:00",
+        "created_at_api": "2024-06-13T19:18:21+00:00",
+        "has_issues": true,
+        "commits": 1434,
+        "contributors": 2,
+        "last_update_str": "1 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 62771,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/zitto.net",
+        "name": "zitto.net",
+        "full_name": "fabriziosalmi/zitto.net",
+        "description": "A massively scalable, real-time distributed system for connecting millions of simultaneous users in a shared, persistent state of \"silence\".",
+        "stars": 1,
+        "forks": 0,
+        "watchers": 1,
+        "language": "Elixir",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 170,
+        "last_update": "2025-09-06T08:20:37+00:00",
+        "created_at_api": "2025-08-08T00:09:10+00:00",
+        "has_issues": true,
+        "commits": 35,
+        "contributors": 2,
+        "last_update_str": "7 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Elixir": {
+                "bytes": 129074,
+                "percentage": 60.46
+            },
+            "HTML": {
+                "bytes": 69566,
+                "percentage": 32.58
+            },
+            "Shell": {
+                "bytes": 5591,
+                "percentage": 2.62
+            },
+            "CSS": {
+                "bytes": 4116,
+                "percentage": 1.93
+            },
+            "JavaScript": {
+                "bytes": 3050,
+                "percentage": 1.43
+            },
+            "Dockerfile": {
+                "bytes": 2095,
+                "percentage": 0.98
+            }
+        },
+        "version": "v0.1.0",
+        "status": "⏰ STALE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/ai-security",
+        "name": "ai-security",
+        "full_name": "fabriziosalmi/ai-security",
+        "description": "AI Security - Guida in Italiano",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 7667,
+        "last_update": "2026-04-27T06:11:27+00:00",
+        "created_at_api": "2026-03-08T09:22:07+00:00",
+        "has_issues": true,
+        "commits": 16,
+        "contributors": 2,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/asn-api",
+        "name": "asn-api",
+        "full_name": "fabriziosalmi/asn-api",
+        "description": "ASN intelligence system",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Other",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 259,
+        "last_update": "2026-04-16T18:41:54+00:00",
+        "created_at_api": "2026-01-13T02:03:29+00:00",
+        "has_issues": true,
+        "commits": 53,
+        "contributors": 2,
+        "last_update_str": "1 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 161187,
+                "percentage": 96.44
+            },
+            "Dockerfile": {
+                "bytes": 3368,
+                "percentage": 2.02
+            },
+            "Shell": {
+                "bytes": 1943,
+                "percentage": 1.16
+            },
+            "Mako": {
+                "bytes": 634,
+                "percentage": 0.38
+            }
+        },
+        "version": "v6.0.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/audiolibri",
+        "name": "audiolibri",
+        "full_name": "fabriziosalmi/audiolibri",
+        "description": "https://audiolibri.org - Raccolta di audiolibri gratis in Italiano",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Creative Commons Zero v1.0 Universal",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 4663,
+        "last_update": "2026-01-05T07:21:59+00:00",
+        "created_at_api": "2025-04-05T10:53:44+00:00",
+        "has_issues": true,
+        "commits": 117,
+        "contributors": 2,
+        "last_update_str": "3 months ago",
+        "avg_issue_resolution_time": 1873654.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 188819,
+                "percentage": 43.6
+            },
+            "JavaScript": {
+                "bytes": 116832,
+                "percentage": 26.98
+            },
+            "CSS": {
+                "bytes": 91037,
+                "percentage": 21.02
+            },
+            "HTML": {
+                "bytes": 26278,
+                "percentage": 6.07
+            },
+            "Shell": {
+                "bytes": 10095,
+                "percentage": 2.33
+            }
+        },
+        "version": "v1.5.4",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/certmate-website",
+        "name": "certmate-website",
+        "full_name": "fabriziosalmi/certmate-website",
+        "description": "CertMate website powered by GitHub pages.",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "HTML",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 986,
+        "last_update": "2026-02-22T10:40:41+00:00",
+        "created_at_api": "2025-07-01T16:42:56+00:00",
+        "has_issues": true,
+        "commits": 10,
+        "contributors": 1,
+        "last_update_str": "2 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "HTML": {
+                "bytes": 44485,
+                "percentage": 44.17
+            },
+            "CSS": {
+                "bytes": 37794,
+                "percentage": 37.52
+            },
+            "JavaScript": {
+                "bytes": 18441,
+                "percentage": 18.31
+            }
+        },
+        "version": "v1.6.4",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/domainsblacklists",
+        "name": "domainsblacklists",
+        "full_name": "fabriziosalmi/domainsblacklists",
+        "description": "domainsblacklists.com website",
+        "stars": 0,
+        "forks": 1,
+        "watchers": 0,
+        "language": "CSS",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Creative Commons Zero v1.0 Universal",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 402,
+        "last_update": "2026-04-27T06:15:31+00:00",
+        "created_at_api": "2024-01-07T12:44:28+00:00",
+        "has_issues": true,
+        "commits": 12,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "CSS": {
+                "bytes": 18658,
+                "percentage": 49.42
+            },
+            "HTML": {
+                "bytes": 13108,
+                "percentage": 34.72
+            },
+            "JavaScript": {
+                "bytes": 5987,
+                "percentage": 15.86
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitignore",
+        "name": "gitignore",
+        "full_name": "fabriziosalmi/gitignore",
+        "description": "No description",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 328,
+        "last_update": "2026-04-27T11:31:01+00:00",
+        "created_at_api": "2026-04-27T10:30:38+00:00",
+        "has_issues": true,
+        "commits": 7,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 135391,
+                "percentage": 100.0
+            }
+        },
+        "version": "v0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma",
+        "name": "gitoma",
+        "full_name": "fabriziosalmi/gitoma",
+        "description": "AI-powered GitHub repository improvement agent",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 2326,
+        "last_update": "2026-04-27T11:59:30+00:00",
+        "created_at_api": "2026-04-20T16:29:08+00:00",
+        "has_issues": true,
+        "commits": 138,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 2096128,
+                "percentage": 92.57
+            },
+            "JavaScript": {
+                "bytes": 65694,
+                "percentage": 2.9
+            },
+            "CSS": {
+                "bytes": 41650,
+                "percentage": 1.84
+            },
+            "Shell": {
+                "bytes": 32543,
+                "percentage": 1.44
+            },
+            "HTML": {
+                "bytes": 28451,
+                "percentage": 1.26
+            }
+        },
+        "version": "v0.2.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-blast",
+        "name": "gitoma-bench-blast",
+        "full_name": "fabriziosalmi/gitoma-bench-blast",
+        "description": "Hot-symbol blast-radius stress test for gitoma BLAST RADIUS / Ψ-Φ / G18+G19 critics",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 5,
+        "size": 30,
+        "last_update": "2026-04-28T21:07:01+00:00",
+        "created_at_api": "2026-04-26T17:42:09+00:00",
+        "has_issues": true,
+        "commits": 3,
+        "contributors": 1,
+        "last_update_str": "10 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 5991,
+                "percentage": 100.0
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-generation",
+        "name": "gitoma-bench-generation",
+        "full_name": "fabriziosalmi/gitoma-bench-generation",
+        "description": "From-zero generation bench for gitoma — 5 starting-state branches, same target intent",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 5,
+        "size": 25,
+        "last_update": "2026-04-28T18:32:56+00:00",
+        "created_at_api": "2026-04-28T17:53:05+00:00",
+        "has_issues": true,
+        "commits": 1,
+        "contributors": 1,
+        "last_update_str": "13 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {},
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-ladder",
+        "name": "gitoma-bench-ladder",
+        "full_name": "fabriziosalmi/gitoma-bench-ladder",
+        "description": "Deterministic bench ladder for gitoma — 8 rungs of rising complexity across Python/Go/Rust/JS",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 37,
+        "size": 267,
+        "last_update": "2026-04-26T18:19:01+00:00",
+        "created_at_api": "2026-04-22T11:10:21+00:00",
+        "has_issues": true,
+        "commits": 31,
+        "contributors": 1,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 24043,
+                "percentage": 78.44
+            },
+            "JavaScript": {
+                "bytes": 2602,
+                "percentage": 8.49
+            },
+            "Go": {
+                "bytes": 2138,
+                "percentage": 6.98
+            },
+            "Rust": {
+                "bytes": 1867,
+                "percentage": 6.09
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-quality",
+        "name": "gitoma-bench-quality",
+        "full_name": "fabriziosalmi/gitoma-bench-quality",
+        "description": "Config-jungle stress test for gitoma G15 sibling-config reconciliation guard",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 10,
+        "last_update": "2026-04-27T20:34:50+00:00",
+        "created_at_api": "2026-04-26T17:38:06+00:00",
+        "has_issues": true,
+        "commits": 1,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 641,
+                "percentage": 100.0
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-scaffold-django",
+        "name": "gitoma-bench-scaffold-django",
+        "full_name": "fabriziosalmi/gitoma-bench-scaffold-django",
+        "description": "Scaffold-vertical live test target — django-react × L5",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 3,
+        "last_update": "2026-04-28T22:52:23+00:00",
+        "created_at_api": "2026-04-28T22:51:58+00:00",
+        "has_issues": true,
+        "commits": 3,
+        "contributors": 2,
+        "last_update_str": "9 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 144,
+                "percentage": 49.15
+            },
+            "Shell": {
+                "bytes": 76,
+                "percentage": 25.94
+            },
+            "Vue": {
+                "bytes": 21,
+                "percentage": 7.17
+            },
+            "JavaScript": {
+                "bytes": 19,
+                "percentage": 6.48
+            },
+            "TypeScript": {
+                "bytes": 19,
+                "percentage": 6.48
+            },
+            "Dockerfile": {
+                "bytes": 14,
+                "percentage": 4.78
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-scaffold-mern",
+        "name": "gitoma-bench-scaffold-mern",
+        "full_name": "fabriziosalmi/gitoma-bench-scaffold-mern",
+        "description": "Scaffold-vertical live test target — MERN × L4",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": null,
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 3,
+        "last_update": "2026-04-28T22:50:56+00:00",
+        "created_at_api": "2026-04-28T22:50:22+00:00",
+        "has_issues": true,
+        "commits": 1,
+        "contributors": 1,
+        "last_update_str": "9 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {},
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/gitoma-bench-triggers",
+        "name": "gitoma-bench-triggers",
+        "full_name": "fabriziosalmi/gitoma-bench-triggers",
+        "description": "Live-fire bench for gitoma orphan-symbol critics (G16/G18/G19) and Test Gen",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 4,
+        "size": 8,
+        "last_update": "2026-04-28T23:15:30+00:00",
+        "created_at_api": "2026-04-27T21:02:31+00:00",
+        "has_issues": true,
+        "commits": 2,
+        "contributors": 1,
+        "last_update_str": "8 hours ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 4008,
+                "percentage": 100.0
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/homebrew-proxymate",
+        "name": "homebrew-proxymate",
+        "full_name": "fabriziosalmi/homebrew-proxymate",
+        "description": "Homebrew tap for Proxymate — install the notarized macOS menu-bar proxy",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Ruby",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 8,
+        "last_update": "2026-04-28T00:34:47+00:00",
+        "created_at_api": "2026-04-13T22:58:03+00:00",
+        "has_issues": true,
+        "commits": 12,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Ruby": {
+                "bytes": 1259,
+                "percentage": 100.0
+            }
+        },
+        "version": null,
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/iGPT",
+        "name": "iGPT",
+        "full_name": "fabriziosalmi/iGPT",
+        "description": "iGPT: the fastest fLLM out there 🚀🚀🚀",
+        "stars": 0,
+        "forks": 1,
+        "watchers": 0,
+        "language": "HTML",
+        "archived": true,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Creative Commons Zero v1.0 Universal",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 540,
+        "last_update": "2025-09-06T08:22:35+00:00",
+        "created_at_api": "2023-11-05T22:17:05+00:00",
+        "has_issues": true,
+        "commits": 57,
+        "contributors": 1,
+        "last_update_str": "7 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {},
+        "version": "v1.0.0",
+        "status": "📦 ARCHIVED",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/logos",
+        "name": "logos",
+        "full_name": "fabriziosalmi/logos",
+        "description": "Dynamic SVG asset generation service built in Go",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 852,
+        "last_update": "2026-04-02T20:42:04+00:00",
+        "created_at_api": "2026-03-30T19:15:44+00:00",
+        "has_issues": true,
+        "commits": 5,
+        "contributors": 1,
+        "last_update_str": "3 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 152826,
+                "percentage": 76.51
+            },
+            "CSS": {
+                "bytes": 17590,
+                "percentage": 8.81
+            },
+            "JavaScript": {
+                "bytes": 14888,
+                "percentage": 7.45
+            },
+            "HTML": {
+                "bytes": 11556,
+                "percentage": 5.79
+            },
+            "Makefile": {
+                "bytes": 2080,
+                "percentage": 1.04
+            },
+            "Dockerfile": {
+                "bytes": 816,
+                "percentage": 0.41
+            }
+        },
+        "version": "v1.0.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/mixi-decks",
+        "name": "mixi-decks",
+        "full_name": "fabriziosalmi/mixi-decks",
+        "description": "Drop-in plugins for the Mixi platform",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 4737,
+        "last_update": "2026-04-12T15:17:44+00:00",
+        "created_at_api": "2026-04-04T22:41:57+00:00",
+        "has_issues": true,
+        "commits": 31,
+        "contributors": 2,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 238752,
+                "percentage": 89.3
+            },
+            "Rust": {
+                "bytes": 25094,
+                "percentage": 9.39
+            },
+            "JavaScript": {
+                "bytes": 3521,
+                "percentage": 1.32
+            }
+        },
+        "version": "v0.4.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/mixi-skin-generator",
+        "name": "mixi-skin-generator",
+        "full_name": "fabriziosalmi/mixi-skin-generator",
+        "description": "MIXI skin generator",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 94,
+        "last_update": "2026-04-07T05:47:04+00:00",
+        "created_at_api": "2026-04-03T09:46:01+00:00",
+        "has_issues": true,
+        "commits": 2,
+        "contributors": 1,
+        "last_update_str": "3 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 26780,
+                "percentage": 97.54
+            },
+            "CSS": {
+                "bytes": 363,
+                "percentage": 1.32
+            },
+            "HTML": {
+                "bytes": 311,
+                "percentage": 1.13
+            }
+        },
+        "version": null,
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/navigator",
+        "name": "navigator",
+        "full_name": "fabriziosalmi/navigator",
+        "description": "The Sentient Interface SDK. Navigate the web with gesture, voice, and predictive AI.",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 33652,
+        "last_update": "2026-04-21T22:25:05+00:00",
+        "created_at_api": "2025-11-09T16:41:45+00:00",
+        "has_issues": true,
+        "commits": 168,
+        "contributors": 4,
+        "last_update_str": "1 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 564491,
+                "percentage": 41.29
+            },
+            "JavaScript": {
+                "bytes": 472682,
+                "percentage": 34.57
+            },
+            "CSS": {
+                "bytes": 190840,
+                "percentage": 13.96
+            },
+            "HTML": {
+                "bytes": 77680,
+                "percentage": 5.68
+            },
+            "Shell": {
+                "bytes": 39243,
+                "percentage": 2.87
+            },
+            "Astro": {
+                "bytes": 22313,
+                "percentage": 1.63
+            }
+        },
+        "version": "v3.0.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/occam-observer",
+        "name": "occam-observer",
+        "full_name": "fabriziosalmi/occam-observer",
+        "description": "An Out-of-Band, Event-Driven Git Telemetry Daemon",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Shell",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 460,
+        "last_update": "2026-04-23T22:05:36+00:00",
+        "created_at_api": "2026-04-23T09:05:10+00:00",
+        "has_issues": true,
+        "commits": 12,
+        "contributors": 1,
+        "last_update_str": "5 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Shell": {
+                "bytes": 159657,
+                "percentage": 47.73
+            },
+            "Go": {
+                "bytes": 114312,
+                "percentage": 34.17
+            },
+            "TypeScript": {
+                "bytes": 34267,
+                "percentage": 10.24
+            },
+            "Python": {
+                "bytes": 16711,
+                "percentage": 5.0
+            },
+            "CSS": {
+                "bytes": 3777,
+                "percentage": 1.13
+            },
+            "Dockerfile": {
+                "bytes": 2648,
+                "percentage": 0.79
+            },
+            "JavaScript": {
+                "bytes": 2341,
+                "percentage": 0.7
+            },
+            "HTML": {
+                "bytes": 811,
+                "percentage": 0.24
+            }
+        },
+        "version": "v0.2.1",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/project-pegaprox",
+        "name": "project-pegaprox",
+        "full_name": "fabriziosalmi/project-pegaprox",
+        "description": "The ultimate datacenter management solution for Proxmox VE and XCP-NG. Unified multi-cluster control, intelligent load balancing, and seamless cross-cluster VM migrations — all in one beautiful interface.",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "JavaScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": true,
+        "license": "GNU Affero General Public License v3.0",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 8047,
+        "last_update": "2026-04-20T14:02:53+00:00",
+        "created_at_api": "2026-04-20T13:46:54+00:00",
+        "has_issues": false,
+        "commits": 238,
+        "contributors": 14,
+        "last_update_str": "1 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "JavaScript": {
+                "bytes": 6430178,
+                "percentage": 47.9
+            },
+            "HTML": {
+                "bytes": 3744647,
+                "percentage": 27.89
+            },
+            "Python": {
+                "bytes": 3187221,
+                "percentage": 23.74
+            },
+            "Shell": {
+                "bytes": 61582,
+                "percentage": 0.46
+            },
+            "Dockerfile": {
+                "bytes": 1766,
+                "percentage": 0.01
+            }
+        },
+        "version": "v0.9.7",
+        "status": "🍴 FORK",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 5,
+            "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/proxymate",
+        "name": "proxymate",
+        "full_name": "fabriziosalmi/proxymate",
+        "description": "macOS menu bar proxy with WAF, privacy, AI agent enforcement, and threat intelligence",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Swift",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 23,
+        "size": 1680,
+        "last_update": "2026-04-28T00:33:13+00:00",
+        "created_at_api": "2026-04-11T13:25:08+00:00",
+        "has_issues": true,
+        "commits": 198,
+        "contributors": 1,
+        "last_update_str": "yesterday",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Swift": {
+                "bytes": 734508,
+                "percentage": 84.98
+            },
+            "Shell": {
+                "bytes": 79719,
+                "percentage": 9.22
+            },
+            "JavaScript": {
+                "bytes": 27120,
+                "percentage": 3.14
+            },
+            "Python": {
+                "bytes": 19529,
+                "percentage": 2.26
+            },
+            "C": {
+                "bytes": 3308,
+                "percentage": 0.38
+            },
+            "Objective-C": {
+                "bytes": 157,
+                "percentage": 0.02
+            }
+        },
+        "version": "v0.9.59",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.1,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/rainlogs",
+        "name": "rainlogs",
+        "full_name": "fabriziosalmi/rainlogs",
+        "description": "Cloudflare log archiving for NIS2-compliant European businesses",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "Apache License 2.0",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 65290,
+        "last_update": "2026-04-08T03:23:38+00:00",
+        "created_at_api": "2026-02-23T23:16:36+00:00",
+        "has_issues": true,
+        "commits": 37,
+        "contributors": 1,
+        "last_update_str": "3 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 178473,
+                "percentage": 65.94
+            },
+            "Python": {
+                "bytes": 77064,
+                "percentage": 28.47
+            },
+            "Makefile": {
+                "bytes": 6688,
+                "percentage": 2.47
+            },
+            "Shell": {
+                "bytes": 6468,
+                "percentage": 2.39
+            },
+            "Dockerfile": {
+                "bytes": 1963,
+                "percentage": 0.73
+            }
+        },
+        "version": "v0.9.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/silence",
+        "name": "silence",
+        "full_name": "fabriziosalmi/silence",
+        "description": "No description",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 152,
+        "last_update": "2025-12-06T23:53:57+00:00",
+        "created_at_api": "2025-11-18T20:10:13+00:00",
+        "has_issues": true,
+        "commits": 25,
+        "contributors": 1,
+        "last_update_str": "4 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 377622,
+                "percentage": 99.76
+            },
+            "Dockerfile": {
+                "bytes": 925,
+                "percentage": 0.24
+            }
+        },
+        "version": null,
+        "status": "📝 NO DESC",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/silicondev",
+        "name": "silicondev",
+        "full_name": "fabriziosalmi/silicondev",
+        "description": "Local LLM fine-tuning and chat for Apple Silicon",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "TypeScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 2,
+        "size": 10046,
+        "last_update": "2026-04-27T07:56:39+00:00",
+        "created_at_api": "2026-03-01T14:07:51+00:00",
+        "has_issues": true,
+        "commits": 213,
+        "contributors": 4,
+        "last_update_str": "2 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "TypeScript": {
+                "bytes": 1063802,
+                "percentage": 56.66
+            },
+            "Python": {
+                "bytes": 803090,
+                "percentage": 42.77
+            },
+            "CSS": {
+                "bytes": 5416,
+                "percentage": 0.29
+            },
+            "JavaScript": {
+                "bytes": 2254,
+                "percentage": 0.12
+            },
+            "Makefile": {
+                "bytes": 1901,
+                "percentage": 0.1
+            },
+            "HTML": {
+                "bytes": 645,
+                "percentage": 0.03
+            },
+            "Shell": {
+                "bytes": 540,
+                "percentage": 0.03
+            }
+        },
+        "version": "v0.14.0",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/synapse-ng",
+        "name": "synapse-ng",
+        "full_name": "fabriziosalmi/synapse-ng",
+        "description": "A decentralized, scalable, and intelligent digital organism built on WebRTC and P2P principles",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 1198,
+        "last_update": "2025-11-23T10:32:22+00:00",
+        "created_at_api": "2025-10-01T19:15:36+00:00",
+        "has_issues": true,
+        "commits": 69,
+        "contributors": 2,
+        "last_update_str": "5 months ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 517538,
+                "percentage": 49.09
+            },
+            "Shell": {
+                "bytes": 346177,
+                "percentage": 32.84
+            },
+            "HTML": {
+                "bytes": 75409,
+                "percentage": 7.15
+            },
+            "CSS": {
+                "bytes": 58302,
+                "percentage": 5.53
+            },
+            "JavaScript": {
+                "bytes": 55647,
+                "percentage": 5.28
+            },
+            "Dockerfile": {
+                "bytes": 1206,
+                "percentage": 0.11
+            }
+        },
+        "version": null,
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/tad",
+        "name": "tad",
+        "full_name": "fabriziosalmi/tad",
+        "description": "No description",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 1,
+        "size": 638,
+        "last_update": "2026-04-10T04:00:12+00:00",
+        "created_at_api": "2025-11-04T12:22:46+00:00",
+        "has_issues": true,
+        "commits": 34,
+        "contributors": 2,
+        "last_update_str": "2 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 293463,
+                "percentage": 95.29
+            },
+            "Shell": {
+                "bytes": 14493,
+                "percentage": 4.71
+            }
+        },
+        "version": "v0.2.0",
+        "status": "📝 NO DESC",
+        "momentum": {
+            "score": 0.0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    }
+]
