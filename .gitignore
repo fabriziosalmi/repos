@@ -99,3 +99,5 @@ completion_report.py
 *.sublime-workspace
 .fleet/
 
+# Workspace settings
+.claude/
