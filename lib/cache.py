@@ -16,7 +16,11 @@ def load_cache():
             with open(CACHE_FILE, 'r', encoding='utf-8') as f:
                 cache_data = json.load(f)
 
-            cache_time = datetime.datetime.fromisoformat(cache_data.get('timestamp', ''))
+            timestamp_str = cache_data.get('timestamp', '')
+            cache_time = datetime.datetime.fromisoformat(timestamp_str)
+            # Ensure cache_time is timezone-aware; if naive, assume UTC
+            if cache_time.tzinfo is None:
+                cache_time = cache_time.replace(tzinfo=datetime.timezone.utc)
             now = datetime.datetime.now(datetime.timezone.utc)
 
             if (now - cache_time).total_seconds() < CACHE_DURATION_HOURS * 3600:
