@@ -26,24 +26,32 @@ def update_readme_badges(readme_path: str = 'README.md') -> None:
     with open(readme_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # Extract values
-    total_repos = stats['overview']['total_repositories']
-    total_stars = f"{stats['overview']['total_stars']:,}"
-    total_forks = stats['overview']['total_forks']
-    total_commits = f"{stats['overview']['total_commits']:,}"
-    total_contributors = stats['overview']['total_contributors']
-    issues_resolved = stats['development_activity']['issues_resolved']
-    resolution_rate = stats['development_activity']['issue_resolution_rate']
-    languages_count = stats['languages']['count']
-    top_language = stats['languages']['top_language']
-    active_repos = stats['breakdown']['active']
-    top_repo_name = stats['top_performers']['most_starred']['name']
-    top_repo_stars = stats['top_performers']['most_starred']['stars']
-    avg_stars = stats['metrics']['average_stars']
-    avg_commits = stats['metrics']['average_commits']
+    # Extract values with safe defaults to avoid KeyError
+    overview = stats.get('overview', {})
+    dev_activity = stats.get('development_activity', {})
+    languages = stats.get('languages', {})
+    breakdown = stats.get('breakdown', {})
+    top_performers = stats.get('top_performers', {})
+    metrics = stats.get('metrics', {})
+    
+    total_repos = overview.get('total_repositories', 0)
+    total_stars = f"{overview.get('total_stars', 0):,}"
+    total_forks = overview.get('total_forks', 0)
+    total_commits = f"{overview.get('total_commits', 0):,}"
+    total_contributors = overview.get('total_contributors', 0)
+    issues_resolved = dev_activity.get('issues_resolved', 0)
+    resolution_rate = dev_activity.get('issue_resolution_rate', 0)
+    languages_count = languages.get('count', 0)
+    top_language = languages.get('top_language', 'N/A')
+    active_repos = breakdown.get('active', 0)
+    most_starred = top_performers.get('most_starred', {})
+    top_repo_name = most_starred.get('name', 'N/A')
+    top_repo_stars = most_starred.get('stars', 0)
+    avg_stars = metrics.get('average_stars', 0)
+    avg_commits = metrics.get('average_commits', 0)
     
     # Find most used language count
-    lang_dist = stats['languages']['distribution']
+    lang_dist = languages.get('distribution', {})
     top_lang_count = lang_dist.get(top_language, 0)
     
     # Create new badges section
