@@ -1,0 +1,56 @@
+# Static analysis for AI-slop patterns: https://github.com/fabriziosalmi/slopless
+#
+# Errors fail the build. Warnings only report.
+#
+# Uploading findings to the Security tab is best effort. A fork gets a read-only
+# token whatever `permissions:` says, so the upload is skipped there, and it is
+# allowed to fail elsewhere rather than turn an API hiccup into a red build.
+# Whether it uploads or not, the findings are in the job log and an error still
+# fails the build.
+name: slopless
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analyse:
+    name: AI-slop static analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Pinned to a commit rather than @v1: a moving tag means trusting the
+      # upstream repository not to change under us.
+      - name: Run slopless
+        uses: fabriziosalmi/slopless@7837fd959b607919593ed7ca6a23d2f8f9d4391f # v1.11.0
+        with:
+          patterns: "lib/**/*.py *.py *.md docs/**/*.md"
+          format: sarif
+          output: slopless.sarif
+
+      - name: Upload findings to code scanning
+        id: upload
+        if: >-
+          always()
+          && hashFiles('slopless.sarif') != ''
+          && (github.event_name != 'pull_request'
+              || github.event.pull_request.head.repo.full_name == github.repository)
+        continue-on-error: true
+        uses: github/codeql-action/upload-sarif@6f5948dfacef28e207b48d0905cf90c03365536d # v3.37.9
+        with:
+          sarif_file: slopless.sarif
+          category: slopless
+
+      # A tolerated failure is still a failure, and from the pull request page it
+      # looks like nothing happened. An annotation says so where it is read.
+      - name: Say so if the findings did not reach the Security tab
+        if: always() && steps.upload.outcome == 'failure'
+        run: echo "::warning title=slopless::The analysis ran and the upload to code scanning did not. Findings are in the job log; the Security tab is stale for this commit."
