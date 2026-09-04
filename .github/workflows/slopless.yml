@@ -32,7 +32,7 @@ jobs:
       - name: Run slopless
         uses: fabriziosalmi/slopless@b3a4017bc0e382013da28564dab3b5ee4e23f981 # v1.12.1
         with:
-          patterns: "lib/**/*.py *.py *.md docs/**/*.md"
+          patterns: "lib/**/*.py *.py *.md docs/**/*.md astro-frontend/src/**/*.astro"
           format: sarif
           output: slopless.sarif
 
