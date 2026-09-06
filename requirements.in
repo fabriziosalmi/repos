@@ -13,4 +13,4 @@ beautifulsoup4>=4.11.0
 lxml>=4.9.0
 
 # Development dependencies
-pytest>=7.0.0
+pytest>=9.0.3
