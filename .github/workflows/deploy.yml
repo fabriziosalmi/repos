@@ -120,7 +120,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          # Astro 7 richiede Node >= 22.12 (engines del pacchetto). Con Node 20
+          # la build del sito fallisce dopo il merge, e questo workflow gira solo
+          # sul push a main: nessuna CI di pull request lo vedrebbe.
+          node-version: '22'
 
       - name: Install Frontend dependencies
         run: npm --prefix astro-frontend install
