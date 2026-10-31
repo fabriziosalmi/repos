@@ -5,7 +5,7 @@
 # Core dependencies
 requests>=2.34.2
 rich>=15.0.0
-python-dateutil>=2.9.0.post0
+python-dateutil>=3.0.0
 
 # Optional dependencies
 python-dotenv>=1.2.2

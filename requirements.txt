@@ -26,7 +26,7 @@ pygments==2.21.0
     #   rich
 pytest==9.1.1
     # via -r requirements.in
-python-dateutil==2.9.0.post0
+python-dateutil==3.0.0
     # via -r requirements.in
 python-dotenv==1.2.4
     # via -r requirements.in
@@ -40,5 +40,7 @@ soupsieve==3.0.3
     # via beautifulsoup4
 typing-extensions==4.16.0
     # via beautifulsoup4
+tzdata==2026.5
+    # via python-dateutil
 urllib3==2.8.0
     # via requests
