@@ -3,10 +3,10 @@
         "url": "https://github.com/fabriziosalmi/certmate",
         "name": "certmate",
         "full_name": "fabriziosalmi/certmate",
-        "description": "Self-hosted certificate lifecycle management: issue, renew, discover, inventory and deploy TLS certificates across your infrastructure",
-        "stars": 1477,
-        "forks": 119,
-        "watchers": 1477,
+        "description": "Self-hosted control plane for TLS certificates, ready for 47-day certificates: issue, renew, discover, inventory and deploy them, and serve ACME for internal names and IPv4 addresses",
+        "stars": 1484,
+        "forks": 120,
+        "watchers": 1484,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -14,33 +14,33 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 15,
-        "size": 24907,
-        "last_update": "2026-10-24T23:00:43+00:00",
+        "open_issues_count": 14,
+        "size": 25310,
+        "last_update": "2026-10-27T20:29:34+00:00",
         "created_at_api": "2025-06-24T07:16:05+00:00",
         "has_issues": true,
-        "commits": 1334,
+        "commits": 1353,
         "contributors": 19,
-        "last_update_str": "2 hours ago",
-        "avg_issue_resolution_time": 630721.1393188854,
+        "last_update_str": "3 days ago",
+        "avg_issue_resolution_time": 743176.1506024096,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
-                "bytes": 8606003,
-                "percentage": 84.27
+                "bytes": 8729582,
+                "percentage": 84.38
             },
             "JavaScript": {
-                "bytes": 779988,
-                "percentage": 7.64
+                "bytes": 789118,
+                "percentage": 7.63
             },
             "HTML": {
-                "bytes": 688184,
-                "percentage": 6.74
+                "bytes": 689590,
+                "percentage": 6.67
             },
             "Shell": {
-                "bytes": 80126,
-                "percentage": 0.78
+                "bytes": 80180,
+                "percentage": 0.77
             },
             "CSS": {
                 "bytes": 25875,
@@ -51,7 +51,7 @@
                 "percentage": 0.16
             },
             "Makefile": {
-                "bytes": 10671,
+                "bytes": 10730,
                 "percentage": 0.1
             },
             "Go Template": {
@@ -63,7 +63,7 @@
                 "percentage": 0.01
             }
         },
-        "version": "v2.54.0",
+        "version": "v2.55.0",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0,
@@ -74,7 +74,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 1153.6,
+            "avg_response_hours": 544.6,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -87,9 +87,9 @@
         "name": "caddy-waf",
         "full_name": "fabriziosalmi/caddy-waf",
         "description": "Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)",
-        "stars": 879,
+        "stars": 882,
         "forks": 37,
-        "watchers": 879,
+        "watchers": 882,
         "language": "Go",
         "archived": false,
         "disabled": false,
@@ -97,14 +97,14 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 1,
-        "size": 10127,
-        "last_update": "2026-10-17T11:37:28+00:00",
+        "open_issues_count": 3,
+        "size": 10133,
+        "last_update": "2026-10-31T10:23:30+00:00",
         "created_at_api": "2025-01-02T12:13:56+00:00",
         "has_issues": true,
-        "commits": 782,
+        "commits": 783,
         "contributors": 10,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "23 minutes ago",
         "avg_issue_resolution_time": 1701941.779661017,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -166,9 +166,9 @@
         "name": "UglyFeed",
         "full_name": "fabriziosalmi/UglyFeed",
         "description": "Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes",
-        "stars": 322,
-        "forks": 19,
-        "watchers": 322,
+        "stars": 323,
+        "forks": 21,
+        "watchers": 323,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -177,13 +177,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 6,
-        "size": 5893,
-        "last_update": "2026-10-22T17:24:46+00:00",
+        "size": 5894,
+        "last_update": "2026-10-31T10:25:14+00:00",
         "created_at_api": "2024-05-16T05:06:54+00:00",
         "has_issues": true,
-        "commits": 866,
+        "commits": 867,
         "contributors": 4,
-        "last_update_str": "2 days ago",
+        "last_update_str": "26 minutes ago",
         "avg_issue_resolution_time": 4724168.567567567,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -210,9 +210,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 90.0,
-            "status": "healthy",
-            "avg_response_hours": 0.0,
+            "health_score": 50.0,
+            "status": "moderate",
+            "avg_response_hours": 209.0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -225,9 +225,9 @@
         "name": "patterns",
         "full_name": "fabriziosalmi/patterns",
         "description": "Automated OWASP CRS and Bad Bot Detection for Nginx, Apache, Traefik and HaProxy",
-        "stars": 315,
+        "stars": 316,
         "forks": 9,
-        "watchers": 315,
+        "watchers": 316,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -235,14 +235,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 4,
-        "size": 2874,
-        "last_update": "2026-10-21T00:43:12+00:00",
+        "open_issues_count": 5,
+        "size": 2897,
+        "last_update": "2026-10-26T08:03:47+00:00",
         "created_at_api": "2024-12-21T00:00:15+00:00",
         "has_issues": true,
         "commits": 334,
         "contributors": 8,
-        "last_update_str": "4 days ago",
+        "last_update_str": "5 days ago",
         "avg_issue_resolution_time": 1024274.8787878788,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -261,9 +261,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 60.0,
-            "status": "moderate",
-            "avg_response_hours": 180.0,
+            "health_score": 80.0,
+            "status": "healthy",
+            "avg_response_hours": 120.0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -276,9 +276,9 @@
         "name": "proxmox-vm-autoscale",
         "full_name": "fabriziosalmi/proxmox-vm-autoscale",
         "description": "Automatically scale virtual machines resources on Proxmox hosts",
-        "stars": 305,
-        "forks": 23,
-        "watchers": 305,
+        "stars": 306,
+        "forks": 24,
+        "watchers": 306,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -308,7 +308,7 @@
             }
         },
         "version": "v1.7.2",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -331,9 +331,9 @@
         "name": "proxmox-lxc-autoscale",
         "full_name": "fabriziosalmi/proxmox-lxc-autoscale",
         "description": "Automatically scale LXC containers resources on Proxmox hosts",
-        "stars": 261,
+        "stars": 262,
         "forks": 16,
-        "watchers": 261,
+        "watchers": 262,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -399,7 +399,7 @@
         "full_name": "fabriziosalmi/wildbox",
         "description": "An open-source security platform for the community. Unified SIEM, SOAR, WAF, and more in a single, self-hosted solution.",
         "stars": 134,
-        "forks": 12,
+        "forks": 11,
         "watchers": 134,
         "language": "Python",
         "archived": false,
@@ -408,14 +408,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 6,
-        "size": 41079,
-        "last_update": "2026-10-20T11:16:41+00:00",
+        "open_issues_count": 11,
+        "size": 41471,
+        "last_update": "2026-10-26T09:00:37+00:00",
         "created_at_api": "2025-06-15T22:14:52+00:00",
         "has_issues": true,
         "commits": 893,
         "contributors": 6,
-        "last_update_str": "4 days ago",
+        "last_update_str": "5 days ago",
         "avg_issue_resolution_time": 198785.5317919075,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -476,7 +476,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 8.7,
+            "avg_response_hours": 31.6,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -489,9 +489,9 @@
         "name": "brandkit",
         "full_name": "fabriziosalmi/brandkit",
         "description": "Yet another brand assets generator",
-        "stars": 84,
+        "stars": 85,
         "forks": 11,
-        "watchers": 84,
+        "watchers": 85,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -506,7 +506,7 @@
         "has_issues": true,
         "commits": 85,
         "contributors": 5,
-        "last_update_str": "yesterday",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -566,14 +566,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 2,
-        "size": 1561,
-        "last_update": "2026-10-18T20:43:34+00:00",
+        "open_issues_count": 1,
+        "size": 1578,
+        "last_update": "2026-10-31T10:29:04+00:00",
         "created_at_api": "2024-08-24T22:01:54+00:00",
         "has_issues": true,
-        "commits": 195,
+        "commits": 199,
         "contributors": 6,
-        "last_update_str": "6 days ago",
+        "last_update_str": "19 minutes ago",
         "avg_issue_resolution_time": 18749597.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -615,9 +615,9 @@
         "name": "DevGPT",
         "full_name": "fabriziosalmi/DevGPT",
         "description": "Code together, right now! GPT powered code assistant to build project in minutes",
-        "stars": 70,
+        "stars": 71,
         "forks": 6,
-        "watchers": 70,
+        "watchers": 71,
         "language": null,
         "archived": false,
         "disabled": false,
@@ -672,13 +672,13 @@
         "license": "GNU General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 6,
-        "size": 26881,
-        "last_update": "2026-10-25T00:41:53+00:00",
+        "size": 27596,
+        "last_update": "2026-10-31T01:11:07+00:00",
         "created_at_api": "2025-03-22T11:49:27+00:00",
         "has_issues": true,
-        "commits": 533,
+        "commits": 545,
         "contributors": 8,
-        "last_update_str": "47 minutes ago",
+        "last_update_str": "9 hours ago",
         "avg_issue_resolution_time": 2959963.2916666665,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -703,7 +703,7 @@
         "issue_health": {
             "health_score": 50.0,
             "status": "moderate",
-            "avg_response_hours": 1123.0,
+            "avg_response_hours": 1319.7,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -788,7 +788,7 @@
         "has_issues": true,
         "commits": 85,
         "contributors": 4,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 12707778.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -826,9 +826,9 @@
         "name": "secure-proxy-manager",
         "full_name": "fabriziosalmi/secure-proxy-manager",
         "description": "Secure proxy solution with filtering, real-time monitoring and a modern web UI.",
-        "stars": 46,
+        "stars": 48,
         "forks": 5,
-        "watchers": 46,
+        "watchers": 48,
         "language": "Go",
         "archived": false,
         "disabled": false,
@@ -836,56 +836,56 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 3,
-        "size": 46273,
-        "last_update": "2026-10-24T23:53:02+00:00",
+        "open_issues_count": 2,
+        "size": 50214,
+        "last_update": "2026-10-31T10:04:32+00:00",
         "created_at_api": "2024-12-30T10:05:07+00:00",
         "has_issues": true,
-        "commits": 805,
+        "commits": 951,
         "contributors": 5,
-        "last_update_str": "1 hours ago",
-        "avg_issue_resolution_time": 1300147.734375,
+        "last_update_str": "46 minutes ago",
+        "avg_issue_resolution_time": 1333608.1470588236,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Go": {
-                "bytes": 843855,
-                "percentage": 53.98
+                "bytes": 2045203,
+                "percentage": 51.59
             },
             "TypeScript": {
-                "bytes": 415535,
-                "percentage": 26.58
+                "bytes": 1277663,
+                "percentage": 32.23
             },
             "Shell": {
-                "bytes": 219314,
-                "percentage": 14.03
+                "bytes": 405470,
+                "percentage": 10.23
             },
             "Python": {
-                "bytes": 48472,
-                "percentage": 3.1
+                "bytes": 195286,
+                "percentage": 4.93
             },
             "Dockerfile": {
-                "bytes": 13851,
-                "percentage": 0.89
-            },
-            "CSS": {
-                "bytes": 13675,
-                "percentage": 0.87
+                "bytes": 14118,
+                "percentage": 0.36
             },
             "JavaScript": {
-                "bytes": 6779,
-                "percentage": 0.43
+                "bytes": 13386,
+                "percentage": 0.34
+            },
+            "CSS": {
+                "bytes": 11435,
+                "percentage": 0.29
             },
             "Makefile": {
                 "bytes": 1248,
-                "percentage": 0.08
+                "percentage": 0.03
             },
             "HTML": {
                 "bytes": 418,
-                "percentage": 0.03
+                "percentage": 0.01
             }
         },
-        "version": "v3.14.1",
+        "version": "v3.24.0",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0,
@@ -896,7 +896,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 2425.4,
+            "avg_response_hours": 1466.2,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -919,14 +919,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 10,
-        "size": 6033,
-        "last_update": "2026-10-24T13:22:49+00:00",
+        "open_issues_count": 13,
+        "size": 6270,
+        "last_update": "2026-10-26T05:24:20+00:00",
         "created_at_api": "2026-05-01T17:08:46+00:00",
         "has_issues": true,
         "commits": 422,
         "contributors": 5,
-        "last_update_str": "12 hours ago",
+        "last_update_str": "5 days ago",
         "avg_issue_resolution_time": 218021.34810126582,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -955,7 +955,7 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 2864.6,
+            "avg_response_hours": 1790.3,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -985,7 +985,7 @@
         "has_issues": true,
         "commits": 175,
         "contributors": 6,
-        "last_update_str": "3 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 21501434.75,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1000,7 +1000,7 @@
             }
         },
         "version": "v1.4.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -1008,9 +1008,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 90.0,
-            "status": "healthy",
-            "avg_response_hours": 0.0,
+            "health_score": 70.0,
+            "status": "moderate",
+            "avg_response_hours": 84.0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1034,13 +1034,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 493,
-        "last_update": "2026-10-25T00:29:48+00:00",
+        "size": 563,
+        "last_update": "2026-10-31T00:17:12+00:00",
         "created_at_api": "2025-01-30T23:05:43+00:00",
         "has_issues": true,
-        "commits": 390,
+        "commits": 396,
         "contributors": 5,
-        "last_update_str": "1 hours ago",
+        "last_update_str": "10 hours ago",
         "avg_issue_resolution_time": 61.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1129,9 +1129,9 @@
         "name": "nis2-public",
         "full_name": "fabriziosalmi/nis2-public",
         "description": "NIS2 Continuous Posture Management and Remediation Platform",
-        "stars": 31,
+        "stars": 32,
         "forks": 10,
-        "watchers": 31,
+        "watchers": 32,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -1139,14 +1139,14 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 5,
-        "size": 5211,
-        "last_update": "2026-10-21T08:51:37+00:00",
+        "open_issues_count": 10,
+        "size": 5495,
+        "last_update": "2026-10-26T14:37:23+00:00",
         "created_at_api": "2025-12-08T11:58:07+00:00",
         "has_issues": true,
         "commits": 287,
         "contributors": 5,
-        "last_update_str": "3 days ago",
+        "last_update_str": "4 days ago",
         "avg_issue_resolution_time": 1619982.111111111,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1197,9 +1197,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 80.0,
+            "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 125.6,
+            "avg_response_hours": 29.2,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1222,14 +1222,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 1,
+        "open_issues_count": 0,
         "size": 1040,
-        "last_update": "2026-10-17T23:03:54+00:00",
+        "last_update": "2026-10-31T10:23:18+00:00",
         "created_at_api": "2025-11-23T11:02:13+00:00",
         "has_issues": true,
-        "commits": 47,
+        "commits": 48,
         "contributors": 3,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "23 minutes ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1262,7 +1262,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1303,7 +1303,7 @@
             }
         },
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "⏰ STALE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -1326,9 +1326,9 @@
         "name": "pdf-ocr",
         "full_name": "fabriziosalmi/pdf-ocr",
         "description": "Self-hosted Flask web app that OCRs scanned PDFs into DOCX, TXT, Markdown or HTML. Tesseract, EasyOCR, PyOCR or PaddleOCR. Docker image included.",
-        "stars": 25,
+        "stars": 26,
         "forks": 2,
-        "watchers": 25,
+        "watchers": 26,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -1337,13 +1337,13 @@
         "license": "MIT License",
         "default_branch": "main",
         "open_issues_count": 6,
-        "size": 30414,
-        "last_update": "2026-10-19T22:48:40+00:00",
+        "size": 30416,
+        "last_update": "2026-10-26T22:49:30+00:00",
         "created_at_api": "2025-04-14T15:49:03+00:00",
         "has_issues": true,
-        "commits": 107,
+        "commits": 108,
         "contributors": 2,
-        "last_update_str": "5 days ago",
+        "last_update_str": "4 days ago",
         "avg_issue_resolution_time": 2093.5,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1376,7 +1376,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 33.6,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1435,9 +1435,9 @@
         "name": "aidlp",
         "full_name": "fabriziosalmi/aidlp",
         "description": "Data Loss Prevention (DLP) for LLM endpoints.",
-        "stars": 21,
+        "stars": 22,
         "forks": 5,
-        "watchers": 21,
+        "watchers": 22,
         "language": "Python",
         "archived": false,
         "disabled": false,
@@ -1445,14 +1445,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 9,
-        "size": 844,
-        "last_update": "2026-10-18T08:34:38+00:00",
+        "open_issues_count": 13,
+        "size": 1228,
+        "last_update": "2026-10-31T07:00:01+00:00",
         "created_at_api": "2025-12-01T09:04:27+00:00",
         "has_issues": true,
         "commits": 117,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "3 hours ago",
         "avg_issue_resolution_time": 4570.333333333333,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1481,7 +1481,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.5,
+            "avg_response_hours": 0.3,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1504,33 +1504,33 @@
         "fork": false,
         "license": "Apache License 2.0",
         "default_branch": "master",
-        "open_issues_count": 15,
-        "size": 37994,
-        "last_update": "2026-10-24T23:17:30+00:00",
+        "open_issues_count": 13,
+        "size": 39201,
+        "last_update": "2026-10-26T08:02:08+00:00",
         "created_at_api": "2026-04-12T14:40:19+00:00",
         "has_issues": true,
-        "commits": 517,
+        "commits": 535,
         "contributors": 3,
-        "last_update_str": "2 hours ago",
-        "avg_issue_resolution_time": 1084926.8392857143,
+        "last_update_str": "5 days ago",
+        "avg_issue_resolution_time": 1048876.7833333334,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Rust": {
-                "bytes": 6390669,
-                "percentage": 90.01
+                "bytes": 6566600,
+                "percentage": 90.25
             },
             "Python": {
                 "bytes": 349973,
-                "percentage": 4.93
+                "percentage": 4.81
             },
             "Shell": {
-                "bytes": 319896,
-                "percentage": 4.51
+                "bytes": 320174,
+                "percentage": 4.4
             },
             "Go": {
                 "bytes": 18175,
-                "percentage": 0.26
+                "percentage": 0.25
             },
             "Dockerfile": {
                 "bytes": 9493,
@@ -1553,7 +1553,7 @@
                 "percentage": 0.01
             }
         },
-        "version": "v0.15.0",
+        "version": "v0.16.0",
         "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0,
@@ -1564,7 +1564,58 @@
         "issue_health": {
             "health_score": 60.0,
             "status": "moderate",
-            "avg_response_hours": 1478.0,
+            "avg_response_hours": 1341.9,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/dnscontrol-actions",
+        "name": "dnscontrol-actions",
+        "full_name": "fabriziosalmi/dnscontrol-actions",
+        "description": "Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions",
+        "stars": 20,
+        "forks": 4,
+        "watchers": 20,
+        "language": "JavaScript",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 55,
+        "last_update": "2026-09-05T10:50:31+00:00",
+        "created_at_api": "2023-09-08T09:38:50+00:00",
+        "has_issues": true,
+        "commits": 48,
+        "contributors": 1,
+        "last_update_str": "1 months ago",
+        "avg_issue_resolution_time": 8412306.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "JavaScript": {
+                "bytes": 3078,
+                "percentage": 100.0
+            }
+        },
+        "version": "v1.0.0",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1624,57 +1675,6 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/dnscontrol-actions",
-        "name": "dnscontrol-actions",
-        "full_name": "fabriziosalmi/dnscontrol-actions",
-        "description": "Automate DNS updates and rollbacks across multiple providers using DNSControl and GitHub Actions",
-        "stars": 19,
-        "forks": 4,
-        "watchers": 19,
-        "language": "JavaScript",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 55,
-        "last_update": "2026-09-05T10:50:31+00:00",
-        "created_at_api": "2023-09-08T09:38:50+00:00",
-        "has_issues": true,
-        "commits": 48,
-        "contributors": 1,
-        "last_update_str": "1 months ago",
-        "avg_issue_resolution_time": 8412306.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "JavaScript": {
-                "bytes": 3078,
-                "percentage": 100.0
-            }
-        },
-        "version": "v1.0.0",
-        "status": "✅ ACTIVE",
-        "momentum": {
-            "score": 0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 1,
-            "risk_level": "critical"
-        }
-    },
-    {
         "url": "https://github.com/fabriziosalmi/llmproxy",
         "name": "llmproxy",
         "full_name": "fabriziosalmi/llmproxy",
@@ -1689,14 +1689,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 12,
-        "size": 33680,
-        "last_update": "2026-10-22T23:36:43+00:00",
+        "open_issues_count": 18,
+        "size": 33074,
+        "last_update": "2026-10-29T23:37:41+00:00",
         "created_at_api": "2026-03-19T21:42:44+00:00",
         "has_issues": true,
         "commits": 488,
         "contributors": 3,
-        "last_update_str": "2 days ago",
+        "last_update_str": "yesterday",
         "avg_issue_resolution_time": 1641824.8181818181,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1747,9 +1747,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 95.0,
+            "health_score": 96.7,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 10.5,
             "stale_issues_count": 2
         },
         "bus_factor": {
@@ -1779,7 +1779,7 @@
         "has_issues": true,
         "commits": 72,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1802,7 +1802,7 @@
             }
         },
         "version": "v0.1.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -1902,14 +1902,14 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 1,
+        "open_issues_count": 0,
         "size": 1028,
-        "last_update": "2026-10-21T13:01:44+00:00",
+        "last_update": "2026-10-31T10:34:50+00:00",
         "created_at_api": "2025-01-23T00:42:44+00:00",
         "has_issues": true,
-        "commits": 57,
+        "commits": 58,
         "contributors": 3,
-        "last_update_str": "3 days ago",
+        "last_update_str": "12 minutes ago",
         "avg_issue_resolution_time": 500.5,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -1938,7 +1938,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -1947,10 +1947,10 @@
         }
     },
     {
-        "url": "https://github.com/fabriziosalmi/newsgator",
-        "name": "newsgator",
-        "full_name": "fabriziosalmi/newsgator",
-        "description": "Yet another RSS feed aggregator with LLM powers.",
+        "url": "https://github.com/fabriziosalmi/naso",
+        "name": "naso",
+        "full_name": "fabriziosalmi/naso",
+        "description": "Self-hosted breach and dark-web exposure monitoring: ingest leaks, correlate identities, triage with a local LLM. Your infrastructure, your data.",
         "stars": 10,
         "forks": 1,
         "watchers": 10,
@@ -1959,75 +1959,16 @@
         "disabled": false,
         "private": false,
         "fork": false,
-        "license": "MIT License",
-        "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 342,
-        "last_update": "2026-10-18T13:57:26+00:00",
-        "created_at_api": "2025-04-30T12:24:35+00:00",
-        "has_issues": true,
-        "commits": 32,
-        "contributors": 4,
-        "last_update_str": "6 days ago",
-        "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 1,
-        "processed_details": true,
-        "language_stats": {
-            "Python": {
-                "bytes": 180985,
-                "percentage": 92.11
-            },
-            "HTML": {
-                "bytes": 14846,
-                "percentage": 7.56
-            },
-            "Dockerfile": {
-                "bytes": 657,
-                "percentage": 0.33
-            }
-        },
-        "version": "v0.0.2",
-        "status": "🔥 ACTIVE",
-        "momentum": {
-            "score": 0,
-            "stars_7d": 0,
-            "stars_30d": 0,
-            "trend": "stable"
-        },
-        "issue_health": {
-            "health_score": 100,
-            "status": "healthy",
-            "avg_response_hours": 0,
-            "stale_issues_count": 0
-        },
-        "bus_factor": {
-            "bus_factor": 2,
-            "risk_level": "moderate"
-        }
-    },
-    {
-        "url": "https://github.com/fabriziosalmi/naso",
-        "name": "naso",
-        "full_name": "fabriziosalmi/naso",
-        "description": "Self-hosted breach and dark-web exposure monitoring: ingest leaks, correlate identities, triage with a local LLM. Your infrastructure, your data.",
-        "stars": 9,
-        "forks": 1,
-        "watchers": 9,
-        "language": "Python",
-        "archived": false,
-        "disabled": false,
-        "private": false,
-        "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 4,
+        "open_issues_count": 3,
         "size": 8111,
-        "last_update": "2026-10-22T04:17:46+00:00",
+        "last_update": "2026-10-31T10:30:38+00:00",
         "created_at_api": "2026-04-16T14:40:37+00:00",
         "has_issues": true,
-        "commits": 134,
+        "commits": 135,
         "contributors": 4,
-        "last_update_str": "2 days ago",
+        "last_update_str": "18 minutes ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2077,6 +2018,65 @@
             "health_score": 100,
             "status": "healthy",
             "avg_response_hours": 0.0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 2,
+            "risk_level": "moderate"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/newsgator",
+        "name": "newsgator",
+        "full_name": "fabriziosalmi/newsgator",
+        "description": "Yet another RSS feed aggregator with LLM powers.",
+        "stars": 10,
+        "forks": 1,
+        "watchers": 10,
+        "language": "Python",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 342,
+        "last_update": "2026-10-18T13:57:26+00:00",
+        "created_at_api": "2025-04-30T12:24:35+00:00",
+        "has_issues": true,
+        "commits": 32,
+        "contributors": 4,
+        "last_update_str": "1 weeks ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Python": {
+                "bytes": 180985,
+                "percentage": 92.11
+            },
+            "HTML": {
+                "bytes": 14846,
+                "percentage": 7.56
+            },
+            "Dockerfile": {
+                "bytes": 657,
+                "percentage": 0.33
+            }
+        },
+        "version": "v0.0.2",
+        "status": "✅ ACTIVE",
+        "momentum": {
+            "score": 0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -2157,7 +2157,7 @@
         "has_issues": true,
         "commits": 533,
         "contributors": 7,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 22987383.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2176,7 +2176,7 @@
             }
         },
         "version": "23",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -2286,7 +2286,7 @@
             }
         },
         "version": "v1.4.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -2369,7 +2369,7 @@
             }
         },
         "version": "v0.5.19",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -2420,7 +2420,7 @@
             }
         },
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "⏰ STALE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -2499,14 +2499,14 @@
         "fork": false,
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
-        "open_issues_count": 6,
-        "size": 923,
-        "last_update": "2026-10-23T02:09:01+00:00",
+        "open_issues_count": 3,
+        "size": 973,
+        "last_update": "2026-10-31T10:26:08+00:00",
         "created_at_api": "2026-07-07T11:18:17+00:00",
         "has_issues": true,
-        "commits": 93,
+        "commits": 95,
         "contributors": 3,
-        "last_update_str": "yesterday",
+        "last_update_str": "21 minutes ago",
         "avg_issue_resolution_time": 112554.42857142857,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2553,9 +2553,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 85.0,
-            "status": "healthy",
-            "avg_response_hours": 15.5,
+            "health_score": 70.0,
+            "status": "moderate",
+            "avg_response_hours": 38.9,
             "stale_issues_count": 3
         },
         "bus_factor": {
@@ -2579,13 +2579,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 9,
-        "size": 2881,
-        "last_update": "2026-10-19T09:21:45+00:00",
+        "size": 2908,
+        "last_update": "2026-10-31T10:45:06+00:00",
         "created_at_api": "2024-07-06T14:59:07+00:00",
         "has_issues": true,
-        "commits": 1126,
+        "commits": 1129,
         "contributors": 6,
-        "last_update_str": "5 days ago",
+        "last_update_str": "5 minutes ago",
         "avg_issue_resolution_time": 73785.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2660,7 +2660,7 @@
         "has_issues": true,
         "commits": 39,
         "contributors": 2,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 weeks ago",
         "avg_issue_resolution_time": 87587.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2790,7 +2790,7 @@
         "has_issues": true,
         "commits": 66,
         "contributors": 3,
-        "last_update_str": "2 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2813,7 +2813,7 @@
             }
         },
         "version": "v0.3.1",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -2853,7 +2853,7 @@
         "has_issues": true,
         "commits": 62,
         "contributors": 4,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -2892,7 +2892,7 @@
             }
         },
         "version": "v0.9.4",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -3202,9 +3202,9 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 18,
-        "size": 1808,
-        "last_update": "2026-10-18T11:35:33+00:00",
+        "open_issues_count": 19,
+        "size": 1283,
+        "last_update": "2026-10-25T08:23:49+00:00",
         "created_at_api": "2026-05-17T12:50:50+00:00",
         "has_issues": true,
         "commits": 31,
@@ -3240,9 +3240,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 56.7,
+            "health_score": 56.8,
             "status": "moderate",
-            "avg_response_hours": 255.5,
+            "avg_response_hours": 230.1,
             "stale_issues_count": 2
         },
         "bus_factor": {
@@ -3471,7 +3471,7 @@
             }
         },
         "version": "v0.16.20",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -3629,7 +3629,7 @@
         "has_issues": true,
         "commits": 9,
         "contributors": 1,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -3640,7 +3640,7 @@
             }
         },
         "version": "v1.1.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -3673,14 +3673,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 1,
+        "open_issues_count": 0,
         "size": 34337,
-        "last_update": "2026-10-18T15:47:20+00:00",
+        "last_update": "2026-10-31T10:23:06+00:00",
         "created_at_api": "2025-12-12T12:51:37+00:00",
         "has_issues": true,
-        "commits": 64,
+        "commits": 65,
         "contributors": 4,
-        "last_update_str": "6 days ago",
+        "last_update_str": "23 minutes ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3713,7 +3713,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -3800,7 +3800,7 @@
         "processed_details": true,
         "language_stats": {},
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "⏰ STALE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -3886,7 +3886,7 @@
         "has_issues": true,
         "commits": 168,
         "contributors": 4,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -3905,7 +3905,7 @@
             }
         },
         "version": "v1.4.4",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -3945,7 +3945,7 @@
         "has_issues": true,
         "commits": 85,
         "contributors": 1,
-        "last_update_str": "yesterday",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -3993,14 +3993,14 @@
         "fork": false,
         "license": "European Union Public License 1.2",
         "default_branch": "master",
-        "open_issues_count": 1,
+        "open_issues_count": 0,
         "size": 802,
-        "last_update": "2026-10-18T14:04:46+00:00",
+        "last_update": "2026-10-31T10:35:54+00:00",
         "created_at_api": "2026-04-29T17:10:58+00:00",
         "has_issues": true,
-        "commits": 89,
+        "commits": 90,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "13 minutes ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4025,7 +4025,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -4114,7 +4114,7 @@
         "has_issues": true,
         "commits": 31,
         "contributors": 4,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4149,7 +4149,7 @@
             }
         },
         "version": "v1.0.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -4189,7 +4189,7 @@
         "has_issues": true,
         "commits": 28,
         "contributors": 4,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 42324.47777777778,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4220,7 +4220,7 @@
             }
         },
         "version": "v4.31.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -4253,9 +4253,9 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 3,
-        "size": 127,
-        "last_update": "2026-10-19T06:12:44+00:00",
+        "open_issues_count": 4,
+        "size": 129,
+        "last_update": "2026-10-26T06:14:18+00:00",
         "created_at_api": "2026-05-16T08:01:40+00:00",
         "has_issues": true,
         "commits": 19,
@@ -4309,13 +4309,13 @@
         "license": "GNU Affero General Public License v3.0",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 5844,
-        "last_update": "2026-10-24T05:06:07+00:00",
+        "size": 5992,
+        "last_update": "2026-10-31T05:04:33+00:00",
         "created_at_api": "2024-06-13T19:18:21+00:00",
         "has_issues": true,
-        "commits": 1694,
+        "commits": 1708,
         "contributors": 2,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "5 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -4406,13 +4406,13 @@
         "license": "MIT License",
         "default_branch": "main",
         "open_issues_count": 2,
-        "size": 2166,
-        "last_update": "2026-10-24T04:31:44+00:00",
+        "size": 2225,
+        "last_update": "2026-10-31T04:22:22+00:00",
         "created_at_api": "2025-05-05T12:38:18+00:00",
         "has_issues": true,
-        "commits": 200,
+        "commits": 207,
         "contributors": 3,
-        "last_update_str": "20 hours ago",
+        "last_update_str": "6 hours ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4463,7 +4463,7 @@
         "has_issues": true,
         "commits": 106,
         "contributors": 3,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 425384.5,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4526,7 +4526,7 @@
         "has_issues": true,
         "commits": 44,
         "contributors": 3,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4605,7 +4605,7 @@
         "has_issues": true,
         "commits": 191,
         "contributors": 4,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4728,14 +4728,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 31,
-        "size": 7121,
-        "last_update": "2026-10-24T16:26:06+00:00",
+        "open_issues_count": 34,
+        "size": 7487,
+        "last_update": "2026-10-30T16:06:19+00:00",
         "created_at_api": "2026-07-18T21:00:40+00:00",
         "has_issues": true,
         "commits": 200,
         "contributors": 3,
-        "last_update_str": "9 hours ago",
+        "last_update_str": "18 hours ago",
         "avg_issue_resolution_time": 1258511.65,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -4774,10 +4774,10 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 52.0,
+            "health_score": 74.0,
             "status": "moderate",
-            "avg_response_hours": 230.2,
-            "stale_issues_count": 8
+            "avg_response_hours": 122.6,
+            "stale_issues_count": 6
         },
         "bus_factor": {
             "bus_factor": 1,
@@ -4900,10 +4900,10 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 80.0,
-            "status": "healthy",
+            "health_score": 70.0,
+            "status": "moderate",
             "avg_response_hours": 0,
-            "stale_issues_count": 2
+            "stale_issues_count": 3
         },
         "bus_factor": {
             "bus_factor": 1,
@@ -4951,7 +4951,7 @@
             }
         },
         "version": "v1.18.1",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -4959,9 +4959,9 @@
             "trend": "stable"
         },
         "issue_health": {
-            "health_score": 80.0,
-            "status": "healthy",
-            "avg_response_hours": 139.5,
+            "health_score": 60.0,
+            "status": "moderate",
+            "avg_response_hours": 195.5,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -5037,7 +5037,7 @@
         "has_issues": true,
         "commits": 61,
         "contributors": 2,
-        "last_update_str": "3 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -5068,7 +5068,7 @@
             }
         },
         "version": "v0.9.1",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -5154,7 +5154,7 @@
         "has_issues": false,
         "commits": 1410,
         "contributors": 85,
-        "last_update_str": "yesterday",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -5229,7 +5229,7 @@
         "has_issues": true,
         "commits": 64,
         "contributors": 1,
-        "last_update_str": "5 hours ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -5403,14 +5403,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 1,
+        "open_issues_count": 0,
         "size": 136,
-        "last_update": "2026-10-18T13:39:26+00:00",
+        "last_update": "2026-10-31T10:33:47+00:00",
         "created_at_api": "2026-06-01T13:27:25+00:00",
         "has_issues": true,
-        "commits": 7,
-        "contributors": 1,
-        "last_update_str": "6 days ago",
+        "commits": 8,
+        "contributors": 2,
+        "last_update_str": "11 minutes ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -5435,7 +5435,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0.0,
+            "avg_response_hours": 0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -5532,7 +5532,7 @@
         "has_issues": false,
         "commits": 24,
         "contributors": 7,
-        "last_update_str": "6 hours ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -5629,7 +5629,7 @@
         "has_issues": false,
         "commits": 10431,
         "contributors": 3400,
-        "last_update_str": "1 months ago",
+        "last_update_str": "2 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -5864,7 +5864,7 @@
         "has_issues": true,
         "commits": 50,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 34905.142857142855,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -5895,7 +5895,7 @@
             }
         },
         "version": "v0.2.1",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -5928,41 +5928,41 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 13,
-        "size": 4262,
-        "last_update": "2026-10-18T07:53:58+00:00",
+        "open_issues_count": 12,
+        "size": 4271,
+        "last_update": "2026-10-26T21:47:28+00:00",
         "created_at_api": "2025-07-01T16:42:56+00:00",
         "has_issues": true,
-        "commits": 126,
+        "commits": 127,
         "contributors": 1,
-        "last_update_str": "6 days ago",
-        "avg_issue_resolution_time": 46812.38461538462,
+        "last_update_str": "4 days ago",
+        "avg_issue_resolution_time": 99054.42857142857,
         "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "HTML": {
                 "bytes": 575693,
-                "percentage": 38.85
+                "percentage": 38.65
             },
             "MDX": {
                 "bytes": 414309,
-                "percentage": 27.96
+                "percentage": 27.81
             },
             "TypeScript": {
-                "bytes": 181291,
-                "percentage": 12.23
+                "bytes": 188652,
+                "percentage": 12.67
             },
             "Astro": {
-                "bytes": 146007,
-                "percentage": 9.85
+                "bytes": 146263,
+                "percentage": 9.82
             },
             "JavaScript": {
                 "bytes": 99737,
-                "percentage": 6.73
+                "percentage": 6.7
             },
             "CSS": {
                 "bytes": 62444,
-                "percentage": 4.21
+                "percentage": 4.19
             },
             "Shell": {
                 "bytes": 2429,
@@ -5980,7 +5980,7 @@
         "issue_health": {
             "health_score": 80.0,
             "status": "healthy",
-            "avg_response_hours": 146.9,
+            "avg_response_hours": 147.2,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -6010,7 +6010,7 @@
         "has_issues": false,
         "commits": 75,
         "contributors": 1,
-        "last_update_str": "5 months ago",
+        "last_update_str": "6 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6147,8 +6147,8 @@
         "created_at_api": "2026-09-30T19:54:20+00:00",
         "has_issues": false,
         "commits": 17519,
-        "contributors": 760,
-        "last_update_str": "1 weeks ago",
+        "contributors": 759,
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6219,7 +6219,7 @@
         "has_issues": false,
         "commits": 2393,
         "contributors": 235,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6286,7 +6286,7 @@
         "has_issues": false,
         "commits": 40179,
         "contributors": 1594,
-        "last_update_str": "4 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6385,7 +6385,7 @@
         "has_issues": true,
         "commits": 141,
         "contributors": 2,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -6408,7 +6408,7 @@
             }
         },
         "version": "v1.1.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -6499,7 +6499,7 @@
         "has_issues": false,
         "commits": 657,
         "contributors": 32,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6574,7 +6574,7 @@
         "has_issues": false,
         "commits": 8026,
         "contributors": 80,
-        "last_update_str": "3 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6670,14 +6670,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 7,
+        "open_issues_count": 6,
         "size": 1469,
-        "last_update": "2026-10-21T14:35:41+00:00",
+        "last_update": "2026-10-31T10:25:02+00:00",
         "created_at_api": "2026-10-03T01:00:30+00:00",
         "has_issues": true,
-        "commits": 22,
-        "contributors": 1,
-        "last_update_str": "3 days ago",
+        "commits": 23,
+        "contributors": 2,
+        "last_update_str": "22 minutes ago",
         "avg_issue_resolution_time": 9647.5,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -6718,7 +6718,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 13.1,
+            "avg_response_hours": 17.4,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -6748,7 +6748,7 @@
         "has_issues": true,
         "commits": 10,
         "contributors": 2,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -6803,7 +6803,7 @@
         "has_issues": true,
         "commits": 1,
         "contributors": 1,
-        "last_update_str": "2 weeks ago",
+        "last_update_str": "3 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6843,13 +6843,13 @@
         "license": "MIT License",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 4,
-        "last_update": "2026-09-30T12:57:47+00:00",
+        "size": 5,
+        "last_update": "2026-10-26T21:28:17+00:00",
         "created_at_api": "2026-09-30T12:57:42+00:00",
         "has_issues": true,
-        "commits": 1,
+        "commits": 2,
         "contributors": 1,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "4 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6860,7 +6860,7 @@
             }
         },
         "version": null,
-        "status": "✅ ACTIVE",
+        "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -6900,7 +6900,7 @@
         "has_issues": true,
         "commits": 36,
         "contributors": 2,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -6911,7 +6911,7 @@
             }
         },
         "version": null,
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -6951,7 +6951,7 @@
         "has_issues": true,
         "commits": 4,
         "contributors": 2,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -7002,7 +7002,7 @@
         "has_issues": true,
         "commits": 25,
         "contributors": 2,
-        "last_update_str": "11 hours ago",
+        "last_update_str": "6 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -7064,7 +7064,7 @@
             }
         },
         "version": null,
-        "status": "✅ ACTIVE",
+        "status": "⏰ STALE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7098,15 +7098,15 @@
         "license": "MIT License",
         "default_branch": "main",
         "open_issues_count": 0,
-        "size": 79,
-        "last_update": "2026-10-15T15:52:41+00:00",
+        "size": 81,
+        "last_update": "2026-10-31T10:27:38+00:00",
         "created_at_api": "2026-10-15T14:48:14+00:00",
         "has_issues": true,
-        "commits": 6,
-        "contributors": 1,
-        "last_update_str": "1 weeks ago",
+        "commits": 7,
+        "contributors": 2,
+        "last_update_str": "20 minutes ago",
         "avg_issue_resolution_time": 0.0,
-        "closed_issues_count": 0,
+        "closed_issues_count": 1,
         "processed_details": true,
         "language_stats": {
             "Python": {
@@ -7123,7 +7123,62 @@
             }
         },
         "version": null,
-        "status": "✅ ACTIVE",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/jvc-rebirth",
+        "name": "jvc-rebirth",
+        "full_name": "fabriziosalmi/jvc-rebirth",
+        "description": "Step-by-step engineering guide and ADB toolkit to optimize 1 GB RAM JVC / Vestel Android TV (MediaTek m5621)",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Java",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "No license",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 242,
+        "last_update": "2026-10-26T16:46:02+00:00",
+        "created_at_api": "2026-10-25T14:35:12+00:00",
+        "has_issues": true,
+        "commits": 9,
+        "contributors": 1,
+        "last_update_str": "4 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 0,
+        "processed_details": true,
+        "language_stats": {
+            "Java": {
+                "bytes": 66438,
+                "percentage": 81.26
+            },
+            "Shell": {
+                "bytes": 15320,
+                "percentage": 18.74
+            }
+        },
+        "version": "v1.0.0",
+        "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7156,14 +7211,14 @@
         "fork": false,
         "license": "MIT License",
         "default_branch": "main",
-        "open_issues_count": 0,
-        "size": 877,
-        "last_update": "2026-09-18T07:40:49+00:00",
+        "open_issues_count": 1,
+        "size": 880,
+        "last_update": "2026-10-29T01:32:08+00:00",
         "created_at_api": "2026-03-30T19:15:44+00:00",
         "has_issues": true,
         "commits": 21,
         "contributors": 3,
-        "last_update_str": "1 months ago",
+        "last_update_str": "2 days ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -7194,7 +7249,7 @@
             }
         },
         "version": "v1.0.0",
-        "status": "✅ ACTIVE",
+        "status": "🔥 ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7204,7 +7259,7 @@
         "issue_health": {
             "health_score": 100,
             "status": "healthy",
-            "avg_response_hours": 0,
+            "avg_response_hours": 0.0,
             "stale_issues_count": 0
         },
         "bus_factor": {
@@ -7234,7 +7289,7 @@
         "has_issues": true,
         "commits": 50,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -7253,7 +7308,7 @@
             }
         },
         "version": "v0.4.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7293,7 +7348,7 @@
         "has_issues": true,
         "commits": 34,
         "contributors": 3,
-        "last_update_str": "5 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -7304,7 +7359,7 @@
             }
         },
         "version": "v0.4.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7344,7 +7399,7 @@
         "has_issues": true,
         "commits": 23,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -7383,7 +7438,7 @@
             }
         },
         "version": "v0.2.1",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7423,7 +7478,7 @@
         "has_issues": false,
         "commits": 3291,
         "contributors": 323,
-        "last_update_str": "1 weeks ago",
+        "last_update_str": "2 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -7514,7 +7569,7 @@
         "has_issues": false,
         "commits": 10552,
         "contributors": 156,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -7565,7 +7620,7 @@
         "has_issues": true,
         "commits": 49,
         "contributors": 3,
-        "last_update_str": "6 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 1,
         "processed_details": true,
@@ -7592,7 +7647,7 @@
             }
         },
         "version": "v0.9.0",
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
@@ -7632,7 +7687,7 @@
         "has_issues": false,
         "commits": 144,
         "contributors": 20,
-        "last_update_str": "3 weeks ago",
+        "last_update_str": "1 months ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -7683,6 +7738,65 @@
         "bus_factor": {
             "bus_factor": 5,
             "risk_level": "healthy"
+        }
+    },
+    {
+        "url": "https://github.com/fabriziosalmi/security-audit-cli",
+        "name": "security-audit-cli",
+        "full_name": "fabriziosalmi/security-audit-cli",
+        "description": "Deterministic 6-phase security audit CLI, MCP server, and VS Code extension (1:1:1 parity, *os.Root confinement, SARIF 2.1.0, GHSA advisories)",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "language": "Go",
+        "archived": false,
+        "disabled": false,
+        "private": false,
+        "fork": false,
+        "license": "MIT License",
+        "default_branch": "main",
+        "open_issues_count": 0,
+        "size": 360,
+        "last_update": "2026-10-25T18:18:41+00:00",
+        "created_at_api": "2026-10-25T09:00:53+00:00",
+        "has_issues": true,
+        "commits": 19,
+        "contributors": 2,
+        "last_update_str": "5 days ago",
+        "avg_issue_resolution_time": 0.0,
+        "closed_issues_count": 1,
+        "processed_details": true,
+        "language_stats": {
+            "Go": {
+                "bytes": 369005,
+                "percentage": 92.43
+            },
+            "JavaScript": {
+                "bytes": 28206,
+                "percentage": 7.07
+            },
+            "Makefile": {
+                "bytes": 2024,
+                "percentage": 0.51
+            }
+        },
+        "version": "v0.1.4",
+        "status": "🔥 ACTIVE",
+        "momentum": {
+            "score": 0,
+            "stars_7d": 0,
+            "stars_30d": 0,
+            "trend": "stable"
+        },
+        "issue_health": {
+            "health_score": 100,
+            "status": "healthy",
+            "avg_response_hours": 0,
+            "stale_issues_count": 0
+        },
+        "bus_factor": {
+            "bus_factor": 1,
+            "risk_level": "critical"
         }
     },
     {
@@ -7770,7 +7884,7 @@
         "has_issues": true,
         "commits": 1,
         "contributors": 1,
-        "last_update_str": "4 days ago",
+        "last_update_str": "1 weeks ago",
         "avg_issue_resolution_time": 0.0,
         "closed_issues_count": 0,
         "processed_details": true,
@@ -7781,7 +7895,7 @@
             }
         },
         "version": null,
-        "status": "🔥 ACTIVE",
+        "status": "✅ ACTIVE",
         "momentum": {
             "score": 0,
             "stars_7d": 0,
