@@ -2,7 +2,7 @@
 #    uv pip compile requirements.in -o requirements.txt --python-version 3.12 --python-platform x86_64-manylinux_2_28 --no-emit-index-url
 beautifulsoup4==4.15.0
     # via -r requirements.in
-certifi==2026.7.22
+certifi==2026.10.18
     # via requests
 charset-normalizer==3.5.2
     # via requests
@@ -36,7 +36,7 @@ rich==15.0.0
     # via -r requirements.in
 six==1.17.0
     # via python-dateutil
-soupsieve==3.0.3
+soupsieve==4.0
     # via beautifulsoup4
 typing-extensions==4.16.0
     # via beautifulsoup4
